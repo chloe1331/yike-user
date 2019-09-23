@@ -1,0 +1,47 @@
+@import '../../public/theme/variables.less';
+
+.my-header {
+    display: flex;
+    justify-content: space-between;
+    max-width: @BodyWidth;
+    margin: 0 auto;
+}
+
+ul.menu-list {
+    display: flex;
+    line-height: @HeaderHeight - 12px;
+    padding-top: 10px;
+    >li {
+        >a {
+            display: block;
+            padding: 0 40px;
+            color: @text-color;
+            border: 0 solid @layout-header-background;
+            border-width: 1px 1px 0;
+            &:hover {
+                color: @primary-color;
+            }
+        }
+        &:global(.active) {
+            a {
+                color: @primary-color;
+                background-color: #fff;
+                border-color: @border-color-base;
+            }
+        }
+    }
+}
+
+.user-info {
+    color: @text-color;
+    &:hover {
+        color: @text-color;
+    }
+    .user-text {
+        margin: 0 10px;
+    }
+    .dropdown-icon {
+        color: @text-color-secondary;
+        transform: scale(0.71666667) rotate(0deg);
+    }
+}

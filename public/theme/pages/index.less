@@ -1,0 +1,62 @@
+
+.layout-home {
+    border: 1px solid @border-color-base;
+    &-hd {
+        padding: 15px;
+        background-color: @layout-header-background;
+        border-bottom: 1px solid @border-color-base;
+        :global(.ant-select) {
+            margin-right: 15px;
+        }
+    }
+    &-bd {
+        display: flex;
+        min-height: 500px;
+        >* {
+            flex: 1;
+        }
+    }
+}
+
+.order-config {
+    flex: 0 0 360px;
+    padding: 20px;
+    border-left: 1px solid @border-color-base;
+}
+
+.mobile-preview {
+    position: relative;
+    overflow: hidden;
+    &-canvas {
+        canvas {
+            position: relative;
+            display: block;
+            z-index: 2;
+            margin: 0 auto;
+        }
+    }
+}
+
+.preview-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #000;
+    :global(.react-draggable) {
+        width: 100%;
+    }
+    img {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        // z-index: 3;
+    }
+}
+
+.size-form {
+    margin-bottom: 20px;
+    border-bottom: 1px solid @border-color-base;
+}

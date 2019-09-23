@@ -1,0 +1,18 @@
+.vertical-center() {
+    display: flex;
+    align-items: center;
+}
+
+.clearfix() {
+    zoom: 1;
+
+    &::before,
+    &::after {
+        display: table;
+        content: '';
+    }
+
+    &::after {
+        clear: both;
+    }
+}
