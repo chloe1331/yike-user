@@ -138,8 +138,8 @@ export default class Index extends Component {
         if (!ctxImageUpload) return;
         const canvas = ctxImageUpload.querySelector('canvas');
         const image = ctxImageUpload.querySelector('img');
-        if (!image) return;
         const imageBg = this.imageBgRef.current;
+        if (!imageBg || !image) return;
         const context = canvas.getContext('2d');
         const width = 918;
 
@@ -178,8 +178,8 @@ export default class Index extends Component {
             this.getCanvas();
         };
         dom.addEventListener('mousedown', e => {
-            startPageX = e.pageX;
-            startPageY = e.pageY;
+            startPageX = e.pageX - this.moveOptions.x;
+            startPageY = e.pageY - this.moveOptions.y;
             dom.addEventListener('mousemove', moveListener);
         });
         dom.addEventListener('mouseup', () => {
