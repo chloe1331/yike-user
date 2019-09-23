@@ -236,6 +236,7 @@ export default class Index extends Component {
             brand_type_id
         }).then(res => {
             this.condition.texture_id = undefined;
+            this.select = null;
             this.setState({
                 cates: res.errcode == 0 ? res.data : [],
                 textureLoading: false
@@ -360,6 +361,17 @@ export default class Index extends Component {
                                 <Form.Item label="订货数量">
                                     <InputNumber precision={0} min={1} />
                                 </Form.Item>
+                                {
+                                    select && select.texture_attr.length ? (
+                                        <Form.Item label="属性(颜色)">
+                                            <Select
+                                                options={select.texture_attr} fieldName={{ label: 'texture_attr_name', value: 'id' }}
+                                                placeholder="选择属性"
+                                                style={{ width: 180 }}
+                                            />
+                                        </Form.Item>
+                                    ) : null
+                                }
                                 <Form.Item>
                                     <Button type="primary">提交审核</Button>
                                 </Form.Item>
