@@ -171,7 +171,7 @@ export default class Index extends Component {
         const dom = this.boxRef.current;
         let startPageX = null;
         let startPageY = null;
-        if (this.hasKeyListener) return;
+        if (this.hasKeyListener && !dom) return;
         const moveListener = e => {
             this.moveOptions.x = e.pageX - startPageX;
             this.moveOptions.y = e.pageY - startPageY;
