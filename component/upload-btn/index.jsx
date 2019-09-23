@@ -79,7 +79,7 @@ export default class UplaodButton extends Component {
             <Upload
                 name="files"
                 withCredentials={true}
-                action={MServer.getUrl(action || '/upload/image').fullUrl}
+                action={MServer.getUrl(action || '/upload/userimage').fullUrl}
                 accept={accept || 'image/png,image/jpg,image/jpeg'}
                 onStart={this.handleStart}
                 onError={this.handleError}
