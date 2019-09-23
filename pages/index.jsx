@@ -346,6 +346,7 @@ export default class Index extends Component {
                             <Form className={`inline-form ${style.sizeForm}`}>
                                 <Form.Item label="缩放">
                                     <InputNumber precision={2} value={(this.moveOptions.size || 0) * 100} onChange={this.handleSize} />
+                                    <span style={{ marginRight: '10px' }}>%</span>
                                 </Form.Item>
                                 <Form.Item label="旋转">
                                     <InputNumber defaultValue={0} onChange={this.handleRotate} />
