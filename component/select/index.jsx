@@ -9,7 +9,7 @@ export default class Select extends Component {
         return (
             <AntSelect
                 showSearch
-                filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                filterOption={(input, option) => option.props.childrenr.replace(/\s*/g, '').toLowerCase().indexOf(input.replace(/\s*/g, '').toLowerCase()) >= 0}
                 {...this.props}
             >
                 {
