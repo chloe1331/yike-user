@@ -32,7 +32,6 @@ export default class Index extends Component {
         this.select = null; // 选择到的机型
         this.moveOptions = {
             x: 0,
-            y: 0,
             rotate: 0
         };
         this.hasKeyListener = false;
@@ -147,6 +146,9 @@ export default class Index extends Component {
             if (!this.moveOptions.size) {
                 size = this.moveOptions.size = 918 / image.width;
                 this.forceUpdate();
+            }
+            if (!y) {
+                y = this.moveOptions.y = -(image.height * size - imageBg.height) / 2;
             }
             canvas.setAttribute('width', width);
             canvas.setAttribute('height', imageBg.height);
