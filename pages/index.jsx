@@ -312,6 +312,7 @@ export default class Index extends Component {
                             buttonText="上传图片" 
                             show={false} 
                             onChange={value => {
+                                this.moveOptions.size = null;
                                 this.setState({
                                     image: `${locale[process.env.NODE_ENV].url.cdnUser}${value}`
                                 }, () => {
