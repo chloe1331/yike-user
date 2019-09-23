@@ -311,7 +311,7 @@ export default class Index extends Component {
                             show={false} 
                             onChange={value => {
                                 this.setState({
-                                    image: `${locale[process.env.NODE_ENV].url.cdn}${value}`
+                                    image: `${locale[process.env.NODE_ENV].url.cdnUser}${value}`
                                 }, () => {
                                     if (this.select) {
                                         this.getCanvas();
