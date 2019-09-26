@@ -17,17 +17,17 @@ export default class Index extends Component {
             textureLoading: false,
             image: null
         };
-        const handles = ['handleChangeBrand', 'handleChangeBrandType', 'handleChangeTexture', 'getBgCanvas', 'handleSize', 'handleRotate'];
+        const handles = ['handleChangeBrand', 'handleChangeBrandType', 'handleChangeTexture', 'handleSize', 'handleRotate'];
         handles.forEach(item => this[item] = this[item].bind(this));
         this.condition = {
             brand_id: undefined,
             brand_type_id: undefined,
             texture_id: undefined
         };
-        this.imageBgRef = createRef();
-        this.canvasBgRef = createRef();
-        this.imageCameraRef = createRef();
         this.imageUploadRef = createRef();
+        this.imageBgRef = createRef();
+        this.imageCameraRef = createRef();
+        this.canvasRef = createRef();
         this.boxRef = createRef();
         this.select = null; // 选择到的机型
         this.moveOptions = {
@@ -39,10 +39,7 @@ export default class Index extends Component {
 
     componentDidMount() {
         this.getBrands();
-        if (this.select) {
-            this.getBgCanvas();
-            this.listenerMove();
-        }
+        this.getCanvas();
     }
 
     getBrands() {
@@ -57,6 +54,103 @@ export default class Index extends Component {
         });
     }
 
+    getCanvas() {
+        const box = this.boxRef.current;
+        const canvas = this.canvasRef.current;
+        const imageUpload = this.imageUploadRef.current;
+        const imageBg = this.imageBgRef.current;
+        const imageCamera = this.imageCameraRef.current;
+        const width = 918;
+        const height = imageBg && imageBg.complete ? imageBg.height : (imageUpload && imageUpload.complete ? imageUpload.height : 0);
+        const context = canvas.getContext('2d');
+
+        canvas.setAttribute('width', width);
+        canvas.setAttribute('height', height);
+
+        if (imageUpload && imageUpload.complete) {
+            let { x, y, size, rotate } = this.moveOptions;
+            if (!this.moveOptions.size) {
+                size = this.moveOptions.size = 918 / imageUpload.width;
+                this.forceUpdate();
+            }
+            if (!y) {
+                y = this.moveOptions.y = -(imageUpload.height * size - height) / 2;
+            }
+            canvas.setAttribute('width', width);
+            canvas.setAttribute('height', height);
+            if (rotate) {
+                context.translate(width / 2, height / 2);
+                context.rotate(rotate * Math.PI / 180);
+                context.translate(-width / 2, -height / 2);
+            }
+            context.drawImage(imageUpload, x, y, imageUpload.width * size, imageUpload.height * size);
+        }
+
+        if (imageBg && imageBg.complete) {
+            const imageLeft = width / 2 - imageBg.width / 2;
+            // 左侧
+            const imageDataLeft = context.getImageData(0, 0, imageLeft, height);
+            for (let i = 0; i < imageDataLeft.data.length; i += 4) {
+                imageDataLeft.data[i + 3] = 127.5;
+            }
+            context.putImageData(imageDataLeft, 0, 0);
+            // 右侧
+            const imageDataRight = context.getImageData(imageLeft + imageBg.width, 0, imageBg.width, height);
+            for (let i = 0; i < imageDataRight.data.length; i += 4) {
+                imageDataRight.data[i + 3] = 127.5;
+            }
+            context.putImageData(imageDataRight, imageLeft + imageBg.width, 0);
+            // 背景图
+            let imageData;
+            if (imageUpload && imageUpload.complete) {
+                imageData = context.getImageData(imageLeft, 0, imageBg.width, imageBg.height);
+                const imageCanvas = document.createElement('canvas');
+                const ctx = imageCanvas.getContext('2d');
+                imageCanvas.setAttribute('width', width);
+                imageCanvas.setAttribute('height', height);
+                ctx.drawImage(imageBg, 0, 0, imageBg.width, imageBg.height, imageLeft, 0, imageBg.width, imageBg.height);
+                const _imageData = ctx.getImageData(imageLeft, 0, imageBg.width, imageBg.height);
+                for (let i = 0; i < _imageData.data.length; i += 4) {
+                    if (_imageData.data[i + 3] == 0) {
+                        imageData.data[i + 3] = 127.5;
+                    }
+                }
+            } else {
+                context.drawImage(imageBg, 0, 0, imageBg.width, imageBg.height, imageLeft, 0, imageBg.width, imageBg.height);
+                imageData = context.getImageData(imageLeft, 0, imageBg.width, imageBg.height);
+                for (let i = 0; i < imageData.data.length; i += 4) {
+                    if (imageData.data[i + 3] == 0) {
+                        imageData.data[i + 3] = 127.5;
+                    } else {
+                        imageData.data[i + 3] = 0;
+                    }
+                }
+            }
+            // context.clearRect(0, 0, canvas.width, canvas.height);
+            context.putImageData(imageData, imageLeft, 0);
+        }
+
+        if (imageCamera && imageCamera.complete && imageBg.complete) {
+            const imageLeft = width / 2 - imageBg.width / 2;
+            const cameraCanvas = document.createElement('canvas');
+            const ctx = cameraCanvas.getContext('2d');
+            cameraCanvas.setAttribute('width', width);
+            cameraCanvas.setAttribute('height', height);
+            ctx.drawImage(imageCamera, 0, 0, imageCamera.width, height, imageLeft, 0, imageBg.width, height);
+            const imageData = context.getImageData(imageLeft, 0, imageBg.width, height);
+            const _imageData = ctx.getImageData(imageLeft, 0, imageBg.width, imageBg.height);
+            for (let i = 0; i < _imageData.data.length; i += 4) {
+                if (_imageData.data[i + 3] == 255) {
+                    imageData.data[i] = 0;
+                    imageData.data[i + 1] = 0;
+                    imageData.data[i + 2] = 0;
+                    imageData.data[i + 3] = 255;
+                }
+            }
+            context.putImageData(imageData, imageLeft, 0);
+        }
+    }
+
     getBgCanvas() {
         const canvas = this.canvasBgRef.current;
         const image = this.imageBgRef.current;
@@ -65,7 +159,7 @@ export default class Index extends Component {
         const context = canvas.getContext('2d');
         
         const drawImage = () => {
-            this.getCanvas();
+            // this.getCanvas();
             const imageLeft = width / 2 - image.width / 2;
             canvas.setAttribute('width', width);
             canvas.setAttribute('height', image.height);
@@ -131,7 +225,7 @@ export default class Index extends Component {
         }
     }
 
-    getCanvas() {
+    _getCanvas() {
         let { x, y, size, rotate } = this.moveOptions;
         const ctxImageUpload = this.imageUploadRef.current;
         if (!ctxImageUpload) return;
@@ -179,6 +273,7 @@ export default class Index extends Component {
             this.moveOptions.y = e.pageY - startPageY;
             this.getCanvas();
         };
+        this.hasKeyListener = true;
         dom.addEventListener('mousedown', e => {
             startPageX = e.pageX - this.moveOptions.x;
             startPageY = e.pageY - this.moveOptions.y;
@@ -188,8 +283,8 @@ export default class Index extends Component {
             dom.removeEventListener('mousemove', moveListener);
         });
 
-        document.addEventListener('keydown', e=> {
-            if ([87, 83, 65, 68].includes(e.keyCode)) {
+        document.addEventListener('keydown', e => {
+            if ([87, 83, 82, 65, 68, 69].includes(e.keyCode)) {
                 if (e.keyCode == 87) {
                     this.moveOptions.y = this.moveOptions.y - 1;
                 }
@@ -202,10 +297,15 @@ export default class Index extends Component {
                 if (e.keyCode == 68) {
                     this.moveOptions.x = this.moveOptions.x + 1;
                 }
+                if (e.keyCode == 69) {
+                    this.moveOptions.x = this.moveOptions.size + 1;
+                }
+                if (e.keyCode == 82) {
+                    this.moveOptions.x = this.moveOptions.size - 1;
+                }
                 this.getCanvas();
             }
         });
-        this.hasKeyListener = true;
     }
 
     handleChangeBrand(brand_id) {
@@ -257,8 +357,12 @@ export default class Index extends Component {
             }
         }
         this.forceUpdate(() => {
-            this.getBgCanvas();
-            this.listenerMove();
+            this.imageBgRef.current.onload = () => {
+                this.getCanvas();
+            };
+            this.imageCameraRef.current.onload = () => {
+                this.getCanvas();
+            };
         });
     }
 
@@ -317,16 +421,17 @@ export default class Index extends Component {
                                 this.setState({
                                     image: `${locale[process.env.NODE_ENV].url.cdnUser}${value}`
                                 }, () => {
-                                    if (this.select) {
+                                    this.imageUploadRef.current.onload = () => {
                                         this.getCanvas();
-                                    }
+                                        this.listenerMove();
+                                    };
                                 });
                             }}
                         />
                     </div>
                     <div className={style.layoutHomeBd}>
                         <div className={style.mobilePreview}>
-                            {
+                            {/* {
                                 select || image ? (
                                     <div className={style.mobilePreviewCanvas} ref={this.boxRef}>
                                         {
@@ -344,7 +449,15 @@ export default class Index extends Component {
                                         </div>
                                     </div>
                                 ) : null
-                            }
+                            } */}
+                            <div className={style.mobilePreviewCanvas} ref={this.boxRef}>
+                                <div className="hide">
+                                    {image ? <img ref={this.imageUploadRef} crossOrigin="" className={select ? 'hide' : ''} src={image}></img> : null}
+                                    {select ? <img ref={this.imageBgRef} crossOrigin="" src={`${locale[process.env.NODE_ENV].url.cdn}/${select.size_img}`} /> : null}
+                                    {select && select.camera_img ? <img ref={this.imageCameraRef} crossOrigin="" src={`${locale[process.env.NODE_ENV].url.cdn}/${select.camera_img}`} /> : null}
+                                </div>
+                                <canvas ref={this.canvasRef} />
+                            </div>
                         </div>
                         <div className={style.orderConfig}>
                             <Form className={`inline-form ${style.sizeForm}`}>
@@ -356,7 +469,12 @@ export default class Index extends Component {
                                     <InputNumber defaultValue={0} onChange={this.handleRotate} />
                                 </Form.Item>
                                 <Form.Item>
-                                    <Tag>W</Tag>上移，<Tag>S</Tag>下移，<Tag>A</Tag>左移，<Tag>D</Tag>右移
+                                    <span><Tag>W</Tag>上移</span>，
+                                    <span><Tag>S</Tag>下移</span>，
+                                    <span><Tag>A</Tag>左移</span>，
+                                    <span><Tag>D</Tag>右移</span>，
+                                    <span><Tag>E</Tag>放大</span>，
+                                    <span><Tag>R</Tag>缩小</span>
                                 </Form.Item>
                             </Form>
                             <Form>
