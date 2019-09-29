@@ -188,10 +188,10 @@ export default class Index extends Component {
                     this.moveOptions.x = this.moveOptions.x + 1;
                 }
                 if (e.keyCode == 69) {
-                    this.moveOptions.x = this.moveOptions.size + 1;
+                    this.moveOptions.size = this.moveOptions.size + .2;
                 }
                 if (e.keyCode == 82) {
-                    this.moveOptions.x = this.moveOptions.size - 1;
+                    this.moveOptions.size = this.moveOptions.size - .2;
                 }
                 this.getCanvas();
             }
