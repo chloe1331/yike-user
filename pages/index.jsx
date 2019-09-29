@@ -31,6 +31,7 @@ export default class Index extends Component {
         this.canvasRef = createRef();
         this.boxRef = createRef();
         this.previewDialogRef = createRef();
+        this.uploadInputRef = null;
         this.select = null; // 选择到的机型
         this.moveOptions = {
             x: 0,
@@ -359,7 +360,7 @@ export default class Index extends Component {
                             value={texture_id}
                             onChange={this.handleChangeTexture}
                         />
-                        <UploadBtn 
+                        {/* <UploadBtn 
                             buttonProps={{
                                 type: 'primary'
                             }}
@@ -377,7 +378,33 @@ export default class Index extends Component {
                                     };
                                 });
                             }}
+                        /> */}
+                        <Input 
+                            className="hide" 
+                            type="file" 
+                            ref={e => this.uploadInputRef = e && e.input}
+                            accept={'image/png,image/jpg,image/jpeg'}
+                            onChange={e => {
+                                const reader = new FileReader();
+                                reader.readAsDataURL(e.target.files[0]);
+                                const that = this;
+                                reader.onload = function() {
+                                    that.setState({
+                                        image: this.result
+                                    }, () => {
+                                        that.imageUploadRef.current.onload = () => {
+                                            that.getCanvas();
+                                            that.listenerMove();
+                                        };
+                                    });
+                                };
+                            }}
                         />
+                        <Button
+                            type="primary"
+                            icon="cloud-upload"
+                            onClick={() => this.uploadInputRef.click()}
+                        >上传图片</Button>
                     </div>
                     <div className={style.layoutHomeBd}>
                         <div className={style.mobilePreview}>

@@ -18,7 +18,7 @@ class DialogImagePreview extends Component {
         const { image } = this.props;
 
         return (
-            <Modal {...this.props} className="dialog-image-preview" footer={false}>
+            <Modal {...this.props} className="dialog-image-preview" footer={false} centered>
                 <img src={image} />
             </Modal>
         );
