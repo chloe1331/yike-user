@@ -1,12 +1,13 @@
 import { Component, createRef } from 'react';
 import { Form, Input, InputNumber, Button, Tag, message } from 'antd';
+import PropTypes from 'prop-types';
 
 import { Select, UploadBtn, DialogImagePreview } from 'component';
 import { MServer } from 'public/utils';
 import style from 'public/theme/pages/index.less';
 import locale from 'config/locale';
 
-export default class Index extends Component {
+class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,9 +17,10 @@ export default class Index extends Component {
             brandTypeLoading: false,
             textureLoading: false,
             image: null,
-            src: null
+            src: null,
+            submit: false
         };
-        const handles = ['handleChangeBrand', 'handleChangeBrandType', 'handleChangeTexture', 'handleSize', 'handleRotate', 'handlePreview'];
+        const handles = ['handleChangeBrand', 'handleChangeBrandType', 'handleChangeTexture', 'handleSize', 'handleRotate', 'handlePreview', 'handleSubmit'];
         handles.forEach(item => this[item] = this[item].bind(this));
         this.condition = {
             brand_id: undefined,
@@ -29,6 +31,7 @@ export default class Index extends Component {
         this.imageBgRef = createRef();
         this.imageCameraRef = createRef();
         this.canvasRef = createRef();
+        this.canvasCameraRef = createRef();
         this.boxRef = createRef();
         this.previewDialogRef = createRef();
         this.uploadInputRef = null;
@@ -61,7 +64,6 @@ export default class Index extends Component {
         const canvas = this.canvasRef.current;
         const imageUpload = this.imageUploadRef.current;
         const imageBg = this.imageBgRef.current;
-        const imageCamera = this.imageCameraRef.current;
         const width = 918;
         const height = imageBg && imageBg.complete ? imageBg.height : (imageUpload && imageUpload.complete ? imageUpload.height : 0);
         const context = canvas.getContext('2d');
@@ -131,26 +133,81 @@ export default class Index extends Component {
             // context.clearRect(0, 0, canvas.width, canvas.height);
             context.putImageData(imageData, imageLeft, 0);
         }
+    }
 
-        if (imageCamera && imageCamera.complete && imageBg.complete) {
-            const imageLeft = width / 2 - imageBg.width / 2;
-            const cameraCanvas = document.createElement('canvas');
-            const ctx = cameraCanvas.getContext('2d');
-            cameraCanvas.setAttribute('width', width);
-            cameraCanvas.setAttribute('height', height);
-            ctx.drawImage(imageCamera, 0, 0, imageCamera.width, height, imageLeft, 0, imageBg.width, height);
-            const imageData = context.getImageData(imageLeft, 0, imageBg.width, height);
-            const _imageData = ctx.getImageData(imageLeft, 0, imageBg.width, imageBg.height);
-            for (let i = 0; i < _imageData.data.length; i += 4) {
-                if (_imageData.data[i + 3] == 255) {
-                    imageData.data[i] = 0;
-                    imageData.data[i + 1] = 0;
-                    imageData.data[i + 2] = 0;
-                    imageData.data[i + 3] = 255;
+    getCameraCanvas() {
+        const imageCamera = this.imageCameraRef.current;
+        const canvas = this.canvasCameraRef.current;
+        const imageBg = this.imageBgRef.current;
+        const width = 918;
+        const height = imageBg.height;
+        const imageLeft = width / 2 - imageBg.width / 2;
+        const context = canvas.getContext('2d');
+
+        canvas.setAttribute('width', width);
+        canvas.setAttribute('height', height);
+
+        context.drawImage(imageCamera, 0, 0, imageCamera.width, height, imageLeft, 0, imageBg.width, height);
+        const imageData = context.getImageData(imageLeft, 0, imageBg.width, imageBg.height);
+        for (let i = 0; i < imageData.data.length; i += 4) {
+            if (imageData.data[i + 3] !== 0) {
+                imageData.data[i] = 0;
+                imageData.data[i + 1] = 0;
+                imageData.data[i + 2] = 0;
+            }
+        }
+        context.putImageData(imageData, imageLeft, 0);
+    }
+
+    getResultImage(useCamera = true) {
+        const imageBg = this.imageBgRef.current;
+        const imageCamera = this.imageCameraRef.current;
+
+        const canvas = this.canvasRef.current;
+        const context = canvas.getContext('2d');
+        const c = document.createElement('canvas');
+        const ctx = c.getContext('2d');
+        const _c = document.createElement('canvas');
+        const imageLeft = canvas.width / 2 - imageBg.width / 2;
+        const imageData = context.getImageData(imageLeft, 0, imageBg.width, imageBg.height);
+
+        c.setAttribute('width', imageBg.width);
+        c.setAttribute('height', imageBg.height);
+        _c.setAttribute('width', imageBg.width);
+        _c.setAttribute('height', imageBg.height);
+
+        const _ctx = _c.getContext('2d');
+        _ctx.drawImage(imageBg, 0, 0, imageBg.width, imageBg.height);
+        const _imageData = _ctx.getImageData(0, 0, imageBg.width, imageBg.height);
+        for (let i = 0; i < imageData.data.length; i += 4) {
+            if (_imageData.data[i + 3] === 0) {
+                imageData.data[i + 3] = 0;
+            } else if (imageData.data[i + 3] == 0) {
+                imageData.data[i] = 0;
+                imageData.data[i + 1] = 0;
+                imageData.data[i + 2] = 0;
+                imageData.data[i + 3] = 255;
+            }
+        }
+
+        if (useCamera && imageCamera) {
+            const canvasCamera = document.createElement('canvas');
+            const ctxCamera = canvasCamera.getContext('2d');
+            canvasCamera.setAttribute('width', imageBg.width);
+            canvasCamera.setAttribute('height', imageBg.height);
+
+            ctxCamera.drawImage(imageCamera, 0, 0, imageBg.width, imageBg.height);
+            const imageDataCamera = ctxCamera.getImageData(0, 0, imageBg.width, imageBg.height);
+            for (let i = 0; i < imageDataCamera.data.length; i += 4) {
+                if (imageDataCamera.data[i + 3] != 0) {
+                    imageData.data[i + 3] = 0;
                 }
             }
-            context.putImageData(imageData, imageLeft, 0);
         }
+
+        ctx.putImageData(imageData, 0, 0);
+
+        return c.toDataURL('image/png');
     }
 
     listenerMove() {
@@ -252,8 +309,8 @@ export default class Index extends Component {
             this.imageBgRef.current.onload = () => {
                 this.getCanvas();
             };
-            this.imageCameraRef.current.onload = () => {
-                this.getCanvas();
+            if (this.imageCameraRef.current) this.imageCameraRef.current.onload = () => {
+                this.getCameraCanvas();
             };
         });
     }
@@ -278,59 +335,54 @@ export default class Index extends Component {
             message.error('请先上传定制图片');
             return;
         }
-        const imageBg = this.imageBgRef.current;
-        const imageCamera = this.imageCameraRef.current;
-
-        const canvas = this.canvasRef.current;
-        const context = canvas.getContext('2d');
-        const c = document.createElement('canvas');
-        const ctx = c.getContext('2d');
-        const _c = document.createElement('canvas');
-        const imageLeft = canvas.width / 2 - imageBg.width / 2;
-        const imageData = context.getImageData(imageLeft, 0, imageBg.width, imageBg.height);
-
-        c.setAttribute('width', imageBg.width);
-        c.setAttribute('height', imageBg.height);
-        _c.setAttribute('width', imageBg.width);
-        _c.setAttribute('height', imageBg.height);
-
-        const _ctx = _c.getContext('2d');
-        _ctx.drawImage(imageBg, 0, 0, imageBg.width, imageBg.height);
-        const _imageData = _ctx.getImageData(0, 0, imageBg.width, imageBg.height);
-        for (let i = 0; i < imageData.data.length; i += 4) {
-            if (_imageData.data[i + 3] === 0) {
-                imageData.data[i + 3] = 0;
-            } else if (imageData.data[i + 3] == 0) {
-                imageData.data[i] = 0;
-                imageData.data[i + 3] = 0;
-                imageData.data[i + 3] = 0;
-                imageData.data[i + 3] = 255;
-            }
-        }
-        if (imageCamera) {
-            const canvasCamera = document.createElement('canvas');
-            const ctxCamera = canvasCamera.getContext('2d');
-            canvasCamera.setAttribute('width', imageBg.width);
-            canvasCamera.setAttribute('height', imageBg.height);
-            ctxCamera.drawImage(imageCamera, 0, 0, imageBg.width, imageBg.height);
-            const imageDataCamera = ctxCamera.getImageData(0, 0, imageBg.width, imageBg.height);
-            for (let i = 0; i < imageDataCamera.data.length; i += 4) {
-                if (imageDataCamera.data[i + 3] != 0) {
-                    imageData.data[i + 3] = 0;
-                }
-            }
-        }
-
-        ctx.putImageData(imageData, 0, 0);
+        
         this.setState({
-            src: c.toDataURL('image/png')
+            src: this.getResultImage(true)
         }, () => {
             this.previewDialogRef.current.open();
         });
     }
 
+    handleSubmit(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (!this.select) {
+            message.error('请先选择机型');
+            return;
+        }
+        if (!this.state.image) {
+            message.error('请先上传定制图片');
+            return;
+        }
+
+        const { form: { validateFields } } = this.props;
+
+        validateFields((err, values) => {
+            if (!err) {
+                this.setState({
+                    submit: true
+                });
+                MServer.post('/order/save', {
+                    ...values,
+                    cate_id: this.select.id,
+                    image: this.getResultImage(),
+                    image1: this.getResultImage(false)
+                }).then(res => {
+                    this.setState({
+                        submit: false
+                    });
+                    if (res.errcode == 0) {
+                        message.success('提交成功');
+                    }
+                });
+            }
+        });
+    }
+
     render() {
-        const { brands, brandTypes, cates, brandTypeLoading, textureLoading, image, src } = this.state;
+        const { brands, brandTypes, cates, brandTypeLoading, textureLoading, image, src, submit } = this.state;
+        const { form: { getFieldDecorator } } = this.props;
         const { brand_id, brand_type_id, texture_id } = this.condition;
         const { select } = this;
 
@@ -362,25 +414,6 @@ export default class Index extends Component {
                             value={texture_id}
                             onChange={this.handleChangeTexture}
                         />
-                        {/* <UploadBtn 
-                            buttonProps={{
-                                type: 'primary'
-                            }}
-                            buttonText="上传图片" 
-                            show={false} 
-                            onChange={value => {
-                                this.moveOptions.size = undefined;
-                                this.moveOptions.y = undefined;
-                                this.setState({
-                                    image: `${locale[process.env.NODE_ENV].url.cdnUser}${value}`
-                                }, () => {
-                                    this.imageUploadRef.current.onload = () => {
-                                        this.getCanvas();
-                                        this.listenerMove();
-                                    };
-                                });
-                            }}
-                        /> */}
                         <Input 
                             className="hide" 
                             type="file" 
@@ -410,25 +443,6 @@ export default class Index extends Component {
                     </div>
                     <div className={style.layoutHomeBd}>
                         <div className={style.mobilePreview}>
-                            {/* {
-                                select || image ? (
-                                    <div className={style.mobilePreviewCanvas} ref={this.boxRef}>
-                                        {
-                                            select ? [
-                                                <canvas key="canvas" ref={this.canvasBgRef} />,
-                                                <img key="image" className="hide" crossOrigin="" ref={this.imageBgRef} src={`${locale[process.env.NODE_ENV].url.cdn}/${select.size_img}`} />,
-                                                select.camera_img ? <img key="image1" className="hide" crossOrigin="" ref={this.imageCameraRef} src={`${locale[process.env.NODE_ENV].url.cdn}/${select.camera_img}`} /> : null
-                                            ].filter(item => item) : null
-                                        }
-                                        <div className={style.previewImg} ref={this.imageUploadRef}>
-                                            <canvas />
-                                            {
-                                                image ? <img className={select ? 'hide' : ''} src={image}></img> : null
-                                            }
-                                        </div>
-                                    </div>
-                                ) : null
-                            } */}
                             <div className={style.mobilePreviewCanvas} ref={this.boxRef}>
                                 <div className="hide">
                                     {image ? <img ref={this.imageUploadRef} crossOrigin="" className={select ? 'hide' : ''} src={image}></img> : null}
@@ -436,6 +450,7 @@ export default class Index extends Component {
                                     {select && select.camera_img ? <img ref={this.imageCameraRef} crossOrigin="" src={`${locale[process.env.NODE_ENV].url.cdn}/${select.camera_img}`} /> : null}
                                 </div>
                                 <canvas ref={this.canvasRef} />
+                                <canvas ref={this.canvasCameraRef} />
                             </div>
                         </div>
                         <div className={style.orderConfig}>
@@ -456,26 +471,53 @@ export default class Index extends Component {
                                     <span><Tag>R</Tag>缩小</span>
                                 </Form.Item>
                             </Form>
-                            <Form>
+                            <Form onSubmit={this.handleSubmit}>
                                 <Form.Item label="配货标签">
-                                    <Input />
+                                    {
+                                        getFieldDecorator('order_sn', {
+                                            rules: [{
+                                                required: true,
+                                                message: '配货标签不能为空'
+                                            }]
+                                        })(
+                                            <Input placeholder="填写标签" />
+                                        )
+                                    }
                                 </Form.Item>
                                 <Form.Item label="订货数量">
-                                    <InputNumber precision={0} min={1} />
+                                    {
+                                        getFieldDecorator('quantity', {
+                                            rules: [{
+                                                required: true,
+                                                message: '订货数量不能为空'
+                                            }]
+                                        })(
+                                            <InputNumber precision={0} min={1} />
+                                        )
+                                    }
                                 </Form.Item>
                                 {
                                     select && select.texture_attr.length ? (
                                         <Form.Item label="属性(颜色)">
-                                            <Select
-                                                options={select.texture_attr} fieldName={{ label: 'texture_attr_name', value: 'id' }}
-                                                placeholder="选择属性"
-                                                style={{ width: 180 }}
-                                            />
+                                            {
+                                                getFieldDecorator('texture_attr_id', {
+                                                    rules: [{
+                                                        required: true,
+                                                        message: '请先选择属性'
+                                                    }]
+                                                })(
+                                                    <Select
+                                                        options={select.texture_attr} fieldName={{ label: 'texture_attr_name', value: 'texture_attr_id' }}
+                                                        placeholder="选择属性"
+                                                        style={{ width: 180 }}
+                                                    />
+                                                )
+                                            }
                                         </Form.Item>
                                     ) : null
                                 }
                                 <Form.Item>
-                                    <Button type="primary">提交审核</Button>
+                                    <Button type="primary" htmlType="submit" loading={submit}>提交订单</Button>
                                     <Button style={{ marginLeft: '10px' }} onClick={this.handlePreview}>预览</Button>
                                 </Form.Item>
                             </Form>
@@ -486,3 +528,9 @@ export default class Index extends Component {
         );
     }
 }
+
+Index.propTypes = {
+    form: PropTypes.object
+};
+
+export default Form.create()(Index);
