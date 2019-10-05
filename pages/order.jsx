@@ -1,12 +1,16 @@
 import { Component, createRef } from 'react';
 import { Radio } from 'antd';
 
-import { TableAction } from 'component';
+import { TableAction, DialogImagePreview } from 'component';
 
 export default class Order extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            image: null
+        };
         this.tableRef = createRef();
+        this.imagePreviewRef = createRef();
     }
 
     handleChangeStatus(status) {
@@ -16,6 +20,16 @@ export default class Order extends Component {
                 condition: {
                     status
                 }
+            });
+        }
+    }
+
+    handleOpenImagePreview(image) {
+        if (this.imagePreviewRef.current) {
+            this.setState({
+                image
+            }, () => {
+                this.imagePreviewRef.current.open();
             });
         }
     }
@@ -34,9 +48,11 @@ export default class Order extends Component {
             value: 'success',
             label: '已打印'
         }];
+        const { image } = this.state;
 
         return (
             <div className="page-layout-center">
+                <DialogImagePreview image={image} ref={this.imagePreviewRef} />
                 <Radio.Group 
                     defaultValue="all" 
                     onChange={e => {
@@ -98,6 +114,17 @@ export default class Order extends Component {
                                 }
                             }
                         },
+                        {
+                            key: 'setting',
+                            dataIndex: 'id',
+                            title: '操作',
+                            align: 'right',
+                            render: (id, record) => (
+                                <div className="table-operate">
+                                    <a onClick={() => this.handleOpenImagePreview(record.image)}>预览</a>
+                                </div>
+                            )
+                        }
                     ]}
                 />
             </div>
