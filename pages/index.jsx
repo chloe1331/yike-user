@@ -17,7 +17,7 @@ class Index extends Component {
             brandTypeLoading: false,
             textureLoading: false,
             image: null,
-            src: null,
+            preview: null,
             submit: false
         };
         const handles = ['handleChangeBrand', 'handleChangeBrandType', 'handleChangeTexture', 'handleSize', 'handleRotate', 'handlePreview', 'handleSubmit'];
@@ -27,6 +27,7 @@ class Index extends Component {
             brand_type_id: undefined,
             texture_id: undefined
         };
+        this.transBgRef = createRef();
         this.imageUploadRef = createRef();
         this.imageBgRef = createRef();
         this.imageCameraRef = createRef();
@@ -60,127 +61,143 @@ class Index extends Component {
         });
     }
 
-    getCanvas() {
-        const canvas = this.canvasRef.current;
-        const imageUpload = this.imageUploadRef.current;
-        const imageBg = this.imageBgRef.current;
-        const width = 918;
-        const height = imageBg && imageBg.complete ? imageBg.height : (imageUpload && imageUpload.complete ? imageUpload.height : 0);
-        const context = canvas.getContext('2d');
+    getCanvas({ power = 1, canvas = this.canvasRef.current, isRes = false } = {}) {
+        const { preview } = this.state;
+        if (preview) return;
+        const upload = this.imageUploadRef.current;
+        const bg = this.imageBgRef.current;
+        const camera = this.imageCameraRef.current;
+        const trans = this.transBgRef.current;
+        const box = this.boxRef.current;
 
-        canvas.setAttribute('width', width);
+        const width = 320 * power;
+        const boxHeight = (box.offsetHeight - 2) * power;
+        const canvasWidth = box.offsetWidth * power;
+        const context = canvas.getContext('2d');
+        const ratio = bg && bg.complete ? width / bg.width : 1;
+        const height = bg && bg.complete ? parseInt(bg.height * ratio) : boxHeight;
+        const left = (canvasWidth - width) / 2;
+
+        canvas.setAttribute('width', canvasWidth);
         canvas.setAttribute('height', height);
 
-        if (imageUpload && imageUpload.complete) {
+        if (bg && bg.complete) {
+            context.rect(left, 0, width, height);
+            context.fillStyle = context.createPattern(trans, 'repeat');
+            context.fill();
+        }
+
+        if (upload && upload.complete) {
             let { x, y, size, rotate } = this.moveOptions;
             if (!this.moveOptions.size) {
-                size = this.moveOptions.size = 918 / imageUpload.width;
+                size = this.moveOptions.size = upload.width > upload.height ? canvasWidth / upload.width : boxHeight / upload.height;
                 this.forceUpdate();
             }
             if (!y) {
-                y = this.moveOptions.y = -(imageUpload.height * size - height) / 2;
+                y = this.moveOptions.y = -(upload.height * size - height) / 2;
+                if (upload.width < upload.height) {
+                    x = this.moveOptions.x = (canvasWidth - upload.width * size) / 2;
+                }
             }
-            canvas.setAttribute('width', width);
-            canvas.setAttribute('height', height);
+
             if (rotate) {
                 context.translate(width / 2, height / 2);
                 context.rotate(rotate * Math.PI / 180);
                 context.translate(-width / 2, -height / 2);
             }
-            context.drawImage(imageUpload, x, y, imageUpload.width * size, imageUpload.height * size);
+            size = size * power;
+            context.drawImage(upload, x * power, y * power, upload.width * size, upload.height * size);
+            if (rotate) {
+                context.translate(width / 2, height / 2);
+                context.rotate(-rotate * Math.PI / 180);
+                context.translate(-width / 2, -height / 2);
+            }
         }
 
-        if (imageBg && imageBg.complete) {
-            const imageLeft = width / 2 - imageBg.width / 2;
+        if (bg && bg.complete) {
             // 左侧
-            const imageDataLeft = context.getImageData(0, 0, imageLeft, height);
+            const imageDataLeft = context.getImageData(0, 0, left, height);
             for (let i = 0; i < imageDataLeft.data.length; i += 4) {
+                if (imageDataLeft.data[i + 3] == 0) {
+                    imageDataLeft.data[i + 0] = 255;
+                    imageDataLeft.data[i + 1] = 255;
+                    imageDataLeft.data[i + 2] = 255;
+                }
                 imageDataLeft.data[i + 3] = 127.5;
             }
             context.putImageData(imageDataLeft, 0, 0);
+
             // 右侧
-            const imageDataRight = context.getImageData(imageLeft + imageBg.width, 0, imageBg.width, height);
+            const imageDataRight = context.getImageData(left + width, 0, canvasWidth - width - left, height);
             for (let i = 0; i < imageDataRight.data.length; i += 4) {
+                if (imageDataRight.data[i + 3] == 0) {
+                    imageDataRight.data[i + 0] = 255;
+                    imageDataRight.data[i + 1] = 255;
+                    imageDataRight.data[i + 2] = 255;
+                }
                 imageDataRight.data[i + 3] = 127.5;
             }
-            context.putImageData(imageDataRight, imageLeft + imageBg.width, 0);
+            context.putImageData(imageDataRight, left + width, 0);
+
             // 背景图
-            let imageData;
-            if (imageUpload && imageUpload.complete) {
-                imageData = context.getImageData(imageLeft, 0, imageBg.width, imageBg.height);
-                const imageCanvas = document.createElement('canvas');
-                const ctx = imageCanvas.getContext('2d');
-                imageCanvas.setAttribute('width', width);
-                imageCanvas.setAttribute('height', height);
-                ctx.drawImage(imageBg, 0, 0, imageBg.width, imageBg.height, imageLeft, 0, imageBg.width, imageBg.height);
-                const _imageData = ctx.getImageData(imageLeft, 0, imageBg.width, imageBg.height);
-                for (let i = 0; i < _imageData.data.length; i += 4) {
-                    if (_imageData.data[i + 3] == 0) {
-                        imageData.data[i + 3] = 127.5;
-                    }
-                }
+            context.drawImage(bg, 0, 0, bg.width, bg.height, left, 0, width, height);
+        }
+        if (!isRes && camera) {
+            if (camera.complete) {
+                this.getCameraCanvas();
             } else {
-                context.drawImage(imageBg, 0, 0, imageBg.width, imageBg.height, imageLeft, 0, imageBg.width, imageBg.height);
-                imageData = context.getImageData(imageLeft, 0, imageBg.width, imageBg.height);
-                for (let i = 0; i < imageData.data.length; i += 4) {
-                    if (imageData.data[i + 3] == 0) {
-                        imageData.data[i + 3] = 127.5;
-                    } else {
-                        imageData.data[i + 3] = 0;
-                    }
-                }
+                camera.onload = () => {
+                    this.getCameraCanvas();
+                };
             }
-            // context.clearRect(0, 0, canvas.width, canvas.height);
-            context.putImageData(imageData, imageLeft, 0);
         }
     }
 
-    getCameraCanvas() {
-        const imageCamera = this.imageCameraRef.current;
+    getCameraCanvas({ width = 320 } = {}) {
         const canvas = this.canvasCameraRef.current;
-        const imageBg = this.imageBgRef.current;
-        const width = 918;
-        const height = imageBg.height;
-        const imageLeft = width / 2 - imageBg.width / 2;
+        const camera = this.imageCameraRef.current;
+        const box = this.boxRef.current;
         const context = canvas.getContext('2d');
 
-        canvas.setAttribute('width', width);
-        canvas.setAttribute('height', height);
+        const canvasWidth = box.offsetWidth;
+        const boxHeight = box.offsetHeight - 2;
+        const left = (canvasWidth - width) / 2;
+        const ratio = camera && camera.complete ? width / camera.width : 1;
+        const height = camera && camera.complete ? parseInt(camera.height * ratio) : boxHeight;
 
-        context.drawImage(imageCamera, 0, 0, imageCamera.width, height, imageLeft, 0, imageBg.width, height);
-        const imageData = context.getImageData(imageLeft, 0, imageBg.width, imageBg.height);
-        for (let i = 0; i < imageData.data.length; i += 4) {
-            if (imageData.data[i + 3] !== 0) {
-                imageData.data[i] = 0;
-                imageData.data[i + 1] = 0;
-                imageData.data[i + 2] = 0;
-            }
-        }
-        context.putImageData(imageData, imageLeft, 0);
+        canvas.setAttribute('width', canvasWidth);
+        canvas.setAttribute('height', height);
+        context.drawImage(camera, 0, 0, camera.width, camera.height, left, 0, width, height);
     }
 
-    getResultImage(useCamera = true) {
-        const imageBg = this.imageBgRef.current;
-        const imageCamera = this.imageCameraRef.current;
-
-        const canvas = this.canvasRef.current;
+    getPreviewImage({ power = 1, canvas = this.canvasRef.current, useCamera = true } = {}) {
+        const bg = this.imageBgRef.current;
+        const camera = this.imageCameraRef.current;
+        const box = this.boxRef.current;
         const context = canvas.getContext('2d');
+
+        const width = 320 * power;
+        const ratio = width / camera.width;
+        const height = parseInt(camera.height * ratio);
+        const canvasWidth = box.offsetWidth * power;
+        const left = (canvasWidth - width) / 2;
+
+        const imageData = context.getImageData(left, 0, width, height);
+
         const c = document.createElement('canvas');
         const ctx = c.getContext('2d');
         const _c = document.createElement('canvas');
-        const imageLeft = canvas.width / 2 - imageBg.width / 2;
-        const imageData = context.getImageData(imageLeft, 0, imageBg.width, imageBg.height);
-
-        c.setAttribute('width', imageBg.width);
-        c.setAttribute('height', imageBg.height);
-        _c.setAttribute('width', imageBg.width);
-        _c.setAttribute('height', imageBg.height);
-
         const _ctx = _c.getContext('2d');
-        _ctx.drawImage(imageBg, 0, 0, imageBg.width, imageBg.height);
-        const _imageData = _ctx.getImageData(0, 0, imageBg.width, imageBg.height);
+
+        c.setAttribute('width', width);
+        c.setAttribute('height', height);
+        _c.setAttribute('width', width);
+        _c.setAttribute('height', height);
+
+        _ctx.drawImage(bg, 0, 0, bg.width, bg.height, 0, 0, width, height);
+        const _imageData = _ctx.getImageData(0, 0, width, height);
         for (let i = 0; i < imageData.data.length; i += 4) {
-            if (_imageData.data[i + 3] === 0) {
+            if (_imageData.data[i + 3] !== 0) {
                 imageData.data[i + 3] = 0;
             } else if (imageData.data[i + 3] == 0) {
                 imageData.data[i] = 0;
@@ -190,14 +207,14 @@ class Index extends Component {
             }
         }
 
-        if (useCamera && imageCamera) {
+        if (useCamera && camera) {
             const canvasCamera = document.createElement('canvas');
             const ctxCamera = canvasCamera.getContext('2d');
-            canvasCamera.setAttribute('width', imageBg.width);
-            canvasCamera.setAttribute('height', imageBg.height);
+            canvasCamera.setAttribute('width', width);
+            canvasCamera.setAttribute('height', height);
 
-            ctxCamera.drawImage(imageCamera, 0, 0, imageBg.width, imageBg.height);
-            const imageDataCamera = ctxCamera.getImageData(0, 0, imageBg.width, imageBg.height);
+            ctxCamera.drawImage(camera, 0, 0, camera.width, camera.height, 0, 0, width, height);
+            const imageDataCamera = ctxCamera.getImageData(0, 0, width, height);
             for (let i = 0; i < imageDataCamera.data.length; i += 4) {
                 if (imageDataCamera.data[i + 3] != 0) {
                     imageData.data[i + 3] = 0;
@@ -210,12 +227,29 @@ class Index extends Component {
         return c.toDataURL('image/png');
     }
 
+    getResultImage(useCamera) {
+        const bg = this.imageBgRef.current;
+        const canvas = document.createElement('canvas');
+        this.getCanvas({
+            canvas,
+            power: bg.width / 320,
+            isRes: true
+        });
+        return this.getPreviewImage({
+            power: bg.width / 320,
+            canvas,
+            useCamera
+        });
+    }
+
     listenerMove() {
         const dom = this.boxRef.current;
         let startPageX = null;
         let startPageY = null;
         if (this.hasKeyListener && !dom) return;
         const moveListener = e => {
+            const { preview } = this.state;
+            if (preview) return;
             this.moveOptions.x = e.pageX - startPageX;
             this.moveOptions.y = e.pageY - startPageY;
             this.getCanvas();
@@ -231,6 +265,8 @@ class Index extends Component {
         });
 
         document.addEventListener('keydown', e => {
+            const { preview } = this.state;
+            if (preview) return;
             if ([87, 83, 82, 65, 68, 69].includes(e.keyCode)) {
                 if (e.keyCode == 87) {
                     this.moveOptions.y = this.moveOptions.y - 1;
@@ -309,9 +345,6 @@ class Index extends Component {
             this.imageBgRef.current.onload = () => {
                 this.getCanvas();
             };
-            if (this.imageCameraRef.current) this.imageCameraRef.current.onload = () => {
-                this.getCameraCanvas();
-            };
         });
     }
 
@@ -335,11 +368,13 @@ class Index extends Component {
             message.error('请先上传定制图片');
             return;
         }
+
+        const { preview } = this.state;
         
         this.setState({
-            src: this.getResultImage(true)
+            preview: preview ? null : this.getPreviewImage()
         }, () => {
-            this.previewDialogRef.current.open();
+            if (preview) this.getCanvas();
         });
     }
 
@@ -381,14 +416,13 @@ class Index extends Component {
     }
 
     render() {
-        const { brands, brandTypes, cates, brandTypeLoading, textureLoading, image, src, submit } = this.state;
+        const { brands, brandTypes, cates, brandTypeLoading, textureLoading, image, preview, submit } = this.state;
         const { form: { getFieldDecorator } } = this.props;
         const { brand_id, brand_type_id, texture_id } = this.condition;
         const { select } = this;
 
         return (
             <div className="page-layout-center">
-                <DialogImagePreview ref={this.previewDialogRef} image={src} width={this.imageBgRef.current && this.imageBgRef.current.width} />
                 <div className={style.layoutHome}>
                     <div className={style.layoutHomeHd}>
                         <Select
@@ -424,6 +458,9 @@ class Index extends Component {
                                 reader.readAsDataURL(e.target.files[0]);
                                 const that = this;
                                 reader.onload = function() {
+                                    delete that.moveOptions.size;
+                                    delete that.moveOptions.y;
+                                    that.moveOptions.x = 0;
                                     that.setState({
                                         image: this.result
                                     }, () => {
@@ -444,23 +481,29 @@ class Index extends Component {
                     <div className={style.layoutHomeBd}>
                         <div className={style.mobilePreview}>
                             <div className={style.mobilePreviewCanvas} ref={this.boxRef}>
-                                <div className="hide">
-                                    {image ? <img ref={this.imageUploadRef} crossOrigin="" className={select ? 'hide' : ''} src={image}></img> : null}
+                                {
+                                    preview ? (
+                                        <div className={style.previewImage}><img src={preview} /></div>
+                                    ) : null
+                                }
+                                <div key="images" className="hide">
+                                    <img ref={this.transBgRef} crossOrigin="" src="http://pxynkk8s9.bkt.clouddn.com//static/images/transparent_bg.jpg" />
+                                    {image ? <img ref={this.imageUploadRef} crossOrigin="" src={image}></img> : null}
                                     {select ? <img ref={this.imageBgRef} crossOrigin="" src={`${locale[process.env.NODE_ENV].url.cdn}/${select.size_img}`} /> : null}
                                     {select && select.camera_img ? <img ref={this.imageCameraRef} crossOrigin="" src={`${locale[process.env.NODE_ENV].url.cdn}/${select.camera_img}`} /> : null}
                                 </div>
-                                <canvas ref={this.canvasRef} />
-                                <canvas ref={this.canvasCameraRef} />
+                                <canvas key="canvas1" ref={this.canvasRef} />
+                                <canvas key="canvas2" ref={this.canvasCameraRef} />
                             </div>
                         </div>
                         <div className={style.orderConfig}>
                             <Form className={`inline-form ${style.sizeForm}`}>
                                 <Form.Item label="缩放">
-                                    <InputNumber precision={2} value={(this.moveOptions.size || 0) * 100} onChange={this.handleSize} />
+                                    <InputNumber disabled={!!preview} precision={2} value={(this.moveOptions.size || 0) * 100} onChange={this.handleSize} />
                                     <span style={{ marginLeft: '10px' }}>%</span>
                                 </Form.Item>
                                 <Form.Item label="旋转">
-                                    <InputNumber defaultValue={0} onChange={this.handleRotate} />
+                                    <InputNumber disabled={!!preview} defaultValue={0} onChange={this.handleRotate} />
                                 </Form.Item>
                                 <Form.Item>
                                     <span><Tag>W</Tag>上移</span>，
@@ -490,7 +533,8 @@ class Index extends Component {
                                             rules: [{
                                                 required: true,
                                                 message: '订货数量不能为空'
-                                            }]
+                                            }],
+                                            initialValue: 1
                                         })(
                                             <InputNumber precision={0} min={1} />
                                         )
@@ -518,7 +562,7 @@ class Index extends Component {
                                 }
                                 <Form.Item>
                                     <Button type="primary" htmlType="submit" loading={submit}>提交订单</Button>
-                                    <Button style={{ marginLeft: '10px' }} onClick={this.handlePreview}>预览</Button>
+                                    <Button style={{ marginLeft: '10px' }} onClick={this.handlePreview}>{preview ? '编辑' : '预览'}</Button>
                                 </Form.Item>
                             </Form>
                         </div>

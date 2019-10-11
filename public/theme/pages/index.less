@@ -24,11 +24,29 @@
     border-left: 1px solid @border-color-base;
 }
 
+.preview-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    background: #fff;
+}
+
 .mobile-preview {
     position: relative;
     overflow: hidden;
     &-canvas {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         height: 100%;
+        background: #fff;
+        // background: url('http://pxynkk8s9.bkt.clouddn.com//static/images/transparent_bg.jpg') 0 0 repeat;
         canvas {
             position: relative;
             display: block;
@@ -37,7 +55,6 @@
         }
         canvas+canvas {
             position: absolute;
-            top: 0;
             left: 0;
         }
     }

@@ -5,16 +5,16 @@
       "static/runtime/webpack-8ed9452df514b4d17d80.js",
       "static/css/commons.a8e0ce2a.chunk.css",
       "static/chunks/commons.58744484bcb86c77b1ab.js",
-      "static/css/styles.a22fff79.chunk.css",
-      "static/chunks/styles.a4cf99495a2e76ae65c6.js",
+      "static/css/styles.3f4f0932.chunk.css",
+      "static/chunks/styles.7c8e7d06aa73f049d263.js",
       "static/runtime/main-541f01c65744a5c2c60b.js"
     ],
     "/_app": [
       "static/runtime/webpack-8ed9452df514b4d17d80.js",
       "static/css/commons.a8e0ce2a.chunk.css",
       "static/chunks/commons.58744484bcb86c77b1ab.js",
-      "static/css/styles.a22fff79.chunk.css",
-      "static/chunks/styles.a4cf99495a2e76ae65c6.js",
+      "static/css/styles.3f4f0932.chunk.css",
+      "static/chunks/styles.7c8e7d06aa73f049d263.js",
       "static/runtime/main-541f01c65744a5c2c60b.js"
     ],
     "/_error": [
@@ -27,24 +27,24 @@
       "static/runtime/webpack-8ed9452df514b4d17d80.js",
       "static/css/commons.a8e0ce2a.chunk.css",
       "static/chunks/commons.58744484bcb86c77b1ab.js",
-      "static/css/styles.a22fff79.chunk.css",
-      "static/chunks/styles.a4cf99495a2e76ae65c6.js",
+      "static/css/styles.3f4f0932.chunk.css",
+      "static/chunks/styles.7c8e7d06aa73f049d263.js",
       "static/runtime/main-541f01c65744a5c2c60b.js"
     ],
     "/login": [
       "static/runtime/webpack-8ed9452df514b4d17d80.js",
       "static/css/commons.a8e0ce2a.chunk.css",
       "static/chunks/commons.58744484bcb86c77b1ab.js",
-      "static/css/styles.a22fff79.chunk.css",
-      "static/chunks/styles.a4cf99495a2e76ae65c6.js",
+      "static/css/styles.3f4f0932.chunk.css",
+      "static/chunks/styles.7c8e7d06aa73f049d263.js",
       "static/runtime/main-541f01c65744a5c2c60b.js"
     ],
     "/order": [
       "static/runtime/webpack-8ed9452df514b4d17d80.js",
       "static/css/commons.a8e0ce2a.chunk.css",
       "static/chunks/commons.58744484bcb86c77b1ab.js",
-      "static/css/styles.a22fff79.chunk.css",
-      "static/chunks/styles.a4cf99495a2e76ae65c6.js",
+      "static/css/styles.3f4f0932.chunk.css",
+      "static/chunks/styles.7c8e7d06aa73f049d263.js",
       "static/runtime/main-541f01c65744a5c2c60b.js"
     ]
   }
