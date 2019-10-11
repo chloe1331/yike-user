@@ -2,8 +2,8 @@ import { Component, createRef } from 'react';
 import { Form, Input, InputNumber, Button, Tag, message } from 'antd';
 import PropTypes from 'prop-types';
 
-import { Select, UploadBtn, DialogImagePreview } from 'component';
-import { MServer } from 'public/utils';
+import { Select, ColorPicker } from 'component';
+import { MServer, convertBase64UrlToBlob } from 'public/utils';
 import style from 'public/theme/pages/index.less';
 import locale from 'config/locale';
 
@@ -18,7 +18,9 @@ class Index extends Component {
             textureLoading: false,
             image: null,
             preview: null,
-            submit: false
+            submit: false,
+            color: 'tran',
+            pickerColor: '#000'
         };
         const handles = ['handleChangeBrand', 'handleChangeBrandType', 'handleChangeTexture', 'handleSize', 'handleRotate', 'handlePreview', 'handleSubmit', 'handleAuto'];
         handles.forEach(item => this[item] = this[item].bind(this));
@@ -47,6 +49,26 @@ class Index extends Component {
     componentDidMount() {
         this.getBrands();
         this.getCanvas();
+
+        if (this.boxRef.current) {
+            this.boxRef.current.addEventListener('dragenter', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+            });
+            this.boxRef.current.addEventListener('dragover', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+            });
+            this.boxRef.current.addEventListener('dragleave', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+            });
+            this.boxRef.current.addEventListener('drop', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                this.readFile(e.dataTransfer.files[0]);
+            });
+        }
     }
 
     getBrands() {
@@ -62,7 +84,7 @@ class Index extends Component {
     }
 
     getCanvas({ power = 1, canvas = this.canvasRef.current, isRes = false } = {}) {
-        const { preview } = this.state;
+        const { preview, color, pickerColor } = this.state;
         if (preview) return;
         const upload = this.imageUploadRef.current;
         const bg = this.imageBgRef.current;
@@ -83,7 +105,13 @@ class Index extends Component {
 
         if (bg && bg.complete) {
             context.rect(left, 0, width, height);
-            context.fillStyle = context.createPattern(trans, 'repeat');
+            if (color == 'tran') {
+                context.fillStyle = context.createPattern(trans, 'repeat');
+            } else if (color == -1) {
+                context.fillStyle = pickerColor;
+            } else {
+                context.fillStyle = color;
+            }
             context.fill();
         }
 
@@ -398,18 +426,40 @@ class Index extends Component {
                 this.setState({
                     submit: true
                 });
-                MServer.post('/order/save', {
-                    ...values,
-                    cate_id: this.select.id,
-                    image: this.getResultImage(),
-                    image1: this.getResultImage(false)
-                }).then(res => {
-                    this.setState({
-                        submit: false
+                const pl = [
+                    () => {
+                        const formdata = new FormData();
+                        formdata.append('files', convertBase64UrlToBlob(this.getResultImage()), `${new Date().getTime()}.png`);
+                        return MServer.post('/upload/userimage', formdata, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            }
+                        }).then(res => res.errcode == 0 ? res.full_url : '');
+                    },
+                    () => {
+                        const formdata = new FormData();
+                        formdata.append('files', convertBase64UrlToBlob(this.getResultImage(false)), `${new Date().getTime()}.png`);
+                        return MServer.post('/upload/userimage', formdata, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            }
+                        }).then(res => res.errcode == 0 ? res.full_url : '');
+                    },
+                ];
+                Promise.all(pl.map(item => item())).then(res => {
+                    MServer.post('/order/save', {
+                        ...values,
+                        cate_id: this.select.id,
+                        image: res[0],
+                        image1: res[1]
+                    }).then(res => {
+                        this.setState({
+                            submit: false
+                        });
+                        if (res.errcode == 0) {
+                            message.success('提交成功');
+                        }
                     });
-                    if (res.errcode == 0) {
-                        message.success('提交成功');
-                    }
                 });
             }
         });
@@ -445,8 +495,27 @@ class Index extends Component {
         this.getCanvas();
     }
 
+    readFile(file) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        const that = this;
+        reader.onload = function () {
+            delete that.moveOptions.size;
+            delete that.moveOptions.y;
+            that.moveOptions.x = 0;
+            that.setState({
+                image: this.result
+            }, () => {
+                that.imageUploadRef.current.onload = () => {
+                    that.getCanvas();
+                    that.listenerMove();
+                };
+            });
+        };
+    }
+
     render() {
-        const { brands, brandTypes, cates, brandTypeLoading, textureLoading, image, preview, submit } = this.state;
+        const { brands, brandTypes, cates, brandTypeLoading, textureLoading, image, preview, submit, color, pickerColor } = this.state;
         const { form: { getFieldDecorator } } = this.props;
         const { brand_id, brand_type_id, texture_id } = this.condition;
         const { select } = this;
@@ -483,24 +552,7 @@ class Index extends Component {
                             type="file" 
                             ref={e => this.uploadInputRef = e && e.input}
                             accept={'image/png,image/jpg,image/jpeg'}
-                            onChange={e => {
-                                const reader = new FileReader();
-                                reader.readAsDataURL(e.target.files[0]);
-                                const that = this;
-                                reader.onload = function() {
-                                    delete that.moveOptions.size;
-                                    delete that.moveOptions.y;
-                                    that.moveOptions.x = 0;
-                                    that.setState({
-                                        image: this.result
-                                    }, () => {
-                                        that.imageUploadRef.current.onload = () => {
-                                            that.getCanvas();
-                                            that.listenerMove();
-                                        };
-                                    });
-                                };
-                            }}
+                            onChange={e => this.readFile(e.target.files[0])}
                         />
                         <Button
                             type="primary"
@@ -528,12 +580,63 @@ class Index extends Component {
                         </div>
                         <div className={style.orderConfig}>
                             <Form className={`inline-form ${style.sizeForm}`}>
-                                <Form.Item label="缩放">
-                                    <InputNumber disabled={!!preview} precision={2} value={(this.moveOptions.size || 0) * 100} onChange={this.handleSize} />
-                                    <span style={{ marginLeft: '10px' }}>%</span>
-                                </Form.Item>
-                                <Form.Item label="旋转">
-                                    <InputNumber disabled={!!preview} defaultValue={0} onChange={this.handleRotate} />
+                                <div style={{ display: 'flex' }}>
+                                    <Form.Item label="缩放" style={{ flex: '1' }}>
+                                        <InputNumber disabled={!!preview} precision={2} value={(this.moveOptions.size || 0) * 100} onChange={this.handleSize} />
+                                        <span style={{ marginLeft: '10px' }}>%</span>
+                                    </Form.Item>
+                                    <Form.Item label="旋转" style={{ flex: '1' }}>
+                                        <InputNumber disabled={!!preview} defaultValue={0} onChange={this.handleRotate} />
+                                    </Form.Item>
+                                </div>
+                                <Form.Item label="背景色设置">
+                                    <div>
+                                        <Select
+                                            style={{ width: 120 }}
+                                            value={color}
+                                            onChange={value => this.setState({ color: value }, () => {
+                                                if (value != -1) {
+                                                    this.getCanvas();
+                                                }
+                                            })}
+                                            options={[
+                                                {
+                                                    label: '透明',
+                                                    value: 'tran'
+                                                },
+                                                {
+                                                    label: '黑色',
+                                                    value: '#000'
+                                                },
+                                                {
+                                                    label: '白色',
+                                                    value: '#fff'
+                                                },
+                                                {
+                                                    label: '红色',
+                                                    value: '#ff1300'
+                                                },
+                                                {
+                                                    label: '自定义',
+                                                    value: '-1'
+                                                }
+                                            ]}
+                                        />
+                                        {
+                                            color == -1 ? (
+                                                <div style={{ display: 'inline-block', position: 'relative', top: '5px', left: '10px' }}>
+                                                    <ColorPicker
+                                                        color={pickerColor}
+                                                        onChange={c => {
+                                                            this.setState({
+                                                                pickerColor: c.color
+                                                            }, this.getCanvas);
+                                                        }}
+                                                    />
+                                                </div>
+                                            ) : null
+                                        }
+                                    </div>
                                 </Form.Item>
                                 <Form.Item>
                                     <Button disabled={!!preview} type="dashed" onClick={this.handleAuto}>图片自适应</Button>

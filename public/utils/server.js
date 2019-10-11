@@ -18,9 +18,11 @@ methods.forEach(method => {
 
         if (method == 'post') {
             headers['Content-Type'] = 'application/x-www-form-urlencoded';
-            data = qs.stringify(data);
         }
         if (option.headers) Object.assign(headers, option.headers);
+        if (method == 'post' && headers['Content-Type'] == 'application/x-www-form-urlencoded') {
+            data = qs.stringify(data);
+        }
 
         let url = _url;
         if (!/^\/\//.test(_url)) {
