@@ -20,7 +20,7 @@ class Index extends Component {
             preview: null,
             submit: false
         };
-        const handles = ['handleChangeBrand', 'handleChangeBrandType', 'handleChangeTexture', 'handleSize', 'handleRotate', 'handlePreview', 'handleSubmit'];
+        const handles = ['handleChangeBrand', 'handleChangeBrandType', 'handleChangeTexture', 'handleSize', 'handleRotate', 'handlePreview', 'handleSubmit', 'handleAuto'];
         handles.forEach(item => this[item] = this[item].bind(this));
         this.condition = {
             brand_id: undefined,
@@ -415,6 +415,36 @@ class Index extends Component {
         });
     }
 
+    handleAuto() {
+        const upload = this.imageUploadRef.current;
+        const box = this.boxRef.current;
+        const bg = this.imageBgRef.current;
+        if (!upload) {
+            message.error('请先上传图片');
+            return;
+        }
+        if (!bg) {
+            message.error('请先选择机型');
+            return;
+        }
+
+        const canvasWidth = box.offsetWidth;
+        const boxHeight = (box.offsetHeight - 2);
+        const width = 320;
+        const ratio = bg && bg.complete ? width / bg.width : 1;
+        const height = bg && bg.complete ? parseInt(bg.height * ratio) : boxHeight;
+
+        delete this.moveOptions.rotate;
+        this.moveOptions.size = upload.width > upload.height ? canvasWidth / upload.width : boxHeight / upload.height;
+        this.moveOptions.x = 0;
+        this.moveOptions.y = -(upload.height * this.moveOptions.size - height) / 2;
+        if (upload.width < upload.height) {
+            this.moveOptions.x = (canvasWidth - upload.width * this.moveOptions.size) / 2;
+        }
+
+        this.getCanvas();
+    }
+
     render() {
         const { brands, brandTypes, cates, brandTypeLoading, textureLoading, image, preview, submit } = this.state;
         const { form: { getFieldDecorator } } = this.props;
@@ -504,6 +534,9 @@ class Index extends Component {
                                 </Form.Item>
                                 <Form.Item label="旋转">
                                     <InputNumber disabled={!!preview} defaultValue={0} onChange={this.handleRotate} />
+                                </Form.Item>
+                                <Form.Item>
+                                    <Button disabled={!!preview} type="dashed" onClick={this.handleAuto}>图片自适应</Button>
                                 </Form.Item>
                                 <Form.Item>
                                     <span><Tag>W</Tag>上移</span>，
