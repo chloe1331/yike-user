@@ -1,5 +1,5 @@
 import { Component, createRef } from 'react';
-import { Form, Input, InputNumber, Button, Tag, message, Tooltip } from 'antd';
+import { Form, Input, InputNumber, Button, Tag, message, Tooltip, Checkbox } from 'antd';
 import PropTypes from 'prop-types';
 
 import { Select, ColorPicker } from 'component';
@@ -20,7 +20,8 @@ class Index extends Component {
             preview: null,
             submit: false,
             color: 'tran',
-            pickerColor: '#000'
+            pickerColor: '#000',
+            auto: false
         };
         const handles = ['handleChangeBrand', 'handleChangeBrandType', 'handleChangeTexture', 'handleSize', 'handleRotate', 'handlePreview', 'handleSubmit', 'handleAuto'];
         handles.forEach(item => this[item] = this[item].bind(this));
@@ -88,7 +89,7 @@ class Index extends Component {
     }
 
     getCanvas({ power = 1, canvas = this.canvasRef.current, isRes = false } = {}) {
-        const { preview, color, pickerColor } = this.state;
+        const { preview, color, pickerColor, auto } = this.state;
         if (preview) return;
         const upload = this.imageUploadRef.current;
         const bg = this.imageBgRef.current;
@@ -141,7 +142,13 @@ class Index extends Component {
                 context.rotate(rotate * Math.PI / 180);
                 context.translate(-canvasWidth / 2, -height / 2);
             }
-            context.drawImage(upload, x * power, y * power, upload.width * size, upload.height * size);
+            if (auto) {
+                const _s = height / upload.height;
+                const _x = left - (upload.width * _s - width) / 2;
+                context.drawImage(upload, _x, 0, upload.width * _s, upload.height * _s);
+            } else {
+                context.drawImage(upload, x * power, y * power, upload.width * size, upload.height * size);
+            }
             if (rotate) {
                 context.translate(canvasWidth / 2, height / 2);
                 context.rotate(-rotate * Math.PI / 180);
@@ -590,7 +597,7 @@ class Index extends Component {
     }
 
     render() {
-        const { brands, brandTypes, cates, brandTypeLoading, textureLoading, image, preview, submit, color, pickerColor } = this.state;
+        const { brands, brandTypes, cates, brandTypeLoading, textureLoading, image, preview, submit, color, pickerColor, auto } = this.state;
         const { form: { getFieldDecorator } } = this.props;
         const { brand_id, brand_type_id, texture_id } = this.condition;
         const { select } = this;
@@ -663,7 +670,7 @@ class Index extends Component {
                                     <Form.Item label="缩放" style={{ flex: '1' }}>
                                         <Input 
                                             style={{ width: 80 }} 
-                                            disabled={!!preview} 
+                                            disabled={!!preview || auto} 
                                             ref={e => this.sizeInputRef = e} 
                                             onChange={e => this.handleSize(e.target.value)} 
                                             defaultValue={100}
@@ -674,7 +681,7 @@ class Index extends Component {
                                         {/* <InputNumber disabled={!!preview} defaultValue={0} onChange={this.handleRotate} /> */}
                                         <Input
                                             style={{ width: 80 }}
-                                            disabled={!!preview}
+                                            disabled={!!preview || auto}
                                             ref={e => this.rotateInputRef = e}
                                             onChange={e => this.handleRotate(e.target.value)}
                                             defaultValue={0}
@@ -731,7 +738,14 @@ class Index extends Component {
                                     </div>
                                 </Form.Item>
                                 <Form.Item>
-                                    <Button disabled={!!preview} type="dashed" onClick={this.handleAuto}>图片自适应</Button>
+                                    {/* <Button disabled={!!preview} type="dashed" onClick={this.handleAuto}>图片自适应</Button> */}
+                                    <Checkbox 
+                                        disabled={!!preview} 
+                                        checked={auto} 
+                                        onChange={e => {
+                                            this.setState({ auto: e.target.checked }, this.getCanvas);
+                                        }}
+                                    >图片自适应</Checkbox>
                                 </Form.Item>
                                 <Form.Item>
                                     <span><Tag>W</Tag>上移</span>，
