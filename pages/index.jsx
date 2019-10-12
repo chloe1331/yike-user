@@ -640,7 +640,9 @@ class Index extends Component {
                             <div className={style.mobilePreviewCanvas} ref={this.boxRef}>
                                 {
                                     preview ? (
-                                        <div className={style.previewImage}><img src={preview} /></div>
+                                        <div className={style.previewImage}>
+                                            <div><img src={preview} /></div>
+                                        </div>
                                     ) : null
                                 }
                                 <div key="images" className="hide">
