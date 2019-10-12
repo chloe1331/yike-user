@@ -5,7 +5,9 @@
         padding: 15px;
         background-color: @layout-header-background;
         border-bottom: 1px solid @border-color-base;
-        :global(.ant-select) {
+        :global(.ant-select),
+        >:global(.ant-input-search),
+        :global(.ant-cascader-picker) {
             margin-right: 15px;
         }
     }

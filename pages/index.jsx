@@ -1,5 +1,5 @@
 import { Component, createRef } from 'react';
-import { Form, Input, InputNumber, Button, Tag, message, Tooltip, Checkbox } from 'antd';
+import { Form, Input, InputNumber, Button, Tag, message, Tooltip, Checkbox, Cascader } from 'antd';
 import PropTypes from 'prop-types';
 
 import { Select, ColorPicker } from 'component';
@@ -11,11 +11,7 @@ class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            brands: [],
-            brandTypes: [],
-            cates: [],
-            brandTypeLoading: false,
-            textureLoading: false,
+            list: [],
             image: null,
             preview: null,
             submit: false,
@@ -23,13 +19,8 @@ class Index extends Component {
             pickerColor: '#000',
             auto: false
         };
-        const handles = ['handleChangeBrand', 'handleChangeBrandType', 'handleChangeTexture', 'handleSize', 'handleRotate', 'handlePreview', 'handleSubmit', 'handleAuto'];
+        const handles = ['handleSize', 'handleRotate', 'handlePreview', 'handleSubmit', 'handleAuto'];
         handles.forEach(item => this[item] = this[item].bind(this));
-        this.condition = {
-            brand_id: undefined,
-            brand_type_id: undefined,
-            texture_id: undefined
-        };
         this.transBgRef = createRef();
         this.imageUploadRef = createRef();
         this.imageBgRef = createRef();
@@ -49,10 +40,11 @@ class Index extends Component {
             rotate: 0
         };
         this.hasKeyListener = false;
+        this.cateObj = {};
     }
 
     componentDidMount() {
-        this.getBrands();
+        this.getCates();
         this.getCanvas();
 
         if (this.boxRef.current) {
@@ -76,13 +68,59 @@ class Index extends Component {
         }
     }
 
-    getBrands() {
-        MServer.get('/cate/brand', {
+    getCates() {
+        MServer.get('/cate/list', {
             is_all: 1
         }).then(res => {
             if (res.errcode == 0) {
+                const cateIds = {};
+                const typeIds = {};
+                const list = [];
+
+                res.data.forEach(item => {
+                    if (typeof cateIds[item.brand_id] == 'undefined') {
+                        cateIds[item.brand_id] = list.length;
+                        list.push({
+                            value: item.brand_id,
+                            label: item.brand_name,
+                            children: [
+                                {
+                                    value: item.brand_type_id,
+                                    label: item.brand_type_name,
+                                    children: [
+                                        {
+                                            value: item.id,
+                                            label: item.texture_name
+                                        }
+                                    ]
+                                }
+                            ]
+                        });
+                        typeIds[`${item.brand_id}_${item.brand_type_id}`] = 0;
+                    } else {
+                        if (typeof typeIds[`${item.brand_id}_${item.brand_type_id}`] == 'undefined') {
+                            typeIds[`${item.brand_id}_${item.brand_type_id}`] = list[cateIds[item.brand_id]].children.length;
+                            list[cateIds[item.brand_id]].children.push({
+                                value: item.brand_type_id,
+                                label: item.brand_type_name,
+                                children: [
+                                    {
+                                        value: item.id,
+                                        label: item.texture_name
+                                    }
+                                ]
+                            });
+                        } else {
+                            list[cateIds[item.brand_id]].children[typeIds[`${item.brand_id}_${item.brand_type_id}`]].children.push({
+                                value: item.id,
+                                label: item.texture_name
+                            });
+                        }
+                    }
+                    this.cateObj[item.id] = item;
+                });
                 this.setState({
-                    brands: res.data
+                    list
                 });
             }
         });
@@ -399,61 +437,6 @@ class Index extends Component {
         }
     }
 
-    handleChangeBrand(brand_id) {
-        this.setState({
-            brandTypeLoading: true
-        });
-        MServer.get('/cate/brandType', {
-            brand_id,
-            is_all: 1
-        }).then(res => {
-            this.condition.brand_id = brand_id;
-            if (res.errcode == 0) {
-                this.condition.texture_id = undefined;
-                this.condition.brand_type_id = undefined;
-                this.select = null;
-            }
-            this.setState({
-                brandTypes: res.errcode == 0 ? res.data : [],
-                brandTypeLoading: false
-            });
-        });
-    }
-
-    handleChangeBrandType(brand_type_id) {
-        this.condition.brand_type_id = brand_type_id;
-        this.setState({
-            textureLoading: true
-        });
-        MServer.get('/cate/brandTypeTexture', {
-            brand_type_id
-        }).then(res => {
-            this.condition.texture_id = undefined;
-            this.select = null;
-            this.setState({
-                cates: res.errcode == 0 ? res.data : [],
-                textureLoading: false
-            });
-        });
-    }
-    
-    handleChangeTexture(texture_id) {
-        const { cates } = this.state;
-        this.condition.texture_id = texture_id;
-        for (let i = 0; i < cates.length; i++) {
-            const item = cates[i];
-            if (item.texture_id == texture_id) {
-                this.select = item;
-                break;
-            }
-        }
-        this.forceUpdate(() => {
-            this.imageBgRef.current.onload = () => {
-                this.getCanvas();
-            };
-        });
-    }
-
     handleSize(value = 0, isGet = true) {
         const upload = this.imageUploadRef.current;
         if (!upload) return;
@@ -597,41 +580,55 @@ class Index extends Component {
     }
 
     render() {
-        const { brands, brandTypes, cates, brandTypeLoading, textureLoading, image, preview, submit, color, pickerColor, auto } = this.state;
+        const { image, preview, submit, color, pickerColor, auto, list } = this.state;
         const { form: { getFieldDecorator } } = this.props;
-        const { brand_id, brand_type_id, texture_id } = this.condition;
         const { select } = this;
 
         return (
             <div className="page-layout-center">
                 <div className={style.layoutHome}>
                     <div className={style.layoutHomeHd}>
-                        <Select
-                            options={brands} fieldName={{ label: 'name', value: 'id' }}
-                            placeholder="选择品牌"
-                            style={{ width: 180 }}
-                            onChange={this.handleChangeBrand}
-                            value={brand_id}
+                        <Cascader
+                            showSearch={{
+                                filter:(input, path) => {
+
+                                    if (!input) return true;
+                                    input = input.replace(/\s*/g, '').toLowerCase();
+                                    const labels = path.map(item => item.label.replace(/\s*/g, '').toLowerCase());
+                                    let has = false;
+                                    for (let i = 0; i < labels.length; i++) {
+                                        const item = labels[i];
+                                        if (item.indexOf(input) >= 0) {
+                                            has = true;
+                                            break;
+                                        }
+                                    }
+                                    return has;
+                                }
+                            }}
+                            allowClear={false}
+                            options={list}
+                            style={{ width: 320 }}
+                            placeholder="选择手机型号，支持搜索"
+                            onChange={value => {
+                                this.select = this.cateObj[value[2]];
+                                MServer.get(`/cate/catetextureattr/${this.select.id}`).then(res => {
+                                    this.select.texture_attr = res.errcode == 0 ? res.data : [];
+                                    this.forceUpdate(() => {
+                                        if (this.imageBgRef.current.complete) {
+                                            this.getCanvas();
+                                        } else {
+                                            this.imageBgRef.current.onload = () => {
+                                                this.getCanvas();
+                                            };
+                                        }
+                                    });
+                                });
+                            }}    
                         />
-                        <Select
-                            options={brandTypes} fieldName={{ label: 'name', value: 'id' }}
-                            placeholder="选择型号"
-                            style={{ width: 180 }}
-                            value={brand_type_id}
-                            loading={brandTypeLoading}
-                            onChange={this.handleChangeBrandType}
-                        />
-                        <Select
-                            options={cates} fieldName={{ label: 'texture_name', value: 'texture_id' }}
-                            placeholder="选择材质"
-                            style={{ width: 180 }}
-                            loading={textureLoading}
-                            value={texture_id}
-                            onChange={this.handleChangeTexture}
-                        />
-                        <Input 
-                            className="hide" 
-                            type="file" 
+                        <Input
+                            className="hide"
+                            type="file"
                             ref={e => this.uploadInputRef = e && e.input}
                             accept={'image/png,image/jpg,image/jpeg'}
                             onChange={e => this.readFile(e.target.files[0])}
