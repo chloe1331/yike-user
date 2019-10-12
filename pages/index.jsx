@@ -1,5 +1,5 @@
 import { Component, createRef } from 'react';
-import { Form, Input, InputNumber, Button, Tag, message } from 'antd';
+import { Form, Input, InputNumber, Button, Tag, message, Tooltip } from 'antd';
 import PropTypes from 'prop-types';
 
 import { Select, ColorPicker } from 'component';
@@ -37,6 +37,10 @@ class Index extends Component {
         this.canvasCameraRef = createRef();
         this.boxRef = createRef();
         this.previewDialogRef = createRef();
+        this.dragBox1 = createRef();
+        this.dragBox2 = createRef();
+        this.sizeInputRef;
+        this.rotateInputRef;
         this.uploadInputRef = null;
         this.select = null; // 选择到的机型
         this.moveOptions = {
@@ -91,6 +95,7 @@ class Index extends Component {
         const camera = this.imageCameraRef.current;
         const trans = this.transBgRef.current;
         const box = this.boxRef.current;
+        if (!box) return;
 
         const width = 320 * power;
         const boxHeight = (box.offsetHeight - 2) * power;
@@ -117,10 +122,13 @@ class Index extends Component {
 
         if (upload && upload.complete) {
             let { x, y, size, rotate } = this.moveOptions;
-            if (!this.moveOptions.size) {
-                size = this.moveOptions.size = upload.width > upload.height ? canvasWidth / upload.width : boxHeight / upload.height;
-                this.forceUpdate();
+            if (typeof this.moveOptions.size === 'undefined') {
+                size = this.moveOptions.size = upload.width > upload.height ? canvasWidth / upload.width * 100 : boxHeight / upload.height * 100;
+                this.sizeInputRef.setState({
+                    value: size.toFixed(2)
+                });
             }
+            size = size * power / 100;
             if (!y) {
                 y = this.moveOptions.y = -(upload.height * size - height) / 2;
                 if (upload.width < upload.height) {
@@ -129,16 +137,15 @@ class Index extends Component {
             }
 
             if (rotate) {
-                context.translate(width / 2, height / 2);
+                context.translate(canvasWidth / 2, height / 2);
                 context.rotate(rotate * Math.PI / 180);
-                context.translate(-width / 2, -height / 2);
+                context.translate(-canvasWidth / 2, -height / 2);
             }
-            size = size * power;
             context.drawImage(upload, x * power, y * power, upload.width * size, upload.height * size);
             if (rotate) {
-                context.translate(width / 2, height / 2);
+                context.translate(canvasWidth / 2, height / 2);
                 context.rotate(-rotate * Math.PI / 180);
-                context.translate(-width / 2, -height / 2);
+                context.translate(-canvasWidth / 2, -height / 2);
             }
         }
 
@@ -272,9 +279,10 @@ class Index extends Component {
 
     listenerMove() {
         const dom = this.boxRef.current;
+        const upload = this.imageUploadRef.current;
         let startPageX = null;
         let startPageY = null;
-        if (this.hasKeyListener && !dom) return;
+        if (this.hasKeyListener || !dom || !upload) return;
         const moveListener = e => {
             const { preview } = this.state;
             if (preview) return;
@@ -286,10 +294,10 @@ class Index extends Component {
         dom.addEventListener('mousedown', e => {
             startPageX = e.pageX - this.moveOptions.x;
             startPageY = e.pageY - this.moveOptions.y;
-            dom.addEventListener('mousemove', moveListener);
+            document.addEventListener('mousemove', moveListener);
         });
-        dom.addEventListener('mouseup', () => {
-            dom.removeEventListener('mousemove', moveListener);
+        document.addEventListener('mouseup', () => {
+            document.removeEventListener('mousemove', moveListener);
         });
 
         document.addEventListener('keydown', e => {
@@ -309,16 +317,79 @@ class Index extends Component {
                     this.moveOptions.x = this.moveOptions.x + 1;
                 }
                 if (e.keyCode == 69) {
-                    this.moveOptions.size = this.moveOptions.size + 0.2 / 100;
-                    this.forceUpdate();
+                    this.sizeInputRef && this.sizeInputRef.setState({
+                        value: (this.moveOptions.size + 0.2).toFixed(2)
+                    });
+                    this.handleSize(parseInt(this.moveOptions.size * 100 + 20) / 100, false);
                 }
                 if (e.keyCode == 82) {
-                    this.moveOptions.size = this.moveOptions.size - 0.2 / 100;
-                    this.forceUpdate();
+                    this.sizeInputRef && this.sizeInputRef.setState({
+                        value: (this.moveOptions.size - 0.2).toFixed(2)
+                    });
+                    this.handleSize(parseInt(this.moveOptions.size * 100 - 20) / 100, false);
                 }
                 this.getCanvas();
             }
         });
+
+        if (this.dragBox1.current) {
+            const box = this.dragBox1.current;
+            let sx = null;
+            let size = null;
+            const listener = e => {
+                const current = e.clientX - sx;
+                box.style.left = `${current}px`;
+                const diff = (current - 798) / 10;
+                const value = size + diff;
+                if (value >= 1) {
+                    this.sizeInputRef && this.sizeInputRef.setState({
+                        value: value.toFixed(2)
+                    });
+                    this.handleSize(value);
+                }
+            };
+            box.addEventListener('mousedown', e => {
+                e.stopPropagation();
+                e.preventDefault();
+                sx = e.clientX - box.offsetLeft;
+                size = parseFloat(this.moveOptions.size);
+                document.addEventListener('mousemove', listener);
+            });
+            document.addEventListener('mouseup', e => {
+                e.stopPropagation();
+                e.preventDefault();
+                box.style.left = '798px';
+                document.removeEventListener('mousemove', listener);
+            });
+        }
+        if (this.dragBox2.current) {
+            const box = this.dragBox2.current;
+            let sx = null;
+            let rotate = this.moveOptions.rotate;
+            const listener = e => {
+                const current = e.clientX - sx;
+                box.style.left = `${current}px`;
+                const diff = (current - 798);
+                let value = Math.abs(rotate + diff);
+                if (value > 360) value = 0;
+                this.rotateInputRef && this.rotateInputRef.setState({
+                    value: value
+                });
+                this.handleRotate(value);
+            };
+            box.addEventListener('mousedown', e => {
+                e.stopPropagation();
+                e.preventDefault();
+                sx = e.clientX - box.offsetLeft;
+                document.addEventListener('mousemove', listener);
+            });
+            document.addEventListener('mouseup', e => {
+                e.stopPropagation();
+                e.preventDefault();
+                box.style.left = '798px';
+                document.removeEventListener('mousemove', listener);
+            });
+        }
     }
 
     handleChangeBrand(brand_id) {
@@ -376,10 +447,14 @@ class Index extends Component {
         });
     }
 
-    handleSize(value) {
-        this.moveOptions.size = value / 100;
-        this.forceUpdate();
-        this.getCanvas();
+    handleSize(value = 0, isGet = true) {
+        const upload = this.imageUploadRef.current;
+        if (!upload) return;
+        if (!/^-?(0|[1-9][0-9]*)(\.[0-9]{1,})?$/.test(value)) return;
+        this.moveOptions.x = this.moveOptions.x + upload.width * (this.moveOptions.size - value) / 200;
+        this.moveOptions.y = this.moveOptions.y + upload.height * (this.moveOptions.size - value) / 200;
+        this.moveOptions.size = value;
+        isGet && this.getCanvas();
     }
 
     handleRotate(value) {
@@ -576,17 +651,32 @@ class Index extends Component {
                                 </div>
                                 <canvas key="canvas1" ref={this.canvasRef} />
                                 <canvas key="canvas2" ref={this.canvasCameraRef} />
+                                <Tooltip title="上传图片后，拖动进行放大缩小"><div className={style.box1} ref={this.dragBox1}></div></Tooltip>
+                                <Tooltip title="上传图片后，拖动进行旋转"><div className={style.box2} ref={this.dragBox2}></div></Tooltip>
                             </div>
                         </div>
                         <div className={style.orderConfig}>
                             <Form className={`inline-form ${style.sizeForm}`}>
                                 <div style={{ display: 'flex' }}>
                                     <Form.Item label="缩放" style={{ flex: '1' }}>
-                                        <InputNumber disabled={!!preview} precision={2} value={(this.moveOptions.size || 0) * 100} onChange={this.handleSize} />
+                                        <Input 
+                                            style={{ width: 80 }} 
+                                            disabled={!!preview} 
+                                            ref={e => this.sizeInputRef = e} 
+                                            onChange={e => this.handleSize(e.target.value)} 
+                                            defaultValue={100}
+                                        />
                                         <span style={{ marginLeft: '10px' }}>%</span>
                                     </Form.Item>
                                     <Form.Item label="旋转" style={{ flex: '1' }}>
-                                        <InputNumber disabled={!!preview} defaultValue={0} onChange={this.handleRotate} />
+                                        {/* <InputNumber disabled={!!preview} defaultValue={0} onChange={this.handleRotate} /> */}
+                                        <Input
+                                            style={{ width: 80 }}
+                                            disabled={!!preview}
+                                            ref={e => this.rotateInputRef = e}
+                                            onChange={e => this.handleRotate(e.target.value)}
+                                            defaultValue={0}
+                                        />
                                     </Form.Item>
                                 </div>
                                 <Form.Item label="背景色设置">
