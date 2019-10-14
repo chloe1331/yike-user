@@ -655,10 +655,10 @@ class Index extends Component {
                                     ) : null
                                 }
                                 <div key="images" className="hide">
-                                    <img ref={this.transBgRef} crossOrigin="" src="http://pxynkk8s9.bkt.clouddn.com//static/images/transparent_bg.jpg" />
+                                    <img ref={this.transBgRef} crossOrigin="" src="http://cdn-static.yikebb.com/static/images/transparent_bg.jpg" />
                                     {image ? <img ref={this.imageUploadRef} crossOrigin="" src={image}></img> : null}
-                                    {select ? <img ref={this.imageBgRef} crossOrigin="" src={`${locale[process.env.NODE_ENV].url.cdn}/${select.size_img}`} /> : null}
-                                    {select && select.camera_img ? <img ref={this.imageCameraRef} crossOrigin="" src={`${locale[process.env.NODE_ENV].url.cdn}/${select.camera_img}`} /> : null}
+                                    {select ? <img ref={this.imageBgRef} crossOrigin="" src={`${locale[process.env.NODE_ENV].url.cdn}${select.size_img}`} /> : null}
+                                    {select && select.camera_img ? <img ref={this.imageCameraRef} crossOrigin="" src={`${locale[process.env.NODE_ENV].url.cdn}${select.camera_img}`} /> : null}
                                 </div>
                                 <canvas key="canvas1" ref={this.canvasRef} />
                                 <canvas key="canvas2" ref={this.canvasCameraRef} />
