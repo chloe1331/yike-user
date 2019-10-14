@@ -147,10 +147,15 @@ class Index extends Component {
         const context = canvas.getContext('2d');
         const ratio = bg && bg.complete ? width / bg.width : 1;
         const height = bg && bg.complete ? parseInt(bg.height * ratio) : boxHeight;
+        const scale = auto || isRes ? 1 : 2;
         const left = (canvasWidth - width) / 2;
 
-        canvas.setAttribute('width', canvasWidth);
-        canvas.setAttribute('height', height);
+        // canvas.setAttribute('width', canvasWidth);
+        // canvas.setAttribute('height', height);
+        canvas.setAttribute('width', canvasWidth * scale);
+        canvas.setAttribute('height', height * scale);
+        canvas.setAttribute('style', 'width: 918px');
+        context.scale(scale, scale);
 
         if (bg && bg.complete) {
             context.rect(left, 0, width, height);
@@ -201,7 +206,7 @@ class Index extends Component {
 
         if (bg && bg.complete) {
             // 左侧
-            const imageDataLeft = context.getImageData(0, 0, left, height);
+            const imageDataLeft = context.getImageData(0, 0, left * scale, height * scale);
             for (let i = 0; i < imageDataLeft.data.length; i += 4) {
                 if (imageDataLeft.data[i + 3] == 0) {
                     imageDataLeft.data[i + 0] = 255;
@@ -213,7 +218,7 @@ class Index extends Component {
             context.putImageData(imageDataLeft, 0, 0);
 
             // 右侧
-            const imageDataRight = context.getImageData(left + width, 0, canvasWidth - width - left, height);
+            const imageDataRight = context.getImageData((left + width) * scale, 0, (canvasWidth - width - left) * scale, height * scale);
             for (let i = 0; i < imageDataRight.data.length; i += 4) {
                 if (imageDataRight.data[i + 3] == 0) {
                     imageDataRight.data[i + 0] = 255;
@@ -222,7 +227,7 @@ class Index extends Component {
                 }
                 imageDataRight.data[i + 3] = 127.5;
             }
-            context.putImageData(imageDataRight, left + width, 0);
+            context.putImageData(imageDataRight, (left + width) * scale, 0);
 
             // 背景图
             context.drawImage(bg, 0, 0, bg.width, bg.height, left, 0, width, height);
@@ -466,9 +471,21 @@ class Index extends Component {
             message.error('请先上传定制图片');
             return;
         }
+
+        const bg = this.imageBgRef.current;
+        const canvas = document.createElement('canvas');
+        this.getCanvas({
+            canvas,
+            power: bg.width / 320,
+            isRes: true
+        });
         
         this.setState({
-            preview: get ? this.getPreviewImage() : null
+            preview: get ? this.getPreviewImage({
+                canvas,
+                power: bg.width / 320,
+                isRes: true
+            }) : null
         }, () => {
             if (get) this.getCanvas();
         });
@@ -633,7 +650,7 @@ class Index extends Component {
                                 {
                                     preview ? (
                                         <div className={style.previewImage}>
-                                            <div><img src={preview} /></div>
+                                            <div><img src={preview} style={{ width: 320 }} /></div>
                                         </div>
                                     ) : null
                                 }
