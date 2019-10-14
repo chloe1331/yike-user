@@ -457,7 +457,7 @@ class Index extends Component {
         this.getCanvas();
     }
 
-    handlePreview() {
+    handlePreview(get = true) {
         if (!this.select) {
             message.error('请先选择机型');
             return;
@@ -466,13 +466,11 @@ class Index extends Component {
             message.error('请先上传定制图片');
             return;
         }
-
-        const { preview } = this.state;
         
         this.setState({
-            preview: preview ? null : this.getPreviewImage()
+            preview: get ? this.getPreviewImage() : null
         }, () => {
-            if (preview) this.getCanvas();
+            if (get) this.getCanvas();
         });
     }
 
@@ -559,6 +557,10 @@ class Index extends Component {
                 that.imageUploadRef.current.onload = () => {
                     that.getCanvas();
                     that.listenerMove();
+                    const { preview } = that.state;
+                    if (preview) {
+                        that.handlePreview(true);
+                    }
                 };
             });
         };
@@ -727,11 +729,17 @@ class Index extends Component {
                                         onChange={e => {
                                             this.setState({ auto: e.target.checked }, () => {
                                                 this.getCanvas();
-                                                this.handlePreview();
+                                                if (e.target.checked) {
+                                                    this.handlePreview(true);
+                                                } else {
+                                                    this.setState({
+                                                        preview: null
+                                                    });
+                                                }
                                             });
                                         }}
                                     >图片自适应</Checkbox>
-                                    <Button style={{ marginLeft: '10px' }} onClick={this.handlePreview}>{preview ? '编辑' : '预览'}</Button>
+                                    <Button style={{ marginLeft: '10px' }} onClick={() => this.handlePreview(!preview)}>{preview ? '编辑' : '预览'}</Button>
                                 </Form.Item>
                                 <Form.Item>
                                     <span><Tag>W</Tag>上移</span>，
