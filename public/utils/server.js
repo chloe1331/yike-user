@@ -33,7 +33,8 @@ methods.forEach(method => {
             url,
             data,
             params: method == 'get' ? data : (option.params || null),
-            headers
+            headers,
+            withCredentials: typeof option.withCredentials == 'undefined' ? true : option.withCredentials
         }).then(res => {
             if (res.data.errcode !== 0) {
                 if (res.data.errcode == 401) {

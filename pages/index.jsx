@@ -41,6 +41,7 @@ class Index extends Component {
         };
         this.hasKeyListener = false;
         this.cateObj = {};
+        this.token = null;
     }
 
     componentDidMount() {
@@ -66,6 +67,11 @@ class Index extends Component {
                 this.readFile(e.dataTransfer.files[0]);
             });
         }
+        MServer.get('/upload/getToken').then(res => {
+            if (res.errcode == 0) {
+                this.token = res.data.token;
+            }
+        });
     }
 
     getCates() {
@@ -127,8 +133,7 @@ class Index extends Component {
     }
 
     getCanvas({ power = 1, canvas = this.canvasRef.current, isRes = false } = {}) {
-        const { preview, color, pickerColor, auto } = this.state;
-        if (preview) return;
+        const { color, pickerColor, auto } = this.state;
         const upload = this.imageUploadRef.current;
         const bg = this.imageBgRef.current;
         const camera = this.imageCameraRef.current;
@@ -488,27 +493,37 @@ class Index extends Component {
 
         validateFields((err, values) => {
             if (!err) {
+                if (!this.token) {
+                    message.error('网络出错了，刷新页面试试');
+                    return;
+                }
                 this.setState({
                     submit: true
                 });
                 const pl = [
                     () => {
                         const formdata = new FormData();
-                        formdata.append('files', convertBase64UrlToBlob(this.getResultImage()), `${new Date().getTime()}.png`);
-                        return MServer.post('/upload/userimage', formdata, {
+                        formdata.append('file', convertBase64UrlToBlob(this.getResultImage()), `${new Date().getTime()}.png`);
+                        formdata.append('token', this.token);
+                        return MServer.post('//upload-z0.qiniup.com', formdata, {
+                            withCredentials: false,
                             headers: {
                                 'Content-Type': 'multipart/form-data'
-                            }
-                        }).then(res => res.errcode == 0 ? res.full_url : '');
+                            },
+                            silent: true
+                        }).then(res => `${locale[process.env.NODE_ENV].url.cdnUser}${res.key}`);
                     },
                     () => {
                         const formdata = new FormData();
-                        formdata.append('files', convertBase64UrlToBlob(this.getResultImage(false)), `${new Date().getTime()}.png`);
-                        return MServer.post('/upload/userimage', formdata, {
+                        formdata.append('file', convertBase64UrlToBlob(this.getResultImage(false)), `${new Date().getTime()}.png`);
+                        formdata.append('token', this.token);
+                        return MServer.post('//upload-z0.qiniup.com', formdata, {
+                            withCredentials: false,
                             headers: {
                                 'Content-Type': 'multipart/form-data'
-                            }
-                        }).then(res => res.errcode == 0 ? res.full_url : '');
+                            },
+                            silent: true
+                        }).then(res => `${locale[process.env.NODE_ENV].url.cdnUser}${res.key}`);
                     },
                 ];
                 Promise.all(pl.map(item => item())).then(res => {
