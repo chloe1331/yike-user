@@ -19,7 +19,7 @@ class Index extends Component {
             pickerColor: '#000',
             auto: false
         };
-        const handles = ['handleSize', 'handleRotate', 'handlePreview', 'handleSubmit', 'handleAuto'];
+        const handles = ['handleSize', 'handleRotate', 'handlePreview', 'handleSubmit'];
         handles.forEach(item => this[item] = this[item].bind(this));
         this.transBgRef = createRef();
         this.imageUploadRef = createRef();
@@ -530,36 +530,6 @@ class Index extends Component {
         });
     }
 
-    handleAuto() {
-        const upload = this.imageUploadRef.current;
-        const box = this.boxRef.current;
-        const bg = this.imageBgRef.current;
-        if (!upload) {
-            message.error('请先上传图片');
-            return;
-        }
-        if (!bg) {
-            message.error('请先选择机型');
-            return;
-        }
-
-        const canvasWidth = box.offsetWidth;
-        const boxHeight = (box.offsetHeight - 2);
-        const width = 320;
-        const ratio = bg && bg.complete ? width / bg.width : 1;
-        const height = bg && bg.complete ? parseInt(bg.height * ratio) : boxHeight;
-
-        delete this.moveOptions.rotate;
-        this.moveOptions.size = upload.width > upload.height ? canvasWidth / upload.width : boxHeight / upload.height;
-        this.moveOptions.x = 0;
-        this.moveOptions.y = -(upload.height * this.moveOptions.size - height) / 2;
-        if (upload.width < upload.height) {
-            this.moveOptions.x = (canvasWidth - upload.width * this.moveOptions.size) / 2;
-        }
-
-        this.getCanvas();
-    }
-
     readFile(file) {
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -593,13 +563,14 @@ class Index extends Component {
                                 filter:(input, path) => {
 
                                     if (!input) return true;
-                                    input = input.replace(/\s*/g, '').toLowerCase();
-                                    const labels = path.map(item => item.label.replace(/\s*/g, '').toLowerCase());
-                                    let has = false;
-                                    for (let i = 0; i < labels.length; i++) {
-                                        const item = labels[i];
-                                        if (item.indexOf(input) >= 0) {
-                                            has = true;
+                                    input = input.toLowerCase();
+                                    const labels = path.map(item => item.label.replace(/\s*/g, '').toLowerCase()).join('');
+                                    const inputKeys = input.split(' ');
+                                    let has = true;
+                                    for (let i = 0; i < inputKeys.length; i++) {
+                                        const item = inputKeys[i];
+                                        if (labels.indexOf(item) == -1) {
+                                            has = false;
                                             break;
                                         }
                                     }
@@ -735,14 +706,14 @@ class Index extends Component {
                                     </div>
                                 </Form.Item>
                                 <Form.Item>
-                                    {/* <Button disabled={!!preview} type="dashed" onClick={this.handleAuto}>图片自适应</Button> */}
                                     <Checkbox 
-                                        disabled={!!preview} 
+                                        disabled={!this.select || !image} 
                                         checked={auto} 
                                         onChange={e => {
-                                            this.setState({ auto: e.target.checked }, this.getCanvas);
+                                            this.setState({ auto: e.target.checked }, this.handlePreview);
                                         }}
                                     >图片自适应</Checkbox>
+                                    <Button style={{ marginLeft: '10px' }} onClick={this.handlePreview}>{preview ? '编辑' : '预览'}</Button>
                                 </Form.Item>
                                 <Form.Item>
                                     <span><Tag>W</Tag>上移</span>，
@@ -801,7 +772,6 @@ class Index extends Component {
                                 }
                                 <Form.Item>
                                     <Button type="primary" htmlType="submit" loading={submit}>提交订单</Button>
-                                    <Button style={{ marginLeft: '10px' }} onClick={this.handlePreview}>{preview ? '编辑' : '预览'}</Button>
                                 </Form.Item>
                             </Form>
                         </div>
