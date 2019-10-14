@@ -710,7 +710,10 @@ class Index extends Component {
                                         disabled={!this.select || !image} 
                                         checked={auto} 
                                         onChange={e => {
-                                            this.setState({ auto: e.target.checked }, this.handlePreview);
+                                            this.setState({ auto: e.target.checked }, () => {
+                                                this.getCanvas();
+                                                this.handlePreview();
+                                            });
                                         }}
                                     >图片自适应</Checkbox>
                                     <Button style={{ marginLeft: '10px' }} onClick={this.handlePreview}>{preview ? '编辑' : '预览'}</Button>
