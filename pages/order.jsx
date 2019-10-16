@@ -1,16 +1,14 @@
 import { Component, createRef } from 'react';
-import { Radio } from 'antd';
+import { Radio, Input } from 'antd';
 
-import { TableAction, DialogImagePreview } from 'component';
+import { OrderList } from 'component';
 
 export default class Order extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            image: null
-        };
         this.tableRef = createRef();
-        this.imagePreviewRef = createRef();
+        const handles = ['handleSearch'];
+        handles.forEach(item => this[item] = this[item].bind(this));
     }
 
     handleChangeStatus(status) {
@@ -24,14 +22,12 @@ export default class Order extends Component {
         }
     }
 
-    handleOpenImagePreview(image) {
-        if (this.imagePreviewRef.current) {
-            this.setState({
-                image
-            }, () => {
-                this.imagePreviewRef.current.open();
-            });
-        }
+    handleSearch(value) {
+        this.tableRef.current.reload({
+            condition: {
+                order_sn: value
+            }
+        });
     }
 
     render() {
@@ -48,11 +44,9 @@ export default class Order extends Component {
             value: 'success',
             label: '已打印'
         }];
-        const { image } = this.state;
 
         return (
             <div className="page-layout-center">
-                <DialogImagePreview image={image} ref={this.imagePreviewRef} />
                 <Radio.Group 
                     defaultValue="all" 
                     onChange={e => {
@@ -66,66 +60,12 @@ export default class Order extends Component {
                         ))
                     }
                 </Radio.Group>
-                <TableAction
-                    ref={this.tableRef}
+                <div className="form-condition">
+                    <Input.Search onSearch={this.handleSearch} placeholder="搜索订单号" />
+                </div>
+                <OrderList
                     action="/order/userlist"
-                    columns={[
-                        {
-                            key: 'order_sn',
-                            dataIndex: 'order_sn',
-                            title: '订单编号'
-                        },
-                        {
-                            key: 'brand_type_name',
-                            dataIndex: 'brand_type_name',
-                            title: '型号',
-                            render: (text, record) => `${record.brand_name} ${text}`
-                        },
-                        {
-                            key: 'texture_name',
-                            dataIndex: 'texture_name',
-                            title: '材质',
-                            render: (text, record) => `${text} ${record.texture_attr_name || ''}`
-                        },
-                        {
-                            key: 'quantity',
-                            dataIndex: 'quantity',
-                            title: '订货量'
-                        },
-                        {
-                            key: 'createdAt',
-                            dataIndex: 'createdAt',
-                            title: '下单时间'
-                        },
-                        {
-                            key: 'status',
-                            dataIndex: 'status',
-                            title: '订单状态',
-                            render: text => {
-                                switch(text) {
-                                case 10:
-                                    return <span className="text-info">等待打印</span>;
-                                case 20: 
-                                    return <span className="text-success">已打印</span>;
-                                case 40:
-                                    return <span className="text-error">已拒绝</span>;
-                                default:
-                                    return <span className="text-warning">待审核</span>;
-                                }
-                            }
-                        },
-                        {
-                            key: 'setting',
-                            dataIndex: 'id',
-                            title: '操作',
-                            align: 'right',
-                            render: (id, record) => (
-                                <div className="table-operate">
-                                    <a onClick={() => this.handleOpenImagePreview(record.image)}>预览</a>
-                                </div>
-                            )
-                        }
-                    ]}
+                    ref={this.tableRef}
                 />
             </div>
         );

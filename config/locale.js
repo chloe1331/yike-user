@@ -1,7 +1,7 @@
 module.exports = {
     development: {
         url: {
-            api: '//api.yikebb.com',
+            api: '//localhost:7001',
             cdn: 'http://cdn-upload.yikebb.com/',
             cdnStatic: 'http://cdn-static.yikebb.com/',
             cdnUser: 'http://cdn-user.yikebb.com/'

@@ -5,5 +5,6 @@ module.exports = {
     'layout-sider-background': '#fefefe',
     'border-color-base': '#e9e9e9',
     'font-size-lg': '16px',
-    'border-radius-base': '3px'
+    'border-radius-base': '3px',
+    'table-selected-row-bg': '#fafafa'
 };

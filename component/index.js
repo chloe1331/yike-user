@@ -4,6 +4,7 @@ import UploadBtn from './upload-btn';
 import DialogImagePreview from './dialog-image-preview';
 import TableAction from './table-action';
 import ColorPicker from './colorpicker';
+import OrderList from './order-list';
 
 export {
     Select,
@@ -11,5 +12,6 @@ export {
     UploadBtn,
     DialogImagePreview,
     TableAction,
-    ColorPicker
+    ColorPicker,
+    OrderList
 };

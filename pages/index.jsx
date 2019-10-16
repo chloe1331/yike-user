@@ -1,5 +1,5 @@
 import { Component, createRef } from 'react';
-import { Form, Input, InputNumber, Button, Tag, message, Tooltip, Checkbox, Cascader } from 'antd';
+import { Form, Input, InputNumber, Button, Tag, message, Tooltip, Checkbox, Cascader, Modal } from 'antd';
 import PropTypes from 'prop-types';
 
 import { Select, ColorPicker } from 'component';
@@ -504,7 +504,7 @@ class Index extends Component {
             return;
         }
 
-        const { form: { validateFields } } = this.props;
+        const { form: { validateFields }, router } = this.props;
 
         validateFields((err, values) => {
             if (!err) {
@@ -552,7 +552,14 @@ class Index extends Component {
                             submit: false
                         });
                         if (res.errcode == 0) {
-                            message.success('提交成功');
+                            Modal.confirm({
+                                title: '订单已提交成功',
+                                okText: '继续下单',
+                                cancelText: '查看订单',
+                                onCancel() {
+                                    router.push('/order');
+                                },
+                            });
                         }
                     });
                 });
@@ -826,7 +833,8 @@ class Index extends Component {
 }
 
 Index.propTypes = {
-    form: PropTypes.object
+    form: PropTypes.object,
+    router: PropTypes.object
 };
 
 export default Form.create()(Index);
