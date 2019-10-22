@@ -86,7 +86,7 @@ export default class OrderList extends Component {
 
     render() {
         const { list, image, pager, loading } = this.state;
-        const colSpan = 9;
+        const colSpan = 7;
         const statusMap = {
             0: {
                 text: '待审核',
@@ -120,8 +120,6 @@ export default class OrderList extends Component {
                                 <th>打印图</th>
                                 <th>型号</th>
                                 <th>材质</th>
-                                <th>宽高度</th>
-                                <th>厚度</th>
                                 <th>订货量</th>
                                 <th>状态</th>
                                 <th>价格</th>
@@ -144,8 +142,6 @@ export default class OrderList extends Component {
                                         <td><ImageHover src={order.image} onClick={() => this.handleOpenImagePreview(order.image)} /></td>
                                         <td>{order.brand_name} {order.brand_type_name}</td>
                                         <td>{order.texture_name} {order.texture_attr_name || ''}</td>
-                                        <td>{order.width || '-'}/{order.height || '-'}</td>
-                                        <td>{order.land}</td>
                                         <td>{order.quantity}</td>
                                         {
                                             i === 0 ? [
