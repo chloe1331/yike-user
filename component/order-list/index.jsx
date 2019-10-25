@@ -134,6 +134,7 @@ export default class OrderList extends Component {
                                 <tr key="head" className={style.tableBodyHead}>
                                     <td colSpan={colSpan}>
                                         <span><label>订单号：</label>{item.order_sn}</span>
+                                        <span><label>创建时间：</label>{item.createdAt}</span>
                                         <span><label>收件信息：</label>{item.consignee ? `${item.consignee}(${item.mobile})` : '-'} {item.address ? `${item.province} ${item.city} ${item.district} ${item.address}` : '-'}</span>
                                     </td>
                                 </tr>,
