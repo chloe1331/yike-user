@@ -47,8 +47,7 @@ class Index extends Component {
         this.hasKeyListener = false;
         this.cateObj = {};
         this.token = null;
-        this.page = 1;
-        this.submitOrderSn = [];
+        this.submitOrderIds = [];
     }
 
     componentDidMount() {
@@ -577,7 +576,7 @@ class Index extends Component {
                             submit: false
                         });
                         if (res.errcode == 0) {
-                            if (values.type == 10) this.submitOrderSn.push(values.order_sn);
+                            if (values.type == 10) this.submitOrderIds.push(selectedRow.index);
                             Modal.confirm({
                                 title: '订单已提交成功',
                                 okText: '继续下单',
@@ -625,7 +624,7 @@ class Index extends Component {
             const workbook = XLSX.read(this.result, { type: 'binary' });
             const workbookJson = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
             const result = [];
-            workbookJson.forEach(item => {
+            workbookJson.forEach((item, index) => {
                 let mobile = item['联系手机'];
                 if (mobile) mobile = mobile.match(/[1-9]\d*/)[0];
                 const adsplit = (item['收货地址'] || item['收货地址 '] || '').split(' ');
@@ -639,7 +638,8 @@ class Index extends Component {
                     address: adsplit[3],
                     seller_remark: item['订单备注'],
                     buyer_remark: item['买家留言'],
-                    remark: item['自定义备注']
+                    remark: item['自定义备注'],
+                    index
                 });
             });
             that.setState({
@@ -654,7 +654,6 @@ class Index extends Component {
         setFieldsValue({
             order_sn: selectedRow.order_sn
         });
-        console.log(selectedRow)
         this.setState({
             selectedRowKeys: selectedRow.order_sn,
             selectedRow,
@@ -673,7 +672,7 @@ class Index extends Component {
                 this.handleSelectRow(selectedRows[0]);
             },
             getCheckboxProps: record => ({
-                disabled: this.submitOrderSn.includes(record.order_sn)
+                disabled: this.submitOrderIds.includes(record.index)
             }),
         };
 
@@ -955,11 +954,11 @@ class Index extends Component {
                     </div>
                 </div>
                 <Drawer
-                    // title="导入淘宝订单"
+                    title="导入淘宝订单"
                     placement="bottom"
-                    height={670}
+                    height={720}
                     bodyStyle={{ padding: 0 }}
-                    closable={false}
+                    // closable={false}
                     onClose={() => this.setState({ drawer: false })}
                     visible={drawer}
                 >
@@ -967,9 +966,6 @@ class Index extends Component {
                         rowKey="order_sn"
                         rowSelection={rowSelection}
                         dataSource={importExcelData}
-                        onChange={pagination => {
-                            this.page = pagination.current;
-                        }}
                         onRow={(row) => ({
                             onClick: () => {
                                 this.handleSelectRow(row);
@@ -980,19 +976,19 @@ class Index extends Component {
                                 key: 'order_sn',
                                 dataIndex: 'order_sn',
                                 title: '订单编号',
-                                render: (text) => {
-                                    return <span>{text}{this.submitOrderSn.includes(text) ? <span className="text-success">(已提交)</span> : null}</span>;
+                                render: (text, record) => {
+                                    return <span>{text}{this.submitOrderIds.includes(record.index) ? <span className="text-success">(已提交)</span> : null}</span>;
                                 }
                             },
                             {
                                 key: 'consignee',
                                 dataIndex: 'consignee',
                                 title: '收件人姓名',
-                                render: (text, record, index) => <Input 
+                                render: (text, record) => <Input 
                                     defaultValue={text} 
                                     style={{ width: 80 }}
                                     onChange={e => {
-                                        importExcelData[(this.page - 1) * 10 + index].consignee = e.target.value;
+                                        importExcelData[record.index].consignee = e.target.value;
                                     }}
                                     onClick={e => {
                                         e.preventDefault();
@@ -1004,11 +1000,11 @@ class Index extends Component {
                                 key: 'mobile',
                                 dataIndex: 'mobile',
                                 title: '联系手机',
-                                render: (text, record, index) => <Input
+                                render: (text, record) => <Input
                                     defaultValue={text}
                                     style={{ width: 122 }}
                                     onChange={e => {
-                                        importExcelData[(this.page - 1) * 10 + index].mobile = e.target.value;
+                                        importExcelData[record.index].mobile = e.target.value;
                                     }}
                                     onClick={e => {
                                         e.preventDefault();
@@ -1020,11 +1016,11 @@ class Index extends Component {
                                 key: 'province',
                                 dataIndex: 'province',
                                 title: '省',
-                                render: (text, record, index) => <Input
+                                render: (text, record) => <Input
                                     defaultValue={text}
                                     style={{ width: 80 }}
                                     onChange={e => {
-                                        importExcelData[(this.page - 1) * 10 + index].province = e.target.value;
+                                        importExcelData[record.index].province = e.target.value;
                                     }}
                                     onClick={e => {
                                         e.preventDefault();
@@ -1036,11 +1032,11 @@ class Index extends Component {
                                 key: 'city',
                                 dataIndex: 'city',
                                 title: '市',
-                                render: (text, record, index) => <Input
+                                render: (text, record) => <Input
                                     defaultValue={text}
                                     style={{ width: 80 }}
                                     onChange={e => {
-                                        importExcelData[(this.page - 1) * 10 + index].city = e.target.value;
+                                        importExcelData[record.index].city = e.target.value;
                                     }}
                                     onClick={e => {
                                         e.preventDefault();
@@ -1052,11 +1048,11 @@ class Index extends Component {
                                 key: 'district',
                                 dataIndex: 'district',
                                 title: '区',
-                                render: (text, record, index) => <Input
+                                render: (text, record) => <Input
                                     defaultValue={text}
                                     style={{ width: 80 }}
                                     onChange={e => {
-                                        importExcelData[(this.page - 1) * 10 + index].district = e.target.value;
+                                        importExcelData[record.index].district = e.target.value;
                                     }}
                                     onClick={e => {
                                         e.preventDefault();
@@ -1068,11 +1064,11 @@ class Index extends Component {
                                 key: 'address',
                                 dataIndex: 'address',
                                 title: '收货地址',
-                                render: (text, record, index) => <Input
+                                render: (text, record) => <Input
                                     defaultValue={text}
                                     style={{ width: 150 }}
                                     onChange={e => {
-                                        importExcelData[(this.page - 1) * 10 + index].address = e.target.value;
+                                        importExcelData[record.index].address = e.target.value;
                                     }}
                                     onClick={e => {
                                         e.preventDefault();
