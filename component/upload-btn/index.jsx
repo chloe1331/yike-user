@@ -8,7 +8,9 @@ import { MServer } from 'public/utils';
 import locale from 'config/locale';
 import style from './style.less';
 
-export default class UplaodButton extends Component {
+import LocalBtn from './local';
+
+export default class UploadButton extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -112,7 +114,7 @@ export default class UplaodButton extends Component {
     }
 }
 
-UplaodButton.propTypes = {
+UploadButton.propTypes = {
     buttonText: PropTypes.any,
     icon: PropTypes.any,
     accept: PropTypes.string,
@@ -123,3 +125,5 @@ UplaodButton.propTypes = {
     limitSize: PropTypes.number,
     show: PropTypes.bool
 };
+
+UploadButton.Local = LocalBtn;

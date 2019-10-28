@@ -1,8 +1,9 @@
 import { Component, createRef } from 'react';
-import { Form, Input, InputNumber, Button, Tag, message, Tooltip, Checkbox, Cascader, Modal } from 'antd';
+import XLSX from 'xlsx';
+import { Form, Input, InputNumber, Button, Tag, message, Tooltip, Checkbox, Cascader, Modal, Radio, Popover, Table, Drawer } from 'antd';
 import PropTypes from 'prop-types';
 
-import { Select, ColorPicker } from 'component';
+import { Select, ColorPicker, UploadBtn } from 'component';
 import { MServer, convertBase64UrlToBlob } from 'public/utils';
 import style from 'public/theme/pages/index.less';
 import locale from 'config/locale';
@@ -17,9 +18,13 @@ class Index extends Component {
             submit: false,
             color: 'tran',
             pickerColor: '#000',
-            auto: false
+            auto: false,
+            importExcelData: null,
+            drawer: false,
+            selectedRowKeys: null,
+            selectedRow: null
         };
-        const handles = ['handleSize', 'handleRotate', 'handlePreview', 'handleSubmit'];
+        const handles = ['handleSize', 'handleRotate', 'handlePreview', 'handleSubmit', 'handleUploadOrderExcel'];
         handles.forEach(item => this[item] = this[item].bind(this));
         this.transBgRef = createRef();
         this.imageUploadRef = createRef();
@@ -42,6 +47,8 @@ class Index extends Component {
         this.hasKeyListener = false;
         this.cateObj = {};
         this.token = null;
+        this.page = 1;
+        this.submitOrderSn = [];
     }
 
     componentDidMount() {
@@ -174,6 +181,7 @@ class Index extends Component {
             if (typeof this.moveOptions.size === 'undefined') {
                 size = this.moveOptions.size = upload.width > upload.height ? canvasWidth / upload.width * 100 : boxHeight / upload.height * 100;
                 this.sizeInputRef.setState({
+                    inputValue: size.toFixed(2),
                     value: size.toFixed(2)
                 });
             }
@@ -373,12 +381,14 @@ class Index extends Component {
                 }
                 if (e.keyCode == 69) {
                     this.sizeInputRef && this.sizeInputRef.setState({
+                        inputValue: (this.moveOptions.size + 0.2).toFixed(2),
                         value: (this.moveOptions.size + 0.2).toFixed(2)
                     });
                     this.handleSize(parseInt(this.moveOptions.size * 100 + 20) / 100, false);
                 }
                 if (e.keyCode == 82) {
                     this.sizeInputRef && this.sizeInputRef.setState({
+                        inputValue: (this.moveOptions.size - 0.2).toFixed(2),
                         value: (this.moveOptions.size - 0.2).toFixed(2)
                     });
                     this.handleSize(parseInt(this.moveOptions.size * 100 - 20) / 100, false);
@@ -398,6 +408,7 @@ class Index extends Component {
                 const value = size + diff;
                 if (value >= 1) {
                     this.sizeInputRef && this.sizeInputRef.setState({
+                        inputValue: value.toFixed(2),
                         value: value.toFixed(2)
                     });
                     this.handleSize(value);
@@ -428,6 +439,7 @@ class Index extends Component {
                 let value = Math.abs(rotate + diff);
                 if (value > 360) value = 0;
                 this.rotateInputRef && this.rotateInputRef.setState({
+                    inputValue: value,
                     value: value
                 });
                 this.handleRotate(value);
@@ -505,6 +517,7 @@ class Index extends Component {
         }
 
         const { form: { validateFields }, router } = this.props;
+        const { selectedRow } = this.state;
 
         validateFields((err, values) => {
             if (!err) {
@@ -542,16 +555,29 @@ class Index extends Component {
                     },
                 ];
                 Promise.all(pl.map(item => item())).then(res => {
-                    MServer.post('/order/save', {
+                    let params = {
                         ...values,
                         cate_id: this.select.id,
                         image: res[0],
                         image1: res[1]
-                    }).then(res => {
+                    };
+                    if (params.type == 10) {
+                        params = {
+                            ...params,
+                            consignee: selectedRow.consignee,
+                            mobile: selectedRow.mobile,
+                            province: selectedRow.province,
+                            city: selectedRow.city,
+                            district: selectedRow.district,
+                            address: selectedRow.address,
+                        };
+                    }
+                    MServer.post('/order/save', params).then(res => {
                         this.setState({
                             submit: false
                         });
                         if (res.errcode == 0) {
+                            if (values.type == 10) this.submitOrderSn.push(values.order_sn);
                             Modal.confirm({
                                 title: '订单已提交成功',
                                 okText: '继续下单',
@@ -590,10 +616,66 @@ class Index extends Component {
         };
     }
 
+    handleUploadOrderExcel(file) {
+        if (!file) return;
+        const reader = new FileReader();
+        reader.readAsBinaryString(file);
+        const that = this;
+        reader.onload = function () {
+            const workbook = XLSX.read(this.result, { type: 'binary' });
+            const workbookJson = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
+            const result = [];
+            workbookJson.forEach(item => {
+                let mobile = item['联系手机'];
+                if (mobile) mobile = mobile.match(/[1-9]\d*/)[0];
+                const adsplit = (item['收货地址'] || item['收货地址 '] || '').split(' ');
+                result.push({
+                    order_sn: item['订单编号'],
+                    consignee: item['收货人姓名'],
+                    mobile,
+                    province: adsplit[0],
+                    city: adsplit[1],
+                    district: adsplit[2],
+                    address: adsplit[3],
+                    seller_remark: item['订单备注'],
+                    buyer_remark: item['买家留言'],
+                    remark: item['自定义备注']
+                });
+            });
+            that.setState({
+                drawer: true,
+                importExcelData: result
+            });
+        };
+    }
+
+    handleSelectRow(selectedRow) {
+        const { form: { setFieldsValue } } = this.props;
+        setFieldsValue({
+            order_sn: selectedRow.order_sn
+        });
+        console.log(selectedRow)
+        this.setState({
+            selectedRowKeys: selectedRow.order_sn,
+            selectedRow,
+            drawer: false
+        });
+    }
+
     render() {
-        const { image, preview, submit, color, pickerColor, auto, list } = this.state;
-        const { form: { getFieldDecorator } } = this.props;
+        const { image, preview, submit, color, pickerColor, auto, list, importExcelData, drawer, selectedRowKeys, selectedRow } = this.state;
+        const { form: { getFieldDecorator, getFieldValue } } = this.props;
         const { select } = this;
+        const rowSelection = {
+            type: 'radio',
+            selectedRowKeys,
+            onChange: (selectedRowKeys, selectedRows) => {
+                this.handleSelectRow(selectedRows[0]);
+            },
+            getCheckboxProps: record => ({
+                disabled: this.submitOrderSn.includes(record.order_sn)
+            }),
+        };
 
         return (
             <div className="page-layout-center">
@@ -677,22 +759,25 @@ class Index extends Component {
                             <Form className={`inline-form ${style.sizeForm}`}>
                                 <div style={{ display: 'flex' }}>
                                     <Form.Item label="缩放" style={{ flex: '1' }}>
-                                        <Input 
-                                            style={{ width: 80 }} 
-                                            disabled={!!preview || auto} 
-                                            ref={e => this.sizeInputRef = e} 
-                                            onChange={e => this.handleSize(e.target.value)} 
+                                        <InputNumber
+                                            style={{ width: 80 }}
+                                            disabled={!!preview || auto}
+                                            ref={e => {
+                                                if (e) this.sizeInputRef = e.inputNumberRef;
+                                            }}
+                                            onChange={value => this.handleSize(value)}
                                             defaultValue={100}
                                         />
                                         <span style={{ marginLeft: '10px' }}>%</span>
                                     </Form.Item>
                                     <Form.Item label="旋转" style={{ flex: '1' }}>
-                                        {/* <InputNumber disabled={!!preview} defaultValue={0} onChange={this.handleRotate} /> */}
-                                        <Input
+                                        <InputNumber 
                                             style={{ width: 80 }}
                                             disabled={!!preview || auto}
-                                            ref={e => this.rotateInputRef = e}
-                                            onChange={e => this.handleRotate(e.target.value)}
+                                            ref={e => {
+                                                if (e) this.rotateInputRef = e.inputNumberRef;
+                                            }}
+                                            onChange={value => this.handleRotate(value)}
                                             defaultValue={0}
                                         />
                                     </Form.Item>
@@ -775,6 +860,48 @@ class Index extends Component {
                                 </Form.Item>
                             </Form>
                             <Form onSubmit={this.handleSubmit}>
+                                <Form.Item label="订单类型">
+                                    {
+                                        getFieldDecorator('type', {
+                                            initialValue: 10
+                                        })(
+                                            <Radio.Group 
+                                                options={[{
+                                                    label: '普通订单',
+                                                    value: 0
+                                                }, {
+                                                    label: '充值订单',
+                                                    value: 10
+                                                }]}
+                                            />
+                                        )
+                                    }
+                                </Form.Item>
+                                {
+                                    getFieldValue('type') == 10 ? (
+                                        <Form.Item>
+                                            <UploadBtn.Local
+                                                accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                                text="导入淘宝订单"
+                                                onUpload={this.handleUploadOrderExcel}
+                                            />
+                                            {
+                                                importExcelData ? (
+                                                    <Button type="primary" style={{ marginLeft: '15px' }} onClick={() => this.setState({ drawer: true })}>打开导入的订单</Button>
+                                                ) : null
+                                            }
+                                            {
+                                                selectedRow ? (
+                                                    <div className={style.remarkBox}>
+                                                        <p style={{ marginBottom: '10px', lineHeight: 1 }}>订单备注：{selectedRow.seller_remark}</p>
+                                                        <p style={{ marginBottom: '10px', lineHeight: 1 }}>买家留言：{selectedRow.buyer_remark}</p>
+                                                        <p style={{ marginBottom: '0', lineHeight: 1 }}>自定义备注：{selectedRow.remark}</p>
+                                                    </div>
+                                                ) : null
+                                            }
+                                        </Form.Item>
+                                    ) : null
+                                }
                                 <Form.Item label="配货标签">
                                     {
                                         getFieldDecorator('order_sn', {
@@ -827,6 +954,159 @@ class Index extends Component {
                         </div>
                     </div>
                 </div>
+                <Drawer
+                    // title="导入淘宝订单"
+                    placement="bottom"
+                    height={670}
+                    bodyStyle={{ padding: 0 }}
+                    closable={false}
+                    onClose={() => this.setState({ drawer: false })}
+                    visible={drawer}
+                >
+                    <Table
+                        rowKey="order_sn"
+                        rowSelection={rowSelection}
+                        dataSource={importExcelData}
+                        onChange={pagination => {
+                            this.page = pagination.current;
+                        }}
+                        onRow={(row) => ({
+                            onClick: () => {
+                                this.handleSelectRow(row);
+                            }
+                        })}
+                        columns={[
+                            {
+                                key: 'order_sn',
+                                dataIndex: 'order_sn',
+                                title: '订单编号',
+                                render: (text) => {
+                                    return <span>{text}{this.submitOrderSn.includes(text) ? <span className="text-success">(已提交)</span> : null}</span>;
+                                }
+                            },
+                            {
+                                key: 'consignee',
+                                dataIndex: 'consignee',
+                                title: '收件人姓名',
+                                render: (text, record, index) => <Input 
+                                    defaultValue={text} 
+                                    style={{ width: 80 }}
+                                    onChange={e => {
+                                        importExcelData[(this.page - 1) * 10 + index].consignee = e.target.value;
+                                    }}
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                    }}
+                                />
+                            },
+                            {
+                                key: 'mobile',
+                                dataIndex: 'mobile',
+                                title: '联系手机',
+                                render: (text, record, index) => <Input
+                                    defaultValue={text}
+                                    style={{ width: 122 }}
+                                    onChange={e => {
+                                        importExcelData[(this.page - 1) * 10 + index].mobile = e.target.value;
+                                    }}
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                    }}
+                                />
+                            },
+                            {
+                                key: 'province',
+                                dataIndex: 'province',
+                                title: '省',
+                                render: (text, record, index) => <Input
+                                    defaultValue={text}
+                                    style={{ width: 80 }}
+                                    onChange={e => {
+                                        importExcelData[(this.page - 1) * 10 + index].province = e.target.value;
+                                    }}
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                    }}
+                                />
+                            },
+                            {
+                                key: 'city',
+                                dataIndex: 'city',
+                                title: '市',
+                                render: (text, record, index) => <Input
+                                    defaultValue={text}
+                                    style={{ width: 80 }}
+                                    onChange={e => {
+                                        importExcelData[(this.page - 1) * 10 + index].city = e.target.value;
+                                    }}
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                    }}
+                                />
+                            },
+                            {
+                                key: 'district',
+                                dataIndex: 'district',
+                                title: '区',
+                                render: (text, record, index) => <Input
+                                    defaultValue={text}
+                                    style={{ width: 80 }}
+                                    onChange={e => {
+                                        importExcelData[(this.page - 1) * 10 + index].district = e.target.value;
+                                    }}
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                    }}
+                                />
+                            },
+                            {
+                                key: 'address',
+                                dataIndex: 'address',
+                                title: '收货地址',
+                                render: (text, record, index) => <Input
+                                    defaultValue={text}
+                                    style={{ width: 150 }}
+                                    onChange={e => {
+                                        importExcelData[(this.page - 1) * 10 + index].address = e.target.value;
+                                    }}
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                    }}
+                                />
+                            },
+                            {
+                                key: 'seller_remark',
+                                dataIndex: 'seller_remark',
+                                title: '订单备注',
+                                render: text => <Tooltip title={text}>
+                                    <p style={{ width: 80, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{text}</p>
+                                </Tooltip>
+                            },
+                            {
+                                key: 'buyer_remark',
+                                dataIndex: 'buyer_remark',
+                                title: '买家留言',
+                                render: text => <Tooltip title={text}>
+                                    <p style={{ width: 80, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{text}</p>
+                                </Tooltip>
+                            },
+                            {
+                                key: 'remark',
+                                dataIndex: 'remark',
+                                title: '自定义备注',
+                                render: text => <Tooltip title={text}>
+                                    <p style={{ width: 80, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{text}</p>
+                                </Tooltip>
+                            }
+                        ]}
+                    ></Table>
+                </Drawer>
             </div>
         );
     }
