@@ -24,7 +24,9 @@ class Index extends Component {
             selectedRowKeys: null,
             selectedRow: null,
             order_sn: null,
-            expressList: []
+            expressList: [],
+            partList: [],
+            selectParts: []
         };
         const handles = ['handleSize', 'handleRotate', 'handlePreview', 'handleSubmit', 'handleUploadOrderExcel'];
         handles.forEach(item => this[item] = this[item].bind(this));
@@ -57,6 +59,7 @@ class Index extends Component {
         this.getCates();
         this.getCanvas();
         this.getExpress();
+        this.getPart();
 
         if (this.boxRef.current) {
             this.boxRef.current.addEventListener('dragenter', (e) => {
@@ -149,6 +152,18 @@ class Index extends Component {
             if (res.errcode == 0) {
                 this.setState({
                     expressList: res.data
+                });
+            }
+        });
+    }
+
+    getPart() {
+        MServer.get('/part/list', {
+            is_all: 1
+        }).then(res => {
+            if (res.errcode == 0) {
+                this.setState({
+                    partList: res.data
                 });
             }
         });
@@ -531,8 +546,8 @@ class Index extends Component {
             return;
         }
 
-        const { form: { validateFields }, router } = this.props;
-        const { selectedRow } = this.state;
+        const { form: { validateFields } } = this.props;
+        const { selectedRow, selectParts } = this.state;
 
         validateFields((err, values) => {
             if (!err) {
@@ -571,11 +586,21 @@ class Index extends Component {
                 ];
                 Promise.all(pl.map(item => item())).then(res => {
                     let params = {
-                        ...values,
+                        type: values.type,
+                        order_sn: values.order_sn,
+                        quantity: values.quantity,
                         cate_id: this.select.id,
                         image: res[0],
                         image1: res[1]
                     };
+                    if (values.texture_attr_id) params.texture_attr_id = values.texture_attr_id;
+                    if (values.express_id) params.express_id = values.express_id;
+                    if (selectParts.length) {
+                        params.parts = selectParts.map(item => ({
+                            id: item,
+                            count: values[`part_${item}`]
+                        }));
+                    }
                     if (params.type == 10) {
                         params = {
                             ...params,
@@ -708,7 +733,7 @@ class Index extends Component {
     }
 
     render() {
-        const { image, preview, submit, color, pickerColor, auto, list, importExcelData, drawer, selectedRowKeys, selectedRow, order_sn, expressList } = this.state;
+        const { image, preview, submit, color, pickerColor, auto, list, importExcelData, drawer, selectedRowKeys, selectedRow, order_sn, expressList, partList, selectParts } = this.state;
         const { form: { getFieldDecorator, getFieldValue } } = this.props;
         const { select } = this;
         const rowSelection = {
@@ -717,9 +742,6 @@ class Index extends Component {
             onChange: (selectedRowKeys, selectedRows) => {
                 this.handleSelectRow(selectedRows[0]);
             },
-            // getCheckboxProps: record => ({
-            //     disabled: this.submitOrderIds.includes(record.index)
-            // }),
         };
 
         return (
@@ -1014,17 +1036,59 @@ class Index extends Component {
                                                         message: '请先选择物流'
                                                     }],
                                                     initialValue: expressList.length ? function(){
-                                                        const defaultList = expressList.files(item => item.default);
+                                                        const defaultList = expressList.filter(item => item.default);
                                                         if (defaultList.length) {
                                                             return defaultList[0].id;
                                                         }
                                                         return undefined;
-                                                    } : undefined
+                                                    }() : undefined
                                                 })(
                                                     <Select options={expressList} fieldName={{ value: 'id', label: 'name' }} />
                                                 )
                                             }
                                         </Form.Item>
+                                    ) : null
+                                }
+                                {
+                                    getFieldValue('type') == 10 && partList.length ? (
+                                        <Table
+                                            rowKey="id"
+                                            dataSource={partList}
+                                            pagination={false}
+                                            style={{ marginBottom: '15px' }}
+                                            rowSelection={{
+                                                onChange: (selectedRowKeys) => {
+                                                    this.setState({
+                                                        selectParts: selectedRowKeys
+                                                    });
+                                                },
+                                            }}
+                                            columns={[
+                                                {
+                                                    key: 'name',
+                                                    dataIndex: 'name',
+                                                    title: '配件'
+                                                },
+                                                {
+                                                    key: 'number',
+                                                    dataIndex: 'id',
+                                                    title: '购买数量',
+                                                    render: (id) => <Form.Item className="no-margin">
+                                                        {
+                                                            getFieldDecorator(`part_${id}`, selectParts.includes(id) ? {
+                                                                rules: [{
+                                                                    required: true,
+                                                                    message: '请输入赠品数量'
+                                                                }],
+                                                                initialValue: 1
+                                                            } : {})(
+                                                                <InputNumber />
+                                                            )
+                                                        }
+                                                    </Form.Item>
+                                                }
+                                            ]}
+                                        ></Table>
                                     ) : null
                                 }
                                 <Form.Item>

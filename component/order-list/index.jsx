@@ -165,7 +165,10 @@ export default class OrderList extends Component {
                                         {
                                             i === 0 ? [
                                                 <td key="amount" className={style.tableBodyRowSpan} rowSpan={item.orders.length}>¥ {item.amount}</td>,
-                                                <td key="express" className={style.tableBodyRowSpan} rowSpan={item.orders.length}>{item.express_name}</td>,
+                                                <td key="express" className={style.tableBodyRowSpan} rowSpan={item.orders.length}>
+                                                    <div>{item.express_name}</div>
+                                                    <div>运费：¥ {item.post_fee}</div>
+                                                </td>,
                                                 <td key="type" className={style.tableBodyRowSpan} rowSpan={item.orders.length}>{item.type == 10 ? '充值订单' : '普通订单'}</td>,
                                                 <td key="status" className={style.tableBodyRowSpan} rowSpan={item.orders.length}>
                                                     <span className={statusMap[item.status].className}>{statusMap[item.status].text}</span>
@@ -174,6 +177,17 @@ export default class OrderList extends Component {
                                         }
                                     </tr>
                                 )),
+                                item.parts.length ? (
+                                    <tr key="parts" className={style.tableBodyHead}>
+                                        <td colSpan={colSpan}>
+                                            {
+                                                item.parts.map((part, i) => (
+                                                    <span key={part.id} style={{ marginRight: '5px' }}>{part.name}：{part.quantity}个{i != item.parts.length - 1 ? '，' : ''}</span>
+                                                ))
+                                            }
+                                        </td>
+                                    </tr>
+                                ): null,
                                 <tr key="footer" className={style.tableBodyFooter}>
                                     <td colSpan={colSpan} style={{ height: 15 }}></td>
                                 </tr>
