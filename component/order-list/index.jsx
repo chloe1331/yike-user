@@ -101,7 +101,7 @@ export default class OrderList extends Component {
 
     render() {
         const { list, image, pager, loading } = this.state;
-        const colSpan = 8;
+        const colSpan = 9;
         const statusMap = {
             0: {
                 text: '待审核',
@@ -137,9 +137,10 @@ export default class OrderList extends Component {
                                 <th>材质</th>
                                 <th>订货量</th>
                                 <th>创建时间</th>
-                                <th>状态</th>
-                                <th>价格</th>
+                                <th>价格(含运费)</th>
+                                <th>快递</th>
                                 <th>订单类型</th>
+                                <th>状态</th>
                             </tr>
                             <tr>
                                 <td colSpan={colSpan} style={{ height: 25 }}></td>
@@ -163,11 +164,12 @@ export default class OrderList extends Component {
                                         <td>{order.createdAt}</td>
                                         {
                                             i === 0 ? [
+                                                <td key="amount" className={style.tableBodyRowSpan} rowSpan={item.orders.length}>¥ {item.amount}</td>,
+                                                <td key="express" className={style.tableBodyRowSpan} rowSpan={item.orders.length}>{item.express_name}</td>,
+                                                <td key="type" className={style.tableBodyRowSpan} rowSpan={item.orders.length}>{item.type == 10 ? '充值订单' : '普通订单'}</td>,
                                                 <td key="status" className={style.tableBodyRowSpan} rowSpan={item.orders.length}>
                                                     <span className={statusMap[item.status].className}>{statusMap[item.status].text}</span>
                                                 </td>,
-                                                <td key="amount" className={style.tableBodyRowSpan} rowSpan={item.orders.length}>¥ {item.amount}</td>,
-                                                <td key="type" className={style.tableBodyRowSpan} rowSpan={item.orders.length}>{item.type == 10 ? '充值订单' : '普通订单'}</td>
                                             ] : null
                                         }
                                     </tr>

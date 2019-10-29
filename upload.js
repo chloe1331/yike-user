@@ -18,7 +18,9 @@ const pages = Object.keys(_manifest.pages);
 
 pages.forEach(page => {
     _manifest.pages[page].forEach(file => {
-        qiniu.upload(path.join(__dirname, 'build', file), `_next/${file}`);
+        qiniu.upload(path.join(__dirname, 'build', file), `_next/${file}`).catch(err => {
+            console.log(err.message);
+        });
     });
 });
 
@@ -26,6 +28,8 @@ Object.keys(pageManifest).forEach(item => {
     const file = pageManifest[item];
     const filepath = path.join(__dirname, 'build', file);
     if (fs.existsSync(filepath)) {
-        qiniu.upload(filepath, `_next/${file}`);
+        qiniu.upload(filepath, `_next/${file}`).catch(err => {
+            console.log(err.message);
+        });
     }
 });

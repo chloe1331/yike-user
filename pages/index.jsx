@@ -23,7 +23,8 @@ class Index extends Component {
             drawer: false,
             selectedRowKeys: null,
             selectedRow: null,
-            order_sn: null
+            order_sn: null,
+            expressList: []
         };
         const handles = ['handleSize', 'handleRotate', 'handlePreview', 'handleSubmit', 'handleUploadOrderExcel'];
         handles.forEach(item => this[item] = this[item].bind(this));
@@ -55,6 +56,7 @@ class Index extends Component {
     componentDidMount() {
         this.getCates();
         this.getCanvas();
+        this.getExpress();
 
         if (this.boxRef.current) {
             this.boxRef.current.addEventListener('dragenter', (e) => {
@@ -135,6 +137,18 @@ class Index extends Component {
                 });
                 this.setState({
                     list
+                });
+            }
+        });
+    }
+
+    getExpress() {
+        MServer.get('/logis/list', {
+            is_all: 1
+        }).then(res => {
+            if (res.errcode == 0) {
+                this.setState({
+                    expressList: res.data
                 });
             }
         });
@@ -694,7 +708,7 @@ class Index extends Component {
     }
 
     render() {
-        const { image, preview, submit, color, pickerColor, auto, list, importExcelData, drawer, selectedRowKeys, selectedRow, order_sn } = this.state;
+        const { image, preview, submit, color, pickerColor, auto, list, importExcelData, drawer, selectedRowKeys, selectedRow, order_sn, expressList } = this.state;
         const { form: { getFieldDecorator, getFieldValue } } = this.props;
         const { select } = this;
         const rowSelection = {
@@ -788,7 +802,7 @@ class Index extends Component {
                             placement="bottomRight"
                             trigger="click"
                             content={(
-                                <Form className={`inline-form ${style.sizeForm}`}>
+                                <Form className="inline-form">
                                     <div style={{ display: 'flex' }}>
                                         <Form.Item label="缩放" style={{ flex: '1' }}>
                                             <InputNumber
@@ -862,14 +876,6 @@ class Index extends Component {
                                                 ) : null
                                             }
                                         </div>
-                                    </Form.Item>
-                                    <Form.Item>
-                                        <span><Tag>W</Tag>上移</span>，
-                                        <span><Tag>S</Tag>下移</span>，
-                                        <span><Tag>A</Tag>左移</span>，
-                                        <span><Tag>D</Tag>右移</span>，
-                                        <span><Tag>E</Tag>放大</span>，
-                                        <span><Tag>R</Tag>缩小</span>
                                     </Form.Item>
                                 </Form>
                             )}>
@@ -998,12 +1004,43 @@ class Index extends Component {
                                         </Form.Item>
                                     ) : null
                                 }
+                                {
+                                    getFieldValue('type') == 10 ? (
+                                        <Form.Item label="选择物流">
+                                            {
+                                                getFieldDecorator('express_id', {
+                                                    rules: [{
+                                                        required: true,
+                                                        message: '请先选择物流'
+                                                    }],
+                                                    initialValue: expressList.length ? function(){
+                                                        const defaultList = expressList.files(item => item.default);
+                                                        if (defaultList.length) {
+                                                            return defaultList[0].id;
+                                                        }
+                                                        return undefined;
+                                                    } : undefined
+                                                })(
+                                                    <Select options={expressList} fieldName={{ value: 'id', label: 'name' }} />
+                                                )
+                                            }
+                                        </Form.Item>
+                                    ) : null
+                                }
                                 <Form.Item>
                                     <Button type="primary" htmlType="submit" loading={submit}>提交订单</Button>
                                 </Form.Item>
                             </Form>
                         </div>
                     </div>
+                </div>
+                <div style={{ paddingTop: '15px' }}>
+                    <span><Tag>W</Tag>上移</span>，
+                    <span><Tag>S</Tag>下移</span>，
+                    <span><Tag>A</Tag>左移</span>，
+                    <span><Tag>D</Tag>右移</span>，
+                    <span><Tag>E</Tag>放大</span>，
+                    <span><Tag>R</Tag>缩小</span>
                 </div>
                 <Drawer
                     title="导入淘宝订单"
