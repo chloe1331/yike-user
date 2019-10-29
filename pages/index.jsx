@@ -3,7 +3,7 @@ import XLSX from 'xlsx';
 import { Form, Input, InputNumber, Button, Tag, message, Tooltip, Checkbox, Cascader, Modal, Radio, Popover, Table, Drawer } from 'antd';
 import PropTypes from 'prop-types';
 
-import { Select, ColorPicker, UploadBtn } from 'component';
+import { Select, ColorPicker, UploadBtn, DialogOrderDetail } from 'component';
 import { MServer, convertBase64UrlToBlob } from 'public/utils';
 import style from 'public/theme/pages/index.less';
 import locale from 'config/locale';
@@ -22,7 +22,8 @@ class Index extends Component {
             importExcelData: null,
             drawer: false,
             selectedRowKeys: null,
-            selectedRow: null
+            selectedRow: null,
+            order_sn: null
         };
         const handles = ['handleSize', 'handleRotate', 'handlePreview', 'handleSubmit', 'handleUploadOrderExcel'];
         handles.forEach(item => this[item] = this[item].bind(this));
@@ -36,6 +37,7 @@ class Index extends Component {
         this.previewDialogRef = createRef();
         this.dragBox1 = createRef();
         this.dragBox2 = createRef();
+        this.dialogDetailRef = createRef();
         this.sizeInputRef;
         this.rotateInputRef;
         this.uploadInputRef = null;
@@ -47,7 +49,7 @@ class Index extends Component {
         this.hasKeyListener = false;
         this.cateObj = {};
         this.token = null;
-        this.submitOrderIds = [];
+        this.submitOrderObj = {};
     }
 
     componentDidMount() {
@@ -576,13 +578,43 @@ class Index extends Component {
                             submit: false
                         });
                         if (res.errcode == 0) {
-                            if (values.type == 10) this.submitOrderIds.push(selectedRow.index);
+                            const catename = `${this.select.brand_name} ${this.select.brand_type_name} ${this.select.texture_name}`;
+                            if (!this.submitOrderObj[values.order_sn]) {
+                                this.submitOrderObj[values.order_sn] = {
+                                    count: 1,
+                                    obj: {
+                                        [this.select.id]: {
+                                            name: catename,
+                                            count: 1
+                                        }
+                                    }
+                                };
+                            } else {
+                                this.submitOrderObj[values.order_sn].count++;
+                                if (!this.submitOrderObj[values.order_sn].obj[this.select.id]) {
+                                    this.submitOrderObj[values.order_sn].obj[this.select.id] = {
+                                        name: catename,
+                                        count: 1
+                                    };
+                                } else {
+                                    this.submitOrderObj[values.order_sn].obj[this.select.id].count++;
+                                }
+                            }
                             Modal.confirm({
                                 title: '订单已提交成功',
                                 okText: '继续下单',
                                 cancelText: '查看订单',
-                                onCancel() {
-                                    router.push('/order');
+                                onOk: () => {
+                                    this.setState({
+                                        drawer: true
+                                    });
+                                },
+                                onCancel: () => {
+                                    this.setState({
+                                        order_sn: values.order_sn
+                                    }, () => {
+                                        if (this.dialogDetailRef.current) this.dialogDetailRef.current.open();
+                                    });
                                 },
                             });
                         }
@@ -662,7 +694,7 @@ class Index extends Component {
     }
 
     render() {
-        const { image, preview, submit, color, pickerColor, auto, list, importExcelData, drawer, selectedRowKeys, selectedRow } = this.state;
+        const { image, preview, submit, color, pickerColor, auto, list, importExcelData, drawer, selectedRowKeys, selectedRow, order_sn } = this.state;
         const { form: { getFieldDecorator, getFieldValue } } = this.props;
         const { select } = this;
         const rowSelection = {
@@ -671,13 +703,14 @@ class Index extends Component {
             onChange: (selectedRowKeys, selectedRows) => {
                 this.handleSelectRow(selectedRows[0]);
             },
-            getCheckboxProps: record => ({
-                disabled: this.submitOrderIds.includes(record.index)
-            }),
+            // getCheckboxProps: record => ({
+            //     disabled: this.submitOrderIds.includes(record.index)
+            // }),
         };
 
         return (
             <div className="page-layout-center">
+                <DialogOrderDetail ref={this.dialogDetailRef} order_sn={order_sn} />
                 <div className={style.layoutHome}>
                     <div className={style.layoutHomeHd}>
                         <Cascader
@@ -731,6 +764,118 @@ class Index extends Component {
                             icon="cloud-upload"
                             onClick={() => this.uploadInputRef.click()}
                         >上传图片</Button>
+                        <Popover 
+                            defaultVisible={true}
+                            overlayClassName={style.popoverSetting}
+                            placement="bottomRight"
+                            trigger="click"
+                            content={(
+                                <Form className={`inline-form ${style.sizeForm}`}>
+                                    <div style={{ display: 'flex' }}>
+                                        <Form.Item label="缩放" style={{ flex: '1' }}>
+                                            <InputNumber
+                                                style={{ width: 80 }}
+                                                disabled={!!preview || auto}
+                                                ref={e => {
+                                                    if (e) this.sizeInputRef = e.inputNumberRef;
+                                                }}
+                                                onChange={value => this.handleSize(value)}
+                                                defaultValue={100}
+                                            />
+                                            <span style={{ marginLeft: '10px' }}>%</span>
+                                        </Form.Item>
+                                        <Form.Item label="旋转" style={{ flex: '1' }}>
+                                            <InputNumber
+                                                style={{ width: 80 }}
+                                                disabled={!!preview || auto}
+                                                ref={e => {
+                                                    if (e) this.rotateInputRef = e.inputNumberRef;
+                                                }}
+                                                onChange={value => this.handleRotate(value)}
+                                                defaultValue={0}
+                                            />
+                                        </Form.Item>
+                                    </div>
+                                    <Form.Item label="背景色设置">
+                                        <div>
+                                            <Select
+                                                style={{ width: 120 }}
+                                                value={color}
+                                                onChange={value => this.setState({ color: value }, () => {
+                                                    if (value != -1) {
+                                                        this.getCanvas();
+                                                    }
+                                                })}
+                                                options={[
+                                                    {
+                                                        label: '透明',
+                                                        value: 'tran'
+                                                    },
+                                                    {
+                                                        label: '黑色',
+                                                        value: '#000'
+                                                    },
+                                                    {
+                                                        label: '白色',
+                                                        value: '#fff'
+                                                    },
+                                                    {
+                                                        label: '红色',
+                                                        value: '#ff1300'
+                                                    },
+                                                    {
+                                                        label: '自定义',
+                                                        value: '-1'
+                                                    }
+                                                ]}
+                                            />
+                                            {
+                                                color == -1 ? (
+                                                    <div style={{ display: 'inline-block', position: 'relative', top: '5px', left: '10px' }}>
+                                                        <ColorPicker
+                                                            color={pickerColor}
+                                                            onChange={c => {
+                                                                this.setState({
+                                                                    pickerColor: c.color
+                                                                }, this.getCanvas);
+                                                            }}
+                                                        />
+                                                    </div>
+                                                ) : null
+                                            }
+                                        </div>
+                                    </Form.Item>
+                                    <Form.Item>
+                                        <Checkbox
+                                            disabled={!this.select || !image}
+                                            checked={auto}
+                                            onChange={e => {
+                                                this.setState({ auto: e.target.checked }, () => {
+                                                    this.getCanvas();
+                                                    if (e.target.checked) {
+                                                        this.handlePreview(true);
+                                                    } else {
+                                                        this.setState({
+                                                            preview: null
+                                                        });
+                                                    }
+                                                });
+                                            }}
+                                        >图片自适应</Checkbox>
+                                        <Button style={{ marginLeft: '10px' }} onClick={() => this.handlePreview(!preview)}>{preview ? '编辑' : '预览'}</Button>
+                                    </Form.Item>
+                                    <Form.Item>
+                                        <span><Tag>W</Tag>上移</span>，
+                                        <span><Tag>S</Tag>下移</span>，
+                                        <span><Tag>A</Tag>左移</span>，
+                                        <span><Tag>D</Tag>右移</span>，
+                                        <span><Tag>E</Tag>放大</span>，
+                                        <span><Tag>R</Tag>缩小</span>
+                                    </Form.Item>
+                                </Form>
+                            )}>
+                            <a style={{ float: 'right', lineHeight: '32px' }}>图片操作</a>
+                        </Popover>
                     </div>
                     <div className={style.layoutHomeBd}>
                         <div className={style.mobilePreview}>
@@ -755,109 +900,6 @@ class Index extends Component {
                             </div>
                         </div>
                         <div className={style.orderConfig}>
-                            <Form className={`inline-form ${style.sizeForm}`}>
-                                <div style={{ display: 'flex' }}>
-                                    <Form.Item label="缩放" style={{ flex: '1' }}>
-                                        <InputNumber
-                                            style={{ width: 80 }}
-                                            disabled={!!preview || auto}
-                                            ref={e => {
-                                                if (e) this.sizeInputRef = e.inputNumberRef;
-                                            }}
-                                            onChange={value => this.handleSize(value)}
-                                            defaultValue={100}
-                                        />
-                                        <span style={{ marginLeft: '10px' }}>%</span>
-                                    </Form.Item>
-                                    <Form.Item label="旋转" style={{ flex: '1' }}>
-                                        <InputNumber 
-                                            style={{ width: 80 }}
-                                            disabled={!!preview || auto}
-                                            ref={e => {
-                                                if (e) this.rotateInputRef = e.inputNumberRef;
-                                            }}
-                                            onChange={value => this.handleRotate(value)}
-                                            defaultValue={0}
-                                        />
-                                    </Form.Item>
-                                </div>
-                                <Form.Item label="背景色设置">
-                                    <div>
-                                        <Select
-                                            style={{ width: 120 }}
-                                            value={color}
-                                            onChange={value => this.setState({ color: value }, () => {
-                                                if (value != -1) {
-                                                    this.getCanvas();
-                                                }
-                                            })}
-                                            options={[
-                                                {
-                                                    label: '透明',
-                                                    value: 'tran'
-                                                },
-                                                {
-                                                    label: '黑色',
-                                                    value: '#000'
-                                                },
-                                                {
-                                                    label: '白色',
-                                                    value: '#fff'
-                                                },
-                                                {
-                                                    label: '红色',
-                                                    value: '#ff1300'
-                                                },
-                                                {
-                                                    label: '自定义',
-                                                    value: '-1'
-                                                }
-                                            ]}
-                                        />
-                                        {
-                                            color == -1 ? (
-                                                <div style={{ display: 'inline-block', position: 'relative', top: '5px', left: '10px' }}>
-                                                    <ColorPicker
-                                                        color={pickerColor}
-                                                        onChange={c => {
-                                                            this.setState({
-                                                                pickerColor: c.color
-                                                            }, this.getCanvas);
-                                                        }}
-                                                    />
-                                                </div>
-                                            ) : null
-                                        }
-                                    </div>
-                                </Form.Item>
-                                <Form.Item>
-                                    <Checkbox 
-                                        disabled={!this.select || !image} 
-                                        checked={auto} 
-                                        onChange={e => {
-                                            this.setState({ auto: e.target.checked }, () => {
-                                                this.getCanvas();
-                                                if (e.target.checked) {
-                                                    this.handlePreview(true);
-                                                } else {
-                                                    this.setState({
-                                                        preview: null
-                                                    });
-                                                }
-                                            });
-                                        }}
-                                    >图片自适应</Checkbox>
-                                    <Button style={{ marginLeft: '10px' }} onClick={() => this.handlePreview(!preview)}>{preview ? '编辑' : '预览'}</Button>
-                                </Form.Item>
-                                <Form.Item>
-                                    <span><Tag>W</Tag>上移</span>，
-                                    <span><Tag>S</Tag>下移</span>，
-                                    <span><Tag>A</Tag>左移</span>，
-                                    <span><Tag>D</Tag>右移</span>，
-                                    <span><Tag>E</Tag>放大</span>，
-                                    <span><Tag>R</Tag>缩小</span>
-                                </Form.Item>
-                            </Form>
                             <Form onSubmit={this.handleSubmit}>
                                 <Form.Item label="订单类型">
                                     {
@@ -901,7 +943,18 @@ class Index extends Component {
                                         </Form.Item>
                                     ) : null
                                 }
-                                <Form.Item label="配货标签">
+                                <Form.Item label="配货标签" extra={getFieldValue('order_sn') ? (
+                                    <a 
+                                        className="text-info" 
+                                        onClick={() => {
+                                            this.setState({
+                                                order_sn: getFieldValue('order_sn')
+                                            }, () => {
+                                                this.dialogDetailRef.current && this.dialogDetailRef.current.open();
+                                            });
+                                        }}
+                                    >查看订单</a>
+                                ) : null}>
                                     {
                                         getFieldDecorator('order_sn', {
                                             rules: [{
@@ -977,7 +1030,17 @@ class Index extends Component {
                                 dataIndex: 'order_sn',
                                 title: '订单编号',
                                 render: (text, record) => {
-                                    return <span>{text}{this.submitOrderIds.includes(record.index) ? <span className="text-success">(已提交)</span> : null}</span>;
+                                    return <span>{text}{this.submitOrderObj[record.order_sn] ? <Tooltip title={(
+                                        <div className={style.tooltipContent}>
+                                            {Object.keys(this.submitOrderObj[record.order_sn].obj).map(item => (
+                                                <p key={item}>{this.submitOrderObj[record.order_sn].obj[item].name} {this.submitOrderObj[record.order_sn].obj[item].count}次</p>
+                                            ))}
+                                        </div>
+                                    )}>
+                                        <span className="text-success">
+                                            (已提交{this.submitOrderObj[record.order_sn].count}次)
+                                        </span>
+                                    </Tooltip> : null}</span>;
                                 }
                             },
                             {

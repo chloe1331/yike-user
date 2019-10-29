@@ -24,7 +24,7 @@ export default class OrderList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: [],
+            list: props.list || [],
             pager: {
                 current: 1,
                 pageSize: 10,
@@ -38,7 +38,22 @@ export default class OrderList extends Component {
     }
 
     componentDidMount() {
-        this.getList();
+        if (!this.props.list) this.getList();
+    }
+
+    getSnapshotBeforeUpdate(prevProps) {
+        if (this.props.list != prevProps.list && this.props.list != this.state.list) {
+            return true;
+        }
+
+        return false;
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (snapshot) this.setState({
+            list: this.props.list,
+            loading: false
+        });
     }
 
     getList(page = this.state.pager.current) {
@@ -86,7 +101,7 @@ export default class OrderList extends Component {
 
     render() {
         const { list, image, pager, loading } = this.state;
-        const colSpan = 7;
+        const colSpan = 8;
         const statusMap = {
             0: {
                 text: '待审核',
@@ -121,6 +136,7 @@ export default class OrderList extends Component {
                                 <th>型号</th>
                                 <th>材质</th>
                                 <th>订货量</th>
+                                <th>创建时间</th>
                                 <th>状态</th>
                                 <th>价格</th>
                                 <th>订单类型</th>
@@ -144,6 +160,7 @@ export default class OrderList extends Component {
                                         <td>{order.brand_name} {order.brand_type_name}</td>
                                         <td>{order.texture_name} {order.texture_attr_name || ''}</td>
                                         <td>{order.quantity}</td>
+                                        <td>{order.createdAt}</td>
                                         {
                                             i === 0 ? [
                                                 <td key="status" className={style.tableBodyRowSpan} rowSpan={item.orders.length}>
@@ -176,5 +193,6 @@ export default class OrderList extends Component {
 
 OrderList.propTypes = {
     condition: PropTypes.object,
-    action: PropTypes.string
+    action: PropTypes.string,
+    list: PropTypes.array
 };

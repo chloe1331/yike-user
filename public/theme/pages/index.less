@@ -51,6 +51,22 @@
     border: 1px dashed @border-color-base;
 }
 
+.popover-setting {
+    :global(.ant-popover-content) {
+        width: 360px;
+        background-color: #fff;
+    }
+}
+
+.tooltip-content {
+    p {
+        margin-bottom: 0;
+        &:not(:last-child) {
+            margin-bottom: 5px;
+        }
+    }
+}
+
 .mobile-preview {
     position: relative;
     overflow: hidden;
