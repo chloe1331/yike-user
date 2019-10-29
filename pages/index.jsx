@@ -764,6 +764,24 @@ class Index extends Component {
                             icon="cloud-upload"
                             onClick={() => this.uploadInputRef.click()}
                         >上传图片</Button>
+                        <Button style={{ marginLeft: '15px' }} onClick={() => this.handlePreview(!preview)}>{preview ? '编辑' : '预览'}</Button>
+                        <Checkbox
+                            style={{ marginLeft: '15px' }} 
+                            disabled={!this.select || !image}
+                            checked={auto}
+                            onChange={e => {
+                                this.setState({ auto: e.target.checked }, () => {
+                                    this.getCanvas();
+                                    if (e.target.checked) {
+                                        this.handlePreview(true);
+                                    } else {
+                                        this.setState({
+                                            preview: null
+                                        });
+                                    }
+                                });
+                            }}
+                        >图片自适应</Checkbox>
                         <Popover 
                             defaultVisible={true}
                             overlayClassName={style.popoverSetting}
@@ -844,25 +862,6 @@ class Index extends Component {
                                                 ) : null
                                             }
                                         </div>
-                                    </Form.Item>
-                                    <Form.Item>
-                                        <Checkbox
-                                            disabled={!this.select || !image}
-                                            checked={auto}
-                                            onChange={e => {
-                                                this.setState({ auto: e.target.checked }, () => {
-                                                    this.getCanvas();
-                                                    if (e.target.checked) {
-                                                        this.handlePreview(true);
-                                                    } else {
-                                                        this.setState({
-                                                            preview: null
-                                                        });
-                                                    }
-                                                });
-                                            }}
-                                        >图片自适应</Checkbox>
-                                        <Button style={{ marginLeft: '10px' }} onClick={() => this.handlePreview(!preview)}>{preview ? '编辑' : '预览'}</Button>
                                     </Form.Item>
                                     <Form.Item>
                                         <span><Tag>W</Tag>上移</span>，
