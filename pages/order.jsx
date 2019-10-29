@@ -38,6 +38,9 @@ export default class Order extends Component {
             value: 'audit',
             label: '待审核'
         }, {
+            value: 'waitpay',
+            label: '待付款'
+        }, {
             value: 'pending',
             label: '等待打印'
         }, {
