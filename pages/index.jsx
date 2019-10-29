@@ -1081,7 +1081,9 @@ class Index extends Component {
                                                                     message: '请输入赠品数量'
                                                                 }],
                                                                 initialValue: 1
-                                                            } : {})(
+                                                            } : {
+                                                                initialValue: 1
+                                                            })(
                                                                 <InputNumber />
                                                             )
                                                         }
