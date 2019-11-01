@@ -59,6 +59,7 @@ export default class Order extends Component {
                                     paySubmit: false,
                                 });
                                 if (res.errcode == 0) {
+                                    message.success('批量付款成功');
                                     this.tableRef.current.reload();
                                 }
                             });

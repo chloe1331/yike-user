@@ -1,5 +1,5 @@
 import { Component, createRef, useState } from 'react';
-import { Pagination, Spin, Empty } from 'antd';
+import { Pagination, Spin, Empty, Button, Popconfirm, message } from 'antd';
 import PropTypes from 'prop-types';
 
 import { MServer } from 'public/utils';
@@ -99,6 +99,28 @@ export default class OrderList extends Component {
         }
     }
 
+    handlePay(id) {
+        MServer.post('/order/pay', {
+            id
+        }).then(res => {
+            if (res.errcode == 0) {
+                message.success('付款成功');
+                this.getList();
+            }
+        });
+    }
+
+    handleClose(id) {
+        MServer.post('/order/close', {
+            id
+        }).then(res => {
+            if (res.errcode == 0) {
+                message.success('关闭成功');
+                this.getList();
+            }
+        });
+    }
+
     render() {
         const { list, image, pager, loading } = this.state;
         const colSpan = 9;
@@ -188,6 +210,26 @@ export default class OrderList extends Component {
                                         <td>{part.createdAt}</td>
                                     </tr>
                                 )),
+                                item.status == 30 ? (
+                                    <tr key="operator" className={style.tableBodyHead}>
+                                        <td colSpan={colSpan}>
+                                            <Popconfirm 
+                                                title={<div>确定要付款<span className="text-warning">{item.amount}</span>元吗？</div>} 
+                                                onConfirm={() => this.handlePay(item.id)}
+                                                placement="rightBottom"
+                                            >
+                                                <Button type="primary">付款</Button>
+                                            </Popconfirm>
+                                            <Popconfirm
+                                                title={<div>确定要关闭这个订单吗？</div>}
+                                                onConfirm={() => this.handleClose(item.id)}
+                                                placement="rightBottom"
+                                            >
+                                                <Button>关闭订单</Button>
+                                            </Popconfirm>
+                                        </td>
+                                    </tr>
+                                ) : null,
                                 <tr key="footer" className={style.tableBodyFooter}>
                                     <td colSpan={colSpan} style={{ height: 15 }}></td>
                                 </tr>

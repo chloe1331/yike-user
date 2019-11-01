@@ -698,7 +698,7 @@ class Index extends Component {
             workbookJson.forEach((item, index) => {
                 let mobile = item['联系手机'];
                 if (mobile) mobile = mobile.match(/[1-9]\d*/)[0];
-                const adsplit = (item['收货地址'] || item['收货地址 '] || '').split(' ');
+                const adsplit = (item['收货地址'] || item['收货地址 '] || '').trim().split(/\s+/);
                 result.push({
                     order_sn: item['订单编号'],
                     consignee: item['收货人姓名'],
