@@ -133,11 +133,11 @@ export default class OrderList extends Component {
                         <thead>
                             <tr className={style.tableThead}>
                                 <th>打印图</th>
-                                <th>型号</th>
-                                <th>材质</th>
+                                <th>商品</th>
+                                <th>单价</th>
                                 <th>订货量</th>
                                 <th>创建时间</th>
-                                <th>价格(含运费)</th>
+                                <th>价格</th>
                                 <th>快递</th>
                                 <th>订单类型</th>
                                 <th>状态</th>
@@ -158,36 +158,36 @@ export default class OrderList extends Component {
                                 item.orders.map((order, i) => (
                                     <tr key={`order_${order.id}`} className={style.tableBodyContent}>
                                         <td><ImageHover src={order.image} onClick={() => this.handleOpenImagePreview(order.image)} /></td>
-                                        <td>{order.brand_name} {order.brand_type_name}</td>
-                                        <td>{order.texture_name} {order.texture_attr_name || ''}</td>
+                                        <td>{order.brand_name} {order.brand_type_name} {order.texture_name} {order.texture_attr_name || ''}</td>
+                                        <td>{order.price}</td>
                                         <td>{order.quantity}</td>
                                         <td>{order.createdAt}</td>
                                         {
                                             i === 0 ? [
-                                                <td key="amount" className={style.tableBodyRowSpan} rowSpan={item.orders.length}>¥ {item.amount}</td>,
-                                                <td key="express" className={style.tableBodyRowSpan} rowSpan={item.orders.length}>
-                                                    <div>{item.express_name}</div>
-                                                    <div>运费：¥ {item.post_fee}</div>
+                                                <td key="amount" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+                                                    <div>¥ {item.amount}</div>
+                                                    {item.post_fee ? <div>含运费{item.post_fee}元</div> : null}
                                                 </td>,
-                                                <td key="type" className={style.tableBodyRowSpan} rowSpan={item.orders.length}>{item.type == 10 ? '充值订单' : '普通订单'}</td>,
-                                                <td key="status" className={style.tableBodyRowSpan} rowSpan={item.orders.length}>
+                                                <td key="express" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+                                                    <div>{item.express_name || '--'}</div>
+                                                </td>,
+                                                <td key="type" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>{item.type == 10 ? '充值订单' : '普通订单'}</td>,
+                                                <td key="status" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
                                                     <span className={statusMap[item.status].className}>{statusMap[item.status].text}</span>
                                                 </td>,
                                             ] : null
                                         }
                                     </tr>
                                 )),
-                                item.parts.length ? (
-                                    <tr key="parts" className={style.tableBodyHead}>
-                                        <td colSpan={colSpan}>
-                                            {
-                                                item.parts.map((part, i) => (
-                                                    <span key={part.id} style={{ marginRight: '5px' }}>{part.name}：{part.quantity}个{i != item.parts.length - 1 ? '，' : ''}</span>
-                                                ))
-                                            }
-                                        </td>
+                                item.parts.map((part) => (
+                                    <tr key={`part_${part.id}`} className={style.tableBodyContent}>
+                                        <td>配件</td>
+                                        <td>{part.name}</td>
+                                        <td>{part.price}</td>
+                                        <td>{part.quantity}</td>
+                                        <td>{part.createdAt}</td>
                                     </tr>
-                                ): null,
+                                )),
                                 <tr key="footer" className={style.tableBodyFooter}>
                                     <td colSpan={colSpan} style={{ height: 15 }}></td>
                                 </tr>

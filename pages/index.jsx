@@ -644,7 +644,7 @@ class Index extends Component {
                                 okText: '继续下单',
                                 cancelText: '查看订单',
                                 onOk: () => {
-                                    this.setState({
+                                    values.type == 10 && this.setState({
                                         drawer: true
                                     });
                                 },
