@@ -75,7 +75,7 @@ export default class OrderList extends Component {
             this.setState({
                 loading: false,
                 list: res.errcode == 0 ? res.data : [],
-                pager
+                pager,
             });
         });
     }
