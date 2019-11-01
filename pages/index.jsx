@@ -931,7 +931,7 @@ class Index extends Component {
                                 <Form.Item label="订单类型">
                                     {
                                         getFieldDecorator('type', {
-                                            initialValue: 10
+                                            initialValue: 0
                                         })(
                                             <Radio.Group 
                                                 options={[{
@@ -1228,7 +1228,7 @@ class Index extends Component {
                             {
                                 key: 'address',
                                 dataIndex: 'address',
-                                title: '收货地址',
+                                title: '详细地址',
                                 render: (text, record) => <Input
                                     defaultValue={text}
                                     style={{ width: 150 }}

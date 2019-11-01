@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import { MServer } from 'public/utils';
 import DialogImagePreview from '../dialog-image-preview';
+import DialogUpdateAddress from '../dialog-update-address';
 import style from './style.less';
 
 function ImageHover({ src, onClick }) {
@@ -30,10 +31,12 @@ export default class OrderList extends Component {
                 pageSize: 10,
                 total: 0
             },
+            editRecord: null,
             loading: true,
             image: null
         };
         this.imagePreviewRef = createRef();
+        this.updateAddressRef = createRef();
         this.condition = props.condition || {};
     }
 
@@ -121,8 +124,16 @@ export default class OrderList extends Component {
         });
     }
 
+    handleUpdateAddress(record) {
+        this.setState({
+            editRecord: record
+        }, () => {
+            if (this.updateAddressRef.current) this.updateAddressRef.current.open();
+        });
+    }
+
     render() {
-        const { list, image, pager, loading } = this.state;
+        const { list, image, pager, loading, editRecord } = this.state;
         const colSpan = 9;
         const statusMap = {
             0: {
@@ -149,6 +160,7 @@ export default class OrderList extends Component {
 
         return (
             <div className={style.orderTable}>
+                <DialogUpdateAddress ref={this.updateAddressRef} editRecord={editRecord} onSuccess={() => this.getList()} />
                 <DialogImagePreview width={320} image={image} ref={this.imagePreviewRef} />
                 <Spin spinning={loading}>
                     <table>
@@ -227,6 +239,7 @@ export default class OrderList extends Component {
                                             >
                                                 <Button>关闭订单</Button>
                                             </Popconfirm>
+                                            <Button onClick={() => this.handleUpdateAddress(item)}>修改收货信息</Button>
                                         </td>
                                     </tr>
                                 ) : null,

@@ -59,6 +59,17 @@ ul, ol, li {
             width: 240px;
         }
     }
+    .inline-form {
+        >.ant-form-item {
+            display: flex;
+            .ant-form-item-label {
+                width: 100px
+            }
+            .ant-form-item-control-wrapper {
+                flex: 1;
+            }
+        }
+    }
 }
 
 :global {
