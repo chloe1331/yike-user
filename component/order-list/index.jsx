@@ -1,10 +1,12 @@
 import { Component, createRef, useState } from 'react';
-import { Pagination, Spin, Empty, Button, Popconfirm, message } from 'antd';
+import Link from 'next/link';
+import { Pagination, Spin, Empty, Button, Popconfirm, message, Modal } from 'antd';
 import PropTypes from 'prop-types';
 
 import { MServer } from 'public/utils';
 import DialogImagePreview from '../dialog-image-preview';
 import DialogUpdateAddress from '../dialog-update-address';
+import Select from '../select';
 import style from './style.less';
 
 function ImageHover({ src, onClick }) {
@@ -33,7 +35,8 @@ export default class OrderList extends Component {
             },
             editRecord: null,
             loading: true,
-            image: null
+            image: null,
+            expressList: []
         };
         this.imagePreviewRef = createRef();
         this.updateAddressRef = createRef();
@@ -42,6 +45,7 @@ export default class OrderList extends Component {
 
     componentDidMount() {
         if (!this.props.list) this.getList();
+        this.getExpress();
     }
 
     getSnapshotBeforeUpdate(prevProps) {
@@ -80,6 +84,18 @@ export default class OrderList extends Component {
                 list: res.errcode == 0 ? res.data : [],
                 pager,
             });
+        });
+    }
+
+    getExpress() {
+        MServer.get('/logis/list', {
+            is_all: 1
+        }).then(res => {
+            if (res.errcode == 0) {
+                this.setState({
+                    expressList: res.data
+                });
+            }
         });
     }
     
@@ -132,8 +148,47 @@ export default class OrderList extends Component {
         });
     }
 
+    handleDeleteOrder(id) {
+        MServer.post('/order/deleteorder', {
+            id
+        }).then(res => {
+            if (res.errcode == 0) {
+                message.success('删除成功');
+                this.getList();
+            }
+        });
+    }
+
+    handleDeletePart(id) {
+        MServer.post('/order/deletepart', {
+            id
+        }).then(res => {
+            if (res.errcode == 0) {
+                message.success('删除成功');
+                this.getList();
+            }
+        });
+    }
+
+    handleChangeExpress(id, express_id) {
+        Modal.confirm({
+            title: '确认要修改快递吗？',
+            onOk: () => {
+                MServer.post('/order/changeexpress', {
+                    id,
+                    express_id
+                }).then(res => {
+                    if (res.errcode == 0){
+                        message.success('修改成功');
+                        this.getList();
+                    }
+                });
+            }
+        });
+    }
+
     render() {
-        const { list, image, pager, loading, editRecord } = this.state;
+        const { list, image, pager, loading, editRecord, expressList } = this.state;
         const colSpan = 9;
         const statusMap = {
             0: {
@@ -192,7 +247,21 @@ export default class OrderList extends Component {
                                 item.orders.map((order, i) => (
                                     <tr key={`order_${order.id}`} className={style.tableBodyContent}>
                                         <td><ImageHover src={order.image} onClick={() => this.handleOpenImagePreview(order.image)} /></td>
-                                        <td>{order.brand_name} {order.brand_type_name} {order.texture_name} {order.texture_attr_name || ''}</td>
+                                        <td>
+                                            {order.brand_name} {order.brand_type_name} {order.texture_name} {order.texture_attr_name || ''}
+                                            {
+                                                item.status == 30 ? (
+                                                    <div>
+                                                        <Popconfirm
+                                                            title="确定要删除这个商品吗？"
+                                                            onConfirm={() => this.handleDeleteOrder(order.id)}
+                                                        >
+                                                            <a>删除商品</a>
+                                                        </Popconfirm>
+                                                    </div>
+                                                ) : null
+                                            }
+                                        </td>
                                         <td>{order.price}</td>
                                         <td>{order.quantity}</td>
                                         <td>{order.createdAt}</td>
@@ -203,7 +272,19 @@ export default class OrderList extends Component {
                                                     {item.post_fee ? <div>含运费{item.post_fee}元</div> : null}
                                                 </td>,
                                                 <td key="express" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
-                                                    <div>{item.express_name || '--'}</div>
+                                                    {
+                                                        item.status == 30 ? (
+                                                            <Select 
+                                                                style={{ width: 120 }}
+                                                                options={expressList}
+                                                                value={item.express_id}
+                                                                fieldName={{ label: 'name', value: 'id' }}
+                                                                onChange={value => this.handleChangeExpress(item.id, value)}
+                                                            />
+                                                        ) : (
+                                                            <div>{item.express_name || '--'}</div>
+                                                        )
+                                                    }
                                                 </td>,
                                                 <td key="type" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>{item.type == 10 ? '充值订单' : '普通订单'}</td>,
                                                 <td key="status" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
@@ -216,7 +297,21 @@ export default class OrderList extends Component {
                                 item.parts.map((part) => (
                                     <tr key={`part_${part.id}`} className={style.tableBodyContent}>
                                         <td>配件</td>
-                                        <td>{part.name}</td>
+                                        <td>
+                                            {part.name}
+                                            {
+                                                item.status == 30 ? (
+                                                    <div>
+                                                        <Popconfirm
+                                                            title="确定要删除这个商品吗？"
+                                                            onConfirm={() => this.handleDeletePart(part.id)}
+                                                        >
+                                                            <a>删除商品</a>
+                                                        </Popconfirm>
+                                                    </div>
+                                                ) : null
+                                            }
+                                        </td>
                                         <td>{part.price}</td>
                                         <td>{part.quantity}</td>
                                         <td>{part.createdAt}</td>
@@ -239,6 +334,7 @@ export default class OrderList extends Component {
                                             >
                                                 <Button>关闭订单</Button>
                                             </Popconfirm>
+                                            <Link href={`/?type=10&order_sn=${item.order_sn}&express_id=${item.express_id}`}><Button>添加商品</Button></Link>
                                             <Button onClick={() => this.handleUpdateAddress(item)}>修改收货信息</Button>
                                         </td>
                                     </tr>

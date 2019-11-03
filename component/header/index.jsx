@@ -46,7 +46,7 @@ export default class Header extends Component {
                 <ul className={style.menuList}>
                     {
                         menu.map(item => (
-                            <li key={item.href} className={cx({ active: router.asPath == item.href })}>
+                            <li key={item.href} className={cx({ active: router.pathname == item.href })}>
                                 <Link href={item.href}>
                                     <a>{item.title}</a>
                                 </Link>

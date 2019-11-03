@@ -1,4 +1,5 @@
 import MServer from './server';
+import Url from './url';
 
 const convertBase64UrlToBlob = (urlData) => {
     const bytes = window.atob(urlData.split(',')[1]); //去掉url的头，并转换为byte  
@@ -17,5 +18,6 @@ const convertBase64UrlToBlob = (urlData) => {
 
 export {
     MServer,
-    convertBase64UrlToBlob
+    convertBase64UrlToBlob,
+    Url
 };

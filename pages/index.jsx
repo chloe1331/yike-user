@@ -4,7 +4,7 @@ import { Form, Input, InputNumber, Button, Tag, message, Tooltip, Checkbox, Casc
 import PropTypes from 'prop-types';
 
 import { Select, ColorPicker, UploadBtn, DialogOrderDetail } from 'component';
-import { MServer, convertBase64UrlToBlob } from 'public/utils';
+import { MServer, convertBase64UrlToBlob, Url } from 'public/utils';
 import style from 'public/theme/pages/index.less';
 import locale from 'config/locale';
 
@@ -85,6 +85,21 @@ class Index extends Component {
                 this.token = res.data.token;
             }
         });
+        const { router, form: { setFieldsValue } } = this.props;
+        const params = Url.getAllParams(router.asPath);
+        if (!params) return;
+        let setFormValue = {};
+
+        if (params.type) {
+            setFormValue.type = parseInt(params.type);
+        }
+        if (params.order_sn) {
+            setFormValue.order_sn = params.order_sn;
+        }
+        if (params.express_id) {
+            setFormValue.express_id = parseInt(params.express_id);
+        }
+        setFieldsValue(setFormValue);
     }
 
     getCates() {
@@ -547,7 +562,7 @@ class Index extends Component {
         }
 
         const { form: { validateFields } } = this.props;
-        const { selectedRow, selectParts } = this.state;
+        const { selectedRow, selectParts, importExcelData } = this.state;
 
         validateFields((err, values) => {
             if (!err) {
@@ -601,7 +616,7 @@ class Index extends Component {
                             count: values[`part_${item}`]
                         }));
                     }
-                    if (params.type == 10) {
+                    if (params.type == 10 && selectedRow) {
                         params = {
                             ...params,
                             consignee: selectedRow.consignee,
@@ -644,7 +659,7 @@ class Index extends Component {
                                 okText: '继续下单',
                                 cancelText: '查看订单',
                                 onOk: () => {
-                                    values.type == 10 && this.setState({
+                                    values.type == 10 && importExcelData && this.setState({
                                         drawer: true
                                     });
                                 },
