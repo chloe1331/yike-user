@@ -10,11 +10,6 @@ export default class Bill extends Component {
                     action="/user/mybill"
                     columns={[
                         {
-                            key: 'user_id',
-                            dataIndex: 'user_id',
-                            title: '用户ID'
-                        },
-                        {
                             key: 'type',
                             dataIndex: 'type',
                             title: '交易类型',
