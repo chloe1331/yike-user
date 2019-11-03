@@ -29,6 +29,10 @@ export default class Header extends Component {
             {
                 title: '订单列表',
                 href: '/order'
+            },
+            {
+                title: '账单列表',
+                href: '/bill'
             }
         ];
         const userMenu = (
