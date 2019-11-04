@@ -210,6 +210,14 @@ export default class OrderList extends Component {
             40: {
                 text: '已关闭',
                 className: 'text-gray'
+            },
+            50: {
+                text: '待发货',
+                className: 'text-warning'
+            },
+            60: {
+                text: '已发货',
+                className: 'text-success'
             }
         };
 

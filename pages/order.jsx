@@ -88,6 +88,12 @@ export default class Order extends Component {
         }, {
             value: 'success',
             label: '已打印'
+        }, {
+            value: 'waitsend',
+            label: '待发货'
+        }, {
+            value: 'send',
+            label: '已发货'
         }];
         const { paySubmit } = this.state;
 
