@@ -1,5 +1,6 @@
 import { Component, createRef, useState } from 'react';
 import Link from 'next/link';
+import ClipboardJS from 'clipboard';
 import { Pagination, Spin, Empty, Button, Popconfirm, message, Modal } from 'antd';
 import PropTypes from 'prop-types';
 
@@ -344,6 +345,28 @@ export default class OrderList extends Component {
                                             </Popconfirm>
                                             <Link href={`/?type=10&order_sn=${item.order_sn}&express_id=${item.express_id}`}><Button>添加商品</Button></Link>
                                             <Button onClick={() => this.handleUpdateAddress(item)}>修改收货信息</Button>
+                                        </td>
+                                    </tr>
+                                ) : null,
+                                item.status == 60 && item.logis ? (
+                                    <tr key="operator" className={style.tableBodyHead}>
+                                        <td colSpan={colSpan}>
+                                            物流信息：<span >
+                                                {item.logis.express_name} {item.logis.express_sn}
+                                                <a
+                                                    ref={e => {
+                                                        if (e) {
+                                                            const clipboard = new ClipboardJS(e, {
+                                                                text: () => `${item.logis.express_name} ${item.logis.express_sn}`
+                                                            });
+                                                            clipboard.on('success', function () {
+                                                                message.success('复制成功！');
+                                                            });
+                                                        }
+                                                    }}
+                                                    style={{ marginLeft: '10px' }}
+                                                >点击复制</a>
+                                            </span>
                                         </td>
                                     </tr>
                                 ) : null,
