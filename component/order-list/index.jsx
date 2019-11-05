@@ -14,7 +14,7 @@ function ImageHover({ src, onClick }) {
     const [ show, setShow ] = useState(false);
 
     return <div onMouseOver={() => setShow(true)} onMouseLeave={() => setShow(false)} onClick={onClick} className={style.tableImage}>
-        <img src={src} />
+        <img src={`${src}?imageView2/0/w/200`} />
         {show ? <span>点击查看</span> : null}
     </div>;
 }

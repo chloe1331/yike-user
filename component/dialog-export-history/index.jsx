@@ -38,7 +38,6 @@ class DialogExportHistroy extends Component {
                                 <div>
                                     <a 
                                         onClick={() => {
-                                            console.log(`http:${locale[process.env.NODE_ENV].url.api}/static/logis/${text}`);
                                             window.open(`http:${locale[process.env.NODE_ENV].url.api}/static/logis/${text}`);
                                         }}
                                     >下载</a>
