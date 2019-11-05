@@ -212,13 +212,17 @@ class Index extends Component {
         if (bg && bg.complete) {
             context.rect(left, 0, width, height);
             if (color == 'tran') {
-                context.fillStyle = context.createPattern(trans, 'repeat');
+                if (!isRes) {
+                    context.fillStyle = context.createPattern(trans, 'repeat');
+                    context.fill();
+                }
             } else if (color == -1) {
                 context.fillStyle = pickerColor;
+                context.fill();
             } else {
                 context.fillStyle = color;
+                context.fill();
             }
-            context.fill();
         }
 
         if (upload && upload.complete) {
@@ -313,7 +317,7 @@ class Index extends Component {
         context.drawImage(camera, 0, 0, camera.width, camera.height, left, 0, width, height);
     }
 
-    getPreviewImage({ power = 1, canvas = this.canvasRef.current, useCamera = true } = {}) {
+    getPreviewImage({ power = 1, canvas = this.canvasRef.current, useCamera = true, isRes } = {}) {
         const bg = this.imageBgRef.current;
         const camera = this.imageCameraRef.current;
         const box = this.boxRef.current;
@@ -346,7 +350,7 @@ class Index extends Component {
                 imageData.data[i] = 0;
                 imageData.data[i + 1] = 0;
                 imageData.data[i + 2] = 0;
-                imageData.data[i + 3] = 255;
+                imageData.data[i + 3] = isRes ? 0 : 255;
             }
         }
 
@@ -381,7 +385,8 @@ class Index extends Component {
         return this.getPreviewImage({
             power: bg.width / 320,
             canvas,
-            useCamera
+            useCamera,
+            isRes: true
         });
     }
 
@@ -540,8 +545,7 @@ class Index extends Component {
         this.setState({
             preview: get ? this.getPreviewImage({
                 canvas,
-                power: bg.width / 320,
-                isRes: true
+                power: bg.width / 320
             }) : null
         }, () => {
             if (get) this.getCanvas();
