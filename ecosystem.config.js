@@ -23,7 +23,7 @@ module.exports = {
             user: 'root',
             host: '47.99.38.214',
             ref: 'origin/master',
-            repo: `git@git.runcaijs.com:root/${appName}.git`,
+            repo: `git@git.yikebb.com:root/${appName}.git`,
             path: `/workspace/${appName}`,
             'post-deploy': 'git reset --hard && git checkout master && git pull && npm install && pm2 startOrRestart ecosystem.config.js --env production',
             env: {
