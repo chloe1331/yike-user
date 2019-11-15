@@ -3566,7 +3566,11 @@ function (_Component) {
               },
               silent: true
             }).then(function (res) {
-              return "".concat(config_locale__WEBPACK_IMPORTED_MODULE_45___default.a["production"].url.cdnUser).concat(res.key);
+              if (res.key) {
+                return "".concat(config_locale__WEBPACK_IMPORTED_MODULE_45___default.a["production"].url.cdnUser).concat(res.key);
+              } else {
+                throw new Error('图片上传失败');
+              }
             });
           }, function () {
             var formdata = new FormData();
@@ -3579,7 +3583,11 @@ function (_Component) {
               },
               silent: true
             }).then(function (res) {
-              return "".concat(config_locale__WEBPACK_IMPORTED_MODULE_45___default.a["production"].url.cdnUser).concat(res.key);
+              if (res.key) {
+                return "".concat(config_locale__WEBPACK_IMPORTED_MODULE_45___default.a["production"].url.cdnUser).concat(res.key);
+              } else {
+                throw new Error('图片上传失败');
+              }
             });
           }];
 
@@ -3665,6 +3673,8 @@ function (_Component) {
                 });
               }
             });
+          }).catch(function (err) {
+            antd_lib_message__WEBPACK_IMPORTED_MODULE_31___default.a.error(err.message);
           });
         }
       });

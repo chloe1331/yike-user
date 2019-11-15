@@ -588,7 +588,13 @@ class Index extends Component {
                                 'Content-Type': 'multipart/form-data'
                             },
                             silent: true
-                        }).then(res => `${locale[process.env.NODE_ENV].url.cdnUser}${res.key}`);
+                        }).then(res => {
+                            if (res.key) {
+                                return `${locale[process.env.NODE_ENV].url.cdnUser}${res.key}`;
+                            } else {
+                                throw new Error('图片上传失败');
+                            }
+                        });
                     },
                     () => {
                         const formdata = new FormData();
@@ -600,7 +606,13 @@ class Index extends Component {
                                 'Content-Type': 'multipart/form-data'
                             },
                             silent: true
-                        }).then(res => `${locale[process.env.NODE_ENV].url.cdnUser}${res.key}`);
+                        }).then(res => {
+                            if (res.key) {
+                                return `${locale[process.env.NODE_ENV].url.cdnUser}${res.key}`;
+                            } else {
+                                throw new Error('图片上传失败');
+                            }
+                        });
                     },
                 ];
                 Promise.all(pl.map(item => item())).then(res => {
@@ -677,6 +689,8 @@ class Index extends Component {
                             });
                         }
                     });
+                }).catch(err => {
+                    message.error(err.message);
                 });
             }
         });
