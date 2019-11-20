@@ -324,8 +324,8 @@ class Index extends Component {
         const context = canvas.getContext('2d');
 
         const width = 320 * power;
-        const ratio = width / camera.width;
-        const height = parseInt(camera.height * ratio);
+        const ratio = width / bg.width;
+        const height = parseInt(bg.height * ratio);
         const canvasWidth = box.offsetWidth * power;
         const left = (canvasWidth - width) / 2;
 

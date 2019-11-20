@@ -3251,9 +3251,9 @@ function (_Component) {
       var box = this.boxRef.current;
       var context = canvas.getContext('2d');
       var width = 320 * power;
-      var ratio = width / camera.width;
+      var ratio = width / bg.width;
 
-      var height = _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_33___default()(camera.height * ratio);
+      var height = _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_33___default()(bg.height * ratio);
 
       var canvasWidth = box.offsetWidth * power;
       var left = (canvasWidth - width) / 2;
