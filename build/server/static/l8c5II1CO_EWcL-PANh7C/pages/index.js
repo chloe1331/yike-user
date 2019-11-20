@@ -3730,7 +3730,7 @@ function (_Component) {
             province: adsplit[0],
             city: adsplit[1],
             district: adsplit[2],
-            address: adsplit[3],
+            address: adsplit.slice(3).join(' '),
             seller_remark: item['订单备注'],
             buyer_remark: item['买家留言'],
             remark: item['自定义备注'],
