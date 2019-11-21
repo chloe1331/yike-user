@@ -2070,37 +2070,37 @@ function (_Component) {
       });
     }
   }, {
-    key: "handleUpdateAddress",
-    value: function handleUpdateAddress(record) {
+    key: "handleDeleteTrade",
+    value: function handleDeleteTrade(id) {
       var _this7 = this;
 
-      this.setState({
-        editRecord: record
-      }, function () {
-        if (_this7.updateAddressRef.current) _this7.updateAddressRef.current.open();
-      });
-    }
-  }, {
-    key: "handleDeleteOrder",
-    value: function handleDeleteOrder(id) {
-      var _this8 = this;
-
-      utils["a" /* MServer */].post('/order/deleteorder', {
+      utils["a" /* MServer */].post('/order/userdelete', {
         id: id
       }).then(function (res) {
         if (res.errcode == 0) {
           message_default.a.success('删除成功');
 
-          _this8.getList();
+          _this7.getList();
         }
       });
     }
   }, {
-    key: "handleDeletePart",
-    value: function handleDeletePart(id) {
+    key: "handleUpdateAddress",
+    value: function handleUpdateAddress(record) {
+      var _this8 = this;
+
+      this.setState({
+        editRecord: record
+      }, function () {
+        if (_this8.updateAddressRef.current) _this8.updateAddressRef.current.open();
+      });
+    }
+  }, {
+    key: "handleDeleteOrder",
+    value: function handleDeleteOrder(id) {
       var _this9 = this;
 
-      utils["a" /* MServer */].post('/order/deletepart', {
+      utils["a" /* MServer */].post('/order/deleteorder', {
         id: id
       }).then(function (res) {
         if (res.errcode == 0) {
@@ -2111,9 +2111,24 @@ function (_Component) {
       });
     }
   }, {
+    key: "handleDeletePart",
+    value: function handleDeletePart(id) {
+      var _this10 = this;
+
+      utils["a" /* MServer */].post('/order/deletepart', {
+        id: id
+      }).then(function (res) {
+        if (res.errcode == 0) {
+          message_default.a.success('删除成功');
+
+          _this10.getList();
+        }
+      });
+    }
+  }, {
     key: "handleChangeExpress",
     value: function handleChangeExpress(id, express_id) {
-      var _this10 = this;
+      var _this11 = this;
 
       modal_default.a.confirm({
         title: '确认要修改快递吗？',
@@ -2125,7 +2140,7 @@ function (_Component) {
             if (res.errcode == 0) {
               message_default.a.success('修改成功');
 
-              _this10.getList();
+              _this11.getList();
             }
           });
         }
@@ -2134,7 +2149,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this11 = this;
+      var _this12 = this;
 
       var _this$state2 = this.state,
           list = _this$state2.list,
@@ -2180,7 +2195,7 @@ function (_Component) {
         ref: this.updateAddressRef,
         editRecord: editRecord,
         onSuccess: function onSuccess() {
-          return _this11.getList();
+          return _this12.getList();
         }
       }), external_react_default.a.createElement(dialog_image_preview, {
         width: 320,
@@ -2208,12 +2223,12 @@ function (_Component) {
           }, external_react_default.a.createElement("td", null, external_react_default.a.createElement(ImageHover, {
             src: order.image,
             onClick: function onClick() {
-              return _this11.handleOpenImagePreview(order.image);
+              return _this12.handleOpenImagePreview(order.image);
             }
           })), external_react_default.a.createElement("td", null, order.brand_name, " ", order.brand_type_name, " ", order.texture_name, " ", order.texture_attr_name || '', item.status == 30 ? external_react_default.a.createElement("div", null, external_react_default.a.createElement(popconfirm_default.a, {
             title: "\u786E\u5B9A\u8981\u5220\u9664\u8FD9\u4E2A\u5546\u54C1\u5417\uFF1F",
             onConfirm: function onConfirm() {
-              return _this11.handleDeleteOrder(order.id);
+              return _this12.handleDeleteOrder(order.id);
             }
           }, external_react_default.a.createElement("a", null, "\u5220\u9664\u5546\u54C1"))) : null), external_react_default.a.createElement("td", null, order.price), external_react_default.a.createElement("td", null, order.quantity), external_react_default.a.createElement("td", null, order.createdAt), i === 0 ? [external_react_default.a.createElement("td", {
             key: "amount",
@@ -2234,7 +2249,7 @@ function (_Component) {
               value: 'id'
             },
             onChange: function onChange(value) {
-              return _this11.handleChangeExpress(item.id, value);
+              return _this12.handleChangeExpress(item.id, value);
             }
           }) : external_react_default.a.createElement("div", null, item.express_name || '--')), external_react_default.a.createElement("td", {
             key: "type",
@@ -2254,7 +2269,7 @@ function (_Component) {
           }, external_react_default.a.createElement("td", null, "\u914D\u4EF6"), external_react_default.a.createElement("td", null, part.name, item.status == 30 ? external_react_default.a.createElement("div", null, external_react_default.a.createElement(popconfirm_default.a, {
             title: "\u786E\u5B9A\u8981\u5220\u9664\u8FD9\u4E2A\u5546\u54C1\u5417\uFF1F",
             onConfirm: function onConfirm() {
-              return _this11.handleDeletePart(part.id);
+              return _this12.handleDeletePart(part.id);
             }
           }, external_react_default.a.createElement("a", null, "\u5220\u9664\u5546\u54C1"))) : null), external_react_default.a.createElement("td", null, part.price), external_react_default.a.createElement("td", null, part.quantity), external_react_default.a.createElement("td", null, part.createdAt));
         }), item.status == 30 ? external_react_default.a.createElement("tr", {
@@ -2267,7 +2282,7 @@ function (_Component) {
             className: "text-warning"
           }, item.amount), "\u5143\u5417\uFF1F"),
           onConfirm: function onConfirm() {
-            return _this11.handlePay(item.id);
+            return _this12.handlePay(item.id);
           },
           placement: "rightBottom"
         }, external_react_default.a.createElement(button_default.a, {
@@ -2275,16 +2290,27 @@ function (_Component) {
         }, "\u4ED8\u6B3E")), external_react_default.a.createElement(popconfirm_default.a, {
           title: external_react_default.a.createElement("div", null, "\u786E\u5B9A\u8981\u5173\u95ED\u8FD9\u4E2A\u8BA2\u5355\u5417\uFF1F"),
           onConfirm: function onConfirm() {
-            return _this11.handleClose(item.id);
+            return _this12.handleClose(item.id);
           },
           placement: "rightBottom"
         }, external_react_default.a.createElement(button_default.a, null, "\u5173\u95ED\u8BA2\u5355")), external_react_default.a.createElement(link_default.a, {
           href: "/?type=10&order_sn=".concat(item.order_sn, "&express_id=").concat(item.express_id)
         }, external_react_default.a.createElement(button_default.a, null, "\u6DFB\u52A0\u5546\u54C1")), external_react_default.a.createElement(button_default.a, {
           onClick: function onClick() {
-            return _this11.handleUpdateAddress(item);
+            return _this12.handleUpdateAddress(item);
           }
-        }, "\u4FEE\u6539\u6536\u8D27\u4FE1\u606F"))) : null, item.status == 60 && item.logis ? external_react_default.a.createElement("tr", {
+        }, "\u4FEE\u6539\u6536\u8D27\u4FE1\u606F"))) : null, item.status == 0 ? external_react_default.a.createElement("tr", {
+          key: "operator",
+          className: order_list_style_default.a.tableBodyHead
+        }, external_react_default.a.createElement("td", {
+          colSpan: colSpan
+        }, external_react_default.a.createElement(popconfirm_default.a, {
+          title: external_react_default.a.createElement("div", null, "\u786E\u5B9A\u8981\u5220\u9664\u8FD9\u4E2A\u8BA2\u5355\u5417\uFF1F"),
+          onConfirm: function onConfirm() {
+            return _this12.handleDeleteTrade(item.id);
+          },
+          placement: "rightBottom"
+        }, external_react_default.a.createElement(button_default.a, null, "\u5220\u9664\u8BA2\u5355")))) : null, item.status == 60 && item.logis ? external_react_default.a.createElement("tr", {
           key: "operator",
           className: order_list_style_default.a.tableBodyHead
         }, external_react_default.a.createElement("td", {
@@ -2320,7 +2346,7 @@ function (_Component) {
         image: empty_default.a.PRESENTED_IMAGE_SIMPLE
       })))))), pager.total > pager.pageSize ? external_react_default.a.createElement(pagination_default.a, Object(esm_extends["a" /* default */])({}, pager, {
         onChange: function onChange(page) {
-          return _this11.getList(page);
+          return _this12.getList(page);
         }
       })) : null);
     }

@@ -141,6 +141,17 @@ export default class OrderList extends Component {
         });
     }
 
+    handleDeleteTrade(id) {
+        MServer.post('/order/userdelete', {
+            id,
+        }).then(res => {
+            if (res.errcode == 0) {
+                message.success('删除成功');
+                this.getList();
+            }
+        });
+    }
+
     handleUpdateAddress(record) {
         this.setState({
             editRecord: record
@@ -345,6 +356,19 @@ export default class OrderList extends Component {
                                             </Popconfirm>
                                             <Link href={`/?type=10&order_sn=${item.order_sn}&express_id=${item.express_id}`}><Button>添加商品</Button></Link>
                                             <Button onClick={() => this.handleUpdateAddress(item)}>修改收货信息</Button>
+                                        </td>
+                                    </tr>
+                                ) : null,
+                                item.status == 0 ? (
+                                    <tr key="operator" className={style.tableBodyHead}>
+                                        <td colSpan={colSpan}>
+                                            <Popconfirm
+                                                title={<div>确定要删除这个订单吗？</div>}
+                                                onConfirm={() => this.handleDeleteTrade(item.id)}
+                                                placement="rightBottom"
+                                            >
+                                                <Button>删除订单</Button>
+                                            </Popconfirm>
                                         </td>
                                     </tr>
                                 ) : null,
