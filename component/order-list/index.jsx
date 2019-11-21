@@ -270,7 +270,7 @@ export default class OrderList extends Component {
                                         <td>
                                             {order.brand_name} {order.brand_type_name} {order.texture_name} {order.texture_attr_name || ''}
                                             {
-                                                item.status == 30 ? (
+                                                item.status == 30 || item.status == 0 ? (
                                                     <div>
                                                         <Popconfirm
                                                             title="确定要删除这个商品吗？"
