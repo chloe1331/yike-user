@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -234,18 +234,18 @@ module.exports = require("antd/lib/select/style");
 
 /***/ }),
 
-/***/ 2:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("Q9Ih");
-
-
-/***/ }),
-
 /***/ "2w/n":
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/form/style");
+
+/***/ }),
+
+/***/ 3:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("Q9Ih");
+
 
 /***/ }),
 
@@ -880,7 +880,7 @@ function (_Component) {
         icon: "user"
       }), external_react_default.a.createElement("span", {
         className: header_style_default.a.userText
-      }, user.nickname), external_react_default.a.createElement(icon_default.a, {
+      }, user.username), external_react_default.a.createElement(icon_default.a, {
         type: "caret-down",
         className: header_style_default.a.dropdownIcon
       }))));

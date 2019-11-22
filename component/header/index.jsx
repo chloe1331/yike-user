@@ -61,7 +61,7 @@ export default class Header extends Component {
                 <Dropdown overlay={userMenu}>
                     <a className={style.userInfo}>
                         <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }} icon="user" />
-                        <span className={style.userText}>{user.nickname}</span>
+                        <span className={style.userText}>{user.username}</span>
                         <Icon type="caret-down" className={style.dropdownIcon} />
                     </a>
                 </Dropdown>
