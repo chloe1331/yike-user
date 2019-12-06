@@ -2306,7 +2306,7 @@ function (_Component) {
             return _this13.handleDeleteTrade(item.id);
           },
           placement: "rightBottom"
-        }, external_react_default.a.createElement(button_default.a, null, "\u5220\u9664\u8BA2\u5355")))) : null, [10, 20, 50, 60].includes(item.status) && item.type == 10 && item.refund_status == 0 ? external_react_default.a.createElement("tr", {
+        }, external_react_default.a.createElement(button_default.a, null, "\u5220\u9664\u8BA2\u5355")))) : null, [10, 20, 50].includes(item.status) && item.type == 10 && item.refund_status == 0 ? external_react_default.a.createElement("tr", {
           key: "operator",
           className: order_list_style_default.a.tableBodyHead
         }, external_react_default.a.createElement("td", {
@@ -2322,7 +2322,17 @@ function (_Component) {
           className: order_list_style_default.a.tableBodyHead
         }, external_react_default.a.createElement("td", {
           colSpan: colSpan
-        }, "\u7269\u6D41\u4FE1\u606F\uFF1A", external_react_default.a.createElement("span", null, item.logis.express_name, " ", item.logis.express_sn, external_react_default.a.createElement("a", {
+        }, external_react_default.a.createElement(popconfirm_default.a, {
+          title: external_react_default.a.createElement("div", null, "\u786E\u5B9A\u7533\u8BF7\u9000\u6B3E\u5417\uFF1F"),
+          onConfirm: function onConfirm() {
+            return _this13.handleApplyRefund(item.id);
+          },
+          placement: "rightBottom"
+        }, external_react_default.a.createElement(button_default.a, {
+          style: {
+            marginRight: '15px'
+          }
+        }, "\u7533\u8BF7\u9000\u6B3E")), "\u7269\u6D41\u4FE1\u606F\uFF1A", external_react_default.a.createElement("span", null, item.logis.express_name, " ", item.logis.express_sn, external_react_default.a.createElement("a", {
           ref: function ref(e) {
             if (e) {
               var clipboard = new external_clipboard_default.a(e, {

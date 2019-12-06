@@ -398,7 +398,7 @@ export default class OrderList extends Component {
                                         </td>
                                     </tr>
                                 ) : null,
-                                [10, 20, 50, 60].includes(item.status) && item.type == 10 && item.refund_status == 0 ? (
+                                [10, 20, 50].includes(item.status) && item.type == 10 && item.refund_status == 0 ? (
                                     <tr key="operator" className={style.tableBodyHead}>
                                         <td colSpan={colSpan}>
                                             <Popconfirm
@@ -414,6 +414,13 @@ export default class OrderList extends Component {
                                 item.status == 60 && item.logis ? (
                                     <tr key="operator" className={style.tableBodyHead}>
                                         <td colSpan={colSpan}>
+                                            <Popconfirm
+                                                title={<div>确定申请退款吗？</div>}
+                                                onConfirm={() => this.handleApplyRefund(item.id)}
+                                                placement="rightBottom"
+                                            >
+                                                <Button style={{ marginRight: '15px' }}>申请退款</Button>
+                                            </Popconfirm>
                                             物流信息：<span >
                                                 {item.logis.express_name} {item.logis.express_sn}
                                                 <a
