@@ -182,6 +182,17 @@ export default class OrderList extends Component {
         });
     }
 
+    handleApplyRefund(id) {
+        MServer.post('/order/applyrefund', {
+            id
+        }).then(res => {
+            if (res.errcode == 0) {
+                message.success('申请成功');
+                this.getList();
+            }
+        });
+    }
+
     handleChangeExpress(id, express_id) {
         Modal.confirm({
             title: '确认要修改快递吗？',
@@ -230,6 +241,20 @@ export default class OrderList extends Component {
             60: {
                 text: '已发货',
                 className: 'text-success'
+            }
+        };
+        const refundStatusMap = {
+            10: {
+                text: '退款中',
+                className: 'text-error'
+            },
+            20: {
+                text: '退款成功',
+                className: 'text-success'
+            },
+            40: {
+                text: '退款失败',
+                className: 'text-error'
             }
         };
 
@@ -309,6 +334,7 @@ export default class OrderList extends Component {
                                                 <td key="type" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>{item.type == 10 ? '充值订单' : '普通订单'}</td>,
                                                 <td key="status" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
                                                     <span className={statusMap[item.status].className}>{statusMap[item.status].text}</span>
+                                                    {item.refund_status != 0 ? <span style={{ display: 'block' }} className={refundStatusMap[item.refund_status].className}>({refundStatusMap[item.refund_status].text})</span> : null}
                                                 </td>,
                                             ] : null
                                         }
@@ -368,6 +394,19 @@ export default class OrderList extends Component {
                                                 placement="rightBottom"
                                             >
                                                 <Button>删除订单</Button>
+                                            </Popconfirm>
+                                        </td>
+                                    </tr>
+                                ) : null,
+                                [10, 20, 50].includes(item.status) && item.type == 10 && item.refund_status == 0 ? (
+                                    <tr key="operator" className={style.tableBodyHead}>
+                                        <td colSpan={colSpan}>
+                                            <Popconfirm
+                                                title={<div>确定申请退款吗？</div>}
+                                                onConfirm={() => this.handleApplyRefund(item.id)}
+                                                placement="rightBottom"
+                                            >
+                                                <Button>申请退款</Button>
                                             </Popconfirm>
                                         </td>
                                     </tr>
