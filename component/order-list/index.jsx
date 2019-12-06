@@ -398,7 +398,7 @@ export default class OrderList extends Component {
                                         </td>
                                     </tr>
                                 ) : null,
-                                [10, 20, 50].includes(item.status) && item.type == 10 && item.refund_status == 0 ? (
+                                [10, 20, 50, 60].includes(item.status) && item.type == 10 && item.refund_status == 0 ? (
                                     <tr key="operator" className={style.tableBodyHead}>
                                         <td colSpan={colSpan}>
                                             <Popconfirm

@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -248,6 +248,14 @@ module.exports = require("antd/lib/form/style");
 
 /***/ }),
 
+/***/ 3:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("cMU6");
+
+
+/***/ }),
+
 /***/ "3PsY":
 /***/ (function(module, exports) {
 
@@ -259,14 +267,6 @@ module.exports = require("antd/lib/message");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/dropdown/style");
-
-/***/ }),
-
-/***/ 4:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("cMU6");
-
 
 /***/ }),
 
@@ -2144,7 +2144,7 @@ function (_Component) {
             return _this13.handleDeleteTrade(item.id);
           },
           placement: "rightBottom"
-        }, external_react_default.a.createElement(button_default.a, null, "\u5220\u9664\u8BA2\u5355")))) : null, [10, 20, 50].includes(item.status) && item.type == 10 && item.refund_status == 0 ? external_react_default.a.createElement("tr", {
+        }, external_react_default.a.createElement(button_default.a, null, "\u5220\u9664\u8BA2\u5355")))) : null, [10, 20, 50, 60].includes(item.status) && item.type == 10 && item.refund_status == 0 ? external_react_default.a.createElement("tr", {
           key: "operator",
           className: order_list_style_default.a.tableBodyHead
         }, external_react_default.a.createElement("td", {
