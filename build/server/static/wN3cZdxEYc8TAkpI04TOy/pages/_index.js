@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -227,18 +227,18 @@ function _classCallCheck(instance, Constructor) {
 
 /***/ }),
 
-/***/ "1Wvg":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/select/style");
-
-/***/ }),
-
-/***/ 2:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("SCcO");
 
+
+/***/ }),
+
+/***/ "1Wvg":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/select/style");
 
 /***/ }),
 

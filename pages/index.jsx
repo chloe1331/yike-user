@@ -9,7 +9,7 @@ import { UploadBtn, Select, ColorPicker, DialogOrderDetail, InputNumber } from '
 import { MServer, convertBase64UrlToBlob } from 'public/utils';
 import style from 'public/theme/pages/index.less';
 
-const defaultHeight = 520;
+const defaultHeight = 560;
 
 class Home extends Component {
     constructor(props) {
@@ -220,7 +220,7 @@ class Home extends Component {
                 const current = e.clientX - sx;
                 box.style.left = `${current}px`;
                 const diff = (current - 798) / 10;
-                const value = size - diff;
+                const value = size + diff;
                 if (value >= 1 && this.image && !this.auto) {
                     this.handleChangeSize(value);
                 }
@@ -828,13 +828,17 @@ class Home extends Component {
                                         </Form.Item>
                                     ) : null
                                 }
+                                <Form.Item>
+                                    <Button type="primary" htmlType="submit" loading={submit}>提交订单</Button>
+                                </Form.Item>
                                 {
                                     getFieldValue('type') == 10 && partList.length ? (
                                         <Table
                                             rowKey="id"
                                             dataSource={partList}
                                             pagination={false}
-                                            style={{ marginBottom: '15px' }}
+                                            size="small"
+                                            // style={{ marginBottom: '15px' }}
                                             rowSelection={{
                                                 onChange: (selectedRowKeys) => {
                                                     this.setState({
@@ -872,9 +876,6 @@ class Home extends Component {
                                         ></Table>
                                     ) : null
                                 }
-                                <Form.Item>
-                                    <Button type="primary" htmlType="submit" loading={submit}>提交订单</Button>
-                                </Form.Item>
                             </Form>
                         </div>
                     </div>
