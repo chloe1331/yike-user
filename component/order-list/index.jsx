@@ -291,7 +291,7 @@ export default class OrderList extends Component {
                                 </tr>,
                                 item.orders.map((order, i) => (
                                     <tr key={`order_${order.id}`} className={style.tableBodyContent}>
-                                        <td><ImageHover src={order.image} onClick={() => this.handleOpenImagePreview(order.image)} /></td>
+                                        <td><ImageHover src={order.image1} onClick={() => this.handleOpenImagePreview(order.image1)} /></td>
                                         <td>
                                             {order.brand_name} {order.brand_type_name} {order.texture_name} {order.texture_attr_name || ''}
                                             {

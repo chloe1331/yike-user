@@ -12,6 +12,7 @@ export default class Order extends Component {
         this.dialogExportRef = createRef();
         this.state = {
             paySubmit: false,
+            logisLoading: false
         };
         const handles = ['handleSearch', 'handleBatchPay', 'handleExport'];
         handles.forEach(item => this[item] = this[item].bind(this));
@@ -75,10 +76,17 @@ export default class Order extends Component {
     }
 
     handleExport() {
-        MServer.post('/order/exportUserLogis').then(res => {
-            if (res.errcode === 0) {
-                window.open(`${locale[process.env.NODE_ENV].url.api}${res.data.filepath}`);
-            }
+        this.setState({
+            logisLoading: true
+        }, () => {
+            MServer.post('/order/exportUserLogis').then(res => {
+                if (res.errcode === 0) {
+                    window.open(`${locale[process.env.NODE_ENV].url.api}${res.data.filepath}`);
+                }
+                this.setState({
+                    logisLoading: false
+                });
+            });
         });
     }
 
@@ -105,7 +113,7 @@ export default class Order extends Component {
             value: 'send',
             label: '已发货'
         }];
-        const { paySubmit } = this.state;
+        const { paySubmit, logisLoading } = this.state;
 
         return (
             <div className="page-layout-center">
@@ -126,7 +134,7 @@ export default class Order extends Component {
                 <div className="form-condition">
                     <Input.Search onSearch={this.handleSearch} placeholder="搜索订单号" />
                     <Button loading={paySubmit} style={{ marginLeft: '15px' }} type="primary" onClick={this.handleBatchPay}>批量付款</Button>
-                    <Button style={{ marginLeft: '15px' }} onClick={this.handleExport}>导出物流信息</Button>
+                    <Button style={{ marginLeft: '15px' }} onClick={this.handleExport} loading={logisLoading}>导出物流信息</Button>
                     <a 
                         style={{ marginLeft: '15px' }} 
                         onClick={() => {

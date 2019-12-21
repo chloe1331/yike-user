@@ -22,7 +22,7 @@ export default class LocalBtn extends Component {
     }
 
     render() {
-        const { text, accept, style } = this.props;
+        const { text, accept, style, buttonProps } = this.props;
 
         return (
             <div className={s.localBtn} style={style}>
@@ -33,7 +33,7 @@ export default class LocalBtn extends Component {
                     accept={accept || 'image/png,image/jpg,image/jpeg'}
                     onChange={e => this.onUpload(e.target.files[0])}
                 />
-                <Button onClick={this.handleUpload}>{text || '上传文件'}</Button>
+                <Button {...buttonProps} onClick={this.handleUpload}>{text || '上传文件'}</Button>
             </div>
         );
     }
@@ -43,5 +43,6 @@ LocalBtn.propTypes = {
     text: PropTypes.any,
     accept: PropTypes.string,
     onUpload: PropTypes.func,
-    style: PropTypes.object
+    style: PropTypes.object,
+    buttonProps: PropTypes.object
 };

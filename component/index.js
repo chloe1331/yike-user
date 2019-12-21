@@ -7,6 +7,7 @@ import DialogExportHistroy from './dialog-export-history';
 import TableAction from './table-action';
 import ColorPicker from './colorpicker';
 import OrderList from './order-list';
+import InputNumber from './input-number';
 
 export {
     Select,
@@ -17,5 +18,6 @@ export {
     DialogExportHistroy,
     TableAction,
     ColorPicker,
-    OrderList
+    OrderList,
+    InputNumber
 };
