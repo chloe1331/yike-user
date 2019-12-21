@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -234,18 +234,18 @@ module.exports = require("antd/lib/select/style");
 
 /***/ }),
 
-/***/ 2:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("cMU6");
-
-
-/***/ }),
-
 /***/ "2w/n":
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/form/style");
+
+/***/ }),
+
+/***/ 3:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("cMU6");
+
 
 /***/ }),
 
@@ -3012,7 +3012,7 @@ function (_Component) {
       selectedRowKeys: [],
       importExcelData: null,
       selectedRow: null,
-      preview: false,
+      preview: true,
       submit: false,
       drawer: false
     };
@@ -3418,14 +3418,11 @@ function (_Component) {
     value: function handleChangeSize(value) {
       var domUpload = this.uploadRef.current;
       if (!domUpload || !this) return;
-      this.imageOpt.size = _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_27___default()(value);
-      var oldHeight = domUpload.offsetHeight;
-      var oldWidth = domUpload.offsetWidth;
-      var newHeight = domUpload.naturalHeight * value / 100;
-      domUpload.style.height = "".concat(newHeight, "px");
-      var newWidth = domUpload.offsetWidth;
-      this.imageOpt.x = this.imageOpt.x - (newWidth - oldWidth) / 2;
-      this.imageOpt.y = this.imageOpt.y - (newHeight - oldHeight) / 2;
+      value = _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_27___default()(value);
+      domUpload.style.height = "".concat(domUpload.naturalHeight * value / 100, "px");
+      this.imageOpt.x = this.imageOpt.x + domUpload.naturalWidth * (this.imageOpt.size - value) / 200;
+      this.imageOpt.y = this.imageOpt.y + domUpload.naturalHeight * (this.imageOpt.size - value) / 200;
+      this.imageOpt.size = value;
       this.getImagePreview();
       this.sizeInputRef.current && this.sizeInputRef.current.setState({
         value: this.imageOpt.size

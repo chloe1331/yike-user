@@ -22,7 +22,7 @@ class Home extends Component {
             selectedRowKeys: [],
             importExcelData: null,
             selectedRow: null,
-            preview: false,
+            preview: true,
             submit: false,
             drawer: false
         };
@@ -376,15 +376,12 @@ class Home extends Component {
     handleChangeSize(value) {
         const domUpload = this.uploadRef.current;
         if (!domUpload || !this) return;
-        this.imageOpt.size = parseFloat(value);
-        const oldHeight = domUpload.offsetHeight;
-        const oldWidth = domUpload.offsetWidth;
-        const newHeight = domUpload.naturalHeight * value / 100;
-        domUpload.style.height = `${newHeight}px`;
-        const newWidth = domUpload.offsetWidth;
+        value = parseFloat(value);
+        domUpload.style.height = `${domUpload.naturalHeight * value / 100}px`;
+        this.imageOpt.x = this.imageOpt.x + domUpload.naturalWidth * (this.imageOpt.size - value) / 200;
+        this.imageOpt.y = this.imageOpt.y + domUpload.naturalHeight * (this.imageOpt.size - value) / 200;
+        this.imageOpt.size = value;
 
-        this.imageOpt.x = this.imageOpt.x - (newWidth - oldWidth) / 2;
-        this.imageOpt.y = this.imageOpt.y - (newHeight - oldHeight) / 2;
         this.getImagePreview();
 
         this.sizeInputRef.current && this.sizeInputRef.current.setState({
