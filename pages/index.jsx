@@ -373,6 +373,15 @@ class Home extends Component {
         this.forceUpdate();
     }
 
+    getDefaultExpress() {
+        const { expressList } = this.state;
+        const defaultList = expressList.filter(item => item.default);
+        if (defaultList.length) {
+            return defaultList[0].id;
+        }
+        return undefined;
+    }
+
     handleChangeSize(value) {
         const domUpload = this.uploadRef.current;
         if (!domUpload || !this) return;
@@ -448,7 +457,7 @@ class Home extends Component {
             return;
         }
 
-        const { form: { validateFields } } = this.props;
+        const { form: { validateFields, setFieldsValue } } = this.props;
         const { selectedRow, selectParts, importExcelData } = this.state;
 
         validateFields((err, values) => {
@@ -508,6 +517,10 @@ class Home extends Component {
                             submit: false
                         });
                         if (res.errcode == 0) {
+                            setFieldsValue({
+                                quantity: 1,
+                                express_id: this.getDefaultExpress()
+                            });
                             const catename = `${this.select.brand_name} ${this.select.brand_type_name} ${this.select.texture_name}`;
                             if (!this.submitOrderObj[values.order_sn]) {
                                 this.submitOrderObj[values.order_sn] = {
@@ -811,13 +824,7 @@ class Home extends Component {
                                                         required: true,
                                                         message: '请先选择物流'
                                                     }],
-                                                    initialValue: expressList.length ? function(){
-                                                        const defaultList = expressList.filter(item => item.default);
-                                                        if (defaultList.length) {
-                                                            return defaultList[0].id;
-                                                        }
-                                                        return undefined;
-                                                    }() : undefined
+                                                    initialValue: expressList.length ? this.getDefaultExpress() : undefined
                                                 })(
                                                     <Select options={expressList} fieldName={{ value: 'id', label: 'name' }} />
                                                 )
