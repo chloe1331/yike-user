@@ -648,14 +648,7 @@ class Home extends Component {
                             onUpload={this.uploadImage}
                         />
                         <Button style={{ marginLeft: '15px' }} onClick={() => this.setState({ preview: !preview })}>{preview ? '编辑' : '预览'}</Button>
-                        <Checkbox 
-                            style={{ marginLeft: '15px' }}
-                            checked={auto}
-                            onChange={(e) => {
-                                this.auto = e.target.checked;
-                                this.autoImage(this.uploadRef.current);
-                            }}
-                        >自适应</Checkbox>
+                        <Button style={{ marginLeft: '15px' }} onClick={() => this.autoImage(this.uploadRef.current)}>初始化图片</Button>
                     </div>
                     <div className={style.layoutHomeBd}>
                         <div>
