@@ -118,6 +118,7 @@ class Home extends Component {
             }
         }
         context.putImageData(imageData, 0, 0);
+        // document.body.appendChild(canvas);
 
         return canvas.toDataURL('image/png');
     }
@@ -357,15 +358,39 @@ class Home extends Component {
     autoImage(img) {
         const domMove = this.moveRef.current;
         const domUpload = this.uploadRef.current;
+        const getSpaceValue = () => {
+            const imageSize = this.sizeImageRef.current;
+            if (!imageSize) return 0;
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.setAttribute('height', imageSize.width);
+            canvas.setAttribute('width', imageSize.height);
+            context.drawImage(imageSize, 0, 0, imageSize.width, imageSize.height);
+            const imageData = context.getImageData(0, 0, imageSize.width, imageSize.height);
+            let countWidth = 0;
+            let countHeight = 0;
+            for (let i = 0; i < imageData.data.length; i += 4) {
+                if (imageData.data[i + 3] != 0) {
+                    countWidth++;
+                    if (countWidth == imageSize.width) {
+                        countWidth = 0;
+                        countHeight++;
+                    }
+                } else {
+                    break;
+                }
+            }
+            return countHeight - 1;
+        };
+        const spaceValue = getSpaceValue();
         // domUpload.style.height = img.naturalHeight > defaultHeight ? `${defaultHeight}px` : `${img.naturalHeight}px`;
-        domUpload.style.height = `${defaultHeight}px`;
-
+        domUpload.style.height = `${(defaultHeight - spaceValue * 2)}px`;
         // this.imageOpt.size = img.naturalHeight < defaultHeight ? 100 : (defaultHeight / img.naturalHeight * 100).toFixed(2);
-        this.imageOpt.size = (defaultHeight / img.naturalHeight * 100).toFixed(2);
+        this.imageOpt.size = ((defaultHeight - spaceValue * 2) / img.naturalHeight * 100).toFixed(2);
         // this.imageOpt.x = (domMove.offsetWidth - img.naturalWidth * (img.naturalHeight > defaultHeight ? defaultHeight / img.naturalHeight : 1)) / 2;
-        this.imageOpt.x = (domMove.offsetWidth - img.naturalWidth * (defaultHeight / img.naturalHeight)) / 2;
+        this.imageOpt.x = (domMove.offsetWidth - img.naturalWidth * ((defaultHeight - spaceValue * 2) / img.naturalHeight)) / 2;
         // this.imageOpt.y = img.naturalHeight > defaultHeight ? 0 : (defaultHeight - img.naturalHeight) / 2;
-        this.imageOpt.y = 0;
+        this.imageOpt.y = spaceValue;
         this.sizeInputRef.current && this.sizeInputRef.current.setState({
             value: this.imageOpt.size
         });
@@ -456,6 +481,9 @@ class Home extends Component {
             message.error('请至少上传一张图片或者设置一个颜色');
             return;
         }
+
+        // this.getResultImage();
+        // return;
 
         const { form: { validateFields, setFieldsValue } } = this.props;
         const { selectedRow, selectParts, importExcelData } = this.state;
