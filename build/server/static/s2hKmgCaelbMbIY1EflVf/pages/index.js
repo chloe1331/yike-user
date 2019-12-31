@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -255,14 +255,6 @@ module.exports = require("antd/lib/dropdown/style");
 
 /***/ }),
 
-/***/ 4:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("cMU6");
-
-
-/***/ }),
-
 /***/ "4Q3z":
 /***/ (function(module, exports) {
 
@@ -274,6 +266,14 @@ module.exports = require("next/router");
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("k1wZ");
+
+/***/ }),
+
+/***/ 5:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("cMU6");
+
 
 /***/ }),
 
@@ -3075,14 +3075,20 @@ function (_Component) {
         context.fill();
       }
 
+      var _x = left * power;
+
+      var _y = y * power;
+
       if (rotate) {
         context.translate(imageSize.naturalWidth / 2, imageSize.naturalHeight / 2);
         context.rotate(rotate * Math.PI / 180);
-        context.translate(-imageSize.naturalWidth / 2, -imageSize.naturalHeight / 2);
+        context.translate(-imageSize.naturalWidth / 2, -imageSize.naturalHeight / 2); // _x = _x - (imageSize.naturalWidth - domUpload.naturalWidth * size) / 2;
+        // console.log((imageSize.naturalWidth - domUpload.naturalWidth * size));
+        // _y = _y - (imageSize.naturalHeight - domUpload.naturalHeight * size) / 2;
       }
 
       if (domUpload) {
-        context.drawImage(domUpload, left * power, y * power, domUpload.naturalWidth * size, domUpload.naturalHeight * size);
+        context.drawImage(domUpload, _x, _y, domUpload.naturalWidth * size, domUpload.naturalHeight * size);
       }
 
       var imageData = context.getImageData(0, 0, imageSize.naturalWidth, imageSize.naturalHeight);
@@ -3594,11 +3600,13 @@ function (_Component) {
             }
 
             public_utils__WEBPACK_IMPORTED_MODULE_37__[/* MServer */ "a"].post('/order/save', params).then(function (res) {
-              _this8.setState({
-                submit: false
-              });
-
               if (res.errcode == 0) {
+                _this8.setState({
+                  submit: false,
+                  selectParts: []
+                });
+
+                _this8.imageOpt.color = 'tran';
                 setFieldsValue({
                   quantity: 1,
                   express_id: _this8.getDefaultExpress()
@@ -3642,6 +3650,10 @@ function (_Component) {
                       if (_this8.dialogDetailRef.current) _this8.dialogDetailRef.current.open();
                     });
                   }
+                });
+              } else {
+                _this8.setState({
+                  submit: false
                 });
               }
             });

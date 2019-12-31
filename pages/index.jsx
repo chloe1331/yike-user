@@ -95,13 +95,18 @@ class Home extends Component {
             context.fillStyle = color;
             context.fill();
         }
+        let _x = left * power;
+        let _y = y * power;
         if (rotate) {
             context.translate(imageSize.naturalWidth / 2, imageSize.naturalHeight / 2);
             context.rotate(rotate * Math.PI / 180);
             context.translate(-imageSize.naturalWidth / 2, -imageSize.naturalHeight / 2);
+            // _x = _x - (imageSize.naturalWidth - domUpload.naturalWidth * size) / 2;
+            // console.log((imageSize.naturalWidth - domUpload.naturalWidth * size));
+            // _y = _y - (imageSize.naturalHeight - domUpload.naturalHeight * size) / 2;
         }
         if (domUpload) {
-            context.drawImage(domUpload, left * power, y * power, domUpload.naturalWidth * size, domUpload.naturalHeight * size);
+            context.drawImage(domUpload, _x, _y, domUpload.naturalWidth * size, domUpload.naturalHeight * size);
         }
         const imageData = context.getImageData(0, 0, imageSize.naturalWidth, imageSize.naturalHeight);
 
@@ -541,10 +546,12 @@ class Home extends Component {
                         };
                     }
                     MServer.post('/order/save', params).then(res => {
-                        this.setState({
-                            submit: false
-                        });
                         if (res.errcode == 0) {
+                            this.setState({
+                                submit: false,
+                                selectParts: []
+                            });
+                            this.imageOpt.color = 'tran';
                             setFieldsValue({
                                 quantity: 1,
                                 express_id: this.getDefaultExpress()
@@ -587,6 +594,10 @@ class Home extends Component {
                                         if (this.dialogDetailRef.current) this.dialogDetailRef.current.open();
                                     });
                                 },
+                            });
+                        } else {
+                            this.setState({
+                                submit: false
                             });
                         }
                     });
