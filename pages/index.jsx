@@ -98,12 +98,11 @@ class Home extends Component {
         let _x = left * power;
         let _y = y * power;
         if (rotate) {
-            context.translate(imageSize.naturalWidth / 2, imageSize.naturalHeight / 2);
+            const transX = _x + domUpload.naturalWidth * size / 2;
+            const transY = _y + domUpload.naturalHeight * size / 2;
+            context.translate(transX, transY);
             context.rotate(rotate * Math.PI / 180);
-            context.translate(-imageSize.naturalWidth / 2, -imageSize.naturalHeight / 2);
-            // _x = _x - (imageSize.naturalWidth - domUpload.naturalWidth * size) / 2;
-            // console.log((imageSize.naturalWidth - domUpload.naturalWidth * size));
-            // _y = _y - (imageSize.naturalHeight - domUpload.naturalHeight * size) / 2;
+            context.translate(-transX, -transY);
         }
         if (domUpload) {
             context.drawImage(domUpload, _x, _y, domUpload.naturalWidth * size, domUpload.naturalHeight * size);
@@ -123,7 +122,6 @@ class Home extends Component {
             }
         }
         context.putImageData(imageData, 0, 0);
-        // document.body.appendChild(canvas);
 
         return canvas.toDataURL('image/png');
     }
@@ -486,9 +484,6 @@ class Home extends Component {
             message.error('请至少上传一张图片或者设置一个颜色');
             return;
         }
-
-        // this.getResultImage();
-        // return;
 
         const { form: { validateFields, setFieldsValue } } = this.props;
         const { selectedRow, selectParts, importExcelData } = this.state;

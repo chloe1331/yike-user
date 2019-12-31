@@ -3080,11 +3080,11 @@ function (_Component) {
       var _y = y * power;
 
       if (rotate) {
-        context.translate(imageSize.naturalWidth / 2, imageSize.naturalHeight / 2);
+        var transX = _x + domUpload.naturalWidth * size / 2;
+        var transY = _y + domUpload.naturalHeight * size / 2;
+        context.translate(transX, transY);
         context.rotate(rotate * Math.PI / 180);
-        context.translate(-imageSize.naturalWidth / 2, -imageSize.naturalHeight / 2); // _x = _x - (imageSize.naturalWidth - domUpload.naturalWidth * size) / 2;
-        // console.log((imageSize.naturalWidth - domUpload.naturalWidth * size));
-        // _y = _y - (imageSize.naturalHeight - domUpload.naturalHeight * size) / 2;
+        context.translate(-transX, -transY);
       }
 
       if (domUpload) {
@@ -3105,8 +3105,7 @@ function (_Component) {
         }
       }
 
-      context.putImageData(imageData, 0, 0); // document.body.appendChild(canvas);
-
+      context.putImageData(imageData, 0, 0);
       return canvas.toDataURL('image/png');
     }
   }, {
@@ -3530,9 +3529,7 @@ function (_Component) {
         antd_lib_message__WEBPACK_IMPORTED_MODULE_24___default.a.error('请至少上传一张图片或者设置一个颜色');
 
         return;
-      } // this.getResultImage();
-      // return;
-
+      }
 
       var _this$props$form = this.props.form,
           validateFields = _this$props$form.validateFields,
