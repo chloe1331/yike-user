@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -255,6 +255,14 @@ module.exports = require("antd/lib/dropdown/style");
 
 /***/ }),
 
+/***/ 4:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("cMU6");
+
+
+/***/ }),
+
 /***/ "4Q3z":
 /***/ (function(module, exports) {
 
@@ -266,14 +274,6 @@ module.exports = require("next/router");
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("k1wZ");
-
-/***/ }),
-
-/***/ 5:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("cMU6");
-
 
 /***/ }),
 
@@ -3951,6 +3951,7 @@ function (_Component) {
         size: "small" // style={{ marginBottom: '15px' }}
         ,
         rowSelection: {
+          selectedRowKeys: selectParts,
           onChange: function onChange(selectedRowKeys) {
             _this9.setState({
               selectParts: selectedRowKeys

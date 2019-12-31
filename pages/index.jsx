@@ -876,6 +876,7 @@ class Home extends Component {
                                             size="small"
                                             // style={{ marginBottom: '15px' }}
                                             rowSelection={{
+                                                selectedRowKeys: selectParts,
                                                 onChange: (selectedRowKeys) => {
                                                     this.setState({
                                                         selectParts: selectedRowKeys
