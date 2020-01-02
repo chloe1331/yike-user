@@ -399,7 +399,7 @@ class Home extends Component {
                 }
             }
             return {
-                x: countWidth,
+                x: countWidth - 1,
                 y: countHeight - 1
             };
         };
