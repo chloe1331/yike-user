@@ -361,39 +361,64 @@ class Home extends Component {
     autoImage(img) {
         const domMove = this.moveRef.current;
         const domUpload = this.uploadRef.current;
+        const imageSize = this.sizeImageRef.current;
+        if (!domUpload) {
+            message.error('请先上传图片');
+            return;
+        }
         const getSpaceValue = () => {
-            const imageSize = this.sizeImageRef.current;
-            if (!imageSize) return 0;
+            if (!imageSize) return {
+                x: 0,
+                y: 0
+            };
             const canvas = document.createElement('canvas');
             const context = canvas.getContext('2d');
             canvas.setAttribute('height', imageSize.width);
             canvas.setAttribute('width', imageSize.height);
             context.drawImage(imageSize, 0, 0, imageSize.width, imageSize.height);
             const imageData = context.getImageData(0, 0, imageSize.width, imageSize.height);
-            let countWidth = 0;
+            let lineWidth = 0;
             let countHeight = 0;
             for (let i = 0; i < imageData.data.length; i += 4) {
                 if (imageData.data[i + 3] != 0) {
-                    countWidth++;
-                    if (countWidth == imageSize.width) {
-                        countWidth = 0;
+                    lineWidth++;
+                    if (lineWidth == imageSize.width) {
+                        lineWidth = 0;
                         countHeight++;
                     }
                 } else {
                     break;
                 }
             }
-            return countHeight - 1;
+            let countWidth = 0;
+            for (let i = imageSize.width * 80 * 4; i < imageData.data.length; i += 4) {
+                if (imageData.data[i + 3] != 0) {
+                    countWidth++;
+                } else {
+                    break;
+                }
+            }
+            return {
+                x: countWidth,
+                y: countHeight - 1
+            };
         };
         const spaceValue = getSpaceValue();
-        // domUpload.style.height = img.naturalHeight > defaultHeight ? `${defaultHeight}px` : `${img.naturalHeight}px`;
-        domUpload.style.height = `${(defaultHeight - spaceValue * 2)}px`;
-        // this.imageOpt.size = img.naturalHeight < defaultHeight ? 100 : (defaultHeight / img.naturalHeight * 100).toFixed(2);
-        this.imageOpt.size = ((defaultHeight - spaceValue * 2) / img.naturalHeight * 100).toFixed(2);
-        // this.imageOpt.x = (domMove.offsetWidth - img.naturalWidth * (img.naturalHeight > defaultHeight ? defaultHeight / img.naturalHeight : 1)) / 2;
-        this.imageOpt.x = (domMove.offsetWidth - img.naturalWidth * ((defaultHeight - spaceValue * 2) / img.naturalHeight)) / 2;
-        // this.imageOpt.y = img.naturalHeight > defaultHeight ? 0 : (defaultHeight - img.naturalHeight) / 2;
-        this.imageOpt.y = spaceValue;
+        let initHeight = defaultHeight - spaceValue.y * 2;
+        let ratio = initHeight / img.naturalHeight;
+        let initWidth = img.naturalWidth * ratio;
+        if (imageSize) {
+            if (initWidth < (imageSize.offsetWidth - spaceValue.x * 2)) {
+                initWidth = imageSize.offsetWidth - spaceValue.x * 2;
+                ratio = initWidth / img.naturalWidth;
+                initHeight = img.naturalHeight * ratio;
+            }
+        }
+
+        domUpload.style.height = `${(initHeight)}px`;
+        this.imageOpt.size = (ratio * 100).toFixed(2);
+        this.imageOpt.x = (domMove.offsetWidth - initWidth) / 2;
+        this.imageOpt.y = (imageSize.offsetHeight - initHeight) / 2;
         this.sizeInputRef.current && this.sizeInputRef.current.setState({
             value: this.imageOpt.size
         });

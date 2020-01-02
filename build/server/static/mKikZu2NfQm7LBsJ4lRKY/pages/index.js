@@ -3383,29 +3383,36 @@ function (_Component) {
   }, {
     key: "autoImage",
     value: function autoImage(img) {
-      var _this7 = this;
-
       var domMove = this.moveRef.current;
       var domUpload = this.uploadRef.current;
+      var imageSize = this.sizeImageRef.current;
+
+      if (!domUpload) {
+        antd_lib_message__WEBPACK_IMPORTED_MODULE_24___default.a.error('请先上传图片');
+
+        return;
+      }
 
       var getSpaceValue = function getSpaceValue() {
-        var imageSize = _this7.sizeImageRef.current;
-        if (!imageSize) return 0;
+        if (!imageSize) return {
+          x: 0,
+          y: 0
+        };
         var canvas = document.createElement('canvas');
         var context = canvas.getContext('2d');
         canvas.setAttribute('height', imageSize.width);
         canvas.setAttribute('width', imageSize.height);
         context.drawImage(imageSize, 0, 0, imageSize.width, imageSize.height);
         var imageData = context.getImageData(0, 0, imageSize.width, imageSize.height);
-        var countWidth = 0;
+        var lineWidth = 0;
         var countHeight = 0;
 
         for (var i = 0; i < imageData.data.length; i += 4) {
           if (imageData.data[i + 3] != 0) {
-            countWidth++;
+            lineWidth++;
 
-            if (countWidth == imageSize.width) {
-              countWidth = 0;
+            if (lineWidth == imageSize.width) {
+              lineWidth = 0;
               countHeight++;
             }
           } else {
@@ -3413,18 +3420,39 @@ function (_Component) {
           }
         }
 
-        return countHeight - 1;
+        var countWidth = 0;
+
+        for (var _i = imageSize.width * 80 * 4; _i < imageData.data.length; _i += 4) {
+          if (imageData.data[_i + 3] != 0) {
+            countWidth++;
+          } else {
+            break;
+          }
+        }
+
+        return {
+          x: countWidth,
+          y: countHeight - 1
+        };
       };
 
-      var spaceValue = getSpaceValue(); // domUpload.style.height = img.naturalHeight > defaultHeight ? `${defaultHeight}px` : `${img.naturalHeight}px`;
+      var spaceValue = getSpaceValue();
+      var initHeight = defaultHeight - spaceValue.y * 2;
+      var ratio = initHeight / img.naturalHeight;
+      var initWidth = img.naturalWidth * ratio;
 
-      domUpload.style.height = "".concat(defaultHeight - spaceValue * 2, "px"); // this.imageOpt.size = img.naturalHeight < defaultHeight ? 100 : (defaultHeight / img.naturalHeight * 100).toFixed(2);
+      if (imageSize) {
+        if (initWidth < imageSize.offsetWidth - spaceValue.x * 2) {
+          initWidth = imageSize.offsetWidth - spaceValue.x * 2;
+          ratio = initWidth / img.naturalWidth;
+          initHeight = img.naturalHeight * ratio;
+        }
+      }
 
-      this.imageOpt.size = ((defaultHeight - spaceValue * 2) / img.naturalHeight * 100).toFixed(2); // this.imageOpt.x = (domMove.offsetWidth - img.naturalWidth * (img.naturalHeight > defaultHeight ? defaultHeight / img.naturalHeight : 1)) / 2;
-
-      this.imageOpt.x = (domMove.offsetWidth - img.naturalWidth * ((defaultHeight - spaceValue * 2) / img.naturalHeight)) / 2; // this.imageOpt.y = img.naturalHeight > defaultHeight ? 0 : (defaultHeight - img.naturalHeight) / 2;
-
-      this.imageOpt.y = spaceValue;
+      domUpload.style.height = "".concat(initHeight, "px");
+      this.imageOpt.size = (ratio * 100).toFixed(2);
+      this.imageOpt.x = (domMove.offsetWidth - initWidth) / 2;
+      this.imageOpt.y = (imageSize.offsetHeight - initHeight) / 2;
       this.sizeInputRef.current && this.sizeInputRef.current.setState({
         value: this.imageOpt.size
       });
@@ -3514,7 +3542,7 @@ function (_Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this8 = this;
+      var _this7 = this;
 
       e.preventDefault();
       e.stopPropagation();
@@ -3540,19 +3568,19 @@ function (_Component) {
           importExcelData = _this$state.importExcelData;
       validateFields(function (err, values) {
         if (!err) {
-          if (!_this8.token) {
+          if (!_this7.token) {
             antd_lib_message__WEBPACK_IMPORTED_MODULE_24___default.a.error('网络出错了，刷新页面试试');
 
             return;
           }
 
-          _this8.setState({
+          _this7.setState({
             submit: true
           });
 
           var formdata = new FormData();
-          formdata.append('file', Object(public_utils__WEBPACK_IMPORTED_MODULE_37__[/* convertBase64UrlToBlob */ "c"])(_this8.getResultImage()), "".concat(new Date().getTime(), ".png"));
-          formdata.append('token', _this8.token);
+          formdata.append('file', Object(public_utils__WEBPACK_IMPORTED_MODULE_37__[/* convertBase64UrlToBlob */ "c"])(_this7.getResultImage()), "".concat(new Date().getTime(), ".png"));
+          formdata.append('token', _this7.token);
           public_utils__WEBPACK_IMPORTED_MODULE_37__[/* MServer */ "a"].post('//upload-z0.qiniup.com', formdata, {
             withCredentials: false,
             headers: {
@@ -3570,7 +3598,7 @@ function (_Component) {
               type: values.type,
               order_sn: values.order_sn,
               quantity: values.quantity,
-              cate_id: _this8.select.id,
+              cate_id: _this7.select.id,
               image1: res
             };
             if (values.texture_attr_id) params.texture_attr_id = values.texture_attr_id;
@@ -3598,36 +3626,36 @@ function (_Component) {
 
             public_utils__WEBPACK_IMPORTED_MODULE_37__[/* MServer */ "a"].post('/order/save', params).then(function (res) {
               if (res.errcode == 0) {
-                _this8.setState({
+                _this7.setState({
                   submit: false,
                   selectParts: []
                 });
 
-                _this8.imageOpt.color = 'tran';
+                _this7.imageOpt.color = 'tran';
                 setFieldsValue({
                   quantity: 1,
-                  express_id: _this8.getDefaultExpress()
+                  express_id: _this7.getDefaultExpress()
                 });
-                var catename = "".concat(_this8.select.brand_name, " ").concat(_this8.select.brand_type_name, " ").concat(_this8.select.texture_name);
+                var catename = "".concat(_this7.select.brand_name, " ").concat(_this7.select.brand_type_name, " ").concat(_this7.select.texture_name);
 
-                if (!_this8.submitOrderObj[values.order_sn]) {
-                  _this8.submitOrderObj[values.order_sn] = {
+                if (!_this7.submitOrderObj[values.order_sn]) {
+                  _this7.submitOrderObj[values.order_sn] = {
                     count: 1,
-                    obj: Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_21__[/* default */ "a"])({}, _this8.select.id, {
+                    obj: Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_21__[/* default */ "a"])({}, _this7.select.id, {
                       name: catename,
                       count: 1
                     })
                   };
                 } else {
-                  _this8.submitOrderObj[values.order_sn].count++;
+                  _this7.submitOrderObj[values.order_sn].count++;
 
-                  if (!_this8.submitOrderObj[values.order_sn].obj[_this8.select.id]) {
-                    _this8.submitOrderObj[values.order_sn].obj[_this8.select.id] = {
+                  if (!_this7.submitOrderObj[values.order_sn].obj[_this7.select.id]) {
+                    _this7.submitOrderObj[values.order_sn].obj[_this7.select.id] = {
                       name: catename,
                       count: 1
                     };
                   } else {
-                    _this8.submitOrderObj[values.order_sn].obj[_this8.select.id].count++;
+                    _this7.submitOrderObj[values.order_sn].obj[_this7.select.id].count++;
                   }
                 }
 
@@ -3636,20 +3664,20 @@ function (_Component) {
                   okText: '继续下单',
                   cancelText: '查看订单',
                   onOk: function onOk() {
-                    values.type == 10 && importExcelData && _this8.setState({
+                    values.type == 10 && importExcelData && _this7.setState({
                       drawer: true
                     });
                   },
                   onCancel: function onCancel() {
-                    _this8.setState({
+                    _this7.setState({
                       order_sn: values.order_sn
                     }, function () {
-                      if (_this8.dialogDetailRef.current) _this8.dialogDetailRef.current.open();
+                      if (_this7.dialogDetailRef.current) _this7.dialogDetailRef.current.open();
                     });
                   }
                 });
               } else {
-                _this8.setState({
+                _this7.setState({
                   submit: false
                 });
               }
@@ -3663,7 +3691,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this9 = this,
+      var _this8 = this,
           _cx;
 
       var select = this.select,
@@ -3704,7 +3732,7 @@ function (_Component) {
         type: 'radio',
         selectedRowKeys: selectedRowKeys,
         onChange: function onChange(selectedRowKeys, selectedRows) {
-          _this9.handleSelectRow(selectedRows[0]);
+          _this8.handleSelectRow(selectedRows[0]);
         }
       };
       var colorSelectValue = defaultColors.map(function (item) {
@@ -3749,11 +3777,11 @@ function (_Component) {
         },
         placeholder: "\u9009\u62E9\u624B\u673A\u578B\u53F7\uFF0C\u652F\u6301\u641C\u7D22",
         onChange: function onChange(value) {
-          _this9.select = _this9.cateObj[value[2]];
-          public_utils__WEBPACK_IMPORTED_MODULE_37__[/* MServer */ "a"].get("/cate/catetextureattr/".concat(_this9.select.id)).then(function (res) {
-            _this9.select.texture_attr = res.errcode == 0 ? res.data : [];
+          _this8.select = _this8.cateObj[value[2]];
+          public_utils__WEBPACK_IMPORTED_MODULE_37__[/* MServer */ "a"].get("/cate/catetextureattr/".concat(_this8.select.id)).then(function (res) {
+            _this8.select.texture_attr = res.errcode == 0 ? res.data : [];
 
-            _this9.forceUpdate();
+            _this8.forceUpdate();
           });
         }
       }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_36__[/* UploadBtn */ "i"].Local, {
@@ -3768,7 +3796,7 @@ function (_Component) {
           marginLeft: '15px'
         },
         onClick: function onClick() {
-          return _this9.setState({
+          return _this8.setState({
             preview: !preview
           });
         }
@@ -3777,7 +3805,7 @@ function (_Component) {
           marginLeft: '15px'
         },
         onClick: function onClick() {
-          return _this9.autoImage(_this9.uploadRef.current);
+          return _this8.autoImage(_this8.uploadRef.current);
         }
       }, "\u521D\u59CB\u5316\u56FE\u7247")), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
         className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.layoutHomeBd
@@ -3859,7 +3887,7 @@ function (_Component) {
           marginLeft: '15px'
         },
         onClick: function onClick() {
-          return _this9.setState({
+          return _this8.setState({
             drawer: true
           });
         }
@@ -3885,7 +3913,7 @@ function (_Component) {
         extra: getFieldValue('order_sn') ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("a", {
           className: "text-info",
           onClick: function onClick() {
-            _this9.dialogDetailRef.current && _this9.dialogDetailRef.current.open();
+            _this8.dialogDetailRef.current && _this8.dialogDetailRef.current.open();
           }
         }, "\u67E5\u770B\u8BA2\u5355") : null
       }, getFieldDecorator('order_sn', {
@@ -3950,7 +3978,7 @@ function (_Component) {
         rowSelection: {
           selectedRowKeys: selectParts,
           onChange: function onChange(selectedRowKeys) {
-            _this9.setState({
+            _this8.setState({
               selectParts: selectedRowKeys
             });
           }
@@ -3999,9 +4027,9 @@ function (_Component) {
         precision: 2,
         defaultValue: 0,
         onChange: function onChange(value) {
-          _this9.imageOpt.rotate = value;
+          _this8.imageOpt.rotate = value;
 
-          _this9.getImagePreview();
+          _this8.getImagePreview();
         },
         placeholder: "\u89D2\u5EA6"
       })), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
@@ -4015,9 +4043,9 @@ function (_Component) {
         },
         value: colorSelectValue,
         onChange: function onChange(value) {
-          _this9.imageOpt.color = value;
+          _this8.imageOpt.color = value;
 
-          _this9.forceUpdate();
+          _this8.forceUpdate();
         },
         options: defaultColors
       }), colorSelectValue == -1 ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
@@ -4030,9 +4058,9 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_36__[/* ColorPicker */ "a"], {
         color: imageOpt.color == -1 ? '#000' : imageOpt.color,
         onChange: function onChange(c) {
-          _this9.imageOpt.color = c.color;
+          _this8.imageOpt.color = c.color;
 
-          _this9.forceUpdate();
+          _this8.forceUpdate();
         }
       })) : null), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "W"), "\u4E0A\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "S"), "\u4E0B\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "A"), "\u5DE6\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "D"), "\u53F3\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "E"), "\u653E\u5927"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "R"), "\u7F29\u5C0F")), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1___default.a, {
         title: "\u5BFC\u5165\u6DD8\u5B9D\u8BA2\u5355",
@@ -4043,7 +4071,7 @@ function (_Component) {
         } // closable={false}
         ,
         onClose: function onClose() {
-          return _this9.setState({
+          return _this8.setState({
             drawer: false
           });
         },
@@ -4055,7 +4083,7 @@ function (_Component) {
         onRow: function onRow(row) {
           return {
             onClick: function onClick() {
-              _this9.handleSelectRow(row);
+              _this8.handleSelectRow(row);
             }
           };
         },
@@ -4064,17 +4092,17 @@ function (_Component) {
           dataIndex: 'order_sn',
           title: '订单编号',
           render: function render(text, record) {
-            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, text, _this9.submitOrderObj[record.order_sn] ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default.a, {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, text, _this8.submitOrderObj[record.order_sn] ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default.a, {
               title: react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
                 className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.tooltipContent
-              }, _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2___default()(_this9.submitOrderObj[record.order_sn].obj).map(function (item) {
+              }, _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2___default()(_this8.submitOrderObj[record.order_sn].obj).map(function (item) {
                 return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("p", {
                   key: item
-                }, _this9.submitOrderObj[record.order_sn].obj[item].name, " ", _this9.submitOrderObj[record.order_sn].obj[item].count, "\u6B21");
+                }, _this8.submitOrderObj[record.order_sn].obj[item].name, " ", _this8.submitOrderObj[record.order_sn].obj[item].count, "\u6B21");
               }))
             }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", {
               className: "text-success"
-            }, "(\u5DF2\u63D0\u4EA4", _this9.submitOrderObj[record.order_sn].count, "\u6B21)")) : null);
+            }, "(\u5DF2\u63D0\u4EA4", _this8.submitOrderObj[record.order_sn].count, "\u6B21)")) : null);
           }
         }, {
           key: 'consignee',
