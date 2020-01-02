@@ -29,10 +29,10 @@ export default class Order extends Component {
         }
     }
 
-    handleSearch(value) {
+    handleSearch(type, value) {
         this.tableRef.current.reload({
             condition: {
-                order_sn: value
+                [type]: value
             }
         });
     }
@@ -132,7 +132,8 @@ export default class Order extends Component {
                     }
                 </Radio.Group>
                 <div className="form-condition">
-                    <Input.Search onSearch={this.handleSearch} placeholder="搜索订单号" />
+                    <Input.Search onSearch={value => this.handleSearch('order_sn', value)} placeholder="搜索订单号" />
+                    <Input.Search style={{ marginLeft: '15px' }} onSearch={value => this.handleSearch('express_sn', value)} placeholder="搜索运单号" />
                     <Button loading={paySubmit} style={{ marginLeft: '15px' }} type="primary" onClick={this.handleBatchPay}>批量付款</Button>
                     <Button style={{ marginLeft: '15px' }} onClick={this.handleExport} loading={logisLoading}>导出物流信息</Button>
                     <a 
