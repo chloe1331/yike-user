@@ -24,7 +24,7 @@ class Home extends Component {
             selectedRow: null,
             preview: true,
             submit: false,
-            drawer: false
+            drawer: false,
         };
         this.cateObj = {};
         this.select = null;

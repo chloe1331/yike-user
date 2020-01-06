@@ -2983,6 +2983,20 @@ var style_ = __webpack_require__("Z6WE");
 var layout_ = __webpack_require__("VzA1");
 var layout_default = /*#__PURE__*/__webpack_require__.n(layout_);
 
+// EXTERNAL MODULE: external "antd/lib/modal/style"
+var modal_style_ = __webpack_require__("bmdr");
+
+// EXTERNAL MODULE: external "antd/lib/modal"
+var modal_ = __webpack_require__("xKsY");
+var modal_default = /*#__PURE__*/__webpack_require__.n(modal_);
+
+// EXTERNAL MODULE: external "antd/lib/button/style"
+var button_style_ = __webpack_require__("DnGC");
+
+// EXTERNAL MODULE: external "antd/lib/button"
+var button_ = __webpack_require__("eGmO");
+var button_default = /*#__PURE__*/__webpack_require__.n(button_);
+
 // EXTERNAL MODULE: external "antd/lib/config-provider/style"
 var config_provider_style_ = __webpack_require__("uq6w");
 
@@ -3061,7 +3075,7 @@ var model = {
     get:
     /*#__PURE__*/
     regenerator_default.a.mark(function get(action, _ref) {
-      var put, res;
+      var put, res, system, data;
       return regenerator_default.a.wrap(function get$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -3084,12 +3098,33 @@ var model = {
 
             case 6:
               _context.next = 8;
-              return put({
-                type: 'save',
-                data: Object(objectSpread["a" /* default */])({}, res.data)
+              return utils["a" /* MServer */].get('/system/get').then(function (res) {
+                var systemInfo = {};
+
+                if (res.errcode == 0) {
+                  res.data.forEach(function (item) {
+                    systemInfo[item.key] = item[item.type];
+                  });
+                }
+
+                return systemInfo;
               });
 
             case 8:
+              system = _context.sent;
+              data = Object(objectSpread["a" /* default */])({}, res.data, {
+                system: system
+              });
+              _context.next = 12;
+              return put({
+                type: 'save',
+                data: data
+              });
+
+            case 12:
+              return _context.abrupt("return", data);
+
+            case 13:
             case "end":
               return _context.stop();
           }
@@ -3273,20 +3308,32 @@ var common = __webpack_require__("9xl+");
 
 
 
+
+
+
+
 var _app_MyApp =
 /*#__PURE__*/
 function (_App) {
   Object(inherits["a" /* default */])(MyApp, _App);
 
-  function MyApp() {
+  function MyApp(props) {
+    var _this;
+
     Object(classCallCheck["a" /* default */])(this, MyApp);
 
-    return Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(MyApp).apply(this, arguments));
+    _this = Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(MyApp).call(this, props));
+    _this.state = {
+      modalNotice: false
+    };
+    return _this;
   }
 
   Object(createClass["a" /* default */])(MyApp, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this2 = this;
+
       var script = document.createElement('script');
       script.src = '//s.weituibao.com/site/images/1568272475072/pace.min.js';
       document.head.appendChild(script);
@@ -3297,6 +3344,12 @@ function (_App) {
       if (router.asPath != '/login') {
         dispatch({
           type: 'user/get'
+        }).then(function (res) {
+          if (res.system.notice) {
+            _this2.setState({
+              modalNotice: true
+            });
+          }
         });
       }
 
@@ -3310,11 +3363,14 @@ function (_App) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$props2 = this.props,
           Component = _this$props2.Component,
           pageProps = _this$props2.pageProps,
           router = _this$props2.router,
           user = _this$props2.user;
+      var modalNotice = this.state.modalNotice;
 
       if (router.asPath == '/login') {
         return external_react_default.a.createElement(config_provider_default.a, {
@@ -3327,7 +3383,29 @@ function (_App) {
       if (!user) return null;
       return external_react_default.a.createElement(config_provider_default.a, {
         locale: zh_CN_default.a
-      }, external_react_default.a.createElement(head_default.a, null, external_react_default.a.createElement("title", null, "\u9996\u9875-\u58F9\u58F3")), external_react_default.a.createElement(layout_default.a, null, external_react_default.a.createElement(layout_default.a.Header, null, external_react_default.a.createElement(component["d" /* Header */], {
+      }, external_react_default.a.createElement(head_default.a, null, external_react_default.a.createElement("title", null, "\u9996\u9875-\u58F9\u58F3")), external_react_default.a.createElement(modal_default.a, {
+        title: "\u7CFB\u7EDF\u516C\u544A",
+        width: 640,
+        onCancel: function onCancel() {
+          return _this3.setState({
+            modalNotice: false
+          });
+        },
+        visible: modalNotice,
+        footer: [external_react_default.a.createElement(button_default.a, {
+          key: "confirm",
+          type: "primary",
+          onClick: function onClick() {
+            return _this3.setState({
+              modalNotice: false
+            });
+          }
+        }, "\u77E5\u9053\u4E86")]
+      }, external_react_default.a.createElement("div", {
+        dangerouslySetInnerHTML: {
+          __html: user.system.notice
+        }
+      })), external_react_default.a.createElement(layout_default.a, null, external_react_default.a.createElement(layout_default.a.Header, null, external_react_default.a.createElement(component["d" /* Header */], {
         router: router,
         user: user
       })), external_react_default.a.createElement(layout_default.a.Content, null, external_react_default.a.createElement(Component, Object(esm_extends["a" /* default */])({}, pageProps, {

@@ -2,7 +2,7 @@ import React from 'react';
 import App from 'next/app';
 import Header from 'next/head';
 import { connect } from 'dva';
-import { ConfigProvider, Layout } from 'antd';
+import { ConfigProvider, Layout, Modal, Button } from 'antd';
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
 import PropTypes from 'prop-types';
 
@@ -12,6 +12,12 @@ import { Header as MyHeader } from 'component';
 import 'public/theme/common.less';
 
 class MyApp extends App {
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalNotice: false
+        };
+    }
     static async getInitialProps(appContext) {
         const appProps = await App.getInitialProps(appContext);
         appProps.pageProps = {
@@ -32,6 +38,12 @@ class MyApp extends App {
         if (router.asPath != '/login') {
             dispatch({
                 type: 'user/get'
+            }).then(res => {
+                if (res.system.notice) {
+                    this.setState({
+                        modalNotice: true
+                    });
+                }
             });
         }
         router.events.on('routeChangeStart', () => {
@@ -44,6 +56,7 @@ class MyApp extends App {
 
     render() {
         const { Component, pageProps, router, user } = this.props;
+        const { modalNotice } = this.state;
 
         if (router.asPath == '/login') {
             return (
@@ -63,6 +76,13 @@ class MyApp extends App {
                 <Header>
                     <title>首页-壹壳</title>
                 </Header>
+                <Modal
+                    title="系统公告"
+                    width={640}
+                    onCancel={() => this.setState({ modalNotice: false })}
+                    visible={modalNotice}
+                    footer={[<Button key="confirm" type="primary" onClick={() => this.setState({ modalNotice: false })}>知道了</Button>]}
+                ><div dangerouslySetInnerHTML={{ __html: user.system.notice }}></div></Modal>
                 <Layout>
                     <Layout.Header><MyHeader router={router} user={user} /></Layout.Header>
                     <Layout.Content><Component {...pageProps} router={router} /></Layout.Content>
