@@ -3627,8 +3627,8 @@ function (_Component) {
             public_utils__WEBPACK_IMPORTED_MODULE_37__[/* MServer */ "a"].post('/order/save', params).then(function (res) {
               if (res.errcode == 0) {
                 _this7.setState({
-                  submit: false,
-                  selectParts: []
+                  submit: false // selectParts: []
+
                 });
 
                 _this7.imageOpt.color = 'tran';

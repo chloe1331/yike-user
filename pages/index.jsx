@@ -569,7 +569,7 @@ class Home extends Component {
                         if (res.errcode == 0) {
                             this.setState({
                                 submit: false,
-                                selectParts: []
+                                // selectParts: []
                             });
                             this.imageOpt.color = 'tran';
                             setFieldsValue({
