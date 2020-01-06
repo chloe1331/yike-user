@@ -77,6 +77,7 @@ class MyApp extends App {
                     <title>首页-壹壳</title>
                 </Header>
                 <Modal
+                    className="notice-modal"
                     title="系统公告"
                     width={640}
                     onCancel={() => this.setState({ modalNotice: false })}

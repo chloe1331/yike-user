@@ -214,6 +214,9 @@ li {
 .ant-drawer-bottom .ant-drawer-content {
   overflow: auto;
 }
+.notice-modal .ant-modal-body * {
+  max-width: 100%;
+}
 
 /* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
 /* stylelint-disable no-duplicate-selectors */
