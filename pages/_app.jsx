@@ -23,6 +23,10 @@ class MyApp extends App {
     }
 
     componentDidMount() {
+        const script = document.createElement('script');
+        script.src = '//s.weituibao.com/site/images/1568272475072/pace.min.js';
+        document.head.appendChild(script);
+        
         const { dispatch, router } = this.props;
 
         if (router.asPath != '/login') {

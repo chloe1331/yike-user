@@ -11,7 +11,7 @@ class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <script src='//s.weituibao.com/site/images/1568272475072/pace.min.js' />
+
                 </Head>
                 <body>
                     <Main />
