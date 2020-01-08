@@ -303,7 +303,8 @@ function (_Component) {
       var _this$props = this.props,
           validateFields = _this$props.form.validateFields,
           router = _this$props.router,
-          dispatch = _this$props.dispatch;
+          dispatch = _this$props.dispatch,
+          onLogin = _this$props.onLogin;
       validateFields(function (err, values) {
         if (!err) {
           public_utils__WEBPACK_IMPORTED_MODULE_16__[/* MServer */ "a"].post('/user/login', values).then(function (res) {
@@ -312,6 +313,8 @@ function (_Component) {
               router.push('/');
               dispatch({
                 type: 'user/get'
+              }).then(function () {
+                onLogin && onLogin();
               });
             }
           });

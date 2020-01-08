@@ -64,7 +64,7 @@ class MyApp extends App {
                     <Header>
                         <title>登录-壹壳</title>
                     </Header>
-                    <Component {...pageProps} router={router} />
+                    <Component {...pageProps} router={router} onLogin={() => this.setState({ modalNotice: true })} />
                 </ConfigProvider>
             );
         }

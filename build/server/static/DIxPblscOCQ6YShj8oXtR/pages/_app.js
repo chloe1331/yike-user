@@ -3376,7 +3376,12 @@ function (_App) {
         return external_react_default.a.createElement(config_provider_default.a, {
           locale: zh_CN_default.a
         }, external_react_default.a.createElement(head_default.a, null, external_react_default.a.createElement("title", null, "\u767B\u5F55-\u58F9\u58F3")), external_react_default.a.createElement(Component, Object(esm_extends["a" /* default */])({}, pageProps, {
-          router: router
+          router: router,
+          onLogin: function onLogin() {
+            return _this3.setState({
+              modalNotice: true
+            });
+          }
         })));
       }
 

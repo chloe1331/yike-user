@@ -17,7 +17,7 @@ class Login extends Component {
         e.preventDefault();
         e.stopPropagation();
 
-        const { form: { validateFields }, router, dispatch } = this.props;
+        const { form: { validateFields }, router, dispatch, onLogin } = this.props;
 
         validateFields((err, values) => {
             if (!err) {
@@ -27,6 +27,8 @@ class Login extends Component {
                         router.push('/');
                         dispatch({
                             type: 'user/get'
+                        }).then(() => {
+                            onLogin && onLogin();
                         });
                     }
                 });
@@ -77,7 +79,8 @@ class Login extends Component {
 Login.propTypes = {
     form: PropTypes.object,
     router: PropTypes.object,
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
+    onLogin: PropTypes.func
 };
 
 export default connect()(Form.create()(Login));
