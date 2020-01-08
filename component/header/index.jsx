@@ -20,7 +20,7 @@ export default class Header extends Component {
     }
     
     render() {
-        const { router, user } = this.props;
+        const { router, user, onShowNotice } = this.props;
         const menu = [
             {
                 title: '下单',
@@ -58,13 +58,16 @@ export default class Header extends Component {
                         ))
                     }
                 </ul>
-                <Dropdown overlay={userMenu}>
-                    <a className={style.userInfo}>
-                        <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }} icon="user" />
-                        <span className={style.userText}>{user.username}</span>
-                        <Icon type="caret-down" className={style.dropdownIcon} />
-                    </a>
-                </Dropdown>
+                <div>
+                    <a style={{ marginRight: '15px' }} onClick={onShowNotice}>查看公告</a>
+                    <Dropdown overlay={userMenu}>
+                        <a className={style.userInfo}>
+                            <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }} icon="user" />
+                            <span className={style.userText}>{user.username}</span>
+                            <Icon type="caret-down" className={style.dropdownIcon} />
+                        </a>
+                    </Dropdown>
+                </div>
             </div>
         );
     }
@@ -72,5 +75,6 @@ export default class Header extends Component {
 
 Header.propTypes = {
     router: PropTypes.object,
-    user: PropTypes.object
+    user: PropTypes.object,
+    onShowNotice: PropTypes.func
 };

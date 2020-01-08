@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -214,21 +214,6 @@ module.exports = Api;
 
 /***/ }),
 
-/***/ 0:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("YNMu");
-
-
-/***/ }),
-
-/***/ "0B1J":
-/***/ (function(module, exports) {
-
-module.exports = require("dva-no-router");
-
-/***/ }),
-
 /***/ "0iUn":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -270,10 +255,11 @@ module.exports = require("antd/lib/dropdown/style");
 
 /***/ }),
 
-/***/ "4DCN":
-/***/ (function(module, exports) {
+/***/ 4:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("redux-logger");
+module.exports = __webpack_require__("cMU6");
+
 
 /***/ }),
 
@@ -291,18 +277,60 @@ module.exports = __webpack_require__("k1wZ");
 
 /***/ }),
 
+/***/ "5PEn":
+/***/ (function(module, exports) {
+
+module.exports = {
+	"layout-home": "layout-home___1ZLBK",
+	"layoutHome": "layout-home___1ZLBK",
+	"layout-home-hd": "layout-home-hd___1FVUV",
+	"layoutHomeHd": "layout-home-hd___1FVUV",
+	"layout-home-bd": "layout-home-bd___1qHr7",
+	"layoutHomeBd": "layout-home-bd___1qHr7",
+	"order-config": "order-config___wsgdX",
+	"orderConfig": "order-config___wsgdX",
+	"preview-image": "preview-image___2tUtM",
+	"previewImage": "preview-image___2tUtM",
+	"remark-box": "remark-box___CFbBA",
+	"remarkBox": "remark-box___CFbBA",
+	"popover-setting": "popover-setting___2NF5g",
+	"popoverSetting": "popover-setting___2NF5g",
+	"tooltip-content": "tooltip-content___30Bhr",
+	"tooltipContent": "tooltip-content___30Bhr",
+	"mobile-preview": "mobile-preview___3OGNv",
+	"mobilePreview": "mobile-preview___3OGNv",
+	"mobile-preview-canvas": "mobile-preview-canvas___2FKCE",
+	"mobilePreviewCanvas": "mobile-preview-canvas___2FKCE",
+	"size-form": "size-form___1Atp0",
+	"sizeForm": "size-form___1Atp0",
+	"box1": "box1___24n8V",
+	"box2": "box2___3YA3k",
+	"phone-preview": "phone-preview___3WZlp",
+	"phonePreview": "phone-preview___3WZlp",
+	"phone-box": "phone-box___2ct6e",
+	"phoneBox": "phone-box___2ct6e",
+	"phone-box-body": "phone-box-body___SaMj9",
+	"phoneBoxBody": "phone-box-body___SaMj9",
+	"phone-box-body-image": "phone-box-body-image___Sv077",
+	"phoneBoxBodyImage": "phone-box-body-image___Sv077",
+	"phone-box-bg": "phone-box-bg___5uRK4",
+	"phoneBoxBg": "phone-box-bg___5uRK4",
+	"upload-image": "upload-image___3UPPe",
+	"uploadImage": "upload-image___3UPPe",
+	"phone-preview-main": "phone-preview-main___3E4tm",
+	"phonePreviewMain": "phone-preview-main___3E4tm",
+	"phone-preview-camera": "phone-preview-camera___iQphg",
+	"phonePreviewCamera": "phone-preview-camera___iQphg",
+	"home-footer": "home-footer___1NLQ1",
+	"homeFooter": "home-footer___1NLQ1"
+};
+
+/***/ }),
+
 /***/ "7GvT":
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/empty");
-
-/***/ }),
-
-/***/ "8Bbg":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("B5Ud")
-
 
 /***/ }),
 
@@ -327,17 +355,17 @@ module.exports = require("antd/lib/avatar");
 
 /***/ }),
 
-/***/ "9xl+":
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
 /***/ "A4pX":
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/select");
+
+/***/ }),
+
+/***/ "AF2q":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/tooltip/style");
 
 /***/ }),
 
@@ -356,218 +384,6 @@ function _assertThisInitialized(self) {
 
 /***/ }),
 
-/***/ "B5Ud":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__("KI45");
-
-var _promise = _interopRequireDefault(__webpack_require__("eVuF"));
-
-var _assign = _interopRequireDefault(__webpack_require__("UXZV"));
-
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__("/HRN"));
-
-var _createClass2 = _interopRequireDefault(__webpack_require__("WaGi"));
-
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__("ZDA2"));
-
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__("/+P4"));
-
-var _inherits2 = _interopRequireDefault(__webpack_require__("N9n2"));
-
-var __importStar = void 0 && (void 0).__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-  }
-  result["default"] = mod;
-  return result;
-};
-
-var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var react_1 = __importStar(__webpack_require__("cDcd"));
-
-var prop_types_1 = __importDefault(__webpack_require__("rf6O"));
-
-var utils_1 = __webpack_require__("p8BD");
-
-var router_1 = __webpack_require__("4Q3z");
-
-var App =
-/*#__PURE__*/
-function (_react_1$Component) {
-  (0, _inherits2.default)(App, _react_1$Component);
-
-  function App() {
-    (0, _classCallCheck2.default)(this, App);
-    return (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(App).apply(this, arguments));
-  }
-
-  (0, _createClass2.default)(App, [{
-    key: "getChildContext",
-    value: function getChildContext() {
-      return {
-        router: router_1.makePublicRouterInstance(this.props.router)
-      };
-    } // Kept here for backwards compatibility.
-    // When someone ended App they could call `super.componentDidCatch`. This is now deprecated.
-
-  }, {
-    key: "componentDidCatch",
-    value: function componentDidCatch(err) {
-      throw err;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          router = _this$props.router,
-          Component = _this$props.Component,
-          pageProps = _this$props.pageProps;
-      var url = createUrl(router);
-      return react_1.default.createElement(Container, null, react_1.default.createElement(Component, (0, _assign.default)({}, pageProps, {
-        url: url
-      })));
-    }
-  }], [{
-    key: "getInitialProps",
-    value: function (_ref) {
-      var Component = _ref.Component,
-          router = _ref.router,
-          ctx = _ref.ctx;
-
-      try {
-        return _promise.default.resolve(utils_1.loadGetInitialProps(Component, ctx)).then(function (pageProps) {
-          return {
-            pageProps: pageProps
-          };
-        });
-      } catch (e) {
-        return _promise.default.reject(e);
-      }
-    }
-  }]);
-  return App;
-}(react_1.Component);
-
-App.childContextTypes = {
-  router: prop_types_1.default.object
-};
-exports.default = App;
-
-var Container =
-/*#__PURE__*/
-function (_react_1$Component2) {
-  (0, _inherits2.default)(Container, _react_1$Component2);
-
-  function Container() {
-    (0, _classCallCheck2.default)(this, Container);
-    return (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Container).apply(this, arguments));
-  }
-
-  (0, _createClass2.default)(Container, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.scrollToHash();
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      this.scrollToHash();
-    }
-  }, {
-    key: "scrollToHash",
-    value: function scrollToHash() {
-      var hash = window.location.hash;
-      hash = hash ? hash.substring(1) : false;
-      if (!hash) return;
-      var el = document.getElementById(hash);
-      if (!el) return; // If we call scrollIntoView() in here without a setTimeout
-      // it won't scroll properly.
-
-      setTimeout(function () {
-        return el.scrollIntoView();
-      }, 0);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return this.props.children;
-    }
-  }]);
-  return Container;
-}(react_1.Component);
-
-exports.Container = Container;
-var warnUrl = utils_1.execOnce(function () {
-  if (false) {}
-});
-
-function createUrl(router) {
-  // This is to make sure we don't references the router object at call time
-  var pathname = router.pathname,
-      asPath = router.asPath,
-      query = router.query;
-  return {
-    get query() {
-      warnUrl();
-      return query;
-    },
-
-    get pathname() {
-      warnUrl();
-      return pathname;
-    },
-
-    get asPath() {
-      warnUrl();
-      return asPath;
-    },
-
-    back: function back() {
-      warnUrl();
-      router.back();
-    },
-    push: function push(url, as) {
-      warnUrl();
-      return router.push(url, as);
-    },
-    pushTo: function pushTo(href, as) {
-      warnUrl();
-      var pushRoute = as ? href : null;
-      var pushUrl = as || href;
-      return router.push(pushRoute, pushUrl);
-    },
-    replace: function replace(url, as) {
-      warnUrl();
-      return router.replace(url, as);
-    },
-    replaceTo: function replaceTo(href, as) {
-      warnUrl();
-      var replaceRoute = as ? href : null;
-      var replaceUrl = as || href;
-      return router.replace(replaceRoute, replaceUrl);
-    }
-  };
-}
-
-exports.createUrl = createUrl;
-
-/***/ }),
-
 /***/ "BWRB":
 /***/ (function(module, exports) {
 
@@ -579,6 +395,20 @@ module.exports = require("antd/lib/icon");
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("/+oN");
+
+/***/ }),
+
+/***/ "BucJ":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/tag/style");
+
+/***/ }),
+
+/***/ "CUto":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/cascader");
 
 /***/ }),
 
@@ -751,6 +581,13 @@ module.exports = require("core-js/library/fn/get-iterator");
 
 /***/ }),
 
+/***/ "JHZV":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/radio/style");
+
+/***/ }),
+
 /***/ "Jo+v":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -809,13 +646,6 @@ module.exports = {
 	"iconBtns": "icon-btns___1OP6S",
 	"loading": "loading___3LfpB"
 };
-
-/***/ }),
-
-/***/ "LNYd":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/locale-provider/zh_CN");
 
 /***/ }),
 
@@ -909,53 +739,6 @@ function _inherits(subClass, superClass) {
 }
 
 module.exports = _inherits;
-
-/***/ }),
-
-/***/ "O40h":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _asyncToGenerator; });
-/* harmony import */ var _core_js_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("eVuF");
-/* harmony import */ var _core_js_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_promise__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-
-  if (info.done) {
-    resolve(value);
-  } else {
-    _core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a.resolve(value).then(_next, _throw);
-  }
-}
-
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-        args = arguments;
-    return new _core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-      }
-
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-      }
-
-      _next(undefined);
-    });
-  };
-}
 
 /***/ }),
 
@@ -1139,7 +922,8 @@ function (_Component) {
     value: function render() {
       var _this$props = this.props,
           router = _this$props.router,
-          user = _this$props.user;
+          user = _this$props.user,
+          onShowNotice = _this$props.onShowNotice;
       var menu = [{
         title: '下单',
         href: '/'
@@ -1170,7 +954,12 @@ function (_Component) {
         }, external_react_default.a.createElement(link_default.a, {
           href: item.href
         }, external_react_default.a.createElement("a", null, item.title)));
-      })), external_react_default.a.createElement(dropdown_default.a, {
+      })), external_react_default.a.createElement("div", null, external_react_default.a.createElement("a", {
+        style: {
+          marginRight: '15px'
+        },
+        onClick: onShowNotice
+      }, "\u67E5\u770B\u516C\u544A"), external_react_default.a.createElement(dropdown_default.a, {
         overlay: userMenu
       }, external_react_default.a.createElement("a", {
         className: header_style_default.a.userInfo
@@ -1185,7 +974,7 @@ function (_Component) {
       }, user.username), external_react_default.a.createElement(icon_default.a, {
         type: "caret-down",
         className: header_style_default.a.dropdownIcon
-      }))));
+      })))));
     }
   }]);
 
@@ -2770,6 +2559,13 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "P7Vo":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/tag");
+
+/***/ }),
+
 /***/ "Puj+":
 /***/ (function(module, exports) {
 
@@ -2795,6 +2591,13 @@ module.exports = require("core-js/library/fn/array/is-array");
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("o5io");
+
+/***/ }),
+
+/***/ "T22j":
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/parse-float");
 
 /***/ }),
 
@@ -2891,10 +2694,17 @@ module.exports = require("antd/lib/input");
 
 /***/ }),
 
-/***/ "VzA1":
+/***/ "WYi6":
 /***/ (function(module, exports) {
 
-module.exports = require("antd/lib/layout");
+module.exports = require("antd/lib/drawer/style");
+
+/***/ }),
+
+/***/ "Wa2I":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("T22j");
 
 /***/ }),
 
@@ -2931,6 +2741,20 @@ module.exports = require("core-js/library/fn/object/set-prototype-of");
 
 /***/ }),
 
+/***/ "X1wy":
+/***/ (function(module, exports) {
+
+module.exports = require("xlsx");
+
+/***/ }),
+
+/***/ "XQdj":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/radio");
+
+/***/ }),
+
 /***/ "XVgq":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2960,526 +2784,10 @@ module.exports = __webpack_require__("cTJO")
 
 /***/ }),
 
-/***/ "YNMu":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/regenerator/index.js
-var regenerator = __webpack_require__("ln6h");
-var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js
-var objectSpread = __webpack_require__("zrwo");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js
-var asyncToGenerator = __webpack_require__("O40h");
-
-// EXTERNAL MODULE: external "antd/lib/layout/style"
-var style_ = __webpack_require__("Z6WE");
-
-// EXTERNAL MODULE: external "antd/lib/layout"
-var layout_ = __webpack_require__("VzA1");
-var layout_default = /*#__PURE__*/__webpack_require__.n(layout_);
-
-// EXTERNAL MODULE: external "antd/lib/modal/style"
-var modal_style_ = __webpack_require__("bmdr");
-
-// EXTERNAL MODULE: external "antd/lib/modal"
-var modal_ = __webpack_require__("xKsY");
-var modal_default = /*#__PURE__*/__webpack_require__.n(modal_);
-
-// EXTERNAL MODULE: external "antd/lib/button/style"
-var button_style_ = __webpack_require__("DnGC");
-
-// EXTERNAL MODULE: external "antd/lib/button"
-var button_ = __webpack_require__("eGmO");
-var button_default = /*#__PURE__*/__webpack_require__.n(button_);
-
-// EXTERNAL MODULE: external "antd/lib/config-provider/style"
-var config_provider_style_ = __webpack_require__("uq6w");
-
-// EXTERNAL MODULE: external "antd/lib/config-provider"
-var config_provider_ = __webpack_require__("ztzw");
-var config_provider_default = /*#__PURE__*/__webpack_require__.n(config_provider_);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js
-var esm_extends = __webpack_require__("kOwS");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js
-var classCallCheck = __webpack_require__("0iUn");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js
-var createClass = __webpack_require__("sLSF");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js + 1 modules
-var possibleConstructorReturn = __webpack_require__("MI3g");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__("a7VT");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js + 1 modules
-var inherits = __webpack_require__("Tit0");
-
-// EXTERNAL MODULE: external "react"
-var external_react_ = __webpack_require__("cDcd");
-var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
-
-// EXTERNAL MODULE: ./node_modules/next/app.js
-var next_app = __webpack_require__("8Bbg");
-var app_default = /*#__PURE__*/__webpack_require__.n(next_app);
-
-// EXTERNAL MODULE: external "next/head"
-var head_ = __webpack_require__("xnum");
-var head_default = /*#__PURE__*/__webpack_require__.n(head_);
-
-// EXTERNAL MODULE: external "dva-no-router"
-var external_dva_no_router_ = __webpack_require__("0B1J");
-var external_dva_no_router_default = /*#__PURE__*/__webpack_require__.n(external_dva_no_router_);
-
-// EXTERNAL MODULE: external "antd/lib/locale-provider/zh_CN"
-var zh_CN_ = __webpack_require__("LNYd");
-var zh_CN_default = /*#__PURE__*/__webpack_require__.n(zh_CN_);
-
-// EXTERNAL MODULE: external "prop-types"
-var external_prop_types_ = __webpack_require__("rf6O");
-var external_prop_types_default = /*#__PURE__*/__webpack_require__.n(external_prop_types_);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js
-var is_array = __webpack_require__("p0XB");
-var is_array_default = /*#__PURE__*/__webpack_require__.n(is_array);
-
-// EXTERNAL MODULE: external "redux-logger"
-var external_redux_logger_ = __webpack_require__("4DCN");
-
-// EXTERNAL MODULE: external "react-redux"
-var external_react_redux_ = __webpack_require__("h74D");
-
-// EXTERNAL MODULE: ./public/utils/index.js + 1 modules
-var utils = __webpack_require__("HgRd");
-
-// CONCATENATED MODULE: ./model/user.js
-
-
-
-var model = {
-  namespace: 'user',
-  state: null,
-  reducers: {
-    save: function save(state, payload) {
-      return Object(objectSpread["a" /* default */])({}, state, payload.data);
-    }
-  },
-  effects: {
-    get:
-    /*#__PURE__*/
-    regenerator_default.a.mark(function get(action, _ref) {
-      var put, res, system, data;
-      return regenerator_default.a.wrap(function get$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              put = _ref.put;
-              _context.next = 3;
-              return utils["a" /* MServer */].get('/user/info', null, {
-                silent: true
-              });
-
-            case 3:
-              res = _context.sent;
-
-              if (!(res.errcode !== 0)) {
-                _context.next = 6;
-                break;
-              }
-
-              return _context.abrupt("return");
-
-            case 6:
-              _context.next = 8;
-              return utils["a" /* MServer */].get('/system/get').then(function (res) {
-                var systemInfo = {};
-
-                if (res.errcode == 0) {
-                  res.data.forEach(function (item) {
-                    systemInfo[item.key] = item[item.type];
-                  });
-                }
-
-                return systemInfo;
-              });
-
-            case 8:
-              system = _context.sent;
-              data = Object(objectSpread["a" /* default */])({}, res.data, {
-                system: system
-              });
-              _context.next = 12;
-              return put({
-                type: 'save',
-                data: data
-              });
-
-            case 12:
-              return _context.abrupt("return", data);
-
-            case 13:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, get);
-    })
-  }
-};
-/* harmony default export */ var model_user = (model);
-// CONCATENATED MODULE: ./model/index.js
-
-var model_model = [model_user];
-/* harmony default export */ var model_0 = (model_model);
-// CONCATENATED MODULE: ./public/utils/store.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var isServer = typeof window === 'undefined';
-var __NEXT_DVA_STORE__ = '__NEXT_DVA_STORE__'; // 初始化 Dva
-
-function initDva(initialState) {
-  var app;
-
-  if (initialState) {
-    app = external_dva_no_router_default()({
-      initialState: initialState,
-      onAction: Object(external_redux_logger_["createLogger"])()
-    });
-  } else {
-    app = external_dva_no_router_default()({});
-  }
-
-  var isArray = is_array_default()(model_0);
-
-  if (isArray) {
-    model_0.forEach(function (m) {
-      app.model(m);
-    });
-  } else {
-    app.model(model_0);
-  }
-
-  app.router(function () {});
-  app.start();
-  return app._store;
-} // 获取或创建 Store
-
-
-function getOrCreateStore(initialState) {
-  // Always make a new store if server, otherwise state is shared between requests
-  if (isServer) {
-    return initDva(initialState);
-  } // Create store if unavailable on the client and set it on the window object
-
-
-  if (!window[__NEXT_DVA_STORE__]) {
-    window[__NEXT_DVA_STORE__] = initDva(initialState);
-  }
-
-  return window[__NEXT_DVA_STORE__];
-}
-
-/* harmony default export */ var store = (function (App) {
-  return (
-    /*#__PURE__*/
-    function (_React$Component) {
-      Object(inherits["a" /* default */])(AppWithRedux, _React$Component);
-
-      Object(createClass["a" /* default */])(AppWithRedux, null, [{
-        key: "getInitialProps",
-        // getInitialProps 注入点
-        value: function () {
-          var _getInitialProps = Object(asyncToGenerator["a" /* default */])(
-          /*#__PURE__*/
-          regenerator_default.a.mark(function _callee(appContext) {
-            var dvaStore, appProps;
-            return regenerator_default.a.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    // Get or Create the store with `undefined` as initialState
-                    // This allows you to set a custom default initialState
-                    dvaStore = getOrCreateStore(); // Provide the store to getInitialProps of pages
-
-                    appContext.ctx.dvaStore = dvaStore;
-                    appProps = {};
-
-                    if (!(typeof App.getInitialProps === 'function')) {
-                      _context.next = 7;
-                      break;
-                    }
-
-                    _context.next = 6;
-                    return App.getInitialProps(appContext);
-
-                  case 6:
-                    appProps = _context.sent;
-
-                  case 7:
-                    return _context.abrupt("return", Object(objectSpread["a" /* default */])({}, appProps, {
-                      initialDvaState: dvaStore.getState()
-                    }));
-
-                  case 8:
-                  case "end":
-                    return _context.stop();
-                }
-              }
-            }, _callee);
-          }));
-
-          function getInitialProps(_x) {
-            return _getInitialProps.apply(this, arguments);
-          }
-
-          return getInitialProps;
-        }()
-      }]);
-
-      function AppWithRedux(props) {
-        var _this;
-
-        Object(classCallCheck["a" /* default */])(this, AppWithRedux);
-
-        _this = Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(AppWithRedux).call(this, props));
-        _this.dvaStore = getOrCreateStore(props.initialDvaState);
-        return _this;
-      }
-
-      Object(createClass["a" /* default */])(AppWithRedux, [{
-        key: "render",
-        value: function render() {
-          return external_react_default.a.createElement(external_react_redux_["Provider"], {
-            store: this.dvaStore
-          }, external_react_default.a.createElement(App, this.props));
-        }
-      }]);
-
-      return AppWithRedux;
-    }(external_react_default.a.Component)
-  );
-});
-// EXTERNAL MODULE: ./component/index.js + 17 modules
-var component = __webpack_require__("OLV9");
-
-// EXTERNAL MODULE: ./public/theme/common.less
-var common = __webpack_require__("9xl+");
-
-// CONCATENATED MODULE: ./pages/_app.jsx
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var _app_MyApp =
-/*#__PURE__*/
-function (_App) {
-  Object(inherits["a" /* default */])(MyApp, _App);
-
-  function MyApp(props) {
-    var _this;
-
-    Object(classCallCheck["a" /* default */])(this, MyApp);
-
-    _this = Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(MyApp).call(this, props));
-    _this.state = {
-      modalNotice: false
-    };
-    return _this;
-  }
-
-  Object(createClass["a" /* default */])(MyApp, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      var script = document.createElement('script');
-      script.src = '//s.weituibao.com/site/images/1568272475072/pace.min.js';
-      document.head.appendChild(script);
-      var _this$props = this.props,
-          dispatch = _this$props.dispatch,
-          router = _this$props.router;
-
-      if (router.asPath != '/login') {
-        dispatch({
-          type: 'user/get'
-        }).then(function (res) {
-          if (res.system.notice) {
-            _this2.setState({
-              modalNotice: true
-            });
-          }
-        });
-      }
-
-      router.events.on('routeChangeStart', function () {
-        window.Pace.start();
-      });
-      router.events.on('routeChangeComplete', function () {
-        window.Pace.stop();
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      var _this$props2 = this.props,
-          Component = _this$props2.Component,
-          pageProps = _this$props2.pageProps,
-          router = _this$props2.router,
-          user = _this$props2.user;
-      var modalNotice = this.state.modalNotice;
-
-      if (router.asPath == '/login') {
-        return external_react_default.a.createElement(config_provider_default.a, {
-          locale: zh_CN_default.a
-        }, external_react_default.a.createElement(head_default.a, null, external_react_default.a.createElement("title", null, "\u767B\u5F55-\u58F9\u58F3")), external_react_default.a.createElement(Component, Object(esm_extends["a" /* default */])({}, pageProps, {
-          router: router,
-          onLogin: function onLogin() {
-            return _this3.setState({
-              modalNotice: true
-            });
-          }
-        })));
-      }
-
-      if (!user) return null;
-      return external_react_default.a.createElement(config_provider_default.a, {
-        locale: zh_CN_default.a
-      }, external_react_default.a.createElement(head_default.a, null, external_react_default.a.createElement("title", null, "\u9996\u9875-\u58F9\u58F3")), external_react_default.a.createElement(modal_default.a, {
-        className: "notice-modal",
-        title: "\u7CFB\u7EDF\u516C\u544A",
-        width: 640,
-        onCancel: function onCancel() {
-          return _this3.setState({
-            modalNotice: false
-          });
-        },
-        visible: modalNotice,
-        footer: [external_react_default.a.createElement(button_default.a, {
-          key: "confirm",
-          type: "primary",
-          onClick: function onClick() {
-            return _this3.setState({
-              modalNotice: false
-            });
-          }
-        }, "\u77E5\u9053\u4E86")]
-      }, external_react_default.a.createElement("div", {
-        dangerouslySetInnerHTML: {
-          __html: user.system.notice
-        }
-      })), external_react_default.a.createElement(layout_default.a, null, external_react_default.a.createElement(layout_default.a.Header, null, external_react_default.a.createElement(component["d" /* Header */], {
-        router: router,
-        user: user
-      })), external_react_default.a.createElement(layout_default.a.Content, null, external_react_default.a.createElement(Component, Object(esm_extends["a" /* default */])({}, pageProps, {
-        router: router
-      })))));
-    }
-  }], [{
-    key: "getInitialProps",
-    value: function () {
-      var _getInitialProps = Object(asyncToGenerator["a" /* default */])(
-      /*#__PURE__*/
-      regenerator_default.a.mark(function _callee(appContext) {
-        var appProps;
-        return regenerator_default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return app_default.a.getInitialProps(appContext);
-
-              case 2:
-                appProps = _context.sent;
-                appProps.pageProps = Object(objectSpread["a" /* default */])({}, appProps.pageProps);
-                return _context.abrupt("return", Object(objectSpread["a" /* default */])({}, appProps));
-
-              case 5:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }));
-
-      function getInitialProps(_x) {
-        return _getInitialProps.apply(this, arguments);
-      }
-
-      return getInitialProps;
-    }()
-  }]);
-
-  return MyApp;
-}(app_default.a);
-
-_app_MyApp.propTypes = {
-  user: external_prop_types_default.a.object,
-  dispatch: external_prop_types_default.a.func
-};
-/* harmony default export */ var _app = __webpack_exports__["default"] = (store(Object(external_dva_no_router_["connect"])(function (_ref) {
-  var user = _ref.user;
-  return {
-    user: user
-  };
-})(_app_MyApp)));
-
-/***/ }),
-
 /***/ "Z6Kq":
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/get-own-property-descriptor");
-
-/***/ }),
-
-/***/ "Z6WE":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/layout/style");
 
 /***/ }),
 
@@ -3536,13 +2844,6 @@ function _getPrototypeOf(o) {
 
 /***/ }),
 
-/***/ "aC71":
-/***/ (function(module, exports) {
-
-module.exports = require("core-js/library/fn/promise");
-
-/***/ }),
-
 /***/ "bmdr":
 /***/ (function(module, exports) {
 
@@ -3561,6 +2862,1425 @@ module.exports = require("url");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "cMU6":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var antd_lib_drawer_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("WYi6");
+/* harmony import */ var antd_lib_drawer_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_drawer_style__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("wvHv");
+/* harmony import */ var antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("pLtp");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var antd_lib_tag_style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("BucJ");
+/* harmony import */ var antd_lib_tag_style__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tag_style__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var antd_lib_tag__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("P7Vo");
+/* harmony import */ var antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var antd_lib_table_style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("lRur");
+/* harmony import */ var antd_lib_table_style__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_table_style__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var antd_lib_table__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("Puj+");
+/* harmony import */ var antd_lib_table__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(antd_lib_table__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("oRSk");
+/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input_style__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("Uqqx");
+/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var antd_lib_form_style__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("2w/n");
+/* harmony import */ var antd_lib_form_style__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(antd_lib_form_style__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var antd_lib_form__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("foLw");
+/* harmony import */ var antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(antd_lib_form__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("JHZV");
+/* harmony import */ var antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var antd_lib_radio__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("XQdj");
+/* harmony import */ var antd_lib_radio__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(antd_lib_radio__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var antd_lib_tooltip_style__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("AF2q");
+/* harmony import */ var antd_lib_tooltip_style__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tooltip_style__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("z6+L");
+/* harmony import */ var antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("DnGC");
+/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button_style__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("eGmO");
+/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var antd_lib_cascader_style__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("qYgU");
+/* harmony import */ var antd_lib_cascader_style__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(antd_lib_cascader_style__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var antd_lib_cascader__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("CUto");
+/* harmony import */ var antd_lib_cascader__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(antd_lib_cascader__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("bmdr");
+/* harmony import */ var antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var antd_lib_modal__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("xKsY");
+/* harmony import */ var antd_lib_modal__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(antd_lib_modal__WEBPACK_IMPORTED_MODULE_20__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("vYYK");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("zrwo");
+/* harmony import */ var antd_lib_message_style__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__("XZ83");
+/* harmony import */ var antd_lib_message_style__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message_style__WEBPACK_IMPORTED_MODULE_23__);
+/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__("3PsY");
+/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message__WEBPACK_IMPORTED_MODULE_24__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__("Wa2I");
+/* harmony import */ var _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_25__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__("0iUn");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__("sLSF");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__("MI3g");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__("a7VT");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__("AT/M");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__("Tit0");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_32__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__("K2gz");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_33__);
+/* harmony import */ var xlsx__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__("X1wy");
+/* harmony import */ var xlsx__WEBPACK_IMPORTED_MODULE_34___default = /*#__PURE__*/__webpack_require__.n(xlsx__WEBPACK_IMPORTED_MODULE_34__);
+/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__("mVpe");
+/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_35___default = /*#__PURE__*/__webpack_require__.n(config_locale__WEBPACK_IMPORTED_MODULE_35__);
+/* harmony import */ var component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__("OLV9");
+/* harmony import */ var public_utils__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__("HgRd");
+/* harmony import */ var public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__("5PEn");
+/* harmony import */ var public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default = /*#__PURE__*/__webpack_require__.n(public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38__);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var defaultHeight = 560;
+
+var Home =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_31__[/* default */ "a"])(Home, _Component);
+
+  function Home(props) {
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_26__[/* default */ "a"])(this, Home);
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_28__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])(Home).call(this, props));
+    _this.state = {
+      list: [],
+      expressList: [],
+      partList: [],
+      selectParts: [],
+      selectedRowKeys: [],
+      importExcelData: null,
+      selectedRow: null,
+      preview: true,
+      submit: false,
+      drawer: false
+    };
+    _this.cateObj = {};
+    _this.select = null;
+    _this.image = null;
+    _this.imageOpt = {
+      x: 0,
+      y: 0,
+      color: 'tran',
+      size: 100,
+      rotate: 0
+    };
+    _this.token = null;
+    _this.auto = false;
+    _this.submitOrderObj = {};
+    var handles = ['uploadImage', 'handleChangeSize', 'handleUploadOrderExcel', 'handleSubmit'];
+    handles.forEach(function (item) {
+      _this[item] = _this[item].bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_30__[/* default */ "a"])(_this));
+    }); // ref
+
+    _this.moveRef = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    _this.uploadRef = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    _this.dragBox1 = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    _this.dragBox2 = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    _this.sizeInputRef = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    _this.rotateInputRef = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    _this.dialogDetailRef = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    _this.sizeImageRef = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    return _this;
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_27__[/* default */ "a"])(Home, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.getList();
+      this.listener();
+      this.getExpress();
+      this.getPart();
+      public_utils__WEBPACK_IMPORTED_MODULE_37__[/* MServer */ "a"].get('/upload/getToken').then(function (res) {
+        if (res.errcode == 0) {
+          _this2.token = res.data.token;
+        }
+      });
+    }
+  }, {
+    key: "getImagePreview",
+    value: function getImagePreview() {
+      var domUpload = this.uploadRef.current;
+      var imageOpt = this.imageOpt;
+      domUpload.style.left = "".concat(imageOpt.x, "px");
+      domUpload.style.top = "".concat(imageOpt.y, "px");
+      domUpload.style.transform = "rotate(".concat(imageOpt.rotate, "deg)");
+    }
+  }, {
+    key: "getResultImage",
+    value: function getResultImage() {
+      var _this$imageOpt = this.imageOpt,
+          x = _this$imageOpt.x,
+          y = _this$imageOpt.y,
+          color = _this$imageOpt.color,
+          rotate = _this$imageOpt.rotate;
+      var size = this.imageOpt.size;
+      var imageSize = this.sizeImageRef.current;
+      var domMove = this.moveRef.current;
+      var left = x - (domMove.offsetWidth - imageSize.width) / 2;
+      var domUpload = this.uploadRef.current;
+      var power = imageSize.naturalHeight / defaultHeight;
+      size = size * power / 100;
+      var canvas = document.createElement('canvas');
+      var context = canvas.getContext('2d');
+      canvas.setAttribute('width', imageSize.naturalWidth);
+      canvas.setAttribute('height', imageSize.naturalHeight);
+
+      if (color != 'tran') {
+        context.rect(0, 0, imageSize.naturalWidth, imageSize.naturalHeight);
+        context.fillStyle = color;
+        context.fill();
+      }
+
+      var _x = left * power;
+
+      var _y = y * power;
+
+      if (rotate) {
+        var transX = _x + domUpload.naturalWidth * size / 2;
+        var transY = _y + domUpload.naturalHeight * size / 2;
+        context.translate(transX, transY);
+        context.rotate(rotate * Math.PI / 180);
+        context.translate(-transX, -transY);
+      }
+
+      if (domUpload) {
+        context.drawImage(domUpload, _x, _y, domUpload.naturalWidth * size, domUpload.naturalHeight * size);
+      }
+
+      var imageData = context.getImageData(0, 0, imageSize.naturalWidth, imageSize.naturalHeight);
+      var imageCanvas = document.createElement('canvas');
+      var ctx = imageCanvas.getContext('2d');
+      imageCanvas.setAttribute('width', imageSize.naturalWidth);
+      imageCanvas.setAttribute('height', imageSize.naturalHeight);
+      ctx.drawImage(imageSize, 0, 0, imageSize.naturalWidth, imageSize.naturalHeight);
+      var sizeData = ctx.getImageData(0, 0, imageSize.naturalWidth, imageSize.naturalHeight);
+
+      for (var i = 0; i < sizeData.data.length; i += 4) {
+        if (sizeData.data[i + 3] !== 0) {
+          imageData.data[i + 3] = 0;
+        }
+      }
+
+      context.putImageData(imageData, 0, 0);
+      return canvas.toDataURL('image/png');
+    }
+  }, {
+    key: "getExpress",
+    value: function getExpress() {
+      var _this3 = this;
+
+      public_utils__WEBPACK_IMPORTED_MODULE_37__[/* MServer */ "a"].get('/logis/list', {
+        is_all: 1
+      }).then(function (res) {
+        if (res.errcode == 0) {
+          _this3.setState({
+            expressList: res.data
+          });
+        }
+      });
+    }
+  }, {
+    key: "getPart",
+    value: function getPart() {
+      var _this4 = this;
+
+      public_utils__WEBPACK_IMPORTED_MODULE_37__[/* MServer */ "a"].get('/part/list', {
+        is_all: 1
+      }).then(function (res) {
+        if (res.errcode == 0) {
+          _this4.setState({
+            partList: res.data
+          });
+        }
+      });
+    }
+  }, {
+    key: "listener",
+    value: function listener() {
+      var _this5 = this;
+
+      var domMove = this.moveRef.current;
+      var startPageX = null;
+      var startPageY = null;
+      domMove.addEventListener('dragenter', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      });
+      domMove.addEventListener('dragover', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      });
+      domMove.addEventListener('dragleave', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      });
+      domMove.addEventListener('drop', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        _this5.uploadImage(e.dataTransfer.files[0]);
+      });
+
+      this.documentLister1 = function (e) {
+        if (!_this5.auto && e.target.tagName != 'INPUT' && [87, 83, 82, 65, 68, 69].includes(e.keyCode)) {
+          if (e.keyCode == 87) {
+            _this5.imageOpt.y = _this5.imageOpt.y - 1;
+
+            _this5.getImagePreview();
+          }
+
+          if (e.keyCode == 83) {
+            _this5.imageOpt.y = _this5.imageOpt.y + 1;
+
+            _this5.getImagePreview();
+          }
+
+          if (e.keyCode == 65) {
+            _this5.imageOpt.x = _this5.imageOpt.x - 1;
+
+            _this5.getImagePreview();
+          }
+
+          if (e.keyCode == 68) {
+            _this5.imageOpt.x = _this5.imageOpt.x + 1;
+
+            _this5.getImagePreview();
+          }
+
+          if (e.keyCode == 69) {
+            _this5.handleChangeSize(_this5.imageOpt.size + 0.2);
+          }
+
+          if (e.keyCode == 82) {
+            _this5.handleChangeSize(_this5.imageOpt.size - 0.2);
+          }
+        }
+      };
+
+      document.addEventListener('keydown', this.documentLister1);
+
+      var moveListener = function moveListener(e) {
+        var domUpload = _this5.uploadRef.current;
+        if (!domUpload || _this5.auto) return;
+        _this5.imageOpt.x = e.pageX - startPageX;
+        _this5.imageOpt.y = e.pageY - startPageY;
+
+        _this5.getImagePreview();
+      };
+
+      this.hasKeyListener = true;
+      domMove.addEventListener('mousedown', function (e) {
+        startPageX = e.pageX - _this5.imageOpt.x;
+        startPageY = e.pageY - _this5.imageOpt.y;
+        document.addEventListener('mousemove', moveListener);
+      });
+
+      this.documentLister2 = function () {
+        document.removeEventListener('mousemove', moveListener);
+      };
+
+      document.addEventListener('mouseup', this.documentLister2);
+
+      if (this.dragBox1.current) {
+        var box = this.dragBox1.current;
+        var sx = null;
+        var size = null;
+
+        var listener = function listener(e) {
+          var current = e.clientX - sx;
+          box.style.left = "".concat(current, "px");
+          var diff = (current - 798) / 10;
+          var value = size + diff;
+
+          if (value >= 1 && _this5.image && !_this5.auto) {
+            _this5.handleChangeSize(value);
+          }
+        };
+
+        box.addEventListener('mousedown', function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+          sx = e.clientX - box.offsetLeft;
+          size = _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_25___default()(_this5.imageOpt.size);
+          document.addEventListener('mousemove', listener);
+        });
+
+        this.documentLister3 = function (e) {
+          // e.stopPropagation();
+          // e.preventDefault();
+          box.style.left = '798px';
+          document.removeEventListener('mousemove', listener);
+        };
+
+        document.addEventListener('mouseup', this.documentLister3);
+      }
+
+      if (this.dragBox2.current) {
+        var _box = this.dragBox2.current;
+        var _sx = null;
+        var rotate = this.imageOpt.rotate;
+
+        var _listener = function _listener(e) {
+          if (!_this5.image) return;
+          var current = e.clientX - _sx;
+          _box.style.left = "".concat(current, "px");
+          var diff = current - 798;
+          var value = Math.abs(rotate + diff);
+          if (value > 360) value = 0;
+
+          if (_this5.image && !_this5.auto) {
+            _this5.imageOpt.rotate = value;
+
+            _this5.getImagePreview();
+
+            _this5.rotateInputRef.current && _this5.rotateInputRef.current.setState({
+              value: value
+            });
+          }
+        };
+
+        _box.addEventListener('mousedown', function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+          _sx = e.clientX - _box.offsetLeft;
+          document.addEventListener('mousemove', _listener);
+        });
+
+        this.documentLister4 = function (e) {
+          // e.stopPropagation();
+          // e.preventDefault();
+          _box.style.left = '798px';
+          document.removeEventListener('mousemove', _listener);
+        };
+
+        document.addEventListener('mouseup', this.documentLister4);
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      if (!this.documentLister1) document.removeEventListener('keydown', this.documentLister1);
+      if (!this.documentLister2) document.removeEventListener('mouseup', this.documentLister2);
+      if (!this.documentLister3) document.removeEventListener('mouseup', this.documentLister3);
+      if (!this.documentLister4) document.removeEventListener('mouseup', this.documentLister4);
+    }
+  }, {
+    key: "getList",
+    value: function getList() {
+      var _this6 = this;
+
+      public_utils__WEBPACK_IMPORTED_MODULE_37__[/* MServer */ "a"].get('/cate/list', {
+        is_all: 1
+      }).then(function (res) {
+        if (res.errcode == 0) {
+          var cateIds = {};
+          var typeIds = {};
+          var list = [];
+          res.data.forEach(function (item) {
+            if (typeof cateIds[item.brand_id] == 'undefined') {
+              cateIds[item.brand_id] = list.length;
+              list.push({
+                value: item.brand_id,
+                label: item.brand_name,
+                children: [{
+                  value: item.brand_type_id,
+                  label: item.brand_type_name,
+                  children: [{
+                    value: item.id,
+                    label: item.texture_name
+                  }]
+                }]
+              });
+              typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)] = 0;
+            } else {
+              if (typeof typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)] == 'undefined') {
+                typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)] = list[cateIds[item.brand_id]].children.length;
+                list[cateIds[item.brand_id]].children.push({
+                  value: item.brand_type_id,
+                  label: item.brand_type_name,
+                  children: [{
+                    value: item.id,
+                    label: item.texture_name
+                  }]
+                });
+              } else {
+                list[cateIds[item.brand_id]].children[typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)]].children.push({
+                  value: item.id,
+                  label: item.texture_name
+                });
+              }
+            }
+
+            _this6.cateObj[item.id] = item;
+          });
+
+          _this6.setState({
+            list: list
+          });
+        }
+      });
+    }
+  }, {
+    key: "uploadImage",
+    value: function uploadImage(file) {
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+      var that = this;
+
+      reader.onload = function () {
+        var img = new Image();
+        img.src = that.image = this.result;
+
+        img.onload = function () {
+          that.autoImage(img);
+        };
+      };
+    }
+  }, {
+    key: "autoImage",
+    value: function autoImage(img) {
+      var domMove = this.moveRef.current;
+      var domUpload = this.uploadRef.current;
+      var imageSize = this.sizeImageRef.current;
+
+      if (!domUpload) {
+        antd_lib_message__WEBPACK_IMPORTED_MODULE_24___default.a.error('请先上传图片');
+
+        return;
+      }
+
+      var getSpaceValue = function getSpaceValue() {
+        if (!imageSize) return {
+          x: 0,
+          y: 0
+        };
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        canvas.setAttribute('height', imageSize.width);
+        canvas.setAttribute('width', imageSize.height);
+        context.drawImage(imageSize, 0, 0, imageSize.width, imageSize.height);
+        var imageData = context.getImageData(0, 0, imageSize.width, imageSize.height);
+        var lineWidth = 0;
+        var countHeight = 0;
+
+        for (var i = 0; i < imageData.data.length; i += 4) {
+          if (imageData.data[i + 3] != 0) {
+            lineWidth++;
+
+            if (lineWidth == imageSize.width) {
+              lineWidth = 0;
+              countHeight++;
+            }
+          } else {
+            break;
+          }
+        }
+
+        var countWidth = 0;
+
+        for (var _i = imageSize.width * 80 * 4; _i < imageData.data.length; _i += 4) {
+          if (imageData.data[_i + 3] != 0) {
+            countWidth++;
+          } else {
+            break;
+          }
+        }
+
+        return {
+          x: countWidth - 1,
+          y: countHeight - 1
+        };
+      };
+
+      var spaceValue = getSpaceValue();
+      var initHeight = defaultHeight - spaceValue.y * 2;
+      var ratio = initHeight / img.naturalHeight;
+      var initWidth = img.naturalWidth * ratio;
+
+      if (imageSize) {
+        if (initWidth < imageSize.offsetWidth - spaceValue.x * 2) {
+          initWidth = imageSize.offsetWidth - spaceValue.x * 2;
+          ratio = initWidth / img.naturalWidth;
+          initHeight = img.naturalHeight * ratio;
+        }
+      }
+
+      domUpload.style.height = "".concat(initHeight, "px");
+      this.imageOpt.size = (ratio * 100).toFixed(2);
+      this.imageOpt.x = (domMove.offsetWidth - initWidth) / 2;
+      this.imageOpt.y = (imageSize.offsetHeight - initHeight) / 2;
+      this.sizeInputRef.current && this.sizeInputRef.current.setState({
+        value: this.imageOpt.size
+      });
+      this.getImagePreview();
+      this.forceUpdate();
+    }
+  }, {
+    key: "getDefaultExpress",
+    value: function getDefaultExpress() {
+      var expressList = this.state.expressList;
+      var defaultList = expressList.filter(function (item) {
+        return item.default;
+      });
+
+      if (defaultList.length) {
+        return defaultList[0].id;
+      }
+
+      return undefined;
+    }
+  }, {
+    key: "handleChangeSize",
+    value: function handleChangeSize(value) {
+      var domUpload = this.uploadRef.current;
+      if (!domUpload || !this) return;
+      value = _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_25___default()(value);
+      domUpload.style.height = "".concat(domUpload.naturalHeight * value / 100, "px");
+      this.imageOpt.x = this.imageOpt.x + domUpload.naturalWidth * (this.imageOpt.size - value) / 200;
+      this.imageOpt.y = this.imageOpt.y + domUpload.naturalHeight * (this.imageOpt.size - value) / 200;
+      this.imageOpt.size = value;
+      this.getImagePreview();
+      this.sizeInputRef.current && this.sizeInputRef.current.setState({
+        value: this.imageOpt.size
+      });
+    }
+  }, {
+    key: "handleUploadOrderExcel",
+    value: function handleUploadOrderExcel(file) {
+      if (!file) return;
+      var reader = new FileReader();
+      reader.readAsBinaryString(file);
+      var that = this;
+
+      reader.onload = function () {
+        var workbook = xlsx__WEBPACK_IMPORTED_MODULE_34___default.a.read(this.result, {
+          type: 'binary'
+        });
+        var workbookJson = xlsx__WEBPACK_IMPORTED_MODULE_34___default.a.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
+        var result = [];
+        workbookJson.forEach(function (item, index) {
+          var mobile = item['联系手机'];
+          if (mobile) mobile = mobile.toString().match(/[1-9]\d*/)[0];
+          var adsplit = (item['收货地址'] || item['收货地址 '] || '').trim().split(/\s+/);
+          result.push({
+            order_sn: item['订单编号'],
+            consignee: item['收货人姓名'],
+            mobile: mobile,
+            province: adsplit[0],
+            city: adsplit[1],
+            district: adsplit[2],
+            address: adsplit.slice(3).join(' '),
+            seller_remark: item['订单备注'],
+            buyer_remark: item['买家留言'],
+            remark: item['自定义备注'],
+            index: index
+          });
+        });
+        that.setState({
+          drawer: true,
+          importExcelData: result
+        });
+      };
+    }
+  }, {
+    key: "handleSelectRow",
+    value: function handleSelectRow(selectedRow) {
+      var setFieldsValue = this.props.form.setFieldsValue;
+      setFieldsValue({
+        order_sn: selectedRow.order_sn
+      });
+      this.setState({
+        selectedRowKeys: selectedRow.order_sn,
+        selectedRow: selectedRow,
+        drawer: false
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this7 = this;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (!this.select) {
+        antd_lib_message__WEBPACK_IMPORTED_MODULE_24___default.a.error('请先选择机型');
+
+        return;
+      }
+
+      if (!this.image && this.imageOpt.color == 'tran') {
+        antd_lib_message__WEBPACK_IMPORTED_MODULE_24___default.a.error('请至少上传一张图片或者设置一个颜色');
+
+        return;
+      }
+
+      var _this$props$form = this.props.form,
+          validateFields = _this$props$form.validateFields,
+          setFieldsValue = _this$props$form.setFieldsValue;
+      var _this$state = this.state,
+          selectedRow = _this$state.selectedRow,
+          selectParts = _this$state.selectParts,
+          importExcelData = _this$state.importExcelData;
+      validateFields(function (err, values) {
+        if (!err) {
+          if (!_this7.token) {
+            antd_lib_message__WEBPACK_IMPORTED_MODULE_24___default.a.error('网络出错了，刷新页面试试');
+
+            return;
+          }
+
+          _this7.setState({
+            submit: true
+          });
+
+          var formdata = new FormData();
+          formdata.append('file', Object(public_utils__WEBPACK_IMPORTED_MODULE_37__[/* convertBase64UrlToBlob */ "c"])(_this7.getResultImage()), "".concat(new Date().getTime(), ".png"));
+          formdata.append('token', _this7.token);
+          public_utils__WEBPACK_IMPORTED_MODULE_37__[/* MServer */ "a"].post('//upload-z0.qiniup.com', formdata, {
+            withCredentials: false,
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            },
+            silent: true
+          }).then(function (res) {
+            if (res.key) {
+              return "".concat(config_locale__WEBPACK_IMPORTED_MODULE_35___default.a["production"].url.cdnUser).concat(res.key);
+            } else {
+              throw new Error('图片上传失败');
+            }
+          }).then(function (res) {
+            var params = {
+              type: values.type,
+              order_sn: values.order_sn,
+              quantity: values.quantity,
+              cate_id: _this7.select.id,
+              image1: res
+            };
+            if (values.texture_attr_id) params.texture_attr_id = values.texture_attr_id;
+            if (values.express_id) params.express_id = values.express_id;
+
+            if (selectParts.length) {
+              params.parts = selectParts.map(function (item) {
+                return {
+                  id: item,
+                  count: values["part_".concat(item)]
+                };
+              });
+            }
+
+            if (params.type == 10 && selectedRow) {
+              params = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_22__[/* default */ "a"])({}, params, {
+                consignee: selectedRow.consignee,
+                mobile: selectedRow.mobile,
+                province: selectedRow.province,
+                city: selectedRow.city,
+                district: selectedRow.district,
+                address: selectedRow.address
+              });
+            }
+
+            public_utils__WEBPACK_IMPORTED_MODULE_37__[/* MServer */ "a"].post('/order/save', params).then(function (res) {
+              if (res.errcode == 0) {
+                _this7.setState({
+                  submit: false // selectParts: []
+
+                });
+
+                _this7.imageOpt.color = 'tran';
+                setFieldsValue({
+                  quantity: 1,
+                  express_id: _this7.getDefaultExpress()
+                });
+                var catename = "".concat(_this7.select.brand_name, " ").concat(_this7.select.brand_type_name, " ").concat(_this7.select.texture_name);
+
+                if (!_this7.submitOrderObj[values.order_sn]) {
+                  _this7.submitOrderObj[values.order_sn] = {
+                    count: 1,
+                    obj: Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_21__[/* default */ "a"])({}, _this7.select.id, {
+                      name: catename,
+                      count: 1
+                    })
+                  };
+                } else {
+                  _this7.submitOrderObj[values.order_sn].count++;
+
+                  if (!_this7.submitOrderObj[values.order_sn].obj[_this7.select.id]) {
+                    _this7.submitOrderObj[values.order_sn].obj[_this7.select.id] = {
+                      name: catename,
+                      count: 1
+                    };
+                  } else {
+                    _this7.submitOrderObj[values.order_sn].obj[_this7.select.id].count++;
+                  }
+                }
+
+                antd_lib_modal__WEBPACK_IMPORTED_MODULE_20___default.a.confirm({
+                  title: '订单已提交成功',
+                  okText: '继续下单',
+                  cancelText: '查看订单',
+                  onOk: function onOk() {
+                    values.type == 10 && importExcelData && _this7.setState({
+                      drawer: true
+                    });
+                  },
+                  onCancel: function onCancel() {
+                    _this7.setState({
+                      order_sn: values.order_sn
+                    }, function () {
+                      if (_this7.dialogDetailRef.current) _this7.dialogDetailRef.current.open();
+                    });
+                  }
+                });
+              } else {
+                _this7.setState({
+                  submit: false
+                });
+              }
+            });
+          }).catch(function (err) {
+            antd_lib_message__WEBPACK_IMPORTED_MODULE_24___default.a.error(err.message);
+          });
+        }
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this8 = this,
+          _cx;
+
+      var select = this.select,
+          image = this.image,
+          imageOpt = this.imageOpt,
+          auto = this.auto;
+      var _this$state2 = this.state,
+          list = _this$state2.list,
+          preview = _this$state2.preview,
+          submit = _this$state2.submit,
+          expressList = _this$state2.expressList,
+          partList = _this$state2.partList,
+          selectParts = _this$state2.selectParts,
+          importExcelData = _this$state2.importExcelData,
+          selectedRow = _this$state2.selectedRow,
+          drawer = _this$state2.drawer,
+          selectedRowKeys = _this$state2.selectedRowKeys;
+      var _this$props$form2 = this.props.form,
+          getFieldDecorator = _this$props$form2.getFieldDecorator,
+          getFieldValue = _this$props$form2.getFieldValue;
+      var defaultColors = [{
+        label: '透明',
+        value: 'tran'
+      }, {
+        label: '黑色',
+        value: '#000'
+      }, {
+        label: '白色',
+        value: '#fff'
+      }, {
+        label: '红色',
+        value: '#ff1300'
+      }, {
+        label: '自定义',
+        value: -1
+      }];
+      var rowSelection = {
+        type: 'radio',
+        selectedRowKeys: selectedRowKeys,
+        onChange: function onChange(selectedRowKeys, selectedRows) {
+          _this8.handleSelectRow(selectedRows[0]);
+        }
+      };
+      var colorSelectValue = defaultColors.map(function (item) {
+        return item.value;
+      }).includes(imageOpt.color) ? imageOpt.color : -1;
+      return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: "page-layout-center"
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_36__[/* DialogOrderDetail */ "c"], {
+        ref: this.dialogDetailRef,
+        order_sn: getFieldValue('order_sn')
+      }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.layoutHome
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.layoutHomeHd
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_cascader__WEBPACK_IMPORTED_MODULE_18___default.a, {
+        showSearch: {
+          filter: function filter(input, path) {
+            if (!input) return true;
+            input = input.toLowerCase();
+            var labels = path.map(function (item) {
+              return item.label.replace(/\s*/g, '').toLowerCase();
+            }).join('');
+            var inputKeys = input.split(' ');
+            var has = true;
+
+            for (var i = 0; i < inputKeys.length; i++) {
+              var item = inputKeys[i];
+
+              if (labels.indexOf(item) == -1) {
+                has = false;
+                break;
+              }
+            }
+
+            return has;
+          }
+        },
+        allowClear: false,
+        options: list,
+        style: {
+          width: 320
+        },
+        placeholder: "\u9009\u62E9\u624B\u673A\u578B\u53F7\uFF0C\u652F\u6301\u641C\u7D22",
+        onChange: function onChange(value) {
+          _this8.select = _this8.cateObj[value[2]];
+          public_utils__WEBPACK_IMPORTED_MODULE_37__[/* MServer */ "a"].get("/cate/catetextureattr/".concat(_this8.select.id)).then(function (res) {
+            _this8.select.texture_attr = res.errcode == 0 ? res.data : [];
+
+            _this8.forceUpdate();
+          });
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_36__[/* UploadBtn */ "i"].Local, {
+        buttonProps: {
+          type: 'primary',
+          icon: 'cloud-upload'
+        },
+        text: "\u4E0A\u4F20\u56FE\u7247",
+        onUpload: this.uploadImage
+      }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_16___default.a, {
+        style: {
+          marginLeft: '15px'
+        },
+        onClick: function onClick() {
+          return _this8.setState({
+            preview: !preview
+          });
+        }
+      }, preview ? '编辑' : '预览'), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_16___default.a, {
+        style: {
+          marginLeft: '15px'
+        },
+        onClick: function onClick() {
+          return _this8.autoImage(_this8.uploadRef.current);
+        }
+      }, "\u521D\u59CB\u5316\u56FE\u7247")), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.layoutHomeBd
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        ref: this.moveRef,
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.phonePreview
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default.a, {
+        title: "\u4E0A\u4F20\u56FE\u7247\u540E\uFF0C\u62D6\u52A8\u8FDB\u884C\u653E\u5927\u7F29\u5C0F"
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.box1,
+        ref: this.dragBox1
+      })), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default.a, {
+        title: "\u4E0A\u4F20\u56FE\u7247\u540E\uFF0C\u62D6\u52A8\u8FDB\u884C\u65CB\u8F6C"
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.box2,
+        ref: this.dragBox2
+      })), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("img", {
+        ref: this.uploadRef,
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.uploadImage,
+        crossOrigin: "",
+        src: image
+      }), select ? [react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        key: "main",
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.phoneBox
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: classnames__WEBPACK_IMPORTED_MODULE_33___default()((_cx = {}, Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_21__[/* default */ "a"])(_cx, public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.phoneBoxBody, true), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_21__[/* default */ "a"])(_cx, "preview", preview || auto), _cx))
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: "bg"
+      }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.phoneBoxBodyImage
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("img", {
+        ref: this.sizeImageRef,
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.phonePreviewMain,
+        crossOrigin: "",
+        src: "".concat(config_locale__WEBPACK_IMPORTED_MODULE_35___default.a["production"].url.cdn).concat(select.size_img)
+      }), select.camera_img ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("img", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.phonePreviewCamera,
+        crossOrigin: "",
+        src: "".concat(config_locale__WEBPACK_IMPORTED_MODULE_35___default.a["production"].url.cdn).concat(select.camera_img)
+      }) : null), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: "bg"
+      }))), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        key: "bg",
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.phoneBoxBg,
+        style: imageOpt.color != 'tran' ? {
+          backgroundColor: imageOpt.color == -1 ? '#000' : imageOpt.color,
+          backgroundImage: 'none'
+        } : {}
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("img", {
+        style: {
+          opacity: 0
+        },
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.phonePreviewMain,
+        crossOrigin: "",
+        src: "".concat(config_locale__WEBPACK_IMPORTED_MODULE_35___default.a["production"].url.cdn).concat(select.size_img)
+      }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", null))] : null)), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.orderConfig
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a, {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+        label: "\u8BA2\u5355\u7C7B\u578B"
+      }, getFieldDecorator('type', {
+        initialValue: 0
+      })(react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_radio__WEBPACK_IMPORTED_MODULE_12___default.a.Group, {
+        options: [{
+          label: '普通订单',
+          value: 0
+        }, {
+          label: '充值订单',
+          value: 10
+        }]
+      }))), getFieldValue('type') == 10 ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_36__[/* UploadBtn */ "i"].Local, {
+        accept: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel",
+        text: "\u5BFC\u5165\u6DD8\u5B9D\u8BA2\u5355",
+        onUpload: this.handleUploadOrderExcel
+      }), importExcelData ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_16___default.a, {
+        type: "primary",
+        style: {
+          marginLeft: '15px'
+        },
+        onClick: function onClick() {
+          return _this8.setState({
+            drawer: true
+          });
+        }
+      }, "\u6253\u5F00\u5BFC\u5165\u7684\u8BA2\u5355") : null, selectedRow ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.remarkBox
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("p", {
+        style: {
+          marginBottom: '10px',
+          lineHeight: 1
+        }
+      }, "\u8BA2\u5355\u5907\u6CE8\uFF1A", selectedRow.seller_remark), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("p", {
+        style: {
+          marginBottom: '10px',
+          lineHeight: 1
+        }
+      }, "\u4E70\u5BB6\u7559\u8A00\uFF1A", selectedRow.buyer_remark), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("p", {
+        style: {
+          marginBottom: '0',
+          lineHeight: 1
+        }
+      }, "\u81EA\u5B9A\u4E49\u5907\u6CE8\uFF1A", selectedRow.remark)) : null) : null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+        label: "\u914D\u8D27\u6807\u7B7E",
+        extra: getFieldValue('order_sn') ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("a", {
+          className: "text-info",
+          onClick: function onClick() {
+            _this8.dialogDetailRef.current && _this8.dialogDetailRef.current.open();
+          }
+        }, "\u67E5\u770B\u8BA2\u5355") : null
+      }, getFieldDecorator('order_sn', {
+        rules: [{
+          required: true,
+          message: '配货标签不能为空'
+        }]
+      })(react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_8___default.a, {
+        placeholder: "\u586B\u5199\u6807\u7B7E"
+      }))), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+        label: "\u8BA2\u8D27\u6570\u91CF"
+      }, getFieldDecorator('quantity', {
+        rules: [{
+          required: true,
+          message: '订货数量不能为空'
+        }],
+        initialValue: 1
+      })(react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_36__[/* InputNumber */ "e"], {
+        precision: 0,
+        min: 1
+      }))), select && select.texture_attr.length ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+        label: "\u5C5E\u6027(\u989C\u8272)"
+      }, getFieldDecorator('texture_attr_id', {
+        rules: [{
+          required: true,
+          message: '请先选择属性'
+        }]
+      })(react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_36__[/* Select */ "g"], {
+        options: select.texture_attr,
+        fieldName: {
+          label: 'texture_attr_name',
+          value: 'texture_attr_id'
+        },
+        placeholder: "\u9009\u62E9\u5C5E\u6027",
+        style: {
+          width: 180
+        }
+      }))) : null, getFieldValue('type') == 10 ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+        label: "\u9009\u62E9\u7269\u6D41"
+      }, getFieldDecorator('express_id', {
+        rules: [{
+          required: true,
+          message: '请先选择物流'
+        }],
+        initialValue: expressList.length ? this.getDefaultExpress() : undefined
+      })(react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_36__[/* Select */ "g"], {
+        options: expressList,
+        fieldName: {
+          value: 'id',
+          label: 'name'
+        }
+      }))) : null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_16___default.a, {
+        type: "primary",
+        htmlType: "submit",
+        loading: submit
+      }, "\u63D0\u4EA4\u8BA2\u5355")), getFieldValue('type') == 10 && partList.length ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_table__WEBPACK_IMPORTED_MODULE_6___default.a, {
+        rowKey: "id",
+        dataSource: partList,
+        pagination: false,
+        size: "small" // style={{ marginBottom: '15px' }}
+        ,
+        rowSelection: {
+          selectedRowKeys: selectParts,
+          onChange: function onChange(selectedRowKeys) {
+            _this8.setState({
+              selectParts: selectedRowKeys
+            });
+          }
+        },
+        columns: [{
+          key: 'name',
+          dataIndex: 'name',
+          title: '配件'
+        }, {
+          key: 'number',
+          dataIndex: 'id',
+          title: '购买数量',
+          render: function render(id) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+              className: "no-margin"
+            }, getFieldDecorator("part_".concat(id), selectParts.includes(id) ? {
+              rules: [{
+                required: true,
+                message: '请输入赠品数量'
+              }],
+              initialValue: 1
+            } : {
+              initialValue: 1
+            })(react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_36__[/* InputNumber */ "e"], null)));
+          }
+        }]
+      }) : null)))), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.homeFooter
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: "input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, "\u7F29\u653E\uFF1A"), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_36__[/* InputNumber */ "e"], {
+        ref: this.sizeInputRef,
+        placeholder: "\u6BD4\u4F8B",
+        precision: 2,
+        onChange: this.handleChangeSize,
+        disabled: auto
+      }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", {
+        style: {
+          marginLeft: '10px'
+        }
+      }, "%")), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: "input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, "\u65CB\u8F6C\uFF1A"), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_36__[/* InputNumber */ "e"], {
+        disabled: auto,
+        ref: this.rotateInputRef,
+        precision: 2,
+        defaultValue: 0,
+        onChange: function onChange(value) {
+          _this8.imageOpt.rotate = value;
+
+          _this8.getImagePreview();
+        },
+        placeholder: "\u89D2\u5EA6"
+      })), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: "input-group",
+        style: {
+          marginRight: '20px'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, "\u80CC\u666F\u8272\u8BBE\u7F6E\uFF1A"), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_36__[/* Select */ "g"], {
+        style: {
+          width: 120
+        },
+        value: colorSelectValue,
+        onChange: function onChange(value) {
+          _this8.imageOpt.color = value;
+
+          _this8.forceUpdate();
+        },
+        options: defaultColors
+      }), colorSelectValue == -1 ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        style: {
+          display: 'inline-block',
+          position: 'relative',
+          top: '5px',
+          left: '10px'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_36__[/* ColorPicker */ "a"], {
+        color: imageOpt.color == -1 ? '#000' : imageOpt.color,
+        onChange: function onChange(c) {
+          _this8.imageOpt.color = c.color;
+
+          _this8.forceUpdate();
+        }
+      })) : null), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "W"), "\u4E0A\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "S"), "\u4E0B\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "A"), "\u5DE6\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "D"), "\u53F3\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "E"), "\u653E\u5927"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "R"), "\u7F29\u5C0F")), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        title: "\u5BFC\u5165\u6DD8\u5B9D\u8BA2\u5355",
+        placement: "bottom",
+        height: 720,
+        bodyStyle: {
+          padding: 0
+        } // closable={false}
+        ,
+        onClose: function onClose() {
+          return _this8.setState({
+            drawer: false
+          });
+        },
+        visible: drawer
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_table__WEBPACK_IMPORTED_MODULE_6___default.a, {
+        rowKey: "order_sn",
+        rowSelection: rowSelection,
+        dataSource: importExcelData,
+        onRow: function onRow(row) {
+          return {
+            onClick: function onClick() {
+              _this8.handleSelectRow(row);
+            }
+          };
+        },
+        columns: [{
+          key: 'order_sn',
+          dataIndex: 'order_sn',
+          title: '订单编号',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, text, _this8.submitOrderObj[record.order_sn] ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default.a, {
+              title: react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+                className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_38___default.a.tooltipContent
+              }, _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2___default()(_this8.submitOrderObj[record.order_sn].obj).map(function (item) {
+                return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("p", {
+                  key: item
+                }, _this8.submitOrderObj[record.order_sn].obj[item].name, " ", _this8.submitOrderObj[record.order_sn].obj[item].count, "\u6B21");
+              }))
+            }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", {
+              className: "text-success"
+            }, "(\u5DF2\u63D0\u4EA4", _this8.submitOrderObj[record.order_sn].count, "\u6B21)")) : null);
+          }
+        }, {
+          key: 'consignee',
+          dataIndex: 'consignee',
+          title: '收件人姓名',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_8___default.a, {
+              defaultValue: text,
+              style: {
+                width: 80
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].consignee = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'mobile',
+          dataIndex: 'mobile',
+          title: '联系手机',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_8___default.a, {
+              defaultValue: text,
+              style: {
+                width: 122
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].mobile = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'province',
+          dataIndex: 'province',
+          title: '省',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_8___default.a, {
+              defaultValue: text,
+              style: {
+                width: 80
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].province = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'city',
+          dataIndex: 'city',
+          title: '市',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_8___default.a, {
+              defaultValue: text,
+              style: {
+                width: 80
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].city = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'district',
+          dataIndex: 'district',
+          title: '区',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_8___default.a, {
+              defaultValue: text,
+              style: {
+                width: 80
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].district = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'address',
+          dataIndex: 'address',
+          title: '详细地址',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_8___default.a, {
+              defaultValue: text,
+              style: {
+                width: 150
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].address = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'seller_remark',
+          dataIndex: 'seller_remark',
+          title: '订单备注',
+          render: function render(text) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default.a, {
+              title: text
+            }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("p", {
+              style: {
+                width: 80,
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis'
+              }
+            }, text));
+          }
+        }, {
+          key: 'buyer_remark',
+          dataIndex: 'buyer_remark',
+          title: '买家留言',
+          render: function render(text) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default.a, {
+              title: text
+            }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("p", {
+              style: {
+                width: 80,
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis'
+              }
+            }, text));
+          }
+        }, {
+          key: 'remark',
+          dataIndex: 'remark',
+          title: '自定义备注',
+          render: function render(text) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default.a, {
+              title: text
+            }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("p", {
+              style: {
+                width: 80,
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis'
+              }
+            }, text));
+          }
+        }]
+      })));
+    }
+  }]);
+
+  return Home;
+}(react__WEBPACK_IMPORTED_MODULE_32__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.create()(Home));
 
 /***/ }),
 
@@ -3790,13 +4510,6 @@ exports.default = Link;
 
 /***/ }),
 
-/***/ "cu1A":
-/***/ (function(module, exports) {
-
-module.exports = require("regenerator-runtime");
-
-/***/ }),
-
 /***/ "dGr4":
 /***/ (function(module, exports) {
 
@@ -3808,13 +4521,6 @@ module.exports = require("core-js/library/fn/object/assign");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/button");
-
-/***/ }),
-
-/***/ "eVuF":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("aC71");
 
 /***/ }),
 
@@ -3879,13 +4585,6 @@ module.exports = require("core-js/library/fn/symbol/iterator");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/pagination");
-
-/***/ }),
-
-/***/ "h74D":
-/***/ (function(module, exports) {
-
-module.exports = require("react-redux");
 
 /***/ }),
 
@@ -3962,14 +4661,6 @@ function _extends() {
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/table/style");
-
-/***/ }),
-
-/***/ "ln6h":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("cu1A");
-
 
 /***/ }),
 
@@ -4068,6 +4759,13 @@ module.exports = require("core-js/library/fn/object/keys");
 
 /***/ }),
 
+/***/ "qYgU":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/cascader/style");
+
+/***/ }),
+
 /***/ "rf6O":
 /***/ (function(module, exports) {
 
@@ -4121,13 +4819,6 @@ module.exports = require("antd/lib/popconfirm/style");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/icon/style");
-
-/***/ }),
-
-/***/ "uq6w":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/config-provider/style");
 
 /***/ }),
 
@@ -4188,6 +4879,13 @@ module.exports = require("core-js/library/fn/symbol");
 
 /***/ }),
 
+/***/ "wvHv":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/drawer");
+
+/***/ }),
+
 /***/ "xKsY":
 /***/ (function(module, exports) {
 
@@ -4195,10 +4893,10 @@ module.exports = require("antd/lib/modal");
 
 /***/ }),
 
-/***/ "xnum":
+/***/ "z6+L":
 /***/ (function(module, exports) {
 
-module.exports = require("next/head");
+module.exports = require("antd/lib/tooltip");
 
 /***/ }),
 
@@ -4244,13 +4942,6 @@ function _objectSpread(target) {
 
   return target;
 }
-
-/***/ }),
-
-/***/ "ztzw":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/config-provider");
 
 /***/ })
 

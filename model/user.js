@@ -36,6 +36,24 @@ const model = {
                 data
             });
             return data;
+        },
+        *getSystemInfo(action, { put }) {
+            const system = yield MServer.get('/system/get').then(res => {
+                const systemInfo = {};
+                if (res.errcode == 0) {
+                    res.data.forEach(item => {
+                        systemInfo[item.key] = item[item.type];
+                    });
+                }
+                return systemInfo;
+            });
+            yield put({
+                type: 'save',
+                data: {
+                    system
+                }
+            });
+            return system;
         }
     },
 };

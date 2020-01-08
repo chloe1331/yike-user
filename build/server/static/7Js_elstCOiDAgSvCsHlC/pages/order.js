@@ -1125,7 +1125,8 @@ function (_Component) {
     value: function render() {
       var _this$props = this.props,
           router = _this$props.router,
-          user = _this$props.user;
+          user = _this$props.user,
+          onShowNotice = _this$props.onShowNotice;
       var menu = [{
         title: '下单',
         href: '/'
@@ -1156,7 +1157,12 @@ function (_Component) {
         }, external_react_default.a.createElement(link_default.a, {
           href: item.href
         }, external_react_default.a.createElement("a", null, item.title)));
-      })), external_react_default.a.createElement(dropdown_default.a, {
+      })), external_react_default.a.createElement("div", null, external_react_default.a.createElement("a", {
+        style: {
+          marginRight: '15px'
+        },
+        onClick: onShowNotice
+      }, "\u67E5\u770B\u516C\u544A"), external_react_default.a.createElement(dropdown_default.a, {
         overlay: userMenu
       }, external_react_default.a.createElement("a", {
         className: header_style_default.a.userInfo
@@ -1171,7 +1177,7 @@ function (_Component) {
       }, user.username), external_react_default.a.createElement(icon_default.a, {
         type: "caret-down",
         className: header_style_default.a.dropdownIcon
-      }))));
+      })))));
     }
   }]);
 

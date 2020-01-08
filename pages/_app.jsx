@@ -55,7 +55,7 @@ class MyApp extends App {
     }
 
     render() {
-        const { Component, pageProps, router, user } = this.props;
+        const { Component, pageProps, router, user, dispatch } = this.props;
         const { modalNotice } = this.state;
 
         if (router.asPath == '/login') {
@@ -85,7 +85,15 @@ class MyApp extends App {
                     footer={[<Button key="confirm" type="primary" onClick={() => this.setState({ modalNotice: false })}>知道了</Button>]}
                 ><div dangerouslySetInnerHTML={{ __html: user.system.notice }}></div></Modal>
                 <Layout>
-                    <Layout.Header><MyHeader router={router} user={user} /></Layout.Header>
+                    <Layout.Header><MyHeader router={router} user={user} onShowNotice={() => {
+                        dispatch({
+                            type: 'user/getSystemInfo'
+                        }).then(() => {
+                            this.setState({
+                                modalNotice: true
+                            });
+                        });
+                    }} /></Layout.Header>
                     <Layout.Content><Component {...pageProps} router={router} /></Layout.Content>
                 </Layout>
             </ConfigProvider>
