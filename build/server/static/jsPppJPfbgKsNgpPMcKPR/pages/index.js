@@ -3437,8 +3437,8 @@ function (_Component) {
         }
 
         return {
-          x: countWidth - 1,
-          y: countHeight - 1
+          x: countWidth - 2,
+          y: countHeight - 2
         };
       };
 
