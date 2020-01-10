@@ -241,7 +241,7 @@ class Home extends Component {
             const listener = e => {
                 const current = e.clientX - sx;
                 box.style.left = `${current}px`;
-                const diff = (current - 798) / 10;
+                const diff = (current - 558) / 10;
                 const value = size + diff;
                 if (value >= 1 && this.image && !this.auto) {
                     this.handleChangeSize(value);
@@ -257,7 +257,7 @@ class Home extends Component {
             this.documentLister3 = e => {
                 // e.stopPropagation();
                 // e.preventDefault();
-                box.style.left = '798px';
+                box.style.left = '558px';
                 document.removeEventListener('mousemove', listener);
             };
             document.addEventListener('mouseup', this.documentLister3);
@@ -270,7 +270,7 @@ class Home extends Component {
                 if (!this.image) return;
                 const current = e.clientX - sx;
                 box.style.left = `${current}px`;
-                const diff = (current - 798);
+                const diff = (current - 558);
                 let value = Math.abs(rotate + diff);
                 if (value > 360) value = 0;
                 if (this.image && !this.auto) {
@@ -290,7 +290,7 @@ class Home extends Component {
             this.documentLister4 = e => {
                 // e.stopPropagation();
                 // e.preventDefault();
-                box.style.left = '798px';
+                box.style.left = '558px';
                 document.removeEventListener('mousemove', listener);
             };
             document.addEventListener('mouseup', this.documentLister4);

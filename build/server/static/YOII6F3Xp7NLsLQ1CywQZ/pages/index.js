@@ -3272,7 +3272,7 @@ function (_Component) {
         var listener = function listener(e) {
           var current = e.clientX - sx;
           box.style.left = "".concat(current, "px");
-          var diff = (current - 798) / 10;
+          var diff = (current - 558) / 10;
           var value = size + diff;
 
           if (value >= 1 && _this6.image && !_this6.auto) {
@@ -3291,7 +3291,7 @@ function (_Component) {
         this.documentLister3 = function (e) {
           // e.stopPropagation();
           // e.preventDefault();
-          box.style.left = '798px';
+          box.style.left = '558px';
           document.removeEventListener('mousemove', listener);
         };
 
@@ -3307,7 +3307,7 @@ function (_Component) {
           if (!_this6.image) return;
           var current = e.clientX - _sx;
           _box.style.left = "".concat(current, "px");
-          var diff = current - 798;
+          var diff = current - 558;
           var value = Math.abs(rotate + diff);
           if (value > 360) value = 0;
 
@@ -3332,7 +3332,7 @@ function (_Component) {
         this.documentLister4 = function (e) {
           // e.stopPropagation();
           // e.preventDefault();
-          _box.style.left = '798px';
+          _box.style.left = '558px';
           document.removeEventListener('mousemove', _listener);
         };
 
