@@ -922,6 +922,23 @@ li {
 .layout-home-bd___1qHr7 > * {
   flex: 1;
 }
+.layout-home-left___3mbMa {
+  padding: 20px;
+  flex: 280px 0 0;
+  border-right: 1px solid #e9e9e9;
+}
+.layout-home-left___3mbMa .card-item-title {
+  font-weight: 900;
+  padding: 15px 0;
+}
+.layout-home-left___3mbMa .card-item .ant-radio-group .ant-radio-wrapper {
+  width: calc(50% - 10px);
+  margin-right: 10px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .order-config___wsgdX {
   flex: 0 0 360px;
   padding: 20px;
@@ -1072,7 +1089,11 @@ li {
   pointer-events: none;
 }
 .home-footer___1NLQ1 {
-  padding-top: 15px;
+  border-top: 1px solid #e9e9e9;
+  padding: 15px 20px;
+}
+.home-footer___1NLQ1 .remark___3VQcR {
+  margin-top: 20px;
 }
 .home-footer___1NLQ1 .input-group {
   display: inline-block;

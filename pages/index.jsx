@@ -2,6 +2,7 @@ import React, { Component, createRef } from 'react';
 import { Cascader, Tag, Button, Checkbox, Tooltip, Form, Radio, Table, Input, Drawer, Modal, message } from 'antd';
 import cx from 'classnames';
 import XLSX from 'xlsx';
+import pinyin from 'pinyin';
 import PropTypes from 'prop-types';
 
 import locale from 'config/locale';
@@ -20,6 +21,8 @@ class Home extends Component {
             partList: [],
             selectParts: [],
             selectedRowKeys: [],
+            lockTexture: '',
+            textures: [],
             importExcelData: null,
             selectedRow: null,
             preview: true,
@@ -38,6 +41,7 @@ class Home extends Component {
         };
         this.token = null;
         this.auto = false;
+        this.cateList = [];
         this.submitOrderObj = {};
         const handles = ['uploadImage', 'handleChangeSize', 'handleUploadOrderExcel', 'handleSubmit'];
         handles.forEach(item => {
@@ -52,6 +56,7 @@ class Home extends Component {
         this.rotateInputRef = createRef();
         this.dialogDetailRef = createRef();
         this.sizeImageRef = createRef();
+        this.cascaderRef = createRef();
     }
 
     componentDidMount() {
@@ -59,6 +64,7 @@ class Home extends Component {
         this.listener();
         this.getExpress();
         this.getPart();
+        this.getTextureList();
         MServer.get('/upload/getToken').then(res => {
             if (res.errcode == 0) {
                 this.token = res.data.token;
@@ -145,6 +151,18 @@ class Home extends Component {
             if (res.errcode == 0) {
                 this.setState({
                     partList: res.data
+                });
+            }
+        });
+    }
+
+    getTextureList() {
+        MServer.get('/cate/texture', {
+            is_all: 1
+        }).then(res => {
+            if (res.errcode == 0) {
+                this.setState({
+                    textures: res.data
                 });
             }
         });
@@ -291,56 +309,97 @@ class Home extends Component {
             is_all: 1
         }).then(res => {
             if (res.errcode == 0) {
-                const cateIds = {};
-                const typeIds = {};
-                const list = [];
+                this.cateList = res.data;
+                this.convertList();
+            }
+        });
+    }
 
-                res.data.forEach(item => {
-                    if (typeof cateIds[item.brand_id] == 'undefined') {
-                        cateIds[item.brand_id] = list.length;
-                        list.push({
-                            value: item.brand_id,
-                            label: item.brand_name,
-                            children: [
-                                {
-                                    value: item.brand_type_id,
-                                    label: item.brand_type_name,
-                                    children: [
-                                        {
-                                            value: item.id,
-                                            label: item.texture_name
-                                        }
-                                    ]
-                                }
-                            ]
-                        });
-                        typeIds[`${item.brand_id}_${item.brand_type_id}`] = 0;
-                    } else {
-                        if (typeof typeIds[`${item.brand_id}_${item.brand_type_id}`] == 'undefined') {
-                            typeIds[`${item.brand_id}_${item.brand_type_id}`] = list[cateIds[item.brand_id]].children.length;
-                            list[cateIds[item.brand_id]].children.push({
+    convertList() {
+        const { lockTexture } = this.state;
+        const cateIds = {};
+        const typeIds = {};
+        const list = [];
+        let data = [].concat(this.cateList);
+        if (lockTexture) {
+            data = data.filter(item => item.texture_id == lockTexture);
+            data.forEach(item => {
+                if (typeof cateIds[item.brand_id] == 'undefined') {
+                    cateIds[item.brand_id] = list.length;
+                    list.push({
+                        value: item.brand_id,
+                        label: item.brand_name,
+                        children: [
+                            {
+                                value: item.id,
+                                label: item.brand_type_name
+                            }
+                        ]
+                    });
+                } else {
+                    list[cateIds[item.brand_id]].children.push({
+                        value: item.id,
+                        label: item.brand_type_name
+                    });
+                }
+            });
+        } else {
+            data.forEach(item => {
+                if (typeof cateIds[item.brand_id] == 'undefined') {
+                    cateIds[item.brand_id] = list.length;
+                    list.push({
+                        value: item.brand_id,
+                        label: item.brand_name,
+                        children: [
+                            {
                                 value: item.brand_type_id,
                                 label: item.brand_type_name,
                                 children: [
                                     {
                                         value: item.id,
-                                        label: item.texture_name
+                                        label: item.texture_name,
                                     }
                                 ]
-                            });
-                        } else {
-                            list[cateIds[item.brand_id]].children[typeIds[`${item.brand_id}_${item.brand_type_id}`]].children.push({
-                                value: item.id,
-                                label: item.texture_name
-                            });
-                        }
+                            }
+                        ]
+                    });
+                    typeIds[`${item.brand_id}_${item.brand_type_id}`] = 0;
+                } else {
+                    if (typeof typeIds[`${item.brand_id}_${item.brand_type_id}`] == 'undefined') {
+                        typeIds[`${item.brand_id}_${item.brand_type_id}`] = list[cateIds[item.brand_id]].children.length;
+                        list[cateIds[item.brand_id]].children.push({
+                            value: item.brand_type_id,
+                            label: item.brand_type_name,
+                            children: [
+                                {
+                                    value: item.id,
+                                    label: item.texture_name,
+                                }
+                            ]
+                        });
+                    } else {
+                        list[cateIds[item.brand_id]].children[typeIds[`${item.brand_id}_${item.brand_type_id}`]].children.push({
+                            value: item.id,
+                            label: item.texture_name,
+                        });
                     }
-                    this.cateObj[item.id] = item;
-                });
-                this.setState({
-                    list
-                });
-            }
+                }
+                this.cateObj[item.id] = item;
+            });
+        }
+        const sortByName = list => list.sort((a, b) => pinyin(a.label.trim(), {
+            style: pinyin.STYLE_FIRST_LETTER
+        })[0][0].charCodeAt() - pinyin(b.label.trim(), {
+            style: pinyin.STYLE_FIRST_LETTER
+        })[0][0].charCodeAt());
+        this.setState({
+            list: sortByName(list.map(item => ({
+                ...item,
+                children: item.children ? sortByName(item.children.map(it => ({
+                    ...it,
+                    children: it.children ? sortByName(it.children) : undefined
+                }))) : undefined
+            })))
         });
     }
 
@@ -466,11 +525,11 @@ class Home extends Component {
                 const adsplit = (item['收货地址'] || item['收货地址 '] || '').trim().split(/\s+/);
                 result.push({
                     order_sn: item['订单编号'],
-                    consignee: item['收货人姓名'],
+                    consignee: item['收货人姓名'].trim(),
                     mobile,
-                    province: adsplit[0],
-                    city: adsplit[1],
-                    district: adsplit[2],
+                    province: adsplit[0] && adsplit[0].trim(),
+                    city: adsplit[1] && adsplit[1].trim(),
+                    district: adsplit[2] && adsplit[2].trim(),
                     address: adsplit.slice(3).join(' '),
                     seller_remark: item['订单备注'],
                     buyer_remark: item['买家留言'],
@@ -630,7 +689,7 @@ class Home extends Component {
 
     render() {
         const { select, image, imageOpt, auto } = this;
-        const { list, preview, submit, expressList, partList, selectParts, importExcelData, selectedRow, drawer, selectedRowKeys } = this.state;
+        const { list, preview, submit, expressList, partList, selectParts, textures, importExcelData, selectedRow, drawer, selectedRowKeys, lockTexture } = this.state;
         const { form: { getFieldDecorator, getFieldValue } } = this.props;
         const defaultColors = [
             {
@@ -667,50 +726,73 @@ class Home extends Component {
             <div className="page-layout-center">
                 <DialogOrderDetail ref={this.dialogDetailRef} order_sn={getFieldValue('order_sn')} />
                 <div className={style.layoutHome}>
-                    <div className={style.layoutHomeHd}>
-                        <Cascader
-                            showSearch={{
-                                filter: (input, path) => {
-                                    if (!input) return true;
-                                    input = input.toLowerCase();
-                                    const labels = path.map(item => item.label.replace(/\s*/g, '').toLowerCase()).join('');
-                                    const inputKeys = input.split(' ');
-                                    let has = true;
-                                    for (let i = 0; i < inputKeys.length; i++) {
-                                        const item = inputKeys[i];
-                                        if (labels.indexOf(item) == -1) {
-                                            has = false;
-                                            break;
-                                        }
-                                    }
-                                    return has;
-                                }
-                            }}
-                            allowClear={false}
-                            options={list}
-                            style={{ width: 320 }}
-                            placeholder="选择手机型号，支持搜索"
-                            onChange={value => {
-                                this.select = this.cateObj[value[2]];
-                                MServer.get(`/cate/catetextureattr/${this.select.id}`).then(res => {
-                                    this.select.texture_attr = res.errcode == 0 ? res.data : [];
-                                    this.forceUpdate();
-                                });
-                            }}
-                        />
-                        <UploadBtn.Local
-                            buttonProps={{
-                                type: 'primary',
-                                icon: 'cloud-upload'
-                            }}
-                            text="上传图片"
-                            onUpload={this.uploadImage}
-                        />
-                        <Button style={{ marginLeft: '15px' }} onClick={() => this.setState({ preview: !preview })}>{preview ? '编辑' : '预览'}</Button>
-                        <Button style={{ marginLeft: '15px' }} onClick={() => this.autoImage(this.uploadRef.current)}>初始化图片</Button>
-                    </div>
                     <div className={style.layoutHomeBd}>
+                        <div className={style.layoutHomeLeft}>
+                            <Cascader
+                                showSearch={{
+                                    filter: (input, path) => {
+                                        if (!input) return true;
+                                        input = input.toLowerCase();
+                                        const labels = path.map(item => item.label.replace(/\s*/g, '').toLowerCase()).join('');
+                                        const inputKeys = input.split(' ');
+                                        let has = true;
+                                        for (let i = 0; i < inputKeys.length; i++) {
+                                            const item = inputKeys[i];
+                                            if (labels.indexOf(item) == -1) {
+                                                has = false;
+                                                break;
+                                            }
+                                        }
+                                        return has;
+                                    }
+                                }}
+                                ref={this.cascaderRef}
+                                allowClear={false}
+                                options={list}
+                                style={{ width: 240 }}
+                                placeholder="选择手机型号，支持搜索"
+                                onChange={value => {
+                                    this.select = this.cateObj[value[value.length - 1]];
+                                    MServer.get(`/cate/catetextureattr/${this.select.id}`).then(res => {
+                                        this.select.texture_attr = res.errcode == 0 ? res.data : [];
+                                        this.forceUpdate();
+                                    });
+                                }}
+                            />
+                            <div className="card-item">
+                                <div className="card-item-title">锁定材质</div>
+                                <Radio.Group
+                                    value={lockTexture}
+                                    options={[{
+                                        label: '全部材质',
+                                        value: ''
+                                    }].concat(textures.map(item => ({
+                                        label: item.name,
+                                        value: item.id
+                                    })))}
+                                    onChange={e => {
+                                        this.select = null;
+                                        this.cascaderRef.current && this.cascaderRef.current.setState({ value: [] });
+                                        this.setState({
+                                            lockTexture: e.target.value
+                                        }, this.convertList);
+                                    }}
+                                ></Radio.Group>
+                            </div>
+                        </div>
                         <div>
+                            <div className={style.layoutHomeHd}>
+                                <UploadBtn.Local
+                                    buttonProps={{
+                                        type: 'primary',
+                                        icon: 'cloud-upload'
+                                    }}
+                                    text="上传图片"
+                                    onUpload={this.uploadImage}
+                                />
+                                <Button style={{ marginLeft: '15px' }} onClick={() => this.setState({ preview: !preview })}>{preview ? '编辑' : '预览'}</Button>
+                                <Button style={{ marginLeft: '15px' }} onClick={() => this.autoImage(this.uploadRef.current)}>初始化图片</Button>
+                            </div>
                             <div ref={this.moveRef} className={style.phonePreview}>
                                 <Tooltip title="上传图片后，拖动进行放大缩小"><div className={style.box1} ref={this.dragBox1}></div></Tooltip>
                                 <Tooltip title="上传图片后，拖动进行旋转"><div className={style.box2} ref={this.dragBox2}></div></Tooltip>
@@ -769,6 +851,66 @@ class Home extends Component {
                                         </div>
                                     ] : null
                                 }
+                            </div>
+                            <div className={style.homeFooter}>
+                                <div className="input-group">
+                                    <span>缩放：</span>
+                                    <InputNumber
+                                        ref={this.sizeInputRef}
+                                        placeholder="比例"
+                                        precision={2}
+                                        onChange={this.handleChangeSize}
+                                        disabled={auto}
+                                    />
+                                    <span style={{ marginLeft: '10px' }}>%</span>
+                                </div>
+                                <div className="input-group">
+                                    <span>旋转：</span>
+                                    <InputNumber
+                                        disabled={auto}
+                                        ref={this.rotateInputRef}
+                                        precision={2}
+                                        defaultValue={0}
+                                        onChange={value => {
+                                            this.imageOpt.rotate = value;
+                                            this.getImagePreview();
+                                        }}
+                                        placeholder="角度"
+                                    />
+                                </div>
+                                <div className="input-group" style={{ marginRight: '20px' }}>
+                                    <span>背景色设置：</span>
+                                    <Select
+                                        style={{ width: 120 }}
+                                        value={colorSelectValue}
+                                        onChange={value => {
+                                            this.imageOpt.color = value;
+                                            this.forceUpdate();
+                                        }}
+                                        options={defaultColors}
+                                    />
+                                    {
+                                        colorSelectValue == -1 ? (
+                                            <div style={{ display: 'inline-block', position: 'relative', top: '5px', left: '10px' }}>
+                                                <ColorPicker
+                                                    color={imageOpt.color == -1 ? '#000' : imageOpt.color}
+                                                    onChange={c => {
+                                                        this.imageOpt.color = c.color;
+                                                        this.forceUpdate();
+                                                    }}
+                                                />
+                                            </div>
+                                        ) : null
+                                    }
+                                </div>
+                                <div className={style.remark}>
+                                    <span><Tag>W</Tag>上移</span>，
+                                    <span><Tag>S</Tag>下移</span>，
+                                    <span><Tag>A</Tag>左移</span>，
+                                    <span><Tag>D</Tag>右移</span>，
+                                    <span><Tag>E</Tag>放大</span>，
+                                    <span><Tag>R</Tag>缩小</span>
+                                </div>
                             </div>
                         </div>
                         <div className={style.orderConfig}>
@@ -936,64 +1078,6 @@ class Home extends Component {
                             </Form>
                         </div>
                     </div>
-                </div>
-                <div className={style.homeFooter}>
-                    <div className="input-group">
-                        <span>缩放：</span>
-                        <InputNumber
-                            ref={this.sizeInputRef}
-                            placeholder="比例"
-                            precision={2}
-                            onChange={this.handleChangeSize}
-                            disabled={auto}
-                        />
-                        <span style={{ marginLeft: '10px' }}>%</span>
-                    </div>
-                    <div className="input-group">
-                        <span>旋转：</span>
-                        <InputNumber
-                            disabled={auto}
-                            ref={this.rotateInputRef}
-                            precision={2}
-                            defaultValue={0}
-                            onChange={value => {
-                                this.imageOpt.rotate = value;
-                                this.getImagePreview();
-                            }}
-                            placeholder="角度"
-                        />
-                    </div>
-                    <div className="input-group" style={{ marginRight: '20px' }}>
-                        <span>背景色设置：</span>
-                        <Select
-                            style={{ width: 120 }}
-                            value={colorSelectValue}
-                            onChange={value => {
-                                this.imageOpt.color = value;
-                                this.forceUpdate();
-                            }}
-                            options={defaultColors}
-                        />
-                        {
-                            colorSelectValue == -1 ? (
-                                <div style={{ display: 'inline-block', position: 'relative', top: '5px', left: '10px' }}>
-                                    <ColorPicker
-                                        color={imageOpt.color == -1 ? '#000' : imageOpt.color}
-                                        onChange={c => {
-                                            this.imageOpt.color = c.color;
-                                            this.forceUpdate();
-                                        }}
-                                    />
-                                </div>
-                            ) : null
-                        }
-                    </div>
-                    <span><Tag>W</Tag>上移</span>，
-                    <span><Tag>S</Tag>下移</span>，
-                    <span><Tag>A</Tag>左移</span>，
-                    <span><Tag>D</Tag>右移</span>，
-                    <span><Tag>E</Tag>放大</span>，
-                    <span><Tag>R</Tag>缩小</span>
                 </div>
                 <Drawer
                     title="导入淘宝订单"

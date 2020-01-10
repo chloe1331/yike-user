@@ -18,6 +18,29 @@
             flex: 1;
         }
     }
+    &-left {
+        padding: 20px;
+        flex: 280px 0 0;
+        border-right: 1px solid @border-color-base;
+        :global {
+            .card-item {
+                &-title {
+                    font-weight: 900;
+                    padding: 15px 0;
+                }
+                .ant-radio-group {
+                    .ant-radio-wrapper {
+                        width: calc(~'50% - 10px');
+                        margin-right: 10px;
+                        margin-bottom: 10px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .order-config {
@@ -202,7 +225,11 @@
 }
 
 .home-footer {
-    padding-top: 15px;
+    border-top: 1px solid @border-color-base;
+    padding: 15px 20px;
+    .remark {
+        margin-top: 20px;
+    }
     :global(.input-group) {
         display: inline-block;
         margin-right: 15px;
