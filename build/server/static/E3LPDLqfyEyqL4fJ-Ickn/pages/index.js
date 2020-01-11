@@ -3031,6 +3031,7 @@ function (_Component) {
     _this.auto = false;
     _this.cateList = [];
     _this.submitOrderObj = {};
+    _this.defaultBrankSortMap = {};
     var handles = ['uploadImage', 'handleChangeSize', 'handleUploadOrderExcel', 'handleSubmit'];
     handles.forEach(function (item) {
       _this[item] = _this[item].bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_30__[/* default */ "a"])(_this));
@@ -3357,7 +3358,23 @@ function (_Component) {
       }).then(function (res) {
         if (res.errcode == 0) {
           _this7.cateList = res.data;
+          return public_utils__WEBPACK_IMPORTED_MODULE_38__[/* MServer */ "a"].get('/cate/brand', {
+            is_all: 1,
+            order: 'sort'
+          }).then(function (res) {
+            if (res.errcode == 0) {
+              res.data.forEach(function (item) {
+                _this7.defaultBrankSortMap[item.id] = item.sort;
+              });
+            }
 
+            return true;
+          });
+        }
+
+        return false;
+      }).then(function (res) {
+        if (res) {
           _this7.convertList();
         }
       });
@@ -3383,6 +3400,7 @@ function (_Component) {
             list.push({
               value: item.brand_id,
               label: item.brand_name,
+              sort: _this8.defaultBrankSortMap[item.brand_id] || 0,
               children: [{
                 value: item.id,
                 label: item.brand_type_name
@@ -3402,6 +3420,7 @@ function (_Component) {
             list.push({
               value: item.brand_id,
               label: item.brand_name,
+              sort: _this8.defaultBrankSortMap[item.brand_id] || 0,
               children: [{
                 value: item.brand_type_id,
                 label: item.brand_type_name,
@@ -3437,6 +3456,10 @@ function (_Component) {
 
       var sortByName = function sortByName(list) {
         return list.sort(function (a, b) {
+          if (a.sort != b.sort) {
+            return b.sort - a.sort;
+          }
+
           return pinyin__WEBPACK_IMPORTED_MODULE_35___default()(a.label.trim(), {
             style: pinyin__WEBPACK_IMPORTED_MODULE_35___default.a.STYLE_FIRST_LETTER
           })[0][0].charCodeAt() - pinyin__WEBPACK_IMPORTED_MODULE_35___default()(b.label.trim(), {

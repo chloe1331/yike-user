@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 import locale from 'config/locale';
 import { UploadBtn, Select, ColorPicker, DialogOrderDetail, InputNumber } from 'component';
-import { MServer, convertBase64UrlToBlob, sortList } from 'public/utils';
+import { MServer, convertBase64UrlToBlob } from 'public/utils';
 import style from 'public/theme/pages/index.less';
 
 const defaultHeight = 560;
@@ -43,6 +43,7 @@ class Home extends Component {
         this.auto = false;
         this.cateList = [];
         this.submitOrderObj = {};
+        this.defaultBrankSortMap = {};
         const handles = ['uploadImage', 'handleChangeSize', 'handleUploadOrderExcel', 'handleSubmit'];
         handles.forEach(item => {
             this[item] = this[item].bind(this);
@@ -310,6 +311,22 @@ class Home extends Component {
         }).then(res => {
             if (res.errcode == 0) {
                 this.cateList = res.data;
+                return MServer.get('/cate/brand', {
+                    is_all: 1,
+                    order: 'sort',
+                }).then(res => {
+                    if (res.errcode == 0) {
+                        res.data.forEach(item => {
+                            this.defaultBrankSortMap[item.id] = item.sort;
+                        });
+
+                    }
+                    return true;
+                });
+            }
+            return false;
+        }).then(res => {
+            if (res) {
                 this.convertList();
             }
         });
@@ -329,6 +346,7 @@ class Home extends Component {
                     list.push({
                         value: item.brand_id,
                         label: item.brand_name,
+                        sort: this.defaultBrankSortMap[item.brand_id] || 0,
                         children: [
                             {
                                 value: item.id,
@@ -350,6 +368,7 @@ class Home extends Component {
                     list.push({
                         value: item.brand_id,
                         label: item.brand_name,
+                        sort: this.defaultBrankSortMap[item.brand_id] || 0,
                         children: [
                             {
                                 value: item.brand_type_id,
@@ -387,11 +406,16 @@ class Home extends Component {
                 this.cateObj[item.id] = item;
             });
         }
-        const sortByName = list => list.sort((a, b) => pinyin(a.label.trim(), {
-            style: pinyin.STYLE_FIRST_LETTER
-        })[0][0].charCodeAt() - pinyin(b.label.trim(), {
-            style: pinyin.STYLE_FIRST_LETTER
-        })[0][0].charCodeAt());
+        const sortByName = list => list.sort((a, b) => {
+            if (a.sort != b.sort) {
+                return b.sort - a.sort;
+            }
+            return pinyin(a.label.trim(), {
+                style: pinyin.STYLE_FIRST_LETTER
+            })[0][0].charCodeAt() - pinyin(b.label.trim(), {
+                style: pinyin.STYLE_FIRST_LETTER
+            })[0][0].charCodeAt();
+        });
 
         this.setState({
             list: sortByName(list.map(item => ({
