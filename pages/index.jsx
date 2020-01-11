@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 import locale from 'config/locale';
 import { UploadBtn, Select, ColorPicker, DialogOrderDetail, InputNumber } from 'component';
-import { MServer, convertBase64UrlToBlob } from 'public/utils';
+import { MServer, convertBase64UrlToBlob, sortList } from 'public/utils';
 import style from 'public/theme/pages/index.less';
 
 const defaultHeight = 560;
@@ -392,13 +392,31 @@ class Home extends Component {
         })[0][0].charCodeAt() - pinyin(b.label.trim(), {
             style: pinyin.STYLE_FIRST_LETTER
         })[0][0].charCodeAt());
+
         this.setState({
             list: sortByName(list.map(item => ({
                 ...item,
-                children: item.children ? sortByName(item.children.map(it => ({
+                children: item.children ? item.children.sort((a, b) => {
+                    const text1 = a.label.trim();
+                    const text2 = b.label.trim();
+                    let noResult = true;
+                    let result = 0;
+                    let i = 0;
+                    while (noResult) {
+                        if (typeof text1[i] == 'undefined') return -1;
+                        if (typeof text2[i] == 'undefined') return 1;
+                        if (text1[i] == text2[i]) {
+                            i++;
+                        } else {
+                            result = text1[i].charCodeAt() - text2[i].charCodeAt();
+                            noResult = false;
+                        }
+                    }
+                    return result;
+                }).map(it => ({
                     ...it,
                     children: it.children ? sortByName(it.children) : undefined
-                }))) : undefined
+                })) : undefined
             })))
         });
     }

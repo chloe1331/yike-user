@@ -3448,11 +3448,31 @@ function (_Component) {
       this.setState({
         list: sortByName(list.map(function (item) {
           return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_24__[/* default */ "a"])({}, item, {
-            children: item.children ? sortByName(item.children.map(function (it) {
+            children: item.children ? item.children.sort(function (a, b) {
+              var text1 = a.label.trim();
+              var text2 = b.label.trim();
+              var noResult = true;
+              var result = 0;
+              var i = 0;
+
+              while (noResult) {
+                if (typeof text1[i] == 'undefined') return -1;
+                if (typeof text2[i] == 'undefined') return 1;
+
+                if (text1[i] == text2[i]) {
+                  i++;
+                } else {
+                  result = text1[i].charCodeAt() - text2[i].charCodeAt();
+                  noResult = false;
+                }
+              }
+
+              return result;
+            }).map(function (it) {
               return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_24__[/* default */ "a"])({}, it, {
                 children: it.children ? sortByName(it.children) : undefined
               });
-            })) : undefined
+            }) : undefined
           });
         }))
       });
