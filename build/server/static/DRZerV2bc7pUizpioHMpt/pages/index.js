@@ -2096,7 +2096,7 @@ function (_Component) {
               display: 'block'
             },
             className: refundStatusMap[item.refund_status].className
-          }, "(", refundStatusMap[item.refund_status].text, ")") : null)] : null);
+          }, "(", refundStatusMap[item.refund_status].text, item.refund_type == 10 ? '-退运费' : '', ")") : null)] : null);
         }), item.parts.map(function (part) {
           return external_react_default.a.createElement("tr", {
             key: "part_".concat(part.id),

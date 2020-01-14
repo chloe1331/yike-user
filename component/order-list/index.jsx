@@ -334,7 +334,7 @@ export default class OrderList extends Component {
                                                 <td key="type" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>{item.type == 10 ? '充值订单' : '普通订单'}</td>,
                                                 <td key="status" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
                                                     <span className={statusMap[item.status].className}>{statusMap[item.status].text}</span>
-                                                    {item.refund_status != 0 ? <span style={{ display: 'block' }} className={refundStatusMap[item.refund_status].className}>({refundStatusMap[item.refund_status].text})</span> : null}
+                                                    {item.refund_status != 0 ? <span style={{ display: 'block' }} className={refundStatusMap[item.refund_status].className}>({refundStatusMap[item.refund_status].text}{item.refund_type == 10 ? '-退运费' : ''})</span> : null}
                                                 </td>,
                                             ] : null
                                         }
