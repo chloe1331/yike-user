@@ -519,7 +519,7 @@ class Home extends Component {
         domUpload.style.height = `${(initHeight)}px`;
         this.imageOpt.size = (ratio * 100).toFixed(2);
         this.imageOpt.x = (domMove.offsetWidth - initWidth) / 2;
-        this.imageOpt.y = (imageSize.offsetHeight - initHeight) / 2;
+        this.imageOpt.y = (imageSize ? imageSize.offsetHeight : initHeight - initHeight) / 2;
         this.sizeInputRef.current && this.sizeInputRef.current.setState({
             value: this.imageOpt.size
         });
