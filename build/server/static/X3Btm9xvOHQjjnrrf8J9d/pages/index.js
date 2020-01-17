@@ -4036,8 +4036,7 @@ function (_Component) {
         placeholder: "\u6BD4\u4F8B",
         precision: 2,
         onChange: this.handleChangeSize,
-        disabled: auto,
-        max: 1000
+        disabled: auto
       }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", {
         style: {
           marginLeft: '10px'
@@ -4159,7 +4158,8 @@ function (_Component) {
         initialValue: 1
       })(react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* InputNumber */ "e"], {
         precision: 0,
-        min: 1
+        min: 1,
+        max: 1000
       }))), select && select.texture_attr.length ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_8___default.a.Item, {
         label: "\u5C5E\u6027(\u989C\u8272)"
       }, getFieldDecorator('texture_attr_id', {
@@ -4229,6 +4229,7 @@ function (_Component) {
             } : {
               initialValue: 1
             })(react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* InputNumber */ "e"], {
+              min: 1,
               max: 1000
             })));
           }
