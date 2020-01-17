@@ -903,6 +903,7 @@ class Home extends Component {
                                         precision={2}
                                         onChange={this.handleChangeSize}
                                         disabled={auto}
+                                        max={1000}
                                     />
                                     <span style={{ marginLeft: '10px' }}>%</span>
                                 </div>
@@ -1108,7 +1109,7 @@ class Home extends Component {
                                                             } : {
                                                                 initialValue: 1
                                                             })(
-                                                                <InputNumber />
+                                                                <InputNumber max={1000} />
                                                             )
                                                         }
                                                     </Form.Item>

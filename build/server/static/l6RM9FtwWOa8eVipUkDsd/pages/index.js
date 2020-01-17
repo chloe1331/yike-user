@@ -4036,7 +4036,8 @@ function (_Component) {
         placeholder: "\u6BD4\u4F8B",
         precision: 2,
         onChange: this.handleChangeSize,
-        disabled: auto
+        disabled: auto,
+        max: 1000
       }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", {
         style: {
           marginLeft: '10px'
@@ -4227,7 +4228,9 @@ function (_Component) {
               initialValue: 1
             } : {
               initialValue: 1
-            })(react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* InputNumber */ "e"], null)));
+            })(react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* InputNumber */ "e"], {
+              max: 1000
+            })));
           }
         }]
       }) : null)))), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1___default.a, {
