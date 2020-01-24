@@ -675,7 +675,7 @@ class Home extends Component {
                             this.imageOpt.color = 'tran';
                             setFieldsValue({
                                 quantity: 1,
-                                express_id: this.getDefaultExpress()
+                                // express_id: this.getDefaultExpress()
                             });
                             const catename = `${this.select.brand_name} ${this.select.brand_type_name} ${this.select.texture_name}`;
                             if (!this.submitOrderObj[values.order_sn]) {

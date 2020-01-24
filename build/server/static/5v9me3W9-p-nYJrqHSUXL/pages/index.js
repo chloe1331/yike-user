@@ -3769,8 +3769,8 @@ function (_Component) {
 
                 _this9.imageOpt.color = 'tran';
                 setFieldsValue({
-                  quantity: 1,
-                  express_id: _this9.getDefaultExpress()
+                  quantity: 1 // express_id: this.getDefaultExpress()
+
                 });
                 var catename = "".concat(_this9.select.brand_name, " ").concat(_this9.select.brand_type_name, " ").concat(_this9.select.texture_name);
 
