@@ -997,7 +997,9 @@ class Home extends Component {
                                             />
                                             {
                                                 importExcelData ? (
-                                                    <Button type="primary" style={{ marginLeft: '15px' }} onClick={() => this.setState({ drawer: true })}>打开导入的订单</Button>
+                                                    <div>
+                                                        <Button type="primary" onClick={() => this.setState({ drawer: true })}>打开导入的订单</Button>
+                                                    </div>
                                                 ) : null
                                             }
                                             {
