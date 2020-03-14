@@ -3015,7 +3015,8 @@ function (_Component) {
       selectedRow: null,
       preview: true,
       submit: false,
-      drawer: false
+      drawer: false,
+      drawerTitle: ''
     };
     _this.cateObj = {};
     _this.select = null;
@@ -3627,6 +3628,8 @@ function (_Component) {
   }, {
     key: "handleUploadOrderExcel",
     value: function handleUploadOrderExcel(file) {
+      var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'taobao';
+      var title = arguments.length > 2 ? arguments[2] : undefined;
       if (!file) return;
       var reader = new FileReader();
       reader.readAsBinaryString(file);
@@ -3639,18 +3642,18 @@ function (_Component) {
         var workbookJson = xlsx__WEBPACK_IMPORTED_MODULE_34___default.a.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
         var result = [];
         workbookJson.forEach(function (item, index) {
-          var mobile = item['联系手机'];
+          var mobile = (item['联系手机'] || item['手机'] || '').trim();
           if (mobile) mobile = mobile.toString().match(/[1-9]\d*/)[0];
-          var adsplit = (item['收货地址'] || item['收货地址 '] || '').trim().split(/\s+/);
+          var adsplit = type === 'taobao' ? (item['收货地址'] || item['收货地址 '] || '').trim().split(/\s+/) : [item['省'], item['市'], item['区'], item['街道']];
           result.push({
-            order_sn: item['订单编号'],
-            consignee: item['收货人姓名'].trim(),
+            order_sn: item['订单编号'] || item['订单号'],
+            consignee: (item['收货人姓名'] || item['收货人'] || '').trim(),
             mobile: mobile,
             province: adsplit[0] && adsplit[0].trim(),
             city: adsplit[1] && adsplit[1].trim(),
             district: adsplit[2] && adsplit[2].trim(),
             address: adsplit.slice(3).join(' '),
-            seller_remark: item['订单备注'],
+            seller_remark: item['订单备注'] || item['商家备注'],
             buyer_remark: item['买家留言'],
             remark: item['自定义备注'],
             index: index
@@ -3658,6 +3661,7 @@ function (_Component) {
         });
         that.setState({
           drawer: true,
+          drawerTitle: title,
           importExcelData: result
         });
       };
@@ -3845,6 +3849,7 @@ function (_Component) {
           importExcelData = _this$state2.importExcelData,
           selectedRow = _this$state2.selectedRow,
           drawer = _this$state2.drawer,
+          drawerTitle = _this$state2.drawerTitle,
           selectedRowKeys = _this$state2.selectedRowKeys,
           lockTexture = _this$state2.lockTexture;
       var _this$props$form2 = this.props.form,
@@ -4103,9 +4108,20 @@ function (_Component) {
           value: 10
         }]
       }))), getFieldValue('type') == 10 ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_8___default.a.Item, null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* UploadBtn */ "i"].Local, {
-        accept: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel",
+        accept: ".xls, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel",
         text: "\u5BFC\u5165\u6DD8\u5B9D\u8BA2\u5355",
-        onUpload: this.handleUploadOrderExcel
+        onUpload: function onUpload(file) {
+          return _this10.handleUploadOrderExcel(file, 'taobao', '导入淘宝订单');
+        },
+        style: {
+          marginRight: 10
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* UploadBtn */ "i"].Local, {
+        accept: ".xls, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel",
+        text: "\u5BFC\u5165\u62FC\u591A\u591A\u8BA2\u5355",
+        onUpload: function onUpload(file) {
+          return _this10.handleUploadOrderExcel(file, 'pdd', '导入拼多多订单');
+        }
       }), importExcelData ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_14___default.a, {
         type: "primary",
         style: {
@@ -4235,7 +4251,7 @@ function (_Component) {
           }
         }]
       }) : null)))), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        title: "\u5BFC\u5165\u6DD8\u5B9D\u8BA2\u5355",
+        title: drawerTitle,
         placement: "bottom",
         height: 720,
         bodyStyle: {

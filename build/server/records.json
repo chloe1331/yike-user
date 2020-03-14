@@ -2,8 +2,8 @@
   "modules": {
     "byIdentifier": {
       "multi private-next-pages/_app.jsx": 0,
-      "multi private-next-pages/_document.jsx": 1,
-      "multi private-next-pages/_index.jsx": 2,
+      "multi private-next-pages/_index.jsx": 1,
+      "multi private-next-pages/_document.jsx": 2,
       "multi private-next-pages/bill.jsx": 3,
       "multi private-next-pages/index.jsx": 4,
       "multi private-next-pages/login.jsx": 5,

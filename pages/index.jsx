@@ -28,6 +28,7 @@ class Home extends Component {
             preview: true,
             submit: false,
             drawer: false,
+            drawerTitle: ''
         };
         this.cateObj = {};
         this.select = null;
@@ -552,7 +553,7 @@ class Home extends Component {
         });
     }
 
-    handleUploadOrderExcel(file) {
+    handleUploadOrderExcel(file, type = 'taobao', title) {
         if (!file) return;
         const reader = new FileReader();
         reader.readAsBinaryString(file);
@@ -562,18 +563,23 @@ class Home extends Component {
             const workbookJson = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
             const result = [];
             workbookJson.forEach((item, index) => {
-                let mobile = item['联系手机'];
+                let mobile = (item['联系手机'] || item['手机'] || '').trim();
                 if (mobile) mobile = mobile.toString().match(/[1-9]\d*/)[0];
-                const adsplit = (item['收货地址'] || item['收货地址 '] || '').trim().split(/\s+/);
+                const adsplit = type === 'taobao' ? (item['收货地址'] || item['收货地址 '] || '').trim().split(/\s+/) : [
+                    item['省'],
+                    item['市'],
+                    item['区'],
+                    item['街道']
+                ];
                 result.push({
-                    order_sn: item['订单编号'],
-                    consignee: item['收货人姓名'].trim(),
+                    order_sn: item['订单编号'] || item['订单号'],
+                    consignee: (item['收货人姓名'] || item['收货人'] || '').trim(),
                     mobile,
                     province: adsplit[0] && adsplit[0].trim(),
                     city: adsplit[1] && adsplit[1].trim(),
                     district: adsplit[2] && adsplit[2].trim(),
                     address: adsplit.slice(3).join(' '),
-                    seller_remark: item['订单备注'],
+                    seller_remark: item['订单备注'] || item['商家备注'],
                     buyer_remark: item['买家留言'],
                     remark: item['自定义备注'],
                     index
@@ -581,6 +587,7 @@ class Home extends Component {
             });
             that.setState({
                 drawer: true,
+                drawerTitle: title,
                 importExcelData: result
             });
         };
@@ -731,7 +738,7 @@ class Home extends Component {
 
     render() {
         const { select, image, imageOpt, auto } = this;
-        const { list, preview, submit, expressList, partList, selectParts, textures, importExcelData, selectedRow, drawer, selectedRowKeys, lockTexture } = this.state;
+        const { list, preview, submit, expressList, partList, selectParts, textures, importExcelData, selectedRow, drawer, drawerTitle, selectedRowKeys, lockTexture } = this.state;
         const { form: { getFieldDecorator, getFieldValue } } = this.props;
         const defaultColors = [
             {
@@ -978,9 +985,15 @@ class Home extends Component {
                                     getFieldValue('type') == 10 ? (
                                         <Form.Item>
                                             <UploadBtn.Local
-                                                accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                                accept=".xls, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
                                                 text="导入淘宝订单"
-                                                onUpload={this.handleUploadOrderExcel}
+                                                onUpload={file => this.handleUploadOrderExcel(file, 'taobao', '导入淘宝订单')}
+                                                style={{ marginRight: 10 }}
+                                            />
+                                            <UploadBtn.Local
+                                                accept=".xls, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                                text="导入拼多多订单"
+                                                onUpload={file => this.handleUploadOrderExcel(file, 'pdd', '导入拼多多订单')}
                                             />
                                             {
                                                 importExcelData ? (
@@ -1122,7 +1135,7 @@ class Home extends Component {
                     </div>
                 </div>
                 <Drawer
-                    title="导入淘宝订单"
+                    title={drawerTitle}
                     placement="bottom"
                     height={720}
                     bodyStyle={{ padding: 0 }}
