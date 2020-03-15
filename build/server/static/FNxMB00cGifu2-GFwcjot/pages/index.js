@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -234,21 +234,6 @@ module.exports = require("antd/lib/select/style");
 
 /***/ }),
 
-/***/ 2:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("SCcO");
-
-
-/***/ }),
-
-/***/ "27qp":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/popover");
-
-/***/ }),
-
 /***/ "2w/n":
 /***/ (function(module, exports) {
 
@@ -267,6 +252,14 @@ module.exports = require("antd/lib/message");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/dropdown/style");
+
+/***/ }),
+
+/***/ 4:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("cMU6");
+
 
 /***/ }),
 
@@ -334,13 +327,6 @@ module.exports = {
 	"homeFooter": "home-footer___1NLQ1",
 	"remark": "remark___3VQcR"
 };
-
-/***/ }),
-
-/***/ "6BQ9":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("wa65");
 
 /***/ }),
 
@@ -433,13 +419,6 @@ module.exports = require("antd/lib/cascader");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/button/style");
-
-/***/ }),
-
-/***/ "EJbO":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/checkbox/style");
 
 /***/ }),
 
@@ -602,13 +581,6 @@ var convertBase64UrlToBlob = function convertBase64UrlToBlob(urlData) {
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/get-iterator");
-
-/***/ }),
-
-/***/ "JCEF":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/checkbox");
 
 /***/ }),
 
@@ -2611,1693 +2583,17 @@ module.exports = require("antd/lib/popconfirm");
 
 /***/ }),
 
+/***/ "Qp17":
+/***/ (function(module, exports) {
+
+module.exports = require("pinyin");
+
+/***/ }),
+
 /***/ "R2Q7":
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/array/is-array");
-
-/***/ }),
-
-/***/ "SCcO":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var antd_lib_drawer_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("WYi6");
-/* harmony import */ var antd_lib_drawer_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_drawer_style__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("wvHv");
-/* harmony import */ var antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("pLtp");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var antd_lib_tag_style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("BucJ");
-/* harmony import */ var antd_lib_tag_style__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tag_style__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var antd_lib_tag__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("P7Vo");
-/* harmony import */ var antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var antd_lib_table_style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("lRur");
-/* harmony import */ var antd_lib_table_style__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_table_style__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var antd_lib_table__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("Puj+");
-/* harmony import */ var antd_lib_table__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(antd_lib_table__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("JHZV");
-/* harmony import */ var antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var antd_lib_radio__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("XQdj");
-/* harmony import */ var antd_lib_radio__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(antd_lib_radio__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var antd_lib_tooltip_style__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("AF2q");
-/* harmony import */ var antd_lib_tooltip_style__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tooltip_style__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("z6+L");
-/* harmony import */ var antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var antd_lib_popover_style__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("tCZL");
-/* harmony import */ var antd_lib_popover_style__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(antd_lib_popover_style__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var antd_lib_popover__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("27qp");
-/* harmony import */ var antd_lib_popover__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(antd_lib_popover__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var antd_lib_form_style__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("2w/n");
-/* harmony import */ var antd_lib_form_style__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(antd_lib_form_style__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var antd_lib_form__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("foLw");
-/* harmony import */ var antd_lib_form__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(antd_lib_form__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var antd_lib_input_number_style__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("mfSZ");
-/* harmony import */ var antd_lib_input_number_style__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input_number_style__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var antd_lib_input_number__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("GqX/");
-/* harmony import */ var antd_lib_input_number__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input_number__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var antd_lib_checkbox_style__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("EJbO");
-/* harmony import */ var antd_lib_checkbox_style__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(antd_lib_checkbox_style__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var antd_lib_checkbox__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("JCEF");
-/* harmony import */ var antd_lib_checkbox__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(antd_lib_checkbox__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("DnGC");
-/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button_style__WEBPACK_IMPORTED_MODULE_19__);
-/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("eGmO");
-/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("oRSk");
-/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input_style__WEBPACK_IMPORTED_MODULE_21__);
-/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("Uqqx");
-/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input__WEBPACK_IMPORTED_MODULE_22__);
-/* harmony import */ var antd_lib_cascader_style__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__("qYgU");
-/* harmony import */ var antd_lib_cascader_style__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(antd_lib_cascader_style__WEBPACK_IMPORTED_MODULE_23__);
-/* harmony import */ var antd_lib_cascader__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__("CUto");
-/* harmony import */ var antd_lib_cascader__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(antd_lib_cascader__WEBPACK_IMPORTED_MODULE_24__);
-/* harmony import */ var antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__("bmdr");
-/* harmony import */ var antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_25__);
-/* harmony import */ var antd_lib_modal__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__("xKsY");
-/* harmony import */ var antd_lib_modal__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(antd_lib_modal__WEBPACK_IMPORTED_MODULE_26__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__("vYYK");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__("zrwo");
-/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__("eVuF");
-/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_29__);
-/* harmony import */ var antd_lib_message_style__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__("XZ83");
-/* harmony import */ var antd_lib_message_style__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message_style__WEBPACK_IMPORTED_MODULE_30__);
-/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__("3PsY");
-/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_31___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message__WEBPACK_IMPORTED_MODULE_31__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__("Wa2I");
-/* harmony import */ var _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_32__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__("6BQ9");
-/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_33__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__("0iUn");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__("sLSF");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__("MI3g");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__("a7VT");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__("AT/M");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__("Tit0");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_40___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_40__);
-/* harmony import */ var xlsx__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__("X1wy");
-/* harmony import */ var xlsx__WEBPACK_IMPORTED_MODULE_41___default = /*#__PURE__*/__webpack_require__.n(xlsx__WEBPACK_IMPORTED_MODULE_41__);
-/* harmony import */ var component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__("OLV9");
-/* harmony import */ var public_utils__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__("HgRd");
-/* harmony import */ var public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__("5PEn");
-/* harmony import */ var public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_44___default = /*#__PURE__*/__webpack_require__.n(public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_44__);
-/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__("mVpe");
-/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_45___default = /*#__PURE__*/__webpack_require__.n(config_locale__WEBPACK_IMPORTED_MODULE_45__);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var Index =
-/*#__PURE__*/
-function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_39__[/* default */ "a"])(Index, _Component);
-
-  function Index(props) {
-    var _this;
-
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_34__[/* default */ "a"])(this, Index);
-
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_36__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_37__[/* default */ "a"])(Index).call(this, props));
-    _this.state = {
-      list: [],
-      image: null,
-      preview: null,
-      submit: false,
-      color: 'tran',
-      pickerColor: '#000',
-      auto: false,
-      importExcelData: null,
-      drawer: false,
-      selectedRowKeys: null,
-      selectedRow: null,
-      order_sn: null,
-      expressList: [],
-      partList: [],
-      selectParts: []
-    };
-    var handles = ['handleSize', 'handleRotate', 'handlePreview', 'handleSubmit', 'handleUploadOrderExcel'];
-    handles.forEach(function (item) {
-      return _this[item] = _this[item].bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_38__[/* default */ "a"])(_this));
-    });
-    _this.transBgRef = Object(react__WEBPACK_IMPORTED_MODULE_40__["createRef"])();
-    _this.imageUploadRef = Object(react__WEBPACK_IMPORTED_MODULE_40__["createRef"])();
-    _this.imageBgRef = Object(react__WEBPACK_IMPORTED_MODULE_40__["createRef"])();
-    _this.imageCameraRef = Object(react__WEBPACK_IMPORTED_MODULE_40__["createRef"])();
-    _this.canvasRef = Object(react__WEBPACK_IMPORTED_MODULE_40__["createRef"])();
-    _this.canvasCameraRef = Object(react__WEBPACK_IMPORTED_MODULE_40__["createRef"])();
-    _this.boxRef = Object(react__WEBPACK_IMPORTED_MODULE_40__["createRef"])();
-    _this.previewDialogRef = Object(react__WEBPACK_IMPORTED_MODULE_40__["createRef"])();
-    _this.dragBox1 = Object(react__WEBPACK_IMPORTED_MODULE_40__["createRef"])();
-    _this.dragBox2 = Object(react__WEBPACK_IMPORTED_MODULE_40__["createRef"])();
-    _this.dialogDetailRef = Object(react__WEBPACK_IMPORTED_MODULE_40__["createRef"])();
-    _this.sizeInputRef;
-    _this.rotateInputRef;
-    _this.uploadInputRef = null;
-    _this.select = null; // 选择到的机型
-
-    _this.moveOptions = {
-      x: 0,
-      rotate: 0
-    };
-    _this.hasKeyListener = false;
-    _this.cateObj = {};
-    _this.token = null;
-    _this.submitOrderObj = {};
-    return _this;
-  }
-
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_35__[/* default */ "a"])(Index, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      this.getCates();
-      this.getCanvas();
-      this.getExpress();
-      this.getPart();
-
-      if (this.boxRef.current) {
-        this.boxRef.current.addEventListener('dragenter', function (e) {
-          e.stopPropagation();
-          e.preventDefault();
-        });
-        this.boxRef.current.addEventListener('dragover', function (e) {
-          e.stopPropagation();
-          e.preventDefault();
-        });
-        this.boxRef.current.addEventListener('dragleave', function (e) {
-          e.stopPropagation();
-          e.preventDefault();
-        });
-        this.boxRef.current.addEventListener('drop', function (e) {
-          e.stopPropagation();
-          e.preventDefault();
-
-          _this2.readFile(e.dataTransfer.files[0]);
-        });
-      }
-
-      public_utils__WEBPACK_IMPORTED_MODULE_43__[/* MServer */ "a"].get('/upload/getToken').then(function (res) {
-        if (res.errcode == 0) {
-          _this2.token = res.data.token;
-        }
-      });
-      var _this$props = this.props,
-          router = _this$props.router,
-          setFieldsValue = _this$props.form.setFieldsValue;
-      var params = public_utils__WEBPACK_IMPORTED_MODULE_43__[/* Url */ "b"].getAllParams(router.asPath);
-      if (!params) return;
-      var setFormValue = {};
-
-      if (params.type) {
-        setFormValue.type = _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_33___default()(params.type);
-      }
-
-      if (params.order_sn) {
-        setFormValue.order_sn = params.order_sn;
-      }
-
-      if (params.express_id) {
-        setFormValue.express_id = _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_33___default()(params.express_id);
-      }
-
-      setFieldsValue(setFormValue);
-    }
-  }, {
-    key: "getCates",
-    value: function getCates() {
-      var _this3 = this;
-
-      public_utils__WEBPACK_IMPORTED_MODULE_43__[/* MServer */ "a"].get('/cate/list', {
-        is_all: 1
-      }).then(function (res) {
-        if (res.errcode == 0) {
-          var cateIds = {};
-          var typeIds = {};
-          var list = [];
-          res.data.forEach(function (item) {
-            if (typeof cateIds[item.brand_id] == 'undefined') {
-              cateIds[item.brand_id] = list.length;
-              list.push({
-                value: item.brand_id,
-                label: item.brand_name,
-                children: [{
-                  value: item.brand_type_id,
-                  label: item.brand_type_name,
-                  children: [{
-                    value: item.id,
-                    label: item.texture_name
-                  }]
-                }]
-              });
-              typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)] = 0;
-            } else {
-              if (typeof typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)] == 'undefined') {
-                typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)] = list[cateIds[item.brand_id]].children.length;
-                list[cateIds[item.brand_id]].children.push({
-                  value: item.brand_type_id,
-                  label: item.brand_type_name,
-                  children: [{
-                    value: item.id,
-                    label: item.texture_name
-                  }]
-                });
-              } else {
-                list[cateIds[item.brand_id]].children[typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)]].children.push({
-                  value: item.id,
-                  label: item.texture_name
-                });
-              }
-            }
-
-            _this3.cateObj[item.id] = item;
-          });
-
-          _this3.setState({
-            list: list
-          });
-        }
-      });
-    }
-  }, {
-    key: "getExpress",
-    value: function getExpress() {
-      var _this4 = this;
-
-      public_utils__WEBPACK_IMPORTED_MODULE_43__[/* MServer */ "a"].get('/logis/list', {
-        is_all: 1
-      }).then(function (res) {
-        if (res.errcode == 0) {
-          _this4.setState({
-            expressList: res.data
-          });
-        }
-      });
-    }
-  }, {
-    key: "getPart",
-    value: function getPart() {
-      var _this5 = this;
-
-      public_utils__WEBPACK_IMPORTED_MODULE_43__[/* MServer */ "a"].get('/part/list', {
-        is_all: 1
-      }).then(function (res) {
-        if (res.errcode == 0) {
-          _this5.setState({
-            partList: res.data
-          });
-        }
-      });
-    }
-  }, {
-    key: "getCanvas",
-    value: function getCanvas() {
-      var _this6 = this;
-
-      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          _ref$power = _ref.power,
-          power = _ref$power === void 0 ? 1 : _ref$power,
-          _ref$canvas = _ref.canvas,
-          canvas = _ref$canvas === void 0 ? this.canvasRef.current : _ref$canvas,
-          _ref$isRes = _ref.isRes,
-          isRes = _ref$isRes === void 0 ? false : _ref$isRes;
-
-      var _this$state = this.state,
-          color = _this$state.color,
-          pickerColor = _this$state.pickerColor,
-          auto = _this$state.auto;
-      var upload = this.imageUploadRef.current;
-      var bg = this.imageBgRef.current;
-      var camera = this.imageCameraRef.current;
-      var trans = this.transBgRef.current;
-      var box = this.boxRef.current;
-      if (!box) return;
-      var width = 320 * power;
-      var boxHeight = (box.offsetHeight - 2) * power;
-      var canvasWidth = box.offsetWidth * power;
-      var context = canvas.getContext('2d');
-      var ratio = bg && bg.complete ? width / bg.width : 1;
-      var height = bg && bg.complete ? _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_33___default()(bg.height * ratio) : boxHeight;
-      var scale = auto || isRes ? 1 : 2;
-      var left = (canvasWidth - width) / 2; // canvas.setAttribute('width', canvasWidth);
-      // canvas.setAttribute('height', height);
-
-      canvas.setAttribute('width', canvasWidth * scale);
-      canvas.setAttribute('height', height * scale);
-      canvas.setAttribute('style', 'width: 918px');
-      context.scale(scale, scale);
-
-      if (bg && bg.complete) {
-        context.rect(left, 0, width, height);
-
-        if (color == 'tran') {
-          if (!isRes) {
-            context.fillStyle = context.createPattern(trans, 'repeat');
-            context.fill();
-          }
-        } else if (color == -1) {
-          context.fillStyle = pickerColor;
-          context.fill();
-        } else {
-          context.fillStyle = color;
-          context.fill();
-        }
-      }
-
-      if (upload && upload.complete) {
-        var _this$moveOptions = this.moveOptions,
-            x = _this$moveOptions.x,
-            y = _this$moveOptions.y,
-            size = _this$moveOptions.size,
-            rotate = _this$moveOptions.rotate;
-
-        if (typeof this.moveOptions.size === 'undefined') {
-          size = this.moveOptions.size = upload.width > upload.height ? canvasWidth / upload.width * 100 : boxHeight / upload.height * 100;
-          this.sizeInputRef.setState({
-            inputValue: size.toFixed(2),
-            value: size.toFixed(2)
-          });
-        }
-
-        size = size * power / 100;
-
-        if (!y) {
-          y = this.moveOptions.y = -(upload.height * size - height) / 2;
-
-          if (upload.width < upload.height) {
-            x = this.moveOptions.x = (canvasWidth - upload.width * size) / 2;
-          }
-        }
-
-        if (rotate) {
-          context.translate(canvasWidth / 2, height / 2);
-          context.rotate(rotate * Math.PI / 180);
-          context.translate(-canvasWidth / 2, -height / 2);
-        }
-
-        if (auto) {
-          var _s = height / upload.height;
-
-          var _x = left - (upload.width * _s - width) / 2;
-
-          context.drawImage(upload, _x, 0, upload.width * _s, upload.height * _s);
-        } else {
-          context.drawImage(upload, x * power, y * power, upload.width * size, upload.height * size);
-        }
-
-        if (rotate) {
-          context.translate(canvasWidth / 2, height / 2);
-          context.rotate(-rotate * Math.PI / 180);
-          context.translate(-canvasWidth / 2, -height / 2);
-        }
-      }
-
-      if (bg && bg.complete) {
-        // 左侧
-        var imageDataLeft = context.getImageData(0, 0, left * scale, height * scale);
-
-        for (var i = 0; i < imageDataLeft.data.length; i += 4) {
-          if (imageDataLeft.data[i + 3] == 0) {
-            imageDataLeft.data[i + 0] = 255;
-            imageDataLeft.data[i + 1] = 255;
-            imageDataLeft.data[i + 2] = 255;
-          }
-
-          imageDataLeft.data[i + 3] = 127.5;
-        }
-
-        context.putImageData(imageDataLeft, 0, 0); // 右侧
-
-        var imageDataRight = context.getImageData((left + width) * scale, 0, (canvasWidth - width - left) * scale, height * scale);
-
-        for (var _i = 0; _i < imageDataRight.data.length; _i += 4) {
-          if (imageDataRight.data[_i + 3] == 0) {
-            imageDataRight.data[_i + 0] = 255;
-            imageDataRight.data[_i + 1] = 255;
-            imageDataRight.data[_i + 2] = 255;
-          }
-
-          imageDataRight.data[_i + 3] = 127.5;
-        }
-
-        context.putImageData(imageDataRight, (left + width) * scale, 0); // 背景图
-
-        context.drawImage(bg, 0, 0, bg.width, bg.height, left, 0, width, height);
-      }
-
-      if (!isRes && camera) {
-        if (camera.complete) {
-          this.getCameraCanvas();
-        } else {
-          camera.onload = function () {
-            _this6.getCameraCanvas();
-          };
-        }
-      }
-    }
-  }, {
-    key: "getCameraCanvas",
-    value: function getCameraCanvas() {
-      var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          _ref2$width = _ref2.width,
-          width = _ref2$width === void 0 ? 320 : _ref2$width;
-
-      var canvas = this.canvasCameraRef.current;
-      var camera = this.imageCameraRef.current;
-      var box = this.boxRef.current;
-      var context = canvas.getContext('2d');
-      var canvasWidth = box.offsetWidth;
-      var boxHeight = box.offsetHeight - 2;
-      var left = (canvasWidth - width) / 2;
-      var ratio = camera && camera.complete ? width / camera.width : 1;
-      var height = camera && camera.complete ? _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_33___default()(camera.height * ratio) : boxHeight;
-      canvas.setAttribute('width', canvasWidth);
-      canvas.setAttribute('height', height);
-      context.drawImage(camera, 0, 0, camera.width, camera.height, left, 0, width, height);
-    }
-  }, {
-    key: "getPreviewImage",
-    value: function getPreviewImage() {
-      var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          _ref3$power = _ref3.power,
-          power = _ref3$power === void 0 ? 1 : _ref3$power,
-          _ref3$canvas = _ref3.canvas,
-          canvas = _ref3$canvas === void 0 ? this.canvasRef.current : _ref3$canvas,
-          _ref3$useCamera = _ref3.useCamera,
-          useCamera = _ref3$useCamera === void 0 ? true : _ref3$useCamera,
-          isRes = _ref3.isRes;
-
-      var bg = this.imageBgRef.current;
-      var camera = this.imageCameraRef.current;
-      var box = this.boxRef.current;
-      var context = canvas.getContext('2d');
-      var width = 320 * power;
-      var ratio = width / bg.width;
-
-      var height = _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_33___default()(bg.height * ratio);
-
-      var canvasWidth = box.offsetWidth * power;
-      var left = (canvasWidth - width) / 2;
-      var imageData = context.getImageData(left, 0, width, height);
-      var c = document.createElement('canvas');
-      var ctx = c.getContext('2d');
-
-      var _c = document.createElement('canvas');
-
-      var _ctx = _c.getContext('2d');
-
-      c.setAttribute('width', width);
-      c.setAttribute('height', height);
-
-      _c.setAttribute('width', width);
-
-      _c.setAttribute('height', height);
-
-      _ctx.drawImage(bg, 0, 0, bg.width, bg.height, 0, 0, width, height);
-
-      var _imageData = _ctx.getImageData(0, 0, width, height);
-
-      for (var i = 0; i < imageData.data.length; i += 4) {
-        if (_imageData.data[i + 3] !== 0) {
-          imageData.data[i + 3] = 0;
-        } else if (imageData.data[i + 3] == 0) {
-          imageData.data[i] = 0;
-          imageData.data[i + 1] = 0;
-          imageData.data[i + 2] = 0;
-          imageData.data[i + 3] = isRes ? 0 : 255;
-        }
-      }
-
-      if (useCamera && camera) {
-        var canvasCamera = document.createElement('canvas');
-        var ctxCamera = canvasCamera.getContext('2d');
-        canvasCamera.setAttribute('width', width);
-        canvasCamera.setAttribute('height', height);
-        ctxCamera.drawImage(camera, 0, 0, camera.width, camera.height, 0, 0, width, height);
-        var imageDataCamera = ctxCamera.getImageData(0, 0, width, height);
-
-        for (var _i2 = 0; _i2 < imageDataCamera.data.length; _i2 += 4) {
-          if (imageDataCamera.data[_i2 + 3] != 0) {
-            imageData.data[_i2 + 3] = 0;
-          }
-        }
-      }
-
-      ctx.putImageData(imageData, 0, 0);
-      return c.toDataURL('image/png');
-    }
-  }, {
-    key: "getResultImage",
-    value: function getResultImage(useCamera) {
-      var bg = this.imageBgRef.current;
-      var canvas = document.createElement('canvas');
-      this.getCanvas({
-        canvas: canvas,
-        power: bg.width / 320,
-        isRes: true
-      });
-      return this.getPreviewImage({
-        power: bg.width / 320,
-        canvas: canvas,
-        useCamera: useCamera,
-        isRes: true
-      });
-    }
-  }, {
-    key: "listenerMove",
-    value: function listenerMove() {
-      var _this7 = this;
-
-      var dom = this.boxRef.current;
-      var upload = this.imageUploadRef.current;
-      var startPageX = null;
-      var startPageY = null;
-      if (this.hasKeyListener || !dom || !upload) return;
-
-      var moveListener = function moveListener(e) {
-        var preview = _this7.state.preview;
-        if (preview) return;
-        _this7.moveOptions.x = e.pageX - startPageX;
-        _this7.moveOptions.y = e.pageY - startPageY;
-
-        _this7.getCanvas();
-      };
-
-      this.hasKeyListener = true;
-      dom.addEventListener('mousedown', function (e) {
-        startPageX = e.pageX - _this7.moveOptions.x;
-        startPageY = e.pageY - _this7.moveOptions.y;
-        document.addEventListener('mousemove', moveListener);
-      });
-      document.addEventListener('mouseup', function () {
-        document.removeEventListener('mousemove', moveListener);
-      });
-      document.addEventListener('keydown', function (e) {
-        var preview = _this7.state.preview;
-        if (preview) return;
-
-        if ([87, 83, 82, 65, 68, 69].includes(e.keyCode)) {
-          if (e.keyCode == 87) {
-            _this7.moveOptions.y = _this7.moveOptions.y - 1;
-          }
-
-          if (e.keyCode == 83) {
-            _this7.moveOptions.y = _this7.moveOptions.y + 1;
-          }
-
-          if (e.keyCode == 65) {
-            _this7.moveOptions.x = _this7.moveOptions.x - 1;
-          }
-
-          if (e.keyCode == 68) {
-            _this7.moveOptions.x = _this7.moveOptions.x + 1;
-          }
-
-          if (e.keyCode == 69) {
-            _this7.sizeInputRef && _this7.sizeInputRef.setState({
-              inputValue: (_this7.moveOptions.size + 0.2).toFixed(2),
-              value: (_this7.moveOptions.size + 0.2).toFixed(2)
-            });
-
-            _this7.handleSize(_babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_33___default()(_this7.moveOptions.size * 100 + 20) / 100, false);
-          }
-
-          if (e.keyCode == 82) {
-            _this7.sizeInputRef && _this7.sizeInputRef.setState({
-              inputValue: (_this7.moveOptions.size - 0.2).toFixed(2),
-              value: (_this7.moveOptions.size - 0.2).toFixed(2)
-            });
-
-            _this7.handleSize(_babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_33___default()(_this7.moveOptions.size * 100 - 20) / 100, false);
-          }
-
-          _this7.getCanvas();
-        }
-      });
-
-      if (this.dragBox1.current) {
-        var box = this.dragBox1.current;
-        var sx = null;
-        var size = null;
-
-        var listener = function listener(e) {
-          var current = e.clientX - sx;
-          box.style.left = "".concat(current, "px");
-          var diff = (current - 798) / 10;
-          var value = size + diff;
-
-          if (value >= 1) {
-            _this7.sizeInputRef && _this7.sizeInputRef.setState({
-              inputValue: value.toFixed(2),
-              value: value.toFixed(2)
-            });
-
-            _this7.handleSize(value);
-          }
-        };
-
-        box.addEventListener('mousedown', function (e) {
-          e.stopPropagation();
-          e.preventDefault();
-          sx = e.clientX - box.offsetLeft;
-          size = _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_32___default()(_this7.moveOptions.size);
-          document.addEventListener('mousemove', listener);
-        });
-        document.addEventListener('mouseup', function (e) {
-          e.stopPropagation();
-          e.preventDefault();
-          box.style.left = '798px';
-          document.removeEventListener('mousemove', listener);
-        });
-      }
-
-      if (this.dragBox2.current) {
-        var _box = this.dragBox2.current;
-        var _sx = null;
-        var rotate = this.moveOptions.rotate;
-
-        var _listener = function _listener(e) {
-          var current = e.clientX - _sx;
-          _box.style.left = "".concat(current, "px");
-          var diff = current - 798;
-          var value = Math.abs(rotate + diff);
-          if (value > 360) value = 0;
-          _this7.rotateInputRef && _this7.rotateInputRef.setState({
-            inputValue: value,
-            value: value
-          });
-
-          _this7.handleRotate(value);
-        };
-
-        _box.addEventListener('mousedown', function (e) {
-          e.stopPropagation();
-          e.preventDefault();
-          _sx = e.clientX - _box.offsetLeft;
-          document.addEventListener('mousemove', _listener);
-        });
-
-        document.addEventListener('mouseup', function (e) {
-          e.stopPropagation();
-          e.preventDefault();
-          _box.style.left = '798px';
-          document.removeEventListener('mousemove', _listener);
-        });
-      }
-    }
-  }, {
-    key: "handleSize",
-    value: function handleSize() {
-      var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-      var isGet = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-      var upload = this.imageUploadRef.current;
-      if (!upload) return;
-      if (!/^-?(0|[1-9][0-9]*)(\.[0-9]{1,})?$/.test(value)) return;
-      this.moveOptions.x = this.moveOptions.x + upload.width * (this.moveOptions.size - value) / 200;
-      this.moveOptions.y = this.moveOptions.y + upload.height * (this.moveOptions.size - value) / 200;
-      this.moveOptions.size = value;
-      isGet && this.getCanvas();
-    }
-  }, {
-    key: "handleRotate",
-    value: function handleRotate(value) {
-      this.moveOptions.rotate = value;
-      this.getCanvas();
-    }
-  }, {
-    key: "handlePreview",
-    value: function handlePreview() {
-      var _this8 = this;
-
-      var get = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-
-      if (!this.select) {
-        antd_lib_message__WEBPACK_IMPORTED_MODULE_31___default.a.error('请先选择机型');
-
-        return;
-      }
-
-      if (!this.state.image) {
-        antd_lib_message__WEBPACK_IMPORTED_MODULE_31___default.a.error('请先上传定制图片');
-
-        return;
-      }
-
-      var bg = this.imageBgRef.current;
-      var canvas = document.createElement('canvas');
-      this.getCanvas({
-        canvas: canvas,
-        power: bg.width / 320,
-        isRes: true
-      });
-      this.setState({
-        preview: get ? this.getPreviewImage({
-          canvas: canvas,
-          power: bg.width / 320
-        }) : null
-      }, function () {
-        if (get) _this8.getCanvas();
-      });
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      var _this9 = this;
-
-      e.preventDefault();
-      e.stopPropagation();
-
-      if (!this.select) {
-        antd_lib_message__WEBPACK_IMPORTED_MODULE_31___default.a.error('请先选择机型');
-
-        return;
-      }
-
-      if (!this.state.image) {
-        antd_lib_message__WEBPACK_IMPORTED_MODULE_31___default.a.error('请先上传定制图片');
-
-        return;
-      }
-
-      var validateFields = this.props.form.validateFields;
-      var _this$state2 = this.state,
-          selectedRow = _this$state2.selectedRow,
-          selectParts = _this$state2.selectParts,
-          importExcelData = _this$state2.importExcelData;
-      validateFields(function (err, values) {
-        if (!err) {
-          if (!_this9.token) {
-            antd_lib_message__WEBPACK_IMPORTED_MODULE_31___default.a.error('网络出错了，刷新页面试试');
-
-            return;
-          }
-
-          _this9.setState({
-            submit: true
-          });
-
-          var pl = [function () {
-            var formdata = new FormData();
-            formdata.append('file', Object(public_utils__WEBPACK_IMPORTED_MODULE_43__[/* convertBase64UrlToBlob */ "c"])(_this9.getResultImage()), "".concat(new Date().getTime(), ".png"));
-            formdata.append('token', _this9.token);
-            return public_utils__WEBPACK_IMPORTED_MODULE_43__[/* MServer */ "a"].post('//upload-z0.qiniup.com', formdata, {
-              withCredentials: false,
-              headers: {
-                'Content-Type': 'multipart/form-data'
-              },
-              silent: true
-            }).then(function (res) {
-              if (res.key) {
-                return "".concat(config_locale__WEBPACK_IMPORTED_MODULE_45___default.a["production"].url.cdnUser).concat(res.key);
-              } else {
-                throw new Error('图片上传失败');
-              }
-            });
-          }, function () {
-            var formdata = new FormData();
-            formdata.append('file', Object(public_utils__WEBPACK_IMPORTED_MODULE_43__[/* convertBase64UrlToBlob */ "c"])(_this9.getResultImage(false)), "".concat(new Date().getTime(), ".png"));
-            formdata.append('token', _this9.token);
-            return public_utils__WEBPACK_IMPORTED_MODULE_43__[/* MServer */ "a"].post('//upload-z0.qiniup.com', formdata, {
-              withCredentials: false,
-              headers: {
-                'Content-Type': 'multipart/form-data'
-              },
-              silent: true
-            }).then(function (res) {
-              if (res.key) {
-                return "".concat(config_locale__WEBPACK_IMPORTED_MODULE_45___default.a["production"].url.cdnUser).concat(res.key);
-              } else {
-                throw new Error('图片上传失败');
-              }
-            });
-          }];
-
-          _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_29___default.a.all(pl.map(function (item) {
-            return item();
-          })).then(function (res) {
-            var params = {
-              type: values.type,
-              order_sn: values.order_sn,
-              quantity: values.quantity,
-              cate_id: _this9.select.id,
-              image: res[0],
-              image1: res[1]
-            };
-            if (values.texture_attr_id) params.texture_attr_id = values.texture_attr_id;
-            if (values.express_id) params.express_id = values.express_id;
-
-            if (selectParts.length) {
-              params.parts = selectParts.map(function (item) {
-                return {
-                  id: item,
-                  count: values["part_".concat(item)]
-                };
-              });
-            }
-
-            if (params.type == 10 && selectedRow) {
-              params = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_28__[/* default */ "a"])({}, params, {
-                consignee: selectedRow.consignee,
-                mobile: selectedRow.mobile,
-                province: selectedRow.province,
-                city: selectedRow.city,
-                district: selectedRow.district,
-                address: selectedRow.address
-              });
-            }
-
-            public_utils__WEBPACK_IMPORTED_MODULE_43__[/* MServer */ "a"].post('/order/save', params).then(function (res) {
-              _this9.setState({
-                submit: false
-              });
-
-              if (res.errcode == 0) {
-                var catename = "".concat(_this9.select.brand_name, " ").concat(_this9.select.brand_type_name, " ").concat(_this9.select.texture_name);
-
-                if (!_this9.submitOrderObj[values.order_sn]) {
-                  _this9.submitOrderObj[values.order_sn] = {
-                    count: 1,
-                    obj: Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_27__[/* default */ "a"])({}, _this9.select.id, {
-                      name: catename,
-                      count: 1
-                    })
-                  };
-                } else {
-                  _this9.submitOrderObj[values.order_sn].count++;
-
-                  if (!_this9.submitOrderObj[values.order_sn].obj[_this9.select.id]) {
-                    _this9.submitOrderObj[values.order_sn].obj[_this9.select.id] = {
-                      name: catename,
-                      count: 1
-                    };
-                  } else {
-                    _this9.submitOrderObj[values.order_sn].obj[_this9.select.id].count++;
-                  }
-                }
-
-                antd_lib_modal__WEBPACK_IMPORTED_MODULE_26___default.a.confirm({
-                  title: '订单已提交成功',
-                  okText: '继续下单',
-                  cancelText: '查看订单',
-                  onOk: function onOk() {
-                    values.type == 10 && importExcelData && _this9.setState({
-                      drawer: true
-                    });
-                  },
-                  onCancel: function onCancel() {
-                    _this9.setState({
-                      order_sn: values.order_sn
-                    }, function () {
-                      if (_this9.dialogDetailRef.current) _this9.dialogDetailRef.current.open();
-                    });
-                  }
-                });
-              }
-            });
-          }).catch(function (err) {
-            antd_lib_message__WEBPACK_IMPORTED_MODULE_31___default.a.error(err.message);
-          });
-        }
-      });
-    }
-  }, {
-    key: "readFile",
-    value: function readFile(file) {
-      var reader = new FileReader();
-      reader.readAsDataURL(file);
-      var that = this;
-
-      reader.onload = function () {
-        delete that.moveOptions.size;
-        delete that.moveOptions.y;
-        that.moveOptions.x = 0;
-        that.setState({
-          image: this.result
-        }, function () {
-          that.imageUploadRef.current.onload = function () {
-            that.getCanvas();
-            that.listenerMove();
-            var preview = that.state.preview;
-
-            if (preview) {
-              that.handlePreview(true);
-            }
-          };
-        });
-      };
-    }
-  }, {
-    key: "handleUploadOrderExcel",
-    value: function handleUploadOrderExcel(file) {
-      if (!file) return;
-      var reader = new FileReader();
-      reader.readAsBinaryString(file);
-      var that = this;
-
-      reader.onload = function () {
-        var workbook = xlsx__WEBPACK_IMPORTED_MODULE_41___default.a.read(this.result, {
-          type: 'binary'
-        });
-        var workbookJson = xlsx__WEBPACK_IMPORTED_MODULE_41___default.a.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
-        var result = [];
-        workbookJson.forEach(function (item, index) {
-          var mobile = item['联系手机'];
-          if (mobile) mobile = mobile.toString().match(/[1-9]\d*/)[0];
-          var adsplit = (item['收货地址'] || item['收货地址 '] || '').trim().split(/\s+/);
-          result.push({
-            order_sn: item['订单编号'],
-            consignee: item['收货人姓名'],
-            mobile: mobile,
-            province: adsplit[0],
-            city: adsplit[1],
-            district: adsplit[2],
-            address: adsplit.slice(3).join(' '),
-            seller_remark: item['订单备注'],
-            buyer_remark: item['买家留言'],
-            remark: item['自定义备注'],
-            index: index
-          });
-        });
-        that.setState({
-          drawer: true,
-          importExcelData: result
-        });
-      };
-    }
-  }, {
-    key: "handleSelectRow",
-    value: function handleSelectRow(selectedRow) {
-      var setFieldsValue = this.props.form.setFieldsValue;
-      setFieldsValue({
-        order_sn: selectedRow.order_sn
-      });
-      this.setState({
-        selectedRowKeys: selectedRow.order_sn,
-        selectedRow: selectedRow,
-        drawer: false
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this10 = this;
-
-      var _this$state3 = this.state,
-          image = _this$state3.image,
-          preview = _this$state3.preview,
-          submit = _this$state3.submit,
-          color = _this$state3.color,
-          pickerColor = _this$state3.pickerColor,
-          auto = _this$state3.auto,
-          list = _this$state3.list,
-          importExcelData = _this$state3.importExcelData,
-          drawer = _this$state3.drawer,
-          selectedRowKeys = _this$state3.selectedRowKeys,
-          selectedRow = _this$state3.selectedRow,
-          order_sn = _this$state3.order_sn,
-          expressList = _this$state3.expressList,
-          partList = _this$state3.partList,
-          selectParts = _this$state3.selectParts;
-      var _this$props$form = this.props.form,
-          getFieldDecorator = _this$props$form.getFieldDecorator,
-          getFieldValue = _this$props$form.getFieldValue;
-      var select = this.select;
-      var rowSelection = {
-        type: 'radio',
-        selectedRowKeys: selectedRowKeys,
-        onChange: function onChange(selectedRowKeys, selectedRows) {
-          _this10.handleSelectRow(selectedRows[0]);
-        }
-      };
-      return react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", {
-        className: "page-layout-center"
-      }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_42__[/* DialogOrderDetail */ "c"], {
-        ref: this.dialogDetailRef,
-        order_sn: order_sn
-      }), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", {
-        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_44___default.a.layoutHome
-      }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", {
-        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_44___default.a.layoutHomeHd
-      }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_cascader__WEBPACK_IMPORTED_MODULE_24___default.a, {
-        showSearch: {
-          filter: function filter(input, path) {
-            if (!input) return true;
-            input = input.toLowerCase();
-            var labels = path.map(function (item) {
-              return item.label.replace(/\s*/g, '').toLowerCase();
-            }).join('');
-            var inputKeys = input.split(' ');
-            var has = true;
-
-            for (var i = 0; i < inputKeys.length; i++) {
-              var item = inputKeys[i];
-
-              if (labels.indexOf(item) == -1) {
-                has = false;
-                break;
-              }
-            }
-
-            return has;
-          }
-        },
-        allowClear: false,
-        options: list,
-        style: {
-          width: 320
-        },
-        placeholder: "\u9009\u62E9\u624B\u673A\u578B\u53F7\uFF0C\u652F\u6301\u641C\u7D22",
-        onChange: function onChange(value) {
-          _this10.select = _this10.cateObj[value[2]];
-          public_utils__WEBPACK_IMPORTED_MODULE_43__[/* MServer */ "a"].get("/cate/catetextureattr/".concat(_this10.select.id)).then(function (res) {
-            _this10.select.texture_attr = res.errcode == 0 ? res.data : [];
-
-            _this10.forceUpdate(function () {
-              if (_this10.imageBgRef.current.complete) {
-                _this10.getCanvas();
-              } else {
-                _this10.imageBgRef.current.onload = function () {
-                  _this10.getCanvas();
-                };
-              }
-            });
-          });
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_22___default.a, {
-        className: "hide",
-        type: "file",
-        ref: function ref(e) {
-          return _this10.uploadInputRef = e && e.input;
-        },
-        accept: 'image/png,image/jpg,image/jpeg',
-        onChange: function onChange(e) {
-          return _this10.readFile(e.target.files[0]);
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_20___default.a, {
-        type: "primary",
-        icon: "cloud-upload",
-        onClick: function onClick() {
-          return _this10.uploadInputRef.click();
-        }
-      }, "\u4E0A\u4F20\u56FE\u7247"), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_20___default.a, {
-        style: {
-          marginLeft: '15px'
-        },
-        onClick: function onClick() {
-          return _this10.handlePreview(!preview);
-        }
-      }, preview ? '编辑' : '预览'), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_checkbox__WEBPACK_IMPORTED_MODULE_18___default.a, {
-        style: {
-          marginLeft: '15px'
-        },
-        disabled: !this.select || !image,
-        checked: auto,
-        onChange: function onChange(e) {
-          _this10.setState({
-            auto: e.target.checked
-          }, function () {
-            _this10.getCanvas();
-
-            if (e.target.checked) {
-              _this10.handlePreview(true);
-            } else {
-              _this10.setState({
-                preview: null
-              });
-            }
-          });
-        }
-      }, "\u56FE\u7247\u81EA\u9002\u5E94"), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_popover__WEBPACK_IMPORTED_MODULE_12___default.a, {
-        defaultVisible: true,
-        overlayClassName: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_44___default.a.popoverSetting,
-        placement: "bottomRight",
-        trigger: "click",
-        content: react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_14___default.a, {
-          className: "inline-form"
-        }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", {
-          style: {
-            display: 'flex'
-          }
-        }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_14___default.a.Item, {
-          label: "\u7F29\u653E",
-          style: {
-            flex: '1'
-          }
-        }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_input_number__WEBPACK_IMPORTED_MODULE_16___default.a, {
-          style: {
-            width: 80
-          },
-          disabled: !!preview || auto,
-          ref: function ref(e) {
-            if (e) _this10.sizeInputRef = e.inputNumberRef;
-          },
-          onChange: function onChange(value) {
-            return _this10.handleSize(value);
-          },
-          defaultValue: 100
-        }), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("span", {
-          style: {
-            marginLeft: '10px'
-          }
-        }, "%")), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_14___default.a.Item, {
-          label: "\u65CB\u8F6C",
-          style: {
-            flex: '1'
-          }
-        }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_input_number__WEBPACK_IMPORTED_MODULE_16___default.a, {
-          style: {
-            width: 80
-          },
-          disabled: !!preview || auto,
-          ref: function ref(e) {
-            if (e) _this10.rotateInputRef = e.inputNumberRef;
-          },
-          onChange: function onChange(value) {
-            return _this10.handleRotate(value);
-          },
-          defaultValue: 0
-        }))), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_14___default.a.Item, {
-          label: "\u80CC\u666F\u8272\u8BBE\u7F6E"
-        }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_42__[/* Select */ "g"], {
-          style: {
-            width: 120
-          },
-          value: color,
-          onChange: function onChange(value) {
-            return _this10.setState({
-              color: value
-            }, function () {
-              if (value != -1) {
-                _this10.getCanvas();
-              }
-            });
-          },
-          options: [{
-            label: '透明',
-            value: 'tran'
-          }, {
-            label: '黑色',
-            value: '#000'
-          }, {
-            label: '白色',
-            value: '#fff'
-          }, {
-            label: '红色',
-            value: '#ff1300'
-          }, {
-            label: '自定义',
-            value: '-1'
-          }]
-        }), color == -1 ? react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", {
-          style: {
-            display: 'inline-block',
-            position: 'relative',
-            top: '5px',
-            left: '10px'
-          }
-        }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_42__[/* ColorPicker */ "a"], {
-          color: pickerColor,
-          onChange: function onChange(c) {
-            _this10.setState({
-              pickerColor: c.color
-            }, _this10.getCanvas);
-          }
-        })) : null)))
-      }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("a", {
-        style: {
-          float: 'right',
-          lineHeight: '32px'
-        }
-      }, "\u56FE\u7247\u64CD\u4F5C"))), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", {
-        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_44___default.a.layoutHomeBd
-      }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", {
-        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_44___default.a.mobilePreview
-      }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", {
-        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_44___default.a.mobilePreviewCanvas,
-        ref: this.boxRef
-      }, preview ? react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", {
-        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_44___default.a.previewImage
-      }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("img", {
-        src: preview,
-        style: {
-          width: 320
-        }
-      }))) : null, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", {
-        key: "images",
-        className: "hide"
-      }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("img", {
-        ref: this.transBgRef,
-        crossOrigin: "",
-        src: "http://cdn-static.yikebb.com/static/images/transparent_bg.jpg"
-      }), image ? react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("img", {
-        ref: this.imageUploadRef,
-        crossOrigin: "",
-        src: image
-      }) : null, select ? react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("img", {
-        ref: this.imageBgRef,
-        crossOrigin: "",
-        src: "".concat(config_locale__WEBPACK_IMPORTED_MODULE_45___default.a["production"].url.cdn).concat(select.size_img)
-      }) : null, select && select.camera_img ? react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("img", {
-        ref: this.imageCameraRef,
-        crossOrigin: "",
-        src: "".concat(config_locale__WEBPACK_IMPORTED_MODULE_45___default.a["production"].url.cdn).concat(select.camera_img)
-      }) : null), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("canvas", {
-        key: "canvas1",
-        ref: this.canvasRef
-      }), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("canvas", {
-        key: "canvas2",
-        ref: this.canvasCameraRef
-      }), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_10___default.a, {
-        title: "\u4E0A\u4F20\u56FE\u7247\u540E\uFF0C\u62D6\u52A8\u8FDB\u884C\u653E\u5927\u7F29\u5C0F"
-      }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", {
-        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_44___default.a.box1,
-        ref: this.dragBox1
-      })), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_10___default.a, {
-        title: "\u4E0A\u4F20\u56FE\u7247\u540E\uFF0C\u62D6\u52A8\u8FDB\u884C\u65CB\u8F6C"
-      }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", {
-        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_44___default.a.box2,
-        ref: this.dragBox2
-      })))), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", {
-        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_44___default.a.orderConfig
-      }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_14___default.a, {
-        onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_14___default.a.Item, {
-        label: "\u8BA2\u5355\u7C7B\u578B"
-      }, getFieldDecorator('type', {
-        initialValue: 0
-      })(react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_radio__WEBPACK_IMPORTED_MODULE_8___default.a.Group, {
-        options: [{
-          label: '普通订单',
-          value: 0
-        }, {
-          label: '充值订单',
-          value: 10
-        }]
-      }))), getFieldValue('type') == 10 ? react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_14___default.a.Item, null, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_42__[/* UploadBtn */ "i"].Local, {
-        accept: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel",
-        text: "\u5BFC\u5165\u6DD8\u5B9D\u8BA2\u5355",
-        onUpload: this.handleUploadOrderExcel
-      }), importExcelData ? react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_20___default.a, {
-        type: "primary",
-        style: {
-          marginLeft: '15px'
-        },
-        onClick: function onClick() {
-          return _this10.setState({
-            drawer: true
-          });
-        }
-      }, "\u6253\u5F00\u5BFC\u5165\u7684\u8BA2\u5355") : null, selectedRow ? react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", {
-        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_44___default.a.remarkBox
-      }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("p", {
-        style: {
-          marginBottom: '10px',
-          lineHeight: 1
-        }
-      }, "\u8BA2\u5355\u5907\u6CE8\uFF1A", selectedRow.seller_remark), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("p", {
-        style: {
-          marginBottom: '10px',
-          lineHeight: 1
-        }
-      }, "\u4E70\u5BB6\u7559\u8A00\uFF1A", selectedRow.buyer_remark), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("p", {
-        style: {
-          marginBottom: '0',
-          lineHeight: 1
-        }
-      }, "\u81EA\u5B9A\u4E49\u5907\u6CE8\uFF1A", selectedRow.remark)) : null) : null, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_14___default.a.Item, {
-        label: "\u914D\u8D27\u6807\u7B7E",
-        extra: getFieldValue('order_sn') ? react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("a", {
-          className: "text-info",
-          onClick: function onClick() {
-            _this10.setState({
-              order_sn: getFieldValue('order_sn')
-            }, function () {
-              _this10.dialogDetailRef.current && _this10.dialogDetailRef.current.open();
-            });
-          }
-        }, "\u67E5\u770B\u8BA2\u5355") : null
-      }, getFieldDecorator('order_sn', {
-        rules: [{
-          required: true,
-          message: '配货标签不能为空'
-        }]
-      })(react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_22___default.a, {
-        placeholder: "\u586B\u5199\u6807\u7B7E"
-      }))), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_14___default.a.Item, {
-        label: "\u8BA2\u8D27\u6570\u91CF"
-      }, getFieldDecorator('quantity', {
-        rules: [{
-          required: true,
-          message: '订货数量不能为空'
-        }],
-        initialValue: 1
-      })(react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_input_number__WEBPACK_IMPORTED_MODULE_16___default.a, {
-        precision: 0,
-        min: 1
-      }))), select && select.texture_attr.length ? react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_14___default.a.Item, {
-        label: "\u5C5E\u6027(\u989C\u8272)"
-      }, getFieldDecorator('texture_attr_id', {
-        rules: [{
-          required: true,
-          message: '请先选择属性'
-        }]
-      })(react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_42__[/* Select */ "g"], {
-        options: select.texture_attr,
-        fieldName: {
-          label: 'texture_attr_name',
-          value: 'texture_attr_id'
-        },
-        placeholder: "\u9009\u62E9\u5C5E\u6027",
-        style: {
-          width: 180
-        }
-      }))) : null, getFieldValue('type') == 10 ? react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_14___default.a.Item, {
-        label: "\u9009\u62E9\u7269\u6D41"
-      }, getFieldDecorator('express_id', {
-        rules: [{
-          required: true,
-          message: '请先选择物流'
-        }],
-        initialValue: expressList.length ? function () {
-          var defaultList = expressList.filter(function (item) {
-            return item.default;
-          });
-
-          if (defaultList.length) {
-            return defaultList[0].id;
-          }
-
-          return undefined;
-        }() : undefined
-      })(react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_42__[/* Select */ "g"], {
-        options: expressList,
-        fieldName: {
-          value: 'id',
-          label: 'name'
-        }
-      }))) : null, getFieldValue('type') == 10 && partList.length ? react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_table__WEBPACK_IMPORTED_MODULE_6___default.a, {
-        rowKey: "id",
-        dataSource: partList,
-        pagination: false,
-        style: {
-          marginBottom: '15px'
-        },
-        rowSelection: {
-          onChange: function onChange(selectedRowKeys) {
-            _this10.setState({
-              selectParts: selectedRowKeys
-            });
-          }
-        },
-        columns: [{
-          key: 'name',
-          dataIndex: 'name',
-          title: '配件'
-        }, {
-          key: 'number',
-          dataIndex: 'id',
-          title: '购买数量',
-          render: function render(id) {
-            return react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_14___default.a.Item, {
-              className: "no-margin"
-            }, getFieldDecorator("part_".concat(id), selectParts.includes(id) ? {
-              rules: [{
-                required: true,
-                message: '请输入赠品数量'
-              }],
-              initialValue: 1
-            } : {
-              initialValue: 1
-            })(react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_input_number__WEBPACK_IMPORTED_MODULE_16___default.a, null)));
-          }
-        }]
-      }) : null, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_14___default.a.Item, null, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_20___default.a, {
-        type: "primary",
-        htmlType: "submit",
-        loading: submit
-      }, "\u63D0\u4EA4\u8BA2\u5355")))))), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", {
-        style: {
-          paddingTop: '15px'
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "W"), "\u4E0A\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "S"), "\u4E0B\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "A"), "\u5DE6\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "D"), "\u53F3\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "E"), "\u653E\u5927"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_4___default.a, null, "R"), "\u7F29\u5C0F")), react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        title: "\u5BFC\u5165\u6DD8\u5B9D\u8BA2\u5355",
-        placement: "bottom",
-        height: 720,
-        bodyStyle: {
-          padding: 0
-        } // closable={false}
-        ,
-        onClose: function onClose() {
-          return _this10.setState({
-            drawer: false
-          });
-        },
-        visible: drawer
-      }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_table__WEBPACK_IMPORTED_MODULE_6___default.a, {
-        rowKey: "order_sn",
-        rowSelection: rowSelection,
-        dataSource: importExcelData,
-        onRow: function onRow(row) {
-          return {
-            onClick: function onClick() {
-              _this10.handleSelectRow(row);
-            }
-          };
-        },
-        columns: [{
-          key: 'order_sn',
-          dataIndex: 'order_sn',
-          title: '订单编号',
-          render: function render(text, record) {
-            return react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("span", null, text, _this10.submitOrderObj[record.order_sn] ? react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_10___default.a, {
-              title: react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("div", {
-                className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_44___default.a.tooltipContent
-              }, _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2___default()(_this10.submitOrderObj[record.order_sn].obj).map(function (item) {
-                return react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("p", {
-                  key: item
-                }, _this10.submitOrderObj[record.order_sn].obj[item].name, " ", _this10.submitOrderObj[record.order_sn].obj[item].count, "\u6B21");
-              }))
-            }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("span", {
-              className: "text-success"
-            }, "(\u5DF2\u63D0\u4EA4", _this10.submitOrderObj[record.order_sn].count, "\u6B21)")) : null);
-          }
-        }, {
-          key: 'consignee',
-          dataIndex: 'consignee',
-          title: '收件人姓名',
-          render: function render(text, record) {
-            return react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_22___default.a, {
-              defaultValue: text,
-              style: {
-                width: 80
-              },
-              onChange: function onChange(e) {
-                importExcelData[record.index].consignee = e.target.value;
-              },
-              onClick: function onClick(e) {
-                e.preventDefault();
-                e.stopPropagation();
-              }
-            });
-          }
-        }, {
-          key: 'mobile',
-          dataIndex: 'mobile',
-          title: '联系手机',
-          render: function render(text, record) {
-            return react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_22___default.a, {
-              defaultValue: text,
-              style: {
-                width: 122
-              },
-              onChange: function onChange(e) {
-                importExcelData[record.index].mobile = e.target.value;
-              },
-              onClick: function onClick(e) {
-                e.preventDefault();
-                e.stopPropagation();
-              }
-            });
-          }
-        }, {
-          key: 'province',
-          dataIndex: 'province',
-          title: '省',
-          render: function render(text, record) {
-            return react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_22___default.a, {
-              defaultValue: text,
-              style: {
-                width: 80
-              },
-              onChange: function onChange(e) {
-                importExcelData[record.index].province = e.target.value;
-              },
-              onClick: function onClick(e) {
-                e.preventDefault();
-                e.stopPropagation();
-              }
-            });
-          }
-        }, {
-          key: 'city',
-          dataIndex: 'city',
-          title: '市',
-          render: function render(text, record) {
-            return react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_22___default.a, {
-              defaultValue: text,
-              style: {
-                width: 80
-              },
-              onChange: function onChange(e) {
-                importExcelData[record.index].city = e.target.value;
-              },
-              onClick: function onClick(e) {
-                e.preventDefault();
-                e.stopPropagation();
-              }
-            });
-          }
-        }, {
-          key: 'district',
-          dataIndex: 'district',
-          title: '区',
-          render: function render(text, record) {
-            return react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_22___default.a, {
-              defaultValue: text,
-              style: {
-                width: 80
-              },
-              onChange: function onChange(e) {
-                importExcelData[record.index].district = e.target.value;
-              },
-              onClick: function onClick(e) {
-                e.preventDefault();
-                e.stopPropagation();
-              }
-            });
-          }
-        }, {
-          key: 'address',
-          dataIndex: 'address',
-          title: '详细地址',
-          render: function render(text, record) {
-            return react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_22___default.a, {
-              defaultValue: text,
-              style: {
-                width: 150
-              },
-              onChange: function onChange(e) {
-                importExcelData[record.index].address = e.target.value;
-              },
-              onClick: function onClick(e) {
-                e.preventDefault();
-                e.stopPropagation();
-              }
-            });
-          }
-        }, {
-          key: 'seller_remark',
-          dataIndex: 'seller_remark',
-          title: '订单备注',
-          render: function render(text) {
-            return react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_10___default.a, {
-              title: text
-            }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("p", {
-              style: {
-                width: 80,
-                overflow: 'hidden',
-                whiteSpace: 'nowrap',
-                textOverflow: 'ellipsis'
-              }
-            }, text));
-          }
-        }, {
-          key: 'buyer_remark',
-          dataIndex: 'buyer_remark',
-          title: '买家留言',
-          render: function render(text) {
-            return react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_10___default.a, {
-              title: text
-            }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("p", {
-              style: {
-                width: 80,
-                overflow: 'hidden',
-                whiteSpace: 'nowrap',
-                textOverflow: 'ellipsis'
-              }
-            }, text));
-          }
-        }, {
-          key: 'remark',
-          dataIndex: 'remark',
-          title: '自定义备注',
-          render: function render(text) {
-            return react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_10___default.a, {
-              title: text
-            }, react__WEBPACK_IMPORTED_MODULE_40___default.a.createElement("p", {
-              style: {
-                width: 80,
-                overflow: 'hidden',
-                whiteSpace: 'nowrap',
-                textOverflow: 'ellipsis'
-              }
-            }, text));
-          }
-        }]
-      })));
-    }
-  }]);
-
-  return Index;
-}(react__WEBPACK_IMPORTED_MODULE_40__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (antd_lib_form__WEBPACK_IMPORTED_MODULE_14___default.a.create()(Index));
 
 /***/ }),
 
@@ -4558,13 +2854,6 @@ function _getPrototypeOf(o) {
 
 /***/ }),
 
-/***/ "aC71":
-/***/ (function(module, exports) {
-
-module.exports = require("core-js/library/fn/promise");
-
-/***/ }),
-
 /***/ "bmdr":
 /***/ (function(module, exports) {
 
@@ -4583,6 +2872,1594 @@ module.exports = require("url");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "cMU6":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var antd_lib_drawer_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("WYi6");
+/* harmony import */ var antd_lib_drawer_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_drawer_style__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("wvHv");
+/* harmony import */ var antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("pLtp");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var antd_lib_table_style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("lRur");
+/* harmony import */ var antd_lib_table_style__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_table_style__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var antd_lib_table__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("Puj+");
+/* harmony import */ var antd_lib_table__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd_lib_table__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("oRSk");
+/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input_style__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("Uqqx");
+/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var antd_lib_form_style__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("2w/n");
+/* harmony import */ var antd_lib_form_style__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(antd_lib_form_style__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var antd_lib_form__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("foLw");
+/* harmony import */ var antd_lib_form__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(antd_lib_form__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var antd_lib_tag_style__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("BucJ");
+/* harmony import */ var antd_lib_tag_style__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tag_style__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var antd_lib_tag__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("P7Vo");
+/* harmony import */ var antd_lib_tag__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tag__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var antd_lib_tooltip_style__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("AF2q");
+/* harmony import */ var antd_lib_tooltip_style__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tooltip_style__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("z6+L");
+/* harmony import */ var antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("DnGC");
+/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button_style__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("eGmO");
+/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("JHZV");
+/* harmony import */ var antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var antd_lib_radio__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("XQdj");
+/* harmony import */ var antd_lib_radio__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(antd_lib_radio__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var antd_lib_cascader_style__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("qYgU");
+/* harmony import */ var antd_lib_cascader_style__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(antd_lib_cascader_style__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var antd_lib_cascader__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("CUto");
+/* harmony import */ var antd_lib_cascader__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(antd_lib_cascader__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("bmdr");
+/* harmony import */ var antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var antd_lib_modal__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("xKsY");
+/* harmony import */ var antd_lib_modal__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(antd_lib_modal__WEBPACK_IMPORTED_MODULE_20__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("vYYK");
+/* harmony import */ var antd_lib_message_style__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("XZ83");
+/* harmony import */ var antd_lib_message_style__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message_style__WEBPACK_IMPORTED_MODULE_22__);
+/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__("3PsY");
+/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message__WEBPACK_IMPORTED_MODULE_23__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__("zrwo");
+/* harmony import */ var _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__("Wa2I");
+/* harmony import */ var _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_25__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__("0iUn");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__("sLSF");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__("MI3g");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__("a7VT");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__("AT/M");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__("Tit0");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_32__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__("K2gz");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_33__);
+/* harmony import */ var xlsx__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__("X1wy");
+/* harmony import */ var xlsx__WEBPACK_IMPORTED_MODULE_34___default = /*#__PURE__*/__webpack_require__.n(xlsx__WEBPACK_IMPORTED_MODULE_34__);
+/* harmony import */ var pinyin__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__("Qp17");
+/* harmony import */ var pinyin__WEBPACK_IMPORTED_MODULE_35___default = /*#__PURE__*/__webpack_require__.n(pinyin__WEBPACK_IMPORTED_MODULE_35__);
+/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__("mVpe");
+/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_36___default = /*#__PURE__*/__webpack_require__.n(config_locale__WEBPACK_IMPORTED_MODULE_36__);
+/* harmony import */ var component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__("OLV9");
+/* harmony import */ var public_utils__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__("HgRd");
+/* harmony import */ var public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__("5PEn");
+/* harmony import */ var public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default = /*#__PURE__*/__webpack_require__.n(public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39__);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var defaultHeight = 560;
+
+var Home =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_31__[/* default */ "a"])(Home, _Component);
+
+  function Home(props) {
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_26__[/* default */ "a"])(this, Home);
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_28__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])(Home).call(this, props));
+    _this.state = {
+      list: [],
+      expressList: [],
+      partList: [],
+      selectParts: [],
+      selectedRowKeys: [],
+      lockTexture: '',
+      textures: [],
+      importExcelData: null,
+      selectedRow: null,
+      preview: true,
+      submit: false,
+      drawer: false,
+      drawerTitle: ''
+    };
+    _this.cateObj = {};
+    _this.select = null;
+    _this.image = null;
+    _this.imageOpt = {
+      x: 0,
+      y: 0,
+      color: 'tran',
+      size: 100,
+      rotate: 0
+    };
+    _this.token = null;
+    _this.auto = false;
+    _this.cateList = [];
+    _this.submitOrderObj = {};
+    _this.defaultBrankSortMap = {};
+    var handles = ['uploadImage', 'handleChangeSize', 'handleUploadOrderExcel', 'handleSubmit'];
+    handles.forEach(function (item) {
+      _this[item] = _this[item].bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_30__[/* default */ "a"])(_this));
+    }); // ref
+
+    _this.moveRef = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    _this.uploadRef = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    _this.dragBox1 = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    _this.dragBox2 = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    _this.sizeInputRef = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    _this.rotateInputRef = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    _this.dialogDetailRef = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    _this.sizeImageRef = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    _this.cascaderRef = Object(react__WEBPACK_IMPORTED_MODULE_32__["createRef"])();
+    return _this;
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_27__[/* default */ "a"])(Home, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.getList();
+      this.listener();
+      this.getExpress();
+      this.getPart();
+      this.getTextureList();
+      public_utils__WEBPACK_IMPORTED_MODULE_38__[/* MServer */ "a"].get('/upload/getToken').then(function (res) {
+        if (res.errcode == 0) {
+          _this2.token = res.data.token;
+        }
+      });
+    }
+  }, {
+    key: "getImagePreview",
+    value: function getImagePreview() {
+      var domUpload = this.uploadRef.current;
+      var imageOpt = this.imageOpt;
+      domUpload.style.left = "".concat(imageOpt.x, "px");
+      domUpload.style.top = "".concat(imageOpt.y, "px");
+      domUpload.style.transform = "rotate(".concat(imageOpt.rotate, "deg)");
+    }
+  }, {
+    key: "getResultImage",
+    value: function getResultImage() {
+      var _this$imageOpt = this.imageOpt,
+          x = _this$imageOpt.x,
+          y = _this$imageOpt.y,
+          color = _this$imageOpt.color,
+          rotate = _this$imageOpt.rotate;
+      var size = this.imageOpt.size;
+      var imageSize = this.sizeImageRef.current;
+      var domMove = this.moveRef.current;
+      var left = x - (domMove.offsetWidth - imageSize.width) / 2;
+      var domUpload = this.uploadRef.current;
+      var power = imageSize.naturalHeight / defaultHeight;
+      size = size * power / 100;
+      var canvas = document.createElement('canvas');
+      var context = canvas.getContext('2d');
+      canvas.setAttribute('width', imageSize.naturalWidth);
+      canvas.setAttribute('height', imageSize.naturalHeight);
+
+      if (color != 'tran') {
+        context.rect(0, 0, imageSize.naturalWidth, imageSize.naturalHeight);
+        context.fillStyle = color;
+        context.fill();
+      }
+
+      var _x = left * power;
+
+      var _y = y * power;
+
+      if (rotate) {
+        var transX = _x + domUpload.naturalWidth * size / 2;
+        var transY = _y + domUpload.naturalHeight * size / 2;
+        context.translate(transX, transY);
+        context.rotate(rotate * Math.PI / 180);
+        context.translate(-transX, -transY);
+      }
+
+      if (domUpload) {
+        context.drawImage(domUpload, _x, _y, domUpload.naturalWidth * size, domUpload.naturalHeight * size);
+      }
+
+      var imageData = context.getImageData(0, 0, imageSize.naturalWidth, imageSize.naturalHeight);
+      var imageCanvas = document.createElement('canvas');
+      var ctx = imageCanvas.getContext('2d');
+      imageCanvas.setAttribute('width', imageSize.naturalWidth);
+      imageCanvas.setAttribute('height', imageSize.naturalHeight);
+      ctx.drawImage(imageSize, 0, 0, imageSize.naturalWidth, imageSize.naturalHeight);
+      var sizeData = ctx.getImageData(0, 0, imageSize.naturalWidth, imageSize.naturalHeight);
+
+      for (var i = 0; i < sizeData.data.length; i += 4) {
+        if (sizeData.data[i + 3] !== 0) {
+          imageData.data[i + 3] = 0;
+        }
+      }
+
+      context.putImageData(imageData, 0, 0);
+      return canvas.toDataURL('image/png');
+    }
+  }, {
+    key: "getExpress",
+    value: function getExpress() {
+      var _this3 = this;
+
+      public_utils__WEBPACK_IMPORTED_MODULE_38__[/* MServer */ "a"].get('/logis/list', {
+        is_all: 1
+      }).then(function (res) {
+        if (res.errcode == 0) {
+          _this3.setState({
+            expressList: res.data
+          });
+        }
+      });
+    }
+  }, {
+    key: "getPart",
+    value: function getPart() {
+      var _this4 = this;
+
+      public_utils__WEBPACK_IMPORTED_MODULE_38__[/* MServer */ "a"].get('/part/list', {
+        is_all: 1
+      }).then(function (res) {
+        if (res.errcode == 0) {
+          _this4.setState({
+            partList: res.data
+          });
+        }
+      });
+    }
+  }, {
+    key: "getTextureList",
+    value: function getTextureList() {
+      var _this5 = this;
+
+      public_utils__WEBPACK_IMPORTED_MODULE_38__[/* MServer */ "a"].get('/cate/texture', {
+        is_all: 1
+      }).then(function (res) {
+        if (res.errcode == 0) {
+          _this5.setState({
+            textures: res.data
+          });
+        }
+      });
+    }
+  }, {
+    key: "listener",
+    value: function listener() {
+      var _this6 = this;
+
+      var domMove = this.moveRef.current;
+      var startPageX = null;
+      var startPageY = null;
+      domMove.addEventListener('dragenter', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      });
+      domMove.addEventListener('dragover', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      });
+      domMove.addEventListener('dragleave', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      });
+      domMove.addEventListener('drop', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        _this6.uploadImage(e.dataTransfer.files[0]);
+      });
+
+      this.documentLister1 = function (e) {
+        if (!_this6.auto && e.target.tagName != 'INPUT' && [87, 83, 82, 65, 68, 69].includes(e.keyCode)) {
+          if (e.keyCode == 87) {
+            _this6.imageOpt.y = _this6.imageOpt.y - 1;
+
+            _this6.getImagePreview();
+          }
+
+          if (e.keyCode == 83) {
+            _this6.imageOpt.y = _this6.imageOpt.y + 1;
+
+            _this6.getImagePreview();
+          }
+
+          if (e.keyCode == 65) {
+            _this6.imageOpt.x = _this6.imageOpt.x - 1;
+
+            _this6.getImagePreview();
+          }
+
+          if (e.keyCode == 68) {
+            _this6.imageOpt.x = _this6.imageOpt.x + 1;
+
+            _this6.getImagePreview();
+          }
+
+          if (e.keyCode == 69) {
+            _this6.handleChangeSize(_this6.imageOpt.size + 0.2);
+          }
+
+          if (e.keyCode == 82) {
+            _this6.handleChangeSize(_this6.imageOpt.size - 0.2);
+          }
+        }
+      };
+
+      document.addEventListener('keydown', this.documentLister1);
+
+      var moveListener = function moveListener(e) {
+        var domUpload = _this6.uploadRef.current;
+        if (!domUpload || _this6.auto) return;
+        _this6.imageOpt.x = e.pageX - startPageX;
+        _this6.imageOpt.y = e.pageY - startPageY;
+
+        _this6.getImagePreview();
+      };
+
+      this.hasKeyListener = true;
+      domMove.addEventListener('mousedown', function (e) {
+        startPageX = e.pageX - _this6.imageOpt.x;
+        startPageY = e.pageY - _this6.imageOpt.y;
+        document.addEventListener('mousemove', moveListener);
+      });
+
+      this.documentLister2 = function () {
+        document.removeEventListener('mousemove', moveListener);
+      };
+
+      document.addEventListener('mouseup', this.documentLister2);
+
+      if (this.dragBox1.current) {
+        var box = this.dragBox1.current;
+        var sx = null;
+        var size = null;
+
+        var listener = function listener(e) {
+          var current = e.clientX - sx;
+          box.style.left = "".concat(current, "px");
+          var diff = (current - 558) / 10;
+          var value = size + diff;
+
+          if (value >= 1 && _this6.image && !_this6.auto) {
+            _this6.handleChangeSize(value);
+          }
+        };
+
+        box.addEventListener('mousedown', function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+          sx = e.clientX - box.offsetLeft;
+          size = _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_25___default()(_this6.imageOpt.size);
+          document.addEventListener('mousemove', listener);
+        });
+
+        this.documentLister3 = function (e) {
+          // e.stopPropagation();
+          // e.preventDefault();
+          box.style.left = '558px';
+          document.removeEventListener('mousemove', listener);
+        };
+
+        document.addEventListener('mouseup', this.documentLister3);
+      }
+
+      if (this.dragBox2.current) {
+        var _box = this.dragBox2.current;
+        var _sx = null;
+        var rotate = this.imageOpt.rotate;
+
+        var _listener = function _listener(e) {
+          if (!_this6.image) return;
+          var current = e.clientX - _sx;
+          _box.style.left = "".concat(current, "px");
+          var diff = current - 558;
+          var value = Math.abs(rotate + diff);
+          if (value > 360) value = 0;
+
+          if (_this6.image && !_this6.auto) {
+            _this6.imageOpt.rotate = value;
+
+            _this6.getImagePreview();
+
+            _this6.rotateInputRef.current && _this6.rotateInputRef.current.setState({
+              value: value
+            });
+          }
+        };
+
+        _box.addEventListener('mousedown', function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+          _sx = e.clientX - _box.offsetLeft;
+          document.addEventListener('mousemove', _listener);
+        });
+
+        this.documentLister4 = function (e) {
+          // e.stopPropagation();
+          // e.preventDefault();
+          _box.style.left = '558px';
+          document.removeEventListener('mousemove', _listener);
+        };
+
+        document.addEventListener('mouseup', this.documentLister4);
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      if (!this.documentLister1) document.removeEventListener('keydown', this.documentLister1);
+      if (!this.documentLister2) document.removeEventListener('mouseup', this.documentLister2);
+      if (!this.documentLister3) document.removeEventListener('mouseup', this.documentLister3);
+      if (!this.documentLister4) document.removeEventListener('mouseup', this.documentLister4);
+    }
+  }, {
+    key: "getList",
+    value: function getList() {
+      var _this7 = this;
+
+      public_utils__WEBPACK_IMPORTED_MODULE_38__[/* MServer */ "a"].get('/cate/list', {
+        is_all: 1
+      }).then(function (res) {
+        if (res.errcode == 0) {
+          _this7.cateList = res.data;
+          return public_utils__WEBPACK_IMPORTED_MODULE_38__[/* MServer */ "a"].get('/cate/brand', {
+            is_all: 1,
+            order: 'sort'
+          }).then(function (res) {
+            if (res.errcode == 0) {
+              res.data.forEach(function (item) {
+                _this7.defaultBrankSortMap[item.id] = item.sort;
+              });
+            }
+
+            return true;
+          });
+        }
+
+        return false;
+      }).then(function (res) {
+        if (res) {
+          _this7.convertList();
+        }
+      });
+    }
+  }, {
+    key: "convertList",
+    value: function convertList() {
+      var _this8 = this;
+
+      var lockTexture = this.state.lockTexture;
+      var cateIds = {};
+      var typeIds = {};
+      var list = [];
+      var data = [].concat(this.cateList);
+
+      if (lockTexture) {
+        data = data.filter(function (item) {
+          return item.texture_id == lockTexture;
+        });
+        data.forEach(function (item) {
+          if (typeof cateIds[item.brand_id] == 'undefined') {
+            cateIds[item.brand_id] = list.length;
+            list.push({
+              value: item.brand_id,
+              label: item.brand_name,
+              sort: _this8.defaultBrankSortMap[item.brand_id] || 0,
+              children: [{
+                value: item.id,
+                label: item.brand_type_name
+              }]
+            });
+          } else {
+            list[cateIds[item.brand_id]].children.push({
+              value: item.id,
+              label: item.brand_type_name
+            });
+          }
+        });
+      } else {
+        data.forEach(function (item) {
+          if (typeof cateIds[item.brand_id] == 'undefined') {
+            cateIds[item.brand_id] = list.length;
+            list.push({
+              value: item.brand_id,
+              label: item.brand_name,
+              sort: _this8.defaultBrankSortMap[item.brand_id] || 0,
+              children: [{
+                value: item.brand_type_id,
+                label: item.brand_type_name,
+                children: [{
+                  value: item.id,
+                  label: item.texture_name
+                }]
+              }]
+            });
+            typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)] = 0;
+          } else {
+            if (typeof typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)] == 'undefined') {
+              typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)] = list[cateIds[item.brand_id]].children.length;
+              list[cateIds[item.brand_id]].children.push({
+                value: item.brand_type_id,
+                label: item.brand_type_name,
+                children: [{
+                  value: item.id,
+                  label: item.texture_name
+                }]
+              });
+            } else {
+              list[cateIds[item.brand_id]].children[typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)]].children.push({
+                value: item.id,
+                label: item.texture_name
+              });
+            }
+          }
+
+          _this8.cateObj[item.id] = item;
+        });
+      }
+
+      var sortByName = function sortByName(list) {
+        return list.sort(function (a, b) {
+          if (a.sort != b.sort) {
+            return b.sort - a.sort;
+          }
+
+          return pinyin__WEBPACK_IMPORTED_MODULE_35___default()(a.label.trim(), {
+            style: pinyin__WEBPACK_IMPORTED_MODULE_35___default.a.STYLE_FIRST_LETTER
+          })[0][0].charCodeAt() - pinyin__WEBPACK_IMPORTED_MODULE_35___default()(b.label.trim(), {
+            style: pinyin__WEBPACK_IMPORTED_MODULE_35___default.a.STYLE_FIRST_LETTER
+          })[0][0].charCodeAt();
+        });
+      };
+
+      this.setState({
+        list: sortByName(list.map(function (item) {
+          return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_24__[/* default */ "a"])({}, item, {
+            children: item.children ? item.children.sort(function (a, b) {
+              var text1 = a.label.trim();
+              var text2 = b.label.trim();
+              var noResult = true;
+              var result = 0;
+              var i = 0;
+
+              while (noResult) {
+                if (typeof text1[i] == 'undefined') return -1;
+                if (typeof text2[i] == 'undefined') return 1;
+
+                if (text1[i] == text2[i]) {
+                  i++;
+                } else {
+                  result = text1[i].charCodeAt() - text2[i].charCodeAt();
+                  noResult = false;
+                }
+              }
+
+              return result;
+            }).map(function (it) {
+              return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_24__[/* default */ "a"])({}, it, {
+                children: it.children ? sortByName(it.children) : undefined
+              });
+            }) : undefined
+          });
+        }))
+      });
+    }
+  }, {
+    key: "uploadImage",
+    value: function uploadImage(file) {
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+      var that = this;
+
+      reader.onload = function () {
+        var img = new Image();
+        img.src = that.image = this.result;
+
+        img.onload = function () {
+          that.autoImage(img);
+        };
+      };
+    }
+  }, {
+    key: "autoImage",
+    value: function autoImage(img) {
+      var domMove = this.moveRef.current;
+      var domUpload = this.uploadRef.current;
+      var imageSize = this.sizeImageRef.current;
+
+      if (!domUpload) {
+        antd_lib_message__WEBPACK_IMPORTED_MODULE_23___default.a.error('请先上传图片');
+
+        return;
+      }
+
+      var getSpaceValue = function getSpaceValue() {
+        if (!imageSize) return {
+          x: 0,
+          y: 0
+        };
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        canvas.setAttribute('height', imageSize.width);
+        canvas.setAttribute('width', imageSize.height);
+        context.drawImage(imageSize, 0, 0, imageSize.width, imageSize.height);
+        var imageData = context.getImageData(0, 0, imageSize.width, imageSize.height);
+        var lineWidth = 0;
+        var countHeight = 0;
+
+        for (var i = 0; i < imageData.data.length; i += 4) {
+          if (imageData.data[i + 3] != 0) {
+            lineWidth++;
+
+            if (lineWidth == imageSize.width) {
+              lineWidth = 0;
+              countHeight++;
+            }
+          } else {
+            break;
+          }
+        }
+
+        var countWidth = 0;
+
+        for (var _i = imageSize.width * 80 * 4; _i < imageData.data.length; _i += 4) {
+          if (imageData.data[_i + 3] != 0) {
+            countWidth++;
+          } else {
+            break;
+          }
+        }
+
+        return {
+          x: countWidth - 2,
+          y: countHeight - 2
+        };
+      };
+
+      var spaceValue = getSpaceValue();
+      var initHeight = defaultHeight - spaceValue.y * 2;
+      var ratio = initHeight / img.naturalHeight;
+      var initWidth = img.naturalWidth * ratio;
+
+      if (imageSize) {
+        if (initWidth < imageSize.offsetWidth - spaceValue.x * 2) {
+          initWidth = imageSize.offsetWidth - spaceValue.x * 2;
+          ratio = initWidth / img.naturalWidth;
+          initHeight = img.naturalHeight * ratio;
+        }
+      }
+
+      domUpload.style.height = "".concat(initHeight, "px");
+      this.imageOpt.size = (ratio * 100).toFixed(2);
+      this.imageOpt.x = (domMove.offsetWidth - initWidth) / 2;
+      this.imageOpt.y = ((imageSize ? imageSize.offsetHeight : initHeight) - initHeight) / 2;
+      this.sizeInputRef.current && this.sizeInputRef.current.setState({
+        value: this.imageOpt.size
+      });
+      this.getImagePreview();
+      this.forceUpdate();
+    }
+  }, {
+    key: "getDefaultExpress",
+    value: function getDefaultExpress() {
+      var expressList = this.state.expressList;
+      var defaultList = expressList.filter(function (item) {
+        return item.default;
+      });
+
+      if (defaultList.length) {
+        return defaultList[0].id;
+      }
+
+      return undefined;
+    }
+  }, {
+    key: "handleChangeSize",
+    value: function handleChangeSize(value) {
+      var domUpload = this.uploadRef.current;
+      if (!domUpload || !this) return;
+      value = _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_25___default()(value);
+      domUpload.style.height = "".concat(domUpload.naturalHeight * value / 100, "px");
+      this.imageOpt.x = this.imageOpt.x + domUpload.naturalWidth * (this.imageOpt.size - value) / 200;
+      this.imageOpt.y = this.imageOpt.y + domUpload.naturalHeight * (this.imageOpt.size - value) / 200;
+      this.imageOpt.size = value;
+      this.getImagePreview();
+      this.sizeInputRef.current && this.sizeInputRef.current.setState({
+        value: this.imageOpt.size
+      });
+    }
+  }, {
+    key: "handleUploadOrderExcel",
+    value: function handleUploadOrderExcel(file) {
+      var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'taobao';
+      var title = arguments.length > 2 ? arguments[2] : undefined;
+      if (!file) return;
+      var reader = new FileReader();
+      reader.readAsBinaryString(file);
+      var that = this;
+
+      reader.onload = function () {
+        var workbook = xlsx__WEBPACK_IMPORTED_MODULE_34___default.a.read(this.result, {
+          type: 'binary'
+        });
+        var workbookJson = xlsx__WEBPACK_IMPORTED_MODULE_34___default.a.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
+        var result = [];
+        workbookJson.forEach(function (item, index) {
+          var mobile = item['联系手机'] || item['手机'];
+          if (mobile) mobile = mobile.toString().match(/[1-9]\d*/)[0];
+          var adsplit = type === 'taobao' ? (item['收货地址'] || item['收货地址 '] || '').trim().split(/\s+/) : [item['省'], item['市'], item['区'], item['街道']];
+          result.push({
+            order_sn: item['订单编号'] || item['订单号'],
+            consignee: (item['收货人姓名'] || item['收货人'] || '').trim(),
+            mobile: mobile,
+            province: adsplit[0] && adsplit[0].trim(),
+            city: adsplit[1] && adsplit[1].trim(),
+            district: adsplit[2] && adsplit[2].trim(),
+            address: adsplit.slice(3).join(' '),
+            seller_remark: item['订单备注'] || item['商家备注'],
+            buyer_remark: item['买家留言'],
+            remark: item['自定义备注'],
+            index: index
+          });
+        });
+        that.setState({
+          drawer: true,
+          drawerTitle: title,
+          importExcelData: result
+        });
+      };
+    }
+  }, {
+    key: "handleSelectRow",
+    value: function handleSelectRow(selectedRow) {
+      var setFieldsValue = this.props.form.setFieldsValue;
+      setFieldsValue({
+        order_sn: selectedRow.order_sn
+      });
+      this.setState({
+        selectedRowKeys: selectedRow.order_sn,
+        selectedRow: selectedRow,
+        drawer: false
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this9 = this;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (!this.select) {
+        antd_lib_message__WEBPACK_IMPORTED_MODULE_23___default.a.error('请先选择机型');
+
+        return;
+      }
+
+      if (!this.image && this.imageOpt.color == 'tran') {
+        antd_lib_message__WEBPACK_IMPORTED_MODULE_23___default.a.error('请至少上传一张图片或者设置一个颜色');
+
+        return;
+      }
+
+      var _this$props$form = this.props.form,
+          validateFields = _this$props$form.validateFields,
+          setFieldsValue = _this$props$form.setFieldsValue;
+      var _this$state = this.state,
+          selectedRow = _this$state.selectedRow,
+          selectParts = _this$state.selectParts,
+          importExcelData = _this$state.importExcelData;
+      validateFields(function (err, values) {
+        if (!err) {
+          if (!_this9.token) {
+            antd_lib_message__WEBPACK_IMPORTED_MODULE_23___default.a.error('网络出错了，刷新页面试试');
+
+            return;
+          }
+
+          _this9.setState({
+            submit: true
+          });
+
+          var formdata = new FormData();
+          formdata.append('file', Object(public_utils__WEBPACK_IMPORTED_MODULE_38__[/* convertBase64UrlToBlob */ "c"])(_this9.getResultImage()), "".concat(new Date().getTime(), ".png"));
+          formdata.append('token', _this9.token);
+          public_utils__WEBPACK_IMPORTED_MODULE_38__[/* MServer */ "a"].post('//upload-z0.qiniup.com', formdata, {
+            withCredentials: false,
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            },
+            silent: true
+          }).then(function (res) {
+            if (res.key) {
+              return "".concat(config_locale__WEBPACK_IMPORTED_MODULE_36___default.a["production"].url.cdnUser).concat(res.key);
+            } else {
+              throw new Error('图片上传失败');
+            }
+          }).then(function (res) {
+            var params = {
+              type: values.type,
+              order_sn: values.order_sn,
+              quantity: values.quantity,
+              cate_id: _this9.select.id,
+              image1: res
+            };
+            if (values.texture_attr_id) params.texture_attr_id = values.texture_attr_id;
+            if (values.express_id) params.express_id = values.express_id;
+
+            if (selectParts.length) {
+              params.parts = selectParts.map(function (item) {
+                return {
+                  id: item,
+                  count: values["part_".concat(item)]
+                };
+              });
+            }
+
+            if (params.type == 10 && selectedRow) {
+              params = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_24__[/* default */ "a"])({}, params, {
+                consignee: selectedRow.consignee,
+                mobile: selectedRow.mobile,
+                province: selectedRow.province,
+                city: selectedRow.city,
+                district: selectedRow.district,
+                address: selectedRow.address
+              });
+            }
+
+            public_utils__WEBPACK_IMPORTED_MODULE_38__[/* MServer */ "a"].post('/order/save', params).then(function (res) {
+              if (res.errcode == 0) {
+                _this9.setState({
+                  submit: false // selectParts: []
+
+                });
+
+                _this9.imageOpt.color = 'tran';
+                setFieldsValue({
+                  quantity: 1 // express_id: this.getDefaultExpress()
+
+                });
+                var catename = "".concat(_this9.select.brand_name, " ").concat(_this9.select.brand_type_name, " ").concat(_this9.select.texture_name);
+
+                if (!_this9.submitOrderObj[values.order_sn]) {
+                  _this9.submitOrderObj[values.order_sn] = {
+                    count: 1,
+                    obj: Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_21__[/* default */ "a"])({}, _this9.select.id, {
+                      name: catename,
+                      count: 1
+                    })
+                  };
+                } else {
+                  _this9.submitOrderObj[values.order_sn].count++;
+
+                  if (!_this9.submitOrderObj[values.order_sn].obj[_this9.select.id]) {
+                    _this9.submitOrderObj[values.order_sn].obj[_this9.select.id] = {
+                      name: catename,
+                      count: 1
+                    };
+                  } else {
+                    _this9.submitOrderObj[values.order_sn].obj[_this9.select.id].count++;
+                  }
+                }
+
+                antd_lib_modal__WEBPACK_IMPORTED_MODULE_20___default.a.confirm({
+                  title: '订单已提交成功',
+                  okText: '继续下单',
+                  cancelText: '查看订单',
+                  onOk: function onOk() {
+                    values.type == 10 && importExcelData && _this9.setState({
+                      drawer: true
+                    });
+                  },
+                  onCancel: function onCancel() {
+                    _this9.setState({
+                      order_sn: values.order_sn
+                    }, function () {
+                      if (_this9.dialogDetailRef.current) _this9.dialogDetailRef.current.open();
+                    });
+                  }
+                });
+              } else {
+                _this9.setState({
+                  submit: false
+                });
+              }
+            });
+          }).catch(function (err) {
+            antd_lib_message__WEBPACK_IMPORTED_MODULE_23___default.a.error(err.message);
+          });
+        }
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this10 = this,
+          _cx;
+
+      var select = this.select,
+          image = this.image,
+          imageOpt = this.imageOpt,
+          auto = this.auto;
+      var _this$state2 = this.state,
+          list = _this$state2.list,
+          preview = _this$state2.preview,
+          submit = _this$state2.submit,
+          expressList = _this$state2.expressList,
+          partList = _this$state2.partList,
+          selectParts = _this$state2.selectParts,
+          textures = _this$state2.textures,
+          importExcelData = _this$state2.importExcelData,
+          selectedRow = _this$state2.selectedRow,
+          drawer = _this$state2.drawer,
+          drawerTitle = _this$state2.drawerTitle,
+          selectedRowKeys = _this$state2.selectedRowKeys,
+          lockTexture = _this$state2.lockTexture;
+      var _this$props$form2 = this.props.form,
+          getFieldDecorator = _this$props$form2.getFieldDecorator,
+          getFieldValue = _this$props$form2.getFieldValue;
+      var defaultColors = [{
+        label: '透明',
+        value: 'tran'
+      }, {
+        label: '黑色',
+        value: '#000'
+      }, {
+        label: '白色',
+        value: '#fff'
+      }, {
+        label: '红色',
+        value: '#ff1300'
+      }, {
+        label: '自定义',
+        value: -1
+      }];
+      var rowSelection = {
+        type: 'radio',
+        selectedRowKeys: selectedRowKeys,
+        onChange: function onChange(selectedRowKeys, selectedRows) {
+          _this10.handleSelectRow(selectedRows[0]);
+        }
+      };
+      var colorSelectValue = defaultColors.map(function (item) {
+        return item.value;
+      }).includes(imageOpt.color) ? imageOpt.color : -1;
+      return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: "page-layout-center"
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* DialogOrderDetail */ "c"], {
+        ref: this.dialogDetailRef,
+        order_sn: getFieldValue('order_sn')
+      }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.layoutHome
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.layoutHomeBd
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.layoutHomeLeft
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_cascader__WEBPACK_IMPORTED_MODULE_18___default.a, {
+        showSearch: {
+          filter: function filter(input, path) {
+            if (!input) return true;
+            input = input.toLowerCase();
+            var labels = path.map(function (item) {
+              return item.label.replace(/\s*/g, '').toLowerCase();
+            }).join('');
+            var inputKeys = input.split(' ');
+            var has = true;
+
+            for (var i = 0; i < inputKeys.length; i++) {
+              var item = inputKeys[i];
+
+              if (labels.indexOf(item) == -1) {
+                has = false;
+                break;
+              }
+            }
+
+            return has;
+          }
+        },
+        ref: this.cascaderRef,
+        allowClear: false,
+        options: list,
+        style: {
+          width: 240
+        },
+        placeholder: "\u9009\u62E9\u624B\u673A\u578B\u53F7\uFF0C\u652F\u6301\u641C\u7D22",
+        onChange: function onChange(value) {
+          _this10.select = _this10.cateObj[value[value.length - 1]];
+          public_utils__WEBPACK_IMPORTED_MODULE_38__[/* MServer */ "a"].get("/cate/catetextureattr/".concat(_this10.select.id)).then(function (res) {
+            _this10.select.texture_attr = res.errcode == 0 ? res.data : [];
+
+            _this10.forceUpdate();
+          });
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: "card-item"
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: "card-item-title"
+      }, "\u9501\u5B9A\u6750\u8D28"), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_radio__WEBPACK_IMPORTED_MODULE_16___default.a.Group, {
+        value: lockTexture,
+        options: [{
+          label: '全部材质',
+          value: ''
+        }].concat(textures.map(function (item) {
+          return {
+            label: item.name,
+            value: item.id
+          };
+        })),
+        onChange: function onChange(e) {
+          _this10.select = null;
+          _this10.cascaderRef.current && _this10.cascaderRef.current.setState({
+            value: []
+          });
+
+          _this10.setState({
+            lockTexture: e.target.value
+          }, _this10.convertList);
+        }
+      }))), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.layoutHomeHd
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* UploadBtn */ "i"].Local, {
+        buttonProps: {
+          type: 'primary',
+          icon: 'cloud-upload'
+        },
+        text: "\u4E0A\u4F20\u56FE\u7247",
+        onUpload: this.uploadImage
+      }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_14___default.a, {
+        style: {
+          marginLeft: '15px'
+        },
+        onClick: function onClick() {
+          return _this10.setState({
+            preview: !preview
+          });
+        }
+      }, preview ? '编辑' : '预览'), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_14___default.a, {
+        style: {
+          marginLeft: '15px'
+        },
+        onClick: function onClick() {
+          return _this10.autoImage(_this10.uploadRef.current);
+        }
+      }, "\u521D\u59CB\u5316\u56FE\u7247")), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        ref: this.moveRef,
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.phonePreview
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_12___default.a, {
+        title: "\u4E0A\u4F20\u56FE\u7247\u540E\uFF0C\u62D6\u52A8\u8FDB\u884C\u653E\u5927\u7F29\u5C0F"
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.box1,
+        ref: this.dragBox1
+      })), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_12___default.a, {
+        title: "\u4E0A\u4F20\u56FE\u7247\u540E\uFF0C\u62D6\u52A8\u8FDB\u884C\u65CB\u8F6C"
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.box2,
+        ref: this.dragBox2
+      })), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("img", {
+        ref: this.uploadRef,
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.uploadImage,
+        crossOrigin: "",
+        src: image
+      }), select ? [react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        key: "main",
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.phoneBox
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: classnames__WEBPACK_IMPORTED_MODULE_33___default()((_cx = {}, Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_21__[/* default */ "a"])(_cx, public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.phoneBoxBody, true), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_21__[/* default */ "a"])(_cx, "preview", preview || auto), _cx))
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: "bg"
+      }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.phoneBoxBodyImage
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("img", {
+        ref: this.sizeImageRef,
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.phonePreviewMain,
+        crossOrigin: "",
+        src: "".concat(config_locale__WEBPACK_IMPORTED_MODULE_36___default.a["production"].url.cdn).concat(select.size_img)
+      }), select.camera_img ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("img", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.phonePreviewCamera,
+        crossOrigin: "",
+        src: "".concat(config_locale__WEBPACK_IMPORTED_MODULE_36___default.a["production"].url.cdn).concat(select.camera_img)
+      }) : null), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: "bg"
+      }))), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        key: "bg",
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.phoneBoxBg,
+        style: imageOpt.color != 'tran' ? {
+          backgroundColor: imageOpt.color == -1 ? '#000' : imageOpt.color,
+          backgroundImage: 'none'
+        } : {}
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("img", {
+        style: {
+          opacity: 0
+        },
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.phonePreviewMain,
+        crossOrigin: "",
+        src: "".concat(config_locale__WEBPACK_IMPORTED_MODULE_36___default.a["production"].url.cdn).concat(select.size_img)
+      }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", null))] : null), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.homeFooter
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: "input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, "\u7F29\u653E\uFF1A"), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* InputNumber */ "e"], {
+        ref: this.sizeInputRef,
+        placeholder: "\u6BD4\u4F8B",
+        precision: 2,
+        onChange: this.handleChangeSize,
+        disabled: auto
+      }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", {
+        style: {
+          marginLeft: '10px'
+        }
+      }, "%")), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: "input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, "\u65CB\u8F6C\uFF1A"), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* InputNumber */ "e"], {
+        disabled: auto,
+        ref: this.rotateInputRef,
+        precision: 2,
+        defaultValue: 0,
+        onChange: function onChange(value) {
+          _this10.imageOpt.rotate = value;
+
+          _this10.getImagePreview();
+        },
+        placeholder: "\u89D2\u5EA6"
+      })), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: "input-group",
+        style: {
+          marginRight: '20px'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, "\u80CC\u666F\u8272\u8BBE\u7F6E\uFF1A"), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* Select */ "g"], {
+        style: {
+          width: 120
+        },
+        value: colorSelectValue,
+        onChange: function onChange(value) {
+          _this10.imageOpt.color = value;
+
+          _this10.forceUpdate();
+        },
+        options: defaultColors
+      }), colorSelectValue == -1 ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        style: {
+          display: 'inline-block',
+          position: 'relative',
+          top: '5px',
+          left: '10px'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* ColorPicker */ "a"], {
+        color: imageOpt.color == -1 ? '#000' : imageOpt.color,
+        onChange: function onChange(c) {
+          _this10.imageOpt.color = c.color;
+
+          _this10.forceUpdate();
+        }
+      })) : null), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.remark
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_10___default.a, null, "W"), "\u4E0A\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_10___default.a, null, "S"), "\u4E0B\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_10___default.a, null, "A"), "\u5DE6\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_10___default.a, null, "D"), "\u53F3\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_10___default.a, null, "E"), "\u653E\u5927"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_10___default.a, null, "R"), "\u7F29\u5C0F")))), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.orderConfig
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_8___default.a, {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_8___default.a.Item, {
+        label: "\u8BA2\u5355\u7C7B\u578B"
+      }, getFieldDecorator('type', {
+        initialValue: 0
+      })(react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_radio__WEBPACK_IMPORTED_MODULE_16___default.a.Group, {
+        options: [{
+          label: '普通订单',
+          value: 0
+        }, {
+          label: '充值订单',
+          value: 10
+        }]
+      }))), getFieldValue('type') == 10 ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_8___default.a.Item, null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* UploadBtn */ "i"].Local, {
+        accept: ".xls, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel",
+        text: "\u5BFC\u5165\u6DD8\u5B9D\u8BA2\u5355",
+        onUpload: function onUpload(file) {
+          return _this10.handleUploadOrderExcel(file, 'taobao', '导入淘宝订单');
+        },
+        style: {
+          marginRight: 10
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* UploadBtn */ "i"].Local, {
+        accept: ".xls, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel",
+        text: "\u5BFC\u5165\u62FC\u591A\u591A\u8BA2\u5355",
+        onUpload: function onUpload(file) {
+          return _this10.handleUploadOrderExcel(file, 'pdd', '导入拼多多订单');
+        }
+      }), importExcelData ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_14___default.a, {
+        type: "primary",
+        onClick: function onClick() {
+          return _this10.setState({
+            drawer: true
+          });
+        }
+      }, "\u6253\u5F00\u5BFC\u5165\u7684\u8BA2\u5355")) : null, selectedRow ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.remarkBox
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("p", {
+        style: {
+          marginBottom: '10px',
+          lineHeight: 1
+        }
+      }, "\u8BA2\u5355\u5907\u6CE8\uFF1A", selectedRow.seller_remark), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("p", {
+        style: {
+          marginBottom: '10px',
+          lineHeight: 1
+        }
+      }, "\u4E70\u5BB6\u7559\u8A00\uFF1A", selectedRow.buyer_remark), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("p", {
+        style: {
+          marginBottom: '0',
+          lineHeight: 1
+        }
+      }, "\u81EA\u5B9A\u4E49\u5907\u6CE8\uFF1A", selectedRow.remark)) : null) : null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_8___default.a.Item, {
+        label: "\u914D\u8D27\u6807\u7B7E",
+        extra: getFieldValue('order_sn') ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("a", {
+          className: "text-info",
+          onClick: function onClick() {
+            _this10.dialogDetailRef.current && _this10.dialogDetailRef.current.open();
+          }
+        }, "\u67E5\u770B\u8BA2\u5355") : null
+      }, getFieldDecorator('order_sn', {
+        rules: [{
+          required: true,
+          message: '配货标签不能为空'
+        }]
+      })(react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, {
+        placeholder: "\u586B\u5199\u6807\u7B7E"
+      }))), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_8___default.a.Item, {
+        label: "\u8BA2\u8D27\u6570\u91CF"
+      }, getFieldDecorator('quantity', {
+        rules: [{
+          required: true,
+          message: '订货数量不能为空'
+        }],
+        initialValue: 1
+      })(react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* InputNumber */ "e"], {
+        precision: 0,
+        min: 1,
+        max: 1000
+      }))), select && select.texture_attr.length ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_8___default.a.Item, {
+        label: "\u5C5E\u6027(\u989C\u8272)"
+      }, getFieldDecorator('texture_attr_id', {
+        rules: [{
+          required: true,
+          message: '请先选择属性'
+        }]
+      })(react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* Select */ "g"], {
+        options: select.texture_attr,
+        fieldName: {
+          label: 'texture_attr_name',
+          value: 'texture_attr_id'
+        },
+        placeholder: "\u9009\u62E9\u5C5E\u6027",
+        style: {
+          width: 180
+        }
+      }))) : null, getFieldValue('type') == 10 ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_8___default.a.Item, {
+        label: "\u9009\u62E9\u7269\u6D41"
+      }, getFieldDecorator('express_id', {
+        rules: [{
+          required: true,
+          message: '请先选择物流'
+        }],
+        initialValue: expressList.length ? this.getDefaultExpress() : undefined
+      })(react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* Select */ "g"], {
+        options: expressList,
+        fieldName: {
+          value: 'id',
+          label: 'name'
+        }
+      }))) : null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_8___default.a.Item, null, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_14___default.a, {
+        type: "primary",
+        htmlType: "submit",
+        loading: submit
+      }, "\u63D0\u4EA4\u8BA2\u5355")), getFieldValue('type') == 10 && partList.length ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_table__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        rowKey: "id",
+        dataSource: partList,
+        pagination: false,
+        size: "small" // style={{ marginBottom: '15px' }}
+        ,
+        rowSelection: {
+          selectedRowKeys: selectParts,
+          onChange: function onChange(selectedRowKeys) {
+            _this10.setState({
+              selectParts: selectedRowKeys
+            });
+          }
+        },
+        columns: [{
+          key: 'name',
+          dataIndex: 'name',
+          title: '配件'
+        }, {
+          key: 'number',
+          dataIndex: 'id',
+          title: '购买数量',
+          render: function render(id) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_8___default.a.Item, {
+              className: "no-margin"
+            }, getFieldDecorator("part_".concat(id), selectParts.includes(id) ? {
+              rules: [{
+                required: true,
+                message: '请输入赠品数量'
+              }],
+              initialValue: 1
+            } : {
+              initialValue: 1
+            })(react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_37__[/* InputNumber */ "e"], {
+              min: 1,
+              max: 1000
+            })));
+          }
+        }]
+      }) : null)))), react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        title: drawerTitle,
+        placement: "bottom",
+        height: 720,
+        bodyStyle: {
+          padding: 0
+        } // closable={false}
+        ,
+        onClose: function onClose() {
+          return _this10.setState({
+            drawer: false
+          });
+        },
+        visible: drawer
+      }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_table__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        rowKey: "order_sn",
+        rowSelection: rowSelection,
+        dataSource: importExcelData,
+        onRow: function onRow(row) {
+          return {
+            onClick: function onClick() {
+              _this10.handleSelectRow(row);
+            }
+          };
+        },
+        columns: [{
+          key: 'order_sn',
+          dataIndex: 'order_sn',
+          title: '订单编号',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", null, text, _this10.submitOrderObj[record.order_sn] ? react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_12___default.a, {
+              title: react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("div", {
+                className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_39___default.a.tooltipContent
+              }, _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2___default()(_this10.submitOrderObj[record.order_sn].obj).map(function (item) {
+                return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("p", {
+                  key: item
+                }, _this10.submitOrderObj[record.order_sn].obj[item].name, " ", _this10.submitOrderObj[record.order_sn].obj[item].count, "\u6B21");
+              }))
+            }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("span", {
+              className: "text-success"
+            }, "(\u5DF2\u63D0\u4EA4", _this10.submitOrderObj[record.order_sn].count, "\u6B21)")) : null);
+          }
+        }, {
+          key: 'consignee',
+          dataIndex: 'consignee',
+          title: '收件人姓名',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, {
+              defaultValue: text,
+              style: {
+                width: 80
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].consignee = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'mobile',
+          dataIndex: 'mobile',
+          title: '联系手机',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, {
+              defaultValue: text,
+              style: {
+                width: 122
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].mobile = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'province',
+          dataIndex: 'province',
+          title: '省',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, {
+              defaultValue: text,
+              style: {
+                width: 80
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].province = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'city',
+          dataIndex: 'city',
+          title: '市',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, {
+              defaultValue: text,
+              style: {
+                width: 80
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].city = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'district',
+          dataIndex: 'district',
+          title: '区',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, {
+              defaultValue: text,
+              style: {
+                width: 80
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].district = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'address',
+          dataIndex: 'address',
+          title: '详细地址',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, {
+              defaultValue: text,
+              style: {
+                width: 150
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].address = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'seller_remark',
+          dataIndex: 'seller_remark',
+          title: '订单备注',
+          render: function render(text) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_12___default.a, {
+              title: text
+            }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("p", {
+              style: {
+                width: 80,
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis'
+              }
+            }, text));
+          }
+        }, {
+          key: 'buyer_remark',
+          dataIndex: 'buyer_remark',
+          title: '买家留言',
+          render: function render(text) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_12___default.a, {
+              title: text
+            }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("p", {
+              style: {
+                width: 80,
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis'
+              }
+            }, text));
+          }
+        }, {
+          key: 'remark',
+          dataIndex: 'remark',
+          title: '自定义备注',
+          render: function render(text) {
+            return react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_12___default.a, {
+              title: text
+            }, react__WEBPACK_IMPORTED_MODULE_32___default.a.createElement("p", {
+              style: {
+                width: 80,
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis'
+              }
+            }, text));
+          }
+        }]
+      })));
+    }
+  }]);
+
+  return Home;
+}(react__WEBPACK_IMPORTED_MODULE_32__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (antd_lib_form__WEBPACK_IMPORTED_MODULE_8___default.a.create()(Home));
 
 /***/ }),
 
@@ -4823,13 +4700,6 @@ module.exports = require("core-js/library/fn/object/assign");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/button");
-
-/***/ }),
-
-/***/ "eVuF":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("aC71");
 
 /***/ }),
 
@@ -5124,13 +4994,6 @@ module.exports = require("antd/lib/popconfirm/style");
 
 /***/ }),
 
-/***/ "tCZL":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/popover/style");
-
-/***/ }),
-
 /***/ "umso":
 /***/ (function(module, exports) {
 
@@ -5192,13 +5055,6 @@ module.exports = _setPrototypeOf;
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/symbol");
-
-/***/ }),
-
-/***/ "wa65":
-/***/ (function(module, exports) {
-
-module.exports = require("core-js/library/fn/parse-int");
 
 /***/ }),
 

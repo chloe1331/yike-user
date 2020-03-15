@@ -563,7 +563,7 @@ class Home extends Component {
             const workbookJson = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
             const result = [];
             workbookJson.forEach((item, index) => {
-                let mobile = (item['联系手机'] || item['手机'] || '').trim();
+                let mobile = item['联系手机'] || item['手机'];
                 if (mobile) mobile = mobile.toString().match(/[1-9]\d*/)[0];
                 const adsplit = type === 'taobao' ? (item['收货地址'] || item['收货地址 '] || '').trim().split(/\s+/) : [
                     item['省'],
