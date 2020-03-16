@@ -673,6 +673,10 @@ class Home extends Component {
                             district: selectedRow.district,
                             address: selectedRow.address,
                         };
+                        if (!params.province) {
+                            message.error('未获取到收货地址');
+                            return;
+                        }
                     }
                     MServer.post('/order/save', params).then(res => {
                         if (res.errcode == 0) {
