@@ -572,7 +572,7 @@ class Home extends Component {
                     item['街道']
                 ];
                 result.push({
-                    order_sn: item['订单编号'] || item['订单号'],
+                    order_sn: (item['订单编号'] || item['订单号'] || '').toString(),
                     consignee: (item['收货人姓名'] || item['收货人'] || '').trim(),
                     mobile,
                     province: adsplit[0] && adsplit[0].trim(),
@@ -595,6 +595,7 @@ class Home extends Component {
 
     handleSelectRow(selectedRow) {
         const { form: { setFieldsValue } } = this.props;
+
         setFieldsValue({
             order_sn: selectedRow.order_sn
         });
