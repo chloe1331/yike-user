@@ -572,8 +572,8 @@ class Home extends Component {
                     item['街道']
                 ];
                 result.push({
-                    order_sn: (item['订单编号'] || item['订单号'] || '').toString(),
-                    consignee: (item['收货人姓名'] || item['收货人'] || '').trim(),
+                    order_sn: (item['订单编号'] || item['订单号'] || '').toString().trim(),
+                    consignee: (item['收货人姓名'] || item['收货人'] || '').toString().trim(),
                     mobile,
                     province: adsplit[0] && adsplit[0].trim(),
                     city: adsplit[1] && adsplit[1].trim(),

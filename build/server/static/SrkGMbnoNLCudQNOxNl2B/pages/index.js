@@ -3646,8 +3646,8 @@ function (_Component) {
           if (mobile) mobile = mobile.toString().match(/[1-9]\d*/)[0];
           var adsplit = type === 'taobao' ? (item['收货地址'] || item['收货地址 '] || '').trim().split(/\s+/) : [item['省'], item['市'], item['区'], item['街道']];
           result.push({
-            order_sn: (item['订单编号'] || item['订单号'] || '').toString(),
-            consignee: (item['收货人姓名'] || item['收货人'] || '').trim(),
+            order_sn: (item['订单编号'] || item['订单号'] || '').toString().trim(),
+            consignee: (item['收货人姓名'] || item['收货人'] || '').toString().trim(),
             mobile: mobile,
             province: adsplit[0] && adsplit[0].trim(),
             city: adsplit[1] && adsplit[1].trim(),
