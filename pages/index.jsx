@@ -160,7 +160,8 @@ class Home extends Component {
 
     getTextureList() {
         MServer.get('/cate/texture', {
-            is_all: 1
+            is_all: 1,
+            sort: 'asc'
         }).then(res => {
             if (res.errcode == 0) {
                 this.setState({
