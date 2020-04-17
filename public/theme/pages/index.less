@@ -236,3 +236,20 @@
         margin-right: 15px;
     }
 }
+
+:global {
+    .inline-form {
+        padding: 10px;
+        border: 1px solid @border-color-base;
+        background-color: @layout-header-background;
+        margin-bottom: 10px;
+    }
+    .inline-form-item {
+        display: flex;
+        margin-right: -10px;
+        .ant-form-item {
+            flex: 1;
+            margin-right: 10px;
+        }
+    }
+}

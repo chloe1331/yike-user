@@ -1,8 +1,9 @@
-import React, { Component, createRef } from 'react';
-import { Cascader, Tag, Button, Checkbox, Tooltip, Form, Radio, Table, Input, Drawer, Modal, message } from 'antd';
+import React, { Component, createRef, Fragment } from 'react';
+import { Cascader, Tag, Button, Checkbox, Tooltip, Form, Radio, Table, Input, Drawer, Modal, message, Popover } from 'antd';
 import cx from 'classnames';
 import XLSX from 'xlsx';
 import pinyin from 'pinyin';
+import AddressParse from 'address-parse';
 import PropTypes from 'prop-types';
 
 import locale from 'config/locale';
@@ -651,7 +652,7 @@ class Home extends Component {
                     }
                 }).then(res => {
                     let params = {
-                        type: values.type,
+                        type: values.type == 20 ? 10 : values.type,
                         order_sn: values.order_sn,
                         quantity: values.quantity,
                         cate_id: this.select.id,
@@ -668,7 +669,18 @@ class Home extends Component {
                             count: values[`part_${item}`]
                         }));
                     }
-                    if (params.type == 10 && selectedRow) {
+                    if (values.type == 20) {
+                        params = {
+                            ...params,
+                            consignee: values.consignee,
+                            mobile: values.mobile,
+                            province: values.province,
+                            city: values.city,
+                            district: values.district,
+                            address: values.address,
+                        };
+                    }
+                    if (values.type == 10 && selectedRow) {
                         params = {
                             ...params,
                             consignee: selectedRow.consignee,
@@ -743,6 +755,20 @@ class Home extends Component {
                     message.error(err.message);
                 });
             }
+        });
+    }
+    
+    handleAddressParse(e) {
+        const text = e.target.value;
+        const [result] = AddressParse.parse(text);
+        const { form: { setFieldsValue } } = this.props;
+        setFieldsValue({
+            province: result.province,
+            city: result.city,
+            district: result.area,
+            address: result.details,
+            consignee: result.name,
+            mobile: result.mobile
         });
     }
 
@@ -1017,7 +1043,10 @@ class Home extends Component {
                                                     value: 0
                                                 }, {
                                                     label: '充值订单',
-                                                    value: 10
+                                                    value: 10,
+                                                }, {
+                                                    label: '手工订单',
+                                                    value: 20
                                                 }]}
                                             />
                                         )
@@ -1089,7 +1118,7 @@ class Home extends Component {
                                     }
                                 </Form.Item>
                                 {
-                                    getFieldValue('type') == 10 ? (
+                                    [10, 20].includes(getFieldValue('type')) ? (
                                         <Form.Item label="选择物流">
                                             {
                                                 getFieldDecorator('express_id', {
@@ -1107,9 +1136,97 @@ class Home extends Component {
                                 }
                                 <Form.Item>
                                     <Button type="primary" htmlType="submit" loading={submit}>提交订单</Button>
+                                    {getFieldValue('type') == 20 ? <Popover
+                                        trigger={['click']}
+                                        content={<div>
+                                            <Input.TextArea style={{ width: 300 }} onChange={(e) => this.handleAddressParse(e)} placeholder="粘贴地址智能解析完整地址" />
+                                            <p style={{ width: 300, wordBreak: 'break-all', marginTop: 10, marginBottom: 0 }}>例如：福州市福清市石竹街道义明综合楼3F 15000000000 user</p>
+                                        </div>}
+                                    >
+                                        <Button type="danger" style={{ marginLeft: 10 }}>智能解析地址</Button>
+                                    </Popover> : null}
                                 </Form.Item>
                                 {
-                                    getFieldValue('type') == 10 && partList.length ? (
+                                    getFieldValue('type') == 20 ? (
+                                        <div className="inline-form">
+                                            <div className="inline-form-item">
+                                                <Form.Item label="省">
+                                                    {
+                                                        getFieldDecorator('province', {
+                                                            rules: [{
+                                                                required: true,
+                                                                message: '省份不能为空'
+                                                            }],
+                                                        })(
+                                                            <Input />
+                                                        )
+                                                    }
+                                                </Form.Item>
+                                                <Form.Item label="市">
+                                                    {
+                                                        getFieldDecorator('city', {
+                                                            rules: [{
+                                                                required: true,
+                                                                message: '市不能为空'
+                                                            }],
+                                                        })(
+                                                            <Input />
+                                                        )
+                                                    }
+                                                </Form.Item>
+                                                <Form.Item label="区">
+                                                    {
+                                                        getFieldDecorator('district')(
+                                                            <Input />
+                                                        )
+                                                    }
+                                                </Form.Item>
+                                            </div>
+                                            <div className="inline-form-item">
+                                                <Form.Item label="详细地址">
+                                                    {
+                                                        getFieldDecorator('address', {
+                                                            rules: [{
+                                                                required: true,
+                                                                message: '地址不能为空'
+                                                            }],
+                                                        })(
+                                                            <Input />
+                                                        )
+                                                    }
+                                                </Form.Item>
+                                            </div>
+                                            <div className="inline-form-item">
+                                                <Form.Item label="收货人">
+                                                    {
+                                                        getFieldDecorator('consignee', {
+                                                            rules: [{
+                                                                required: true,
+                                                                message: '收货人不能为空'
+                                                            }],
+                                                        })(
+                                                            <Input />
+                                                        )
+                                                    }
+                                                </Form.Item>
+                                                <Form.Item label="联系方式">
+                                                    {
+                                                        getFieldDecorator('mobile', {
+                                                            rules: [{
+                                                                required: true,
+                                                                message: '收货人不能为空'
+                                                            }],
+                                                        })(
+                                                            <Input />
+                                                        )
+                                                    }
+                                                </Form.Item>
+                                            </div>
+                                        </div>
+                                    ) : null
+                                }
+                                {
+                                    [10, 20].includes(getFieldValue('type')) && partList.length ? (
                                         <Table
                                             rowKey="id"
                                             dataSource={partList}
