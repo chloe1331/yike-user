@@ -22,6 +22,7 @@ class Home extends Component {
             selectParts: [],
             selectedRowKeys: [],
             lockTexture: '',
+            selectColor: null,
             textures: [],
             importExcelData: null,
             selectedRow: null,
@@ -744,7 +745,7 @@ class Home extends Component {
 
     render() {
         const { select, image, imageOpt, auto } = this;
-        const { list, preview, submit, expressList, partList, selectParts, textures, importExcelData, selectedRow, drawer, drawerTitle, selectedRowKeys, lockTexture } = this.state;
+        const { list, preview, submit, expressList, partList, selectParts, selectColor, textures, importExcelData, selectedRow, drawer, drawerTitle, selectedRowKeys, lockTexture } = this.state;
         const { form: { getFieldDecorator, getFieldValue } } = this.props;
         const defaultColors = [
             {
@@ -809,8 +810,15 @@ class Home extends Component {
                                 onChange={value => {
                                     this.select = this.cateObj[value[value.length - 1]];
                                     MServer.get(`/cate/catetextureattr/${this.select.id}`).then(res => {
-                                        this.select.texture_attr = res.errcode == 0 ? res.data : [];
-                                        this.forceUpdate();
+                                        this.select.texture_attr = [];
+                                        if (res.errcode == 0 && res.data && res.data.length) {
+                                            this.select.texture_attr = res.data;
+                                            this.setState({
+                                                selectColor: res.data[0].texture_attr_color
+                                            });
+                                        } else {
+                                            this.forceUpdate();
+                                        }
                                     });
                                 }}
                             />
@@ -834,6 +842,26 @@ class Home extends Component {
                                     }}
                                 ></Radio.Group>
                             </div>
+                            {select && select.texture_attr.length ? <div className="card-item">
+                                <div className="card-item-title">选择属性(颜色)</div>
+                                <Radio.Group
+                                    value={selectColor}
+                                    options={select.texture_attr.map(item => ({
+                                        label: item.texture_attr_name,
+                                        value: item.texture_attr_color
+                                    }))}
+                                    onChange={e => {
+                                        // this.select = null;
+                                        // this.cascaderRef.current && this.cascaderRef.current.setState({ value: [] });
+                                        // this.setState({
+                                        //     lockTexture: e.target.value
+                                        // }, this.convertList);
+                                        this.setState({
+                                            selectColor: e.target.value
+                                        });
+                                    }}
+                                ></Radio.Group>
+                            </div> : null }
                         </div>
                         <div>
                             <div className={style.layoutHomeHd}>
@@ -891,7 +919,10 @@ class Home extends Component {
                                             style={imageOpt.color != 'tran' ? {
                                                 backgroundColor: imageOpt.color == -1 ? '#000' : imageOpt.color,
                                                 backgroundImage: 'none'
-                                            } : {}}
+                                            } : (selectColor ? {
+                                                backgroundColor: selectColor,
+                                                backgroundImage: 'none'
+                                            } : {})}
                                         >
                                             <div></div>
                                             <img
@@ -1052,26 +1083,6 @@ class Home extends Component {
                                         )
                                     }
                                 </Form.Item>
-                                {
-                                    select && select.texture_attr.length ? (
-                                        <Form.Item label="属性(颜色)">
-                                            {
-                                                getFieldDecorator('texture_attr_id', {
-                                                    rules: [{
-                                                        required: true,
-                                                        message: '请先选择属性'
-                                                    }]
-                                                })(
-                                                    <Select
-                                                        options={select.texture_attr} fieldName={{ label: 'texture_attr_name', value: 'texture_attr_id' }}
-                                                        placeholder="选择属性"
-                                                        style={{ width: 180 }}
-                                                    />
-                                                )
-                                            }
-                                        </Form.Item>
-                                    ) : null
-                                }
                                 {
                                     getFieldValue('type') == 10 ? (
                                         <Form.Item label="选择物流">

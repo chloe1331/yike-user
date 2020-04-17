@@ -931,6 +931,9 @@ li {
   font-weight: 900;
   padding: 15px 0;
 }
+.layout-home-left___3mbMa .card-item .ant-radio-group {
+  display: block;
+}
 .layout-home-left___3mbMa .card-item .ant-radio-group .ant-radio-wrapper {
   width: calc(50% - 10px);
   margin-right: 10px;
