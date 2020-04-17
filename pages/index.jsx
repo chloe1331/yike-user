@@ -622,7 +622,7 @@ class Home extends Component {
         }
 
         const { form: { validateFields, setFieldsValue } } = this.props;
-        const { selectedRow, selectParts, importExcelData } = this.state;
+        const { selectedRow, selectParts, importExcelData, selectColor } = this.state;
 
         validateFields((err, values) => {
             if (!err) {
@@ -657,7 +657,10 @@ class Home extends Component {
                         cate_id: this.select.id,
                         image1: res
                     };
-                    if (values.texture_attr_id) params.texture_attr_id = values.texture_attr_id;
+                    // if (values.texture_attr_id) params.texture_attr_id = values.texture_attr_id;
+                    if (selectColor && this.select.texture_attr.length) {
+                        params.texture_attr_id = this.select.texture_attr.find(item => item.texture_attr_color === selectColor).texture_attr_id;
+                    }
                     if (values.express_id) params.express_id = values.express_id;
                     if (selectParts.length) {
                         params.parts = selectParts.map(item => ({
@@ -817,7 +820,9 @@ class Home extends Component {
                                                 selectColor: res.data[0].texture_attr_color
                                             });
                                         } else {
-                                            this.forceUpdate();
+                                            this.setState({
+                                                selectColor: null
+                                            });
                                         }
                                     });
                                 }}

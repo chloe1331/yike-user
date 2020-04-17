@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -241,14 +241,6 @@ module.exports = require("antd/lib/form/style");
 
 /***/ }),
 
-/***/ 3:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("cMU6");
-
-
-/***/ }),
-
 /***/ "3PsY":
 /***/ (function(module, exports) {
 
@@ -260,6 +252,14 @@ module.exports = require("antd/lib/message");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/dropdown/style");
+
+/***/ }),
+
+/***/ 4:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("cMU6");
+
 
 /***/ }),
 
@@ -3707,7 +3707,8 @@ function (_Component) {
       var _this$state = this.state,
           selectedRow = _this$state.selectedRow,
           selectParts = _this$state.selectParts,
-          importExcelData = _this$state.importExcelData;
+          importExcelData = _this$state.importExcelData,
+          selectColor = _this$state.selectColor;
       validateFields(function (err, values) {
         if (!err) {
           if (!_this9.token) {
@@ -3742,8 +3743,14 @@ function (_Component) {
               quantity: values.quantity,
               cate_id: _this9.select.id,
               image1: res
-            };
-            if (values.texture_attr_id) params.texture_attr_id = values.texture_attr_id;
+            }; // if (values.texture_attr_id) params.texture_attr_id = values.texture_attr_id;
+
+            if (selectColor && _this9.select.texture_attr.length) {
+              params.texture_attr_id = _this9.select.texture_attr.find(function (item) {
+                return item.texture_attr_color === selectColor;
+              }).texture_attr_id;
+            }
+
             if (values.express_id) params.express_id = values.express_id;
 
             if (selectParts.length) {
@@ -3943,7 +3950,9 @@ function (_Component) {
                 selectColor: res.data[0].texture_attr_color
               });
             } else {
-              _this10.forceUpdate();
+              _this10.setState({
+                selectColor: null
+              });
             }
           });
         }
