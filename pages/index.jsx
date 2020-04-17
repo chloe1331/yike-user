@@ -148,7 +148,7 @@ class Home extends Component {
     }
 
     getPart() {
-        MServer.get('/part/list', {
+        MServer.get('/part/userlist', {
             is_all: 1
         }).then(res => {
             if (res.errcode == 0) {

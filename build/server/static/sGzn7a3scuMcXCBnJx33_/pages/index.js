@@ -3155,7 +3155,7 @@ function (_Component) {
     value: function getPart() {
       var _this4 = this;
 
-      public_utils__WEBPACK_IMPORTED_MODULE_38__[/* MServer */ "a"].get('/part/list', {
+      public_utils__WEBPACK_IMPORTED_MODULE_38__[/* MServer */ "a"].get('/part/userlist', {
         is_all: 1
       }).then(function (res) {
         if (res.errcode == 0) {
