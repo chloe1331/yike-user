@@ -3137,7 +3137,7 @@ function (_Component) {
       }).then(function (res) {
         if (res.errcode == 0) {
           _this4.setState({
-            partList: res.data.reverse()
+            partList: res.data
           });
         }
       });

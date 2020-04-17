@@ -154,7 +154,7 @@ class Home extends Component {
         }).then(res => {
             if (res.errcode == 0) {
                 this.setState({
-                    partList: res.data.reverse()
+                    partList: res.data
                 });
             }
         });
