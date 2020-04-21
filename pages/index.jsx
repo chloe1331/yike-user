@@ -60,6 +60,7 @@ class Home extends Component {
         this.rotateInputRef = createRef();
         this.dialogDetailRef = createRef();
         this.sizeImageRef = createRef();
+        this.cameraImageRef = createRef();
         this.cascaderRef = createRef();
     }
 
@@ -84,10 +85,11 @@ class Home extends Component {
         domUpload.style.transform = `rotate(${imageOpt.rotate}deg)`;
     }
 
-    getResultImage() {
+    getResultImage(isCamera = false) {
         const { x, y, color, rotate } = this.imageOpt;
         let { size } = this.imageOpt;
         const imageSize = this.sizeImageRef.current;
+        const imageCamera = this.cameraImageRef.current;
         const domMove = this.moveRef.current;
         const left = x - (domMove.offsetWidth - imageSize.width) / 2;
 
@@ -131,6 +133,22 @@ class Home extends Component {
                 imageData.data[i + 3] = 0;
             }
         }
+
+        if (isCamera) {
+            const camreaCanvas = document.createElement('canvas');
+            const c = camreaCanvas.getContext('2d');
+            camreaCanvas.setAttribute('width', imageCamera.naturalWidth);
+            camreaCanvas.setAttribute('height', imageCamera.naturalHeight);
+            c.drawImage(imageCamera, 0, 0, imageCamera.naturalWidth, imageCamera.naturalHeight);
+            const cameraData = c.getImageData(0, 0, imageCamera.naturalWidth, imageCamera.naturalHeight);
+
+            for (let i = 0; i < cameraData.data.length; i += 4) {
+                if (cameraData.data[i + 3] !== 0) {
+                    imageData.data[i + 3] = 0;
+                }
+            }
+        }
+
         context.putImageData(imageData, 0, 0);
 
         return canvas.toDataURL('image/png');
@@ -635,7 +653,7 @@ class Home extends Component {
                     submit: true
                 });
                 const formdata = new FormData();
-                formdata.append('file', convertBase64UrlToBlob(this.getResultImage()), `${new Date().getTime()}.png`);
+                formdata.append('file', convertBase64UrlToBlob(this.getResultImage(this.select.is_camera ? true : false)), `${new Date().getTime()}.png`);
                 formdata.append('token', this.token);
 
                 MServer.post('//upload-z0.qiniup.com', formdata, {
@@ -935,6 +953,7 @@ class Home extends Component {
                                                     />
                                                     {select.camera_img ?
                                                         <img
+                                                            ref={this.cameraImageRef}
                                                             className={style.phonePreviewCamera}
                                                             crossOrigin=""
                                                             src={`${locale[process.env.NODE_ENV].url.cdn}${select.camera_img}`}

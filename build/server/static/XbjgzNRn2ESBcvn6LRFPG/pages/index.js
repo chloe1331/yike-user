@@ -3024,6 +3024,7 @@ function (_Component) {
     _this.rotateInputRef = Object(react__WEBPACK_IMPORTED_MODULE_35__["createRef"])();
     _this.dialogDetailRef = Object(react__WEBPACK_IMPORTED_MODULE_35__["createRef"])();
     _this.sizeImageRef = Object(react__WEBPACK_IMPORTED_MODULE_35__["createRef"])();
+    _this.cameraImageRef = Object(react__WEBPACK_IMPORTED_MODULE_35__["createRef"])();
     _this.cascaderRef = Object(react__WEBPACK_IMPORTED_MODULE_35__["createRef"])();
     return _this;
   }
@@ -3056,6 +3057,7 @@ function (_Component) {
   }, {
     key: "getResultImage",
     value: function getResultImage() {
+      var isCamera = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
       var _this$imageOpt = this.imageOpt,
           x = _this$imageOpt.x,
           y = _this$imageOpt.y,
@@ -3063,6 +3065,7 @@ function (_Component) {
           rotate = _this$imageOpt.rotate;
       var size = this.imageOpt.size;
       var imageSize = this.sizeImageRef.current;
+      var imageCamera = this.cameraImageRef.current;
       var domMove = this.moveRef.current;
       var left = x - (domMove.offsetWidth - imageSize.width) / 2;
       var domUpload = this.uploadRef.current;
@@ -3106,6 +3109,21 @@ function (_Component) {
       for (var i = 0; i < sizeData.data.length; i += 4) {
         if (sizeData.data[i + 3] !== 0) {
           imageData.data[i + 3] = 0;
+        }
+      }
+
+      if (isCamera) {
+        var camreaCanvas = document.createElement('canvas');
+        var c = camreaCanvas.getContext('2d');
+        camreaCanvas.setAttribute('width', imageCamera.naturalWidth);
+        camreaCanvas.setAttribute('height', imageCamera.naturalHeight);
+        c.drawImage(imageCamera, 0, 0, imageCamera.naturalWidth, imageCamera.naturalHeight);
+        var cameraData = c.getImageData(0, 0, imageCamera.naturalWidth, imageCamera.naturalHeight);
+
+        for (var _i = 0; _i < cameraData.data.length; _i += 4) {
+          if (cameraData.data[_i + 3] !== 0) {
+            imageData.data[_i + 3] = 0;
+          }
         }
       }
 
@@ -3538,8 +3556,8 @@ function (_Component) {
 
         var countWidth = 0;
 
-        for (var _i = imageSize.width * 80 * 4; _i < imageData.data.length; _i += 4) {
-          if (imageData.data[_i + 3] != 0) {
+        for (var _i2 = imageSize.width * 80 * 4; _i2 < imageData.data.length; _i2 += 4) {
+          if (imageData.data[_i2 + 3] != 0) {
             countWidth++;
           } else {
             break;
@@ -3699,7 +3717,7 @@ function (_Component) {
           });
 
           var formdata = new FormData();
-          formdata.append('file', Object(public_utils__WEBPACK_IMPORTED_MODULE_42__[/* convertBase64UrlToBlob */ "c"])(_this9.getResultImage()), "".concat(new Date().getTime(), ".png"));
+          formdata.append('file', Object(public_utils__WEBPACK_IMPORTED_MODULE_42__[/* convertBase64UrlToBlob */ "c"])(_this9.getResultImage(_this9.select.is_camera ? true : false)), "".concat(new Date().getTime(), ".png"));
           formdata.append('token', _this9.token);
           public_utils__WEBPACK_IMPORTED_MODULE_42__[/* MServer */ "a"].post('//upload-z0.qiniup.com', formdata, {
             withCredentials: false,
@@ -4068,6 +4086,7 @@ function (_Component) {
         crossOrigin: "",
         src: "".concat(config_locale__WEBPACK_IMPORTED_MODULE_40___default.a["production"].url.cdn).concat(select.size_img)
       }), select.camera_img ? react__WEBPACK_IMPORTED_MODULE_35___default.a.createElement("img", {
+        ref: this.cameraImageRef,
         className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_43___default.a.phonePreviewCamera,
         crossOrigin: "",
         src: "".concat(config_locale__WEBPACK_IMPORTED_MODULE_40___default.a["production"].url.cdn).concat(select.camera_img)
