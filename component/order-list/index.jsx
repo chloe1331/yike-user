@@ -31,7 +31,7 @@ export default class OrderList extends Component {
             list: props.list || [],
             pager: {
                 current: 1,
-                pageSize: 10,
+                pageSize: props.pageSize || 10,
                 total: 0
             },
             editRecord: null,
@@ -212,6 +212,7 @@ export default class OrderList extends Component {
 
     render() {
         const { list, image, pager, loading, editRecord, expressList } = this.state;
+        const { pagination = true } = this.props;
         const colSpan = 9;
         const statusMap = {
             0: {
@@ -456,7 +457,7 @@ export default class OrderList extends Component {
                     </table>
                 </Spin>
                 {
-                    pager.total > pager.pageSize ? <Pagination {...pager} onChange={page => this.getList(page)} /> : null
+                    pagination && pager.total > pager.pageSize ? <Pagination {...pager} onChange={page => this.getList(page)} /> : null
                 }
             </div>
         );
@@ -466,5 +467,7 @@ export default class OrderList extends Component {
 OrderList.propTypes = {
     condition: PropTypes.object,
     action: PropTypes.string,
-    list: PropTypes.array
+    list: PropTypes.array,
+    pageSize: PropTypes.number,
+    pagination: PropTypes.bool
 };

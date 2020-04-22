@@ -8,6 +8,7 @@ import TableAction from './table-action';
 import ColorPicker from './colorpicker';
 import OrderList from './order-list';
 import InputNumber from './input-number';
+import PopoverOrderDetail from './popover-order-detail';
 
 export {
     Select,
@@ -19,5 +20,6 @@ export {
     TableAction,
     ColorPicker,
     OrderList,
-    InputNumber
+    InputNumber,
+    PopoverOrderDetail
 };

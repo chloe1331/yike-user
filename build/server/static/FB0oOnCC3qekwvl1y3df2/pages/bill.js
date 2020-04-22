@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -234,10 +234,25 @@ module.exports = require("antd/lib/select/style");
 
 /***/ }),
 
+/***/ "27qp":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/popover");
+
+/***/ }),
+
 /***/ "2w/n":
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/form/style");
+
+/***/ }),
+
+/***/ 3:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("Q9Ih");
+
 
 /***/ }),
 
@@ -266,14 +281,6 @@ module.exports = require("next/router");
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("k1wZ");
-
-/***/ }),
-
-/***/ 6:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("DpsK");
-
 
 /***/ }),
 
@@ -345,280 +352,6 @@ module.exports = __webpack_require__("/+oN");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/button/style");
-
-/***/ }),
-
-/***/ "DpsK":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Order; });
-/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("DnGC");
-/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button_style__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("eGmO");
-/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("oRSk");
-/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input_style__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("Uqqx");
-/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("JHZV");
-/* harmony import */ var antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var antd_lib_radio__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("XQdj");
-/* harmony import */ var antd_lib_radio__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_radio__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var antd_lib_message_style__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("XZ83");
-/* harmony import */ var antd_lib_message_style__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message_style__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("3PsY");
-/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("bmdr");
-/* harmony import */ var antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var antd_lib_modal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("xKsY");
-/* harmony import */ var antd_lib_modal__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(antd_lib_modal__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("vYYK");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("0iUn");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("sLSF");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("MI3g");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("a7VT");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("AT/M");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("Tit0");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var public_utils__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("HgRd");
-/* harmony import */ var component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("OLV9");
-/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("mVpe");
-/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(config_locale__WEBPACK_IMPORTED_MODULE_20__);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var Order =
-/*#__PURE__*/
-function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_16__[/* default */ "a"])(Order, _Component);
-
-  function Order(props) {
-    var _this;
-
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"])(this, Order);
-
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_14__[/* default */ "a"])(Order).call(this, props));
-    _this.tableRef = Object(react__WEBPACK_IMPORTED_MODULE_17__["createRef"])();
-    _this.dialogExportRef = Object(react__WEBPACK_IMPORTED_MODULE_17__["createRef"])();
-    _this.state = {
-      paySubmit: false,
-      logisLoading: false
-    };
-    var handles = ['handleSearch', 'handleBatchPay', 'handleExport'];
-    handles.forEach(function (item) {
-      return _this[item] = _this[item].bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_15__[/* default */ "a"])(_this));
-    });
-    return _this;
-  }
-
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"])(Order, [{
-    key: "handleChangeStatus",
-    value: function handleChangeStatus(status) {
-      if (this.tableRef.current) {
-        this.tableRef.current.reload({
-          page: 1,
-          condition: {
-            status: status
-          }
-        });
-      }
-    }
-  }, {
-    key: "handleSearch",
-    value: function handleSearch(type, value) {
-      this.tableRef.current.reload({
-        condition: Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"])({}, type, value)
-      });
-    }
-  }, {
-    key: "handleBatchPay",
-    value: function handleBatchPay() {
-      var _this2 = this;
-
-      this.setState({
-        paySubmit: true
-      });
-      public_utils__WEBPACK_IMPORTED_MODULE_18__[/* MServer */ "a"].get('/order/getpay').then(function (res) {
-        _this2.setState({
-          paySubmit: false
-        });
-
-        if (res.errcode == 0) {
-          if (res.data.length) {
-            var amount = res.data.reduce(function (pre, cur) {
-              return pre + cur.amount;
-            }, 0);
-
-            antd_lib_modal__WEBPACK_IMPORTED_MODULE_9___default.a.confirm({
-              title: '您确认要付款吗？',
-              content: react__WEBPACK_IMPORTED_MODULE_17___default.a.createElement("div", null, "\u627E\u5230", res.data.length, "\u4E2A\u5F85\u4ED8\u6B3E\u8BA2\u5355\uFF0C\u652F\u4ED8\u91D1\u989D ", react__WEBPACK_IMPORTED_MODULE_17___default.a.createElement("span", {
-                className: "text-warning"
-              }, amount), " \u5143"),
-              onOk: function onOk() {
-                _this2.setState({
-                  paySubmit: true
-                });
-
-                public_utils__WEBPACK_IMPORTED_MODULE_18__[/* MServer */ "a"].post('/order/pay', {
-                  id: res.data.map(function (item) {
-                    return item.id;
-                  })
-                }).then(function (res) {
-                  _this2.setState({
-                    paySubmit: false
-                  });
-
-                  if (res.errcode == 0) {
-                    antd_lib_message__WEBPACK_IMPORTED_MODULE_7___default.a.success('批量付款成功');
-
-                    _this2.tableRef.current.reload();
-                  }
-                });
-              }
-            });
-          } else {
-            antd_lib_message__WEBPACK_IMPORTED_MODULE_7___default.a.error('未找到待付款订单');
-          }
-        }
-      });
-    }
-  }, {
-    key: "handleExport",
-    value: function handleExport() {
-      var _this3 = this;
-
-      this.setState({
-        logisLoading: true
-      }, function () {
-        public_utils__WEBPACK_IMPORTED_MODULE_18__[/* MServer */ "a"].post('/order/exportUserLogis').then(function (res) {
-          if (res.errcode === 0) {
-            window.open("".concat(config_locale__WEBPACK_IMPORTED_MODULE_20___default.a["production"].url.api).concat(res.data.filepath));
-          }
-
-          _this3.setState({
-            logisLoading: false
-          });
-        });
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this4 = this;
-
-      var tabs = [{
-        value: 'all',
-        label: '全部订单'
-      }, {
-        value: 'audit',
-        label: '待审核'
-      }, {
-        value: 'waitpay',
-        label: '待付款'
-      }, {
-        value: 'pending',
-        label: '等待打印'
-      }, {
-        value: 'success',
-        label: '已打印'
-      }, {
-        value: 'waitsend',
-        label: '待发货'
-      }, {
-        value: 'send',
-        label: '已发货'
-      }];
-      var _this$state = this.state,
-          paySubmit = _this$state.paySubmit,
-          logisLoading = _this$state.logisLoading;
-      return react__WEBPACK_IMPORTED_MODULE_17___default.a.createElement("div", {
-        className: "page-layout-center"
-      }, react__WEBPACK_IMPORTED_MODULE_17___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_19__[/* DialogExportHistroy */ "b"], {
-        ref: this.dialogExportRef
-      }), react__WEBPACK_IMPORTED_MODULE_17___default.a.createElement(antd_lib_radio__WEBPACK_IMPORTED_MODULE_5___default.a.Group, {
-        defaultValue: "all",
-        onChange: function onChange(e) {
-          var value = e.target.value;
-
-          _this4.handleChangeStatus(value == 'all' ? null : value);
-        },
-        style: {
-          marginBottom: '20px'
-        }
-      }, tabs.map(function (tab) {
-        return react__WEBPACK_IMPORTED_MODULE_17___default.a.createElement(antd_lib_radio__WEBPACK_IMPORTED_MODULE_5___default.a.Button, {
-          key: tab.value,
-          value: tab.value
-        }, tab.label);
-      })), react__WEBPACK_IMPORTED_MODULE_17___default.a.createElement("div", {
-        className: "form-condition"
-      }, react__WEBPACK_IMPORTED_MODULE_17___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_3___default.a.Search, {
-        onSearch: function onSearch(value) {
-          return _this4.handleSearch('order_sn', value);
-        },
-        placeholder: "\u641C\u7D22\u8BA2\u5355\u53F7"
-      }), react__WEBPACK_IMPORTED_MODULE_17___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_3___default.a.Search, {
-        style: {
-          marginLeft: '15px'
-        },
-        onSearch: function onSearch(value) {
-          return _this4.handleSearch('express_sn', value);
-        },
-        placeholder: "\u641C\u7D22\u8FD0\u5355\u53F7"
-      }), react__WEBPACK_IMPORTED_MODULE_17___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        loading: paySubmit,
-        style: {
-          marginLeft: '15px'
-        },
-        type: "primary",
-        onClick: this.handleBatchPay
-      }, "\u6279\u91CF\u4ED8\u6B3E"), react__WEBPACK_IMPORTED_MODULE_17___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        style: {
-          marginLeft: '15px'
-        },
-        onClick: this.handleExport,
-        loading: logisLoading
-      }, "\u5BFC\u51FA\u7269\u6D41\u4FE1\u606F"), react__WEBPACK_IMPORTED_MODULE_17___default.a.createElement("a", {
-        style: {
-          marginLeft: '15px'
-        },
-        onClick: function onClick() {
-          if (_this4.dialogExportRef.current) _this4.dialogExportRef.current.open();
-        }
-      }, "\u7269\u6D41\u4FE1\u606F\u5BFC\u51FA\u5386\u53F2")), react__WEBPACK_IMPORTED_MODULE_17___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_19__[/* OrderList */ "f"], {
-        action: "/order/userlist",
-        ref: this.tableRef
-      }));
-    }
-  }]);
-
-  return Order;
-}(react__WEBPACK_IMPORTED_MODULE_17__["Component"]);
-
-
 
 /***/ }),
 
@@ -781,13 +514,6 @@ var convertBase64UrlToBlob = function convertBase64UrlToBlob(urlData) {
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/get-iterator");
-
-/***/ }),
-
-/***/ "JHZV":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/radio/style");
 
 /***/ }),
 
@@ -1887,7 +1613,7 @@ function (_Component) {
       list: props.list || [],
       pager: {
         current: 1,
-        pageSize: 10,
+        pageSize: props.pageSize || 10,
         total: 0
       },
       editRecord: null,
@@ -2126,6 +1852,8 @@ function (_Component) {
           loading = _this$state2.loading,
           editRecord = _this$state2.editRecord,
           expressList = _this$state2.expressList;
+      var _this$props$paginatio = this.props.pagination,
+          pagination = _this$props$paginatio === void 0 ? true : _this$props$paginatio;
       var colSpan = 9;
       var statusMap = {
         0: {
@@ -2352,7 +2080,7 @@ function (_Component) {
         colSpan: colSpan
       }, external_react_default.a.createElement(empty_default.a, {
         image: empty_default.a.PRESENTED_IMAGE_SIMPLE
-      })))))), pager.total > pager.pageSize ? external_react_default.a.createElement(pagination_default.a, Object(esm_extends["a" /* default */])({}, pager, {
+      })))))), pagination && pager.total > pager.pageSize ? external_react_default.a.createElement(pagination_default.a, Object(esm_extends["a" /* default */])({}, pager, {
         onChange: function onChange(page) {
           return _this13.getList(page);
         }
@@ -2689,17 +2417,71 @@ function (_Component) {
 }(external_react_["Component"]);
 
 
+// EXTERNAL MODULE: external "antd/lib/popover/style"
+var popover_style_ = __webpack_require__("tCZL");
+
+// EXTERNAL MODULE: external "antd/lib/popover"
+var popover_ = __webpack_require__("27qp");
+var popover_default = /*#__PURE__*/__webpack_require__.n(popover_);
+
+// CONCATENATED MODULE: ./component/popover-order-detail/index.jsx
+
+
+
+
+
+function PopoverOrderDetail(_ref) {
+  var order_sn = _ref.order_sn;
+
+  var _useState = Object(external_react_["useState"])(false),
+      _useState2 = Object(slicedToArray["a" /* default */])(_useState, 2),
+      visible = _useState2[0],
+      setVisible = _useState2[1];
+
+  return visible ? external_react_default.a.createElement(popover_default.a, {
+    overlayStyle: {
+      width: 880
+    },
+    placement: "bottomRight",
+    title: "\u8BA2\u5355\u8BE6\u60C5",
+    visible: visible,
+    trigger: ['click'],
+    onVisibleChange: function onVisibleChange(_v) {
+      return setVisible(_v);
+    },
+    content: visible ? external_react_default.a.createElement(order_list_OrderList, {
+      action: "/order/userlist",
+      condition: {
+        order_sn: order_sn
+      },
+      pageSize: 1,
+      pagination: false
+    }) : null
+  }, external_react_default.a.createElement("a", {
+    className: "text-info",
+    onClick: function onClick() {
+      return setVisible(false);
+    }
+  }, "\u67E5\u770B\u8BA2\u5355")) : external_react_default.a.createElement("a", {
+    className: "text-info",
+    onClick: function onClick() {
+      return setVisible(true);
+    }
+  }, "\u67E5\u770B\u8BA2\u5355");
+}
 // CONCATENATED MODULE: ./component/index.js
-/* concated harmony reexport Select */__webpack_require__.d(__webpack_exports__, "g", function() { return select_Select; });
+/* concated harmony reexport Select */__webpack_require__.d(__webpack_exports__, "h", function() { return select_Select; });
 /* concated harmony reexport Header */__webpack_require__.d(__webpack_exports__, "d", function() { return header_Header; });
-/* concated harmony reexport UploadBtn */__webpack_require__.d(__webpack_exports__, "i", function() { return upload_btn_UploadButton; });
+/* concated harmony reexport UploadBtn */__webpack_require__.d(__webpack_exports__, "j", function() { return upload_btn_UploadButton; });
 /* unused concated harmony import DialogImagePreview */
 /* concated harmony reexport DialogOrderDetail */__webpack_require__.d(__webpack_exports__, "c", function() { return dialog_order_detail; });
 /* concated harmony reexport DialogExportHistroy */__webpack_require__.d(__webpack_exports__, "b", function() { return dialog_export_history; });
-/* concated harmony reexport TableAction */__webpack_require__.d(__webpack_exports__, "h", function() { return table_action_TableAction; });
+/* concated harmony reexport TableAction */__webpack_require__.d(__webpack_exports__, "i", function() { return table_action_TableAction; });
 /* concated harmony reexport ColorPicker */__webpack_require__.d(__webpack_exports__, "a", function() { return MyColorPicker; });
 /* concated harmony reexport OrderList */__webpack_require__.d(__webpack_exports__, "f", function() { return order_list_OrderList; });
 /* concated harmony reexport InputNumber */__webpack_require__.d(__webpack_exports__, "e", function() { return input_number_InputNumber; });
+/* concated harmony reexport PopoverOrderDetail */__webpack_require__.d(__webpack_exports__, "g", function() { return PopoverOrderDetail; });
+
 
 
 
@@ -2718,6 +2500,81 @@ function (_Component) {
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/table");
+
+/***/ }),
+
+/***/ "Q9Ih":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Bill; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("0iUn");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("sLSF");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("MI3g");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("a7VT");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("Tit0");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("OLV9");
+
+
+
+
+
+
+
+
+var Bill =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(Bill, _Component);
+
+  function Bill() {
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, Bill);
+
+    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(Bill).apply(this, arguments));
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(Bill, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "page-layout-center"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_6__[/* TableAction */ "i"], {
+        action: "/user/mybill",
+        columns: [{
+          key: 'type',
+          dataIndex: 'type',
+          title: '交易类型',
+          render: function render(text) {
+            return text == 0 ? '支出' : '收入';
+          }
+        }, {
+          key: 'amount',
+          dataIndex: 'amount',
+          title: '交易金额'
+        }, {
+          key: 'balance',
+          dataIndex: 'balance',
+          title: '账户余额'
+        }, {
+          key: 'remark',
+          dataIndex: 'remark',
+          title: '备注'
+        }, {
+          key: 'createdAt',
+          dataIndex: 'createdAt',
+          title: '交易时间'
+        }]
+      }));
+    }
+  }]);
+
+  return Bill;
+}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+
+
 
 /***/ }),
 
@@ -2865,13 +2722,6 @@ module.exports = _createClass;
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/set-prototype-of");
-
-/***/ }),
-
-/***/ "XQdj":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/radio");
 
 /***/ }),
 
@@ -3566,6 +3416,13 @@ module.exports = require("clipboard");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/popconfirm/style");
+
+/***/ }),
+
+/***/ "tCZL":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/popover/style");
 
 /***/ }),
 

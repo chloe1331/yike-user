@@ -7,7 +7,7 @@ import AddressParse from 'address-parse';
 import PropTypes from 'prop-types';
 
 import locale from 'config/locale';
-import { UploadBtn, Select, ColorPicker, DialogOrderDetail, InputNumber } from 'component';
+import { UploadBtn, Select, ColorPicker, DialogOrderDetail, InputNumber, PopoverOrderDetail } from 'component';
 import { MServer, convertBase64UrlToBlob } from 'public/utils';
 import style from 'public/theme/pages/index.less';
 
@@ -1105,12 +1105,13 @@ class Home extends Component {
                                     ) : null
                                 }
                                 <Form.Item label="配货标签" extra={getFieldValue('order_sn') ? (
-                                    <a 
-                                        className="text-info" 
-                                        onClick={() => {
-                                            this.dialogDetailRef.current && this.dialogDetailRef.current.open();
-                                        }}
-                                    >查看订单</a>
+                                    // <a 
+                                    //     className="text-info" 
+                                    //     onClick={() => {
+                                    //         this.dialogDetailRef.current && this.dialogDetailRef.current.open();
+                                    //     }}
+                                    // >查看订单</a>
+                                    <PopoverOrderDetail order_sn={getFieldValue('order_sn')} />
                                 ) : null}>
                                     {
                                         getFieldDecorator('order_sn', {
