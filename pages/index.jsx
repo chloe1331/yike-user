@@ -1105,13 +1105,13 @@ class Home extends Component {
                                     ) : null
                                 }
                                 <Form.Item label="配货标签" extra={getFieldValue('order_sn') ? (
-                                    // <a 
-                                    //     className="text-info" 
-                                    //     onClick={() => {
-                                    //         this.dialogDetailRef.current && this.dialogDetailRef.current.open();
-                                    //     }}
-                                    // >查看订单</a>
-                                    <PopoverOrderDetail order_sn={getFieldValue('order_sn')} />
+                                    <a 
+                                        className="text-info" 
+                                        onClick={() => {
+                                            this.dialogDetailRef.current && this.dialogDetailRef.current.open();
+                                        }}
+                                    >查看订单</a>
+                                    // <PopoverOrderDetail order_sn={getFieldValue('order_sn')} />
                                 ) : null}>
                                     {
                                         getFieldDecorator('order_sn', {
