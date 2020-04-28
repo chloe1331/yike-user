@@ -18,8 +18,8 @@ class DialogOrderDetail extends Component {
                     condition={{
                         order_sn,
                     }}
-                    pageSize={1}
-                    pagination={false}
+                    // pageSize={1}
+                    // pagination={false}
                     size="small"
                 ></OrderList>
             </Modal>
