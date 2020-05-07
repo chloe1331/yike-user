@@ -13,8 +13,14 @@ import style from './style.less';
 function ImageHover({ src, onClick }) {
     const [ show, setShow ] = useState(false);
 
+    if (!src) {
+        return <div className={style.tableImage}>
+            <p>暂无图片</p>
+        </div>;
+    }
+
     return <div onMouseOver={() => setShow(true)} onMouseLeave={() => setShow(false)} onClick={onClick} className={style.tableImage}>
-        <img src={`${src}?imageView2/0/w/200`} />
+        <img src={src} />
         {show ? <span>点击查看</span> : null}
     </div>;
 }
@@ -295,6 +301,7 @@ export default class OrderList extends Component {
                                         <td><ImageHover src={order.image1} onClick={() => this.handleOpenImagePreview(order.image1)} /></td>
                                         <td>
                                             {order.brand_name} {order.brand_type_name} {order.texture_name} {order.texture_attr_name || ''}
+                                            {order.print_type === 10 ? <span className="text-warning">(裸壳)</span> : null}
                                             {
                                                 item.status == 30 || item.status == 0 ? (
                                                     <div>
@@ -332,7 +339,9 @@ export default class OrderList extends Component {
                                                         )
                                                     }
                                                 </td>,
-                                                <td key="type" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>{item.type == 10 ? '充值订单' : '普通订单'}</td>,
+                                                <td key="type" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+                                                    {item.type == 10 ? '充值订单' : '普通订单'}
+                                                </td>,
                                                 <td key="status" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
                                                     <span className={statusMap[item.status].className}>{statusMap[item.status].text}</span>
                                                     {item.refund_status != 0 ? <span style={{ display: 'block' }} className={refundStatusMap[item.refund_status].className}>({refundStatusMap[item.refund_status].text}{item.refund_type == 10 ? '-退运费' : ''})</span> : null}

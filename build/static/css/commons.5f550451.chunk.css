@@ -13210,12 +13210,21 @@ span.ant-radio + * {
   display: inline-block;
   position: relative;
   cursor: pointer;
+  border: 1px solid #e9e9e9;
 }
 .table-image___3e1zA img {
   width: 80px;
   height: 80px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.table-image___3e1zA p {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
 }
 .table-image___3e1zA span {
   display: flex;

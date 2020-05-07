@@ -636,141 +636,166 @@ class Home extends Component {
             return;
         }
         if (!this.image && this.imageOpt.color == 'tran') {
-            message.error('请至少上传一张图片或者设置一个颜色');
+            // message.error('请至少上传一张图片或者设置一个颜色');
+            Modal.confirm({
+                title: '确定要下单一个裸壳吗？',
+                onOk: () => this.onSubmit({
+                    print_type: 10
+                })
+            });
             return;
         }
 
-        const { form: { validateFields, setFieldsValue } } = this.props;
-        const { selectedRow, selectParts, importExcelData, selectColor } = this.state;
+        this.onSubmit();
+    }
+
+    onSubmit(options = {}) {
+        const { form: { validateFields } } = this.props;
+        const isPrintEmpty = options.print_type == 10;
 
         validateFields((err, values) => {
             if (!err) {
-                if (!this.token) {
+                if (!this.token && !isPrintEmpty) {
                     message.error('网络出错了，刷新页面试试');
                     return;
                 }
                 this.setState({
                     submit: true
                 });
-                const formdata = new FormData();
-                formdata.append('file', convertBase64UrlToBlob(this.getResultImage(this.select.is_camera ? true : false)), `${new Date().getTime()}.png`);
-                formdata.append('token', this.token);
+                let params = {
+                    type: values.type == 20 ? 10 : values.type,
+                    order_sn: values.order_sn,
+                    quantity: values.quantity,
+                    cate_id: this.select.id,
+                    ...options
+                };
+                if (isPrintEmpty) {
+                    this.postSubmit(params, values);
+                } else {
+                    const formdata = new FormData();
+                    formdata.append('file', convertBase64UrlToBlob(this.getResultImage(this.select.is_camera ? true : false)), `${new Date().getTime()}.png`);
+                    formdata.append('token', this.token);
 
-                MServer.post('//upload-z0.qiniup.com', formdata, {
-                    withCredentials: false,
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    },
-                    silent: true
-                }).then(res => {
-                    if (res.key) {
-                        return `${locale[process.env.NODE_ENV].url.cdnUser}${res.key}`;
-                    } else {
-                        throw new Error('图片上传失败');
-                    }
-                }).then(res => {
-                    let params = {
-                        type: values.type == 20 ? 10 : values.type,
-                        order_sn: values.order_sn,
-                        quantity: values.quantity,
-                        cate_id: this.select.id,
-                        image1: res
-                    };
-                    // if (values.texture_attr_id) params.texture_attr_id = values.texture_attr_id;
-                    if (selectColor && this.select.texture_attr.length) {
-                        params.texture_attr_id = this.select.texture_attr.find(item => item.texture_attr_color === selectColor).texture_attr_id;
-                    }
-                    if (values.express_id) params.express_id = values.express_id;
-                    if (selectParts.length) {
-                        params.parts = selectParts.map(item => ({
-                            id: item,
-                            count: values[`part_${item}`]
-                        }));
-                    }
-                    if (values.type == 20) {
-                        params = {
-                            ...params,
-                            consignee: values.consignee,
-                            mobile: values.mobile,
-                            province: values.province,
-                            city: values.city,
-                            district: values.district,
-                            address: values.address,
-                        };
-                    }
-                    if (values.type == 10 && selectedRow) {
-                        params = {
-                            ...params,
-                            consignee: selectedRow.consignee,
-                            mobile: selectedRow.mobile,
-                            province: selectedRow.province,
-                            city: selectedRow.city,
-                            district: selectedRow.district,
-                            address: selectedRow.address,
-                        };
-                        if (!params.province) {
-                            message.error('未获取到收货地址');
-                            return;
-                        }
-                    }
-                    MServer.post('/order/save', params).then(res => {
-                        if (res.errcode == 0) {
-                            this.setState({
-                                submit: false,
-                                // selectParts: []
-                            });
-                            this.imageOpt.color = 'tran';
-                            setFieldsValue({
-                                quantity: 1,
-                                // express_id: this.getDefaultExpress()
-                            });
-                            const catename = `${this.select.brand_name} ${this.select.brand_type_name} ${this.select.texture_name}`;
-                            if (!this.submitOrderObj[values.order_sn]) {
-                                this.submitOrderObj[values.order_sn] = {
-                                    count: 1,
-                                    obj: {
-                                        [this.select.id]: {
-                                            name: catename,
-                                            count: 1
-                                        }
-                                    }
-                                };
-                            } else {
-                                this.submitOrderObj[values.order_sn].count++;
-                                if (!this.submitOrderObj[values.order_sn].obj[this.select.id]) {
-                                    this.submitOrderObj[values.order_sn].obj[this.select.id] = {
-                                        name: catename,
-                                        count: 1
-                                    };
-                                } else {
-                                    this.submitOrderObj[values.order_sn].obj[this.select.id].count++;
-                                }
-                            }
-                            Modal.confirm({
-                                title: '订单已提交成功',
-                                okText: '继续下单',
-                                cancelText: '查看订单',
-                                onOk: () => {
-                                    values.type == 10 && importExcelData && this.setState({
-                                        drawer: true
-                                    });
-                                },
-                                onCancel: () => {
-                                    this.setState({
-                                        order_sn: values.order_sn
-                                    }, () => {
-                                        if (this.dialogDetailRef.current) this.dialogDetailRef.current.open();
-                                    });
-                                },
-                            });
+                    MServer.post('//upload-z0.qiniup.com', formdata, {
+                        withCredentials: false,
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        },
+                        silent: true
+                    }).then(res => {
+                        if (res.key) {
+                            return `${locale[process.env.NODE_ENV].url.cdnUser}${res.key}`;
                         } else {
-                            this.setState({
-                                submit: false
-                            });
+                            throw new Error('图片上传失败');
                         }
+                    }).then(res => {
+                        params = {
+                            ...params,
+                            image1: res
+                        };
+                        // if (values.texture_attr_id) params.texture_attr_id = values.texture_attr_id;
+                        this.postSubmit(params, values);
+                    }).catch(err => {
+                        message.error(err.message);
                     });
-                }).catch(err => {
-                    message.error(err.message);
+                }
+            }
+        });
+    }
+
+    postSubmit(params, values) {
+        const { form: { setFieldsValue } } = this.props;
+        const { selectedRow, selectParts, importExcelData, selectColor } = this.state;
+
+        if (selectColor && this.select.texture_attr.length) {
+            params.texture_attr_id = this.select.texture_attr.find(item => item.texture_attr_color === selectColor).texture_attr_id;
+        }
+        if (values.express_id) params.express_id = values.express_id;
+        if (selectParts.length) {
+            params.parts = selectParts.map(item => ({
+                id: item,
+                count: values[`part_${item}`]
+            }));
+        }
+        if (values.type == 20) {
+            params = {
+                ...params,
+                consignee: values.consignee,
+                mobile: values.mobile,
+                province: values.province,
+                city: values.city,
+                district: values.district,
+                address: values.address,
+            };
+        }
+        if (values.type == 10 && selectedRow) {
+            params = {
+                ...params,
+                consignee: selectedRow.consignee,
+                mobile: selectedRow.mobile,
+                province: selectedRow.province,
+                city: selectedRow.city,
+                district: selectedRow.district,
+                address: selectedRow.address,
+            };
+            if (!params.province) {
+                message.error('未获取到收货地址');
+                return;
+            }
+        }
+        MServer.post('/order/save', params).then(res => {
+            if (res.errcode == 0) {
+                this.setState({
+                    submit: false,
+                    // selectParts: []
+                });
+                this.imageOpt.color = 'tran';
+                setFieldsValue({
+                    quantity: 1,
+                    // express_id: this.getDefaultExpress()
+                });
+                const catename = `${this.select.brand_name} ${this.select.brand_type_name} ${this.select.texture_name}`;
+                if (!this.submitOrderObj[values.order_sn]) {
+                    this.submitOrderObj[values.order_sn] = {
+                        count: 1,
+                        obj: {
+                            [this.select.id]: {
+                                name: catename,
+                                count: 1
+                            }
+                        }
+                    };
+                } else {
+                    this.submitOrderObj[values.order_sn].count++;
+                    if (!this.submitOrderObj[values.order_sn].obj[this.select.id]) {
+                        this.submitOrderObj[values.order_sn].obj[this.select.id] = {
+                            name: catename,
+                            count: 1
+                        };
+                    } else {
+                        this.submitOrderObj[values.order_sn].obj[this.select.id].count++;
+                    }
+                }
+                Modal.confirm({
+                    title: '订单已提交成功',
+                    okText: '继续下单',
+                    cancelText: '查看订单',
+                    onOk: () => {
+                        values.type == 10 && importExcelData && this.setState({
+                            drawer: true
+                        });
+                    },
+                    onCancel: () => {
+                        this.setState({
+                            order_sn: values.order_sn
+                        }, () => {
+                            if (this.dialogDetailRef.current) this.dialogDetailRef.current.open();
+                        });
+                    },
+                });
+            } else {
+                this.setState({
+                    submit: false
                 });
             }
         });
