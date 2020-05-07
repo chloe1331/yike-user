@@ -4163,7 +4163,16 @@ function (_Component) {
         onClick: function onClick() {
           return _this12.autoImage(_this12.uploadRef.current);
         }
-      }, "\u521D\u59CB\u5316\u56FE\u7247")), react__WEBPACK_IMPORTED_MODULE_35___default.a.createElement("div", {
+      }, "\u521D\u59CB\u5316\u56FE\u7247"), react__WEBPACK_IMPORTED_MODULE_35___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_16___default.a, {
+        style: {
+          marginLeft: '15px'
+        },
+        onClick: function onClick() {
+          _this12.image = null;
+
+          _this12.forceUpdate();
+        }
+      }, "\u53BB\u9664\u56FE\u7247")), react__WEBPACK_IMPORTED_MODULE_35___default.a.createElement("div", {
         ref: this.moveRef,
         className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_43___default.a.phonePreview
       }, react__WEBPACK_IMPORTED_MODULE_35___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default.a, {

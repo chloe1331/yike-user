@@ -949,6 +949,10 @@ class Home extends Component {
                                 />
                                 <Button style={{ marginLeft: '15px' }} onClick={() => this.setState({ preview: !preview })}>{preview ? '编辑' : '预览'}</Button>
                                 <Button style={{ marginLeft: '15px' }} onClick={() => this.autoImage(this.uploadRef.current)}>初始化图片</Button>
+                                <Button style={{ marginLeft: '15px' }} onClick={() => {
+                                    this.image = null;
+                                    this.forceUpdate();
+                                }}>去除图片</Button>
                             </div>
                             <div ref={this.moveRef} className={style.phonePreview}>
                                 <Tooltip title="上传图片后，拖动进行放大缩小"><div className={style.box1} ref={this.dragBox1}></div></Tooltip>
