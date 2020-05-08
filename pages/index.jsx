@@ -819,7 +819,7 @@ class Home extends Component {
 
     render() {
         const { select, image, imageOpt, auto } = this;
-        const { list, preview, submit, expressList, partList, selectParts, selectColor, textures, importExcelData, selectedRow, drawer, drawerTitle, selectedRowKeys, lockTexture } = this.state;
+        const { list, preview, submit, expressList, partList, selectParts, selectColor, textures, importExcelData, selectedRow, drawer, drawerTitle, selectedRowKeys, lockTexture, selectAttrId } = this.state;
         const { form: { getFieldDecorator, getFieldValue } } = this.props;
         const defaultColors = [
             {
@@ -923,7 +923,7 @@ class Home extends Component {
                             {select && select.texture_attr.length ? <div className="card-item">
                                 <div className="card-item-title">选择属性(颜色)</div>
                                 <Radio.Group
-                                    value={selectColor}
+                                    value={selectAttrId}
                                     options={select.texture_attr.map(item => ({
                                         label: item.texture_attr_name,
                                         value: item.texture_attr_id

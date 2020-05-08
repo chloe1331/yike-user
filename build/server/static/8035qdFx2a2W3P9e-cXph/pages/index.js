@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -262,14 +262,6 @@ module.exports = require("antd/lib/dropdown/style");
 
 /***/ }),
 
-/***/ 4:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("cMU6");
-
-
-/***/ }),
-
 /***/ "4Q3z":
 /***/ (function(module, exports) {
 
@@ -281,6 +273,14 @@ module.exports = require("next/router");
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("k1wZ");
+
+/***/ }),
+
+/***/ 5:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("cMU6");
+
 
 /***/ }),
 
@@ -4002,7 +4002,8 @@ function (_Component) {
           drawer = _this$state2.drawer,
           drawerTitle = _this$state2.drawerTitle,
           selectedRowKeys = _this$state2.selectedRowKeys,
-          lockTexture = _this$state2.lockTexture;
+          lockTexture = _this$state2.lockTexture,
+          selectAttrId = _this$state2.selectAttrId;
       var _this$props$form = this.props.form,
           getFieldDecorator = _this$props$form.getFieldDecorator,
           getFieldValue = _this$props$form.getFieldValue;
@@ -4123,7 +4124,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_35___default.a.createElement("div", {
         className: "card-item-title"
       }, "\u9009\u62E9\u5C5E\u6027(\u989C\u8272)"), react__WEBPACK_IMPORTED_MODULE_35___default.a.createElement(antd_lib_radio__WEBPACK_IMPORTED_MODULE_18___default.a.Group, {
-        value: selectColor,
+        value: selectAttrId,
         options: select.texture_attr.map(function (item) {
           return {
             label: item.texture_attr_name,
