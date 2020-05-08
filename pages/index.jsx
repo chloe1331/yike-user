@@ -926,7 +926,7 @@ class Home extends Component {
                                     value={selectColor}
                                     options={select.texture_attr.map(item => ({
                                         label: item.texture_attr_name,
-                                        value: item.id
+                                        value: item.texture_attr_id
                                     }))}
                                     onChange={e => {
                                         // this.select = null;

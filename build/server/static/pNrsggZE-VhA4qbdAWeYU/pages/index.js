@@ -4127,7 +4127,7 @@ function (_Component) {
         options: select.texture_attr.map(function (item) {
           return {
             label: item.texture_attr_name,
-            value: item.id
+            value: item.texture_attr_id
           };
         }),
         onChange: function onChange(e) {
