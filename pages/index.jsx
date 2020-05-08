@@ -24,6 +24,7 @@ class Home extends Component {
             selectedRowKeys: [],
             lockTexture: '',
             selectColor: null,
+            selectAttrId: null,
             textures: [],
             importExcelData: null,
             selectedRow: null,
@@ -705,10 +706,11 @@ class Home extends Component {
 
     postSubmit(params, values) {
         const { form: { setFieldsValue } } = this.props;
-        const { selectedRow, selectParts, importExcelData, selectColor } = this.state;
+        const { selectedRow, selectParts, importExcelData, selectAttrId } = this.state;
 
-        if (selectColor && this.select.texture_attr.length) {
-            params.texture_attr_id = this.select.texture_attr.find(item => item.texture_attr_color === selectColor).texture_attr_id;
+        if (selectAttrId && this.select.texture_attr.length) {
+            // params.texture_attr_id = this.select.texture_attr.find(item => item.texture_attr_color === selectColor).texture_attr_id;
+            params.texture_attr_id = selectAttrId;
         }
         if (values.express_id) params.express_id = values.express_id;
         if (selectParts.length) {
@@ -886,10 +888,12 @@ class Home extends Component {
                                         if (res.errcode == 0 && res.data && res.data.length) {
                                             this.select.texture_attr = res.data;
                                             this.setState({
-                                                selectColor: res.data[0].texture_attr_color
+                                                selectColor: res.data[0].texture_attr_color || null,
+                                                selectAttrId: res.data[0].texture_attr_id
                                             });
                                         } else {
                                             this.setState({
+                                                selectAttrId: null,
                                                 selectColor: null
                                             });
                                         }
@@ -922,7 +926,7 @@ class Home extends Component {
                                     value={selectColor}
                                     options={select.texture_attr.map(item => ({
                                         label: item.texture_attr_name,
-                                        value: item.texture_attr_color
+                                        value: item.id
                                     }))}
                                     onChange={e => {
                                         // this.select = null;
@@ -930,8 +934,11 @@ class Home extends Component {
                                         // this.setState({
                                         //     lockTexture: e.target.value
                                         // }, this.convertList);
+                                        const value = e.target.value;
+                                        const color = (select.texture_attr.find(item => item.texture_attr_id == value)).texture_attr_color;
                                         this.setState({
-                                            selectColor: e.target.value
+                                            selectColor: color || null,
+                                            selectAttrId: value
                                         });
                                     }}
                                 ></Radio.Group>

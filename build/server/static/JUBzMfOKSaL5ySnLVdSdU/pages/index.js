@@ -3067,6 +3067,7 @@ function (_Component) {
       selectedRowKeys: [],
       lockTexture: '',
       selectColor: null,
+      selectAttrId: null,
       textures: [],
       importExcelData: null,
       selectedRow: null,
@@ -3853,12 +3854,11 @@ function (_Component) {
           selectedRow = _this$state.selectedRow,
           selectParts = _this$state.selectParts,
           importExcelData = _this$state.importExcelData,
-          selectColor = _this$state.selectColor;
+          selectAttrId = _this$state.selectAttrId;
 
-      if (selectColor && this.select.texture_attr.length) {
-        params.texture_attr_id = this.select.texture_attr.find(function (item) {
-          return item.texture_attr_color === selectColor;
-        }).texture_attr_id;
+      if (selectAttrId && this.select.texture_attr.length) {
+        // params.texture_attr_id = this.select.texture_attr.find(item => item.texture_attr_color === selectColor).texture_attr_id;
+        params.texture_attr_id = selectAttrId;
       }
 
       if (values.express_id) params.express_id = values.express_id;
@@ -4082,10 +4082,12 @@ function (_Component) {
               _this12.select.texture_attr = res.data;
 
               _this12.setState({
-                selectColor: res.data[0].texture_attr_color
+                selectColor: res.data[0].texture_attr_color || null,
+                selectAttrId: res.data[0].texture_attr_id
               });
             } else {
               _this12.setState({
+                selectAttrId: null,
                 selectColor: null
               });
             }
@@ -4125,7 +4127,7 @@ function (_Component) {
         options: select.texture_attr.map(function (item) {
           return {
             label: item.texture_attr_name,
-            value: item.texture_attr_color
+            value: item.id
           };
         }),
         onChange: function onChange(e) {
@@ -4134,8 +4136,14 @@ function (_Component) {
           // this.setState({
           //     lockTexture: e.target.value
           // }, this.convertList);
+          var value = e.target.value;
+          var color = select.texture_attr.find(function (item) {
+            return item.texture_attr_id == value;
+          }).texture_attr_color;
+
           _this12.setState({
-            selectColor: e.target.value
+            selectColor: color || null,
+            selectAttrId: value
           });
         }
       })) : null), react__WEBPACK_IMPORTED_MODULE_35___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_35___default.a.createElement("div", {
