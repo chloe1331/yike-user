@@ -31,7 +31,8 @@ class Home extends Component {
             preview: true,
             submit: false,
             drawer: false,
-            drawerTitle: ''
+            drawerTitle: '',
+            checkColor: false,
         };
         this.cateObj = {};
         this.select = null;
@@ -819,7 +820,7 @@ class Home extends Component {
 
     render() {
         const { select, image, imageOpt, auto } = this;
-        const { list, preview, submit, expressList, partList, selectParts, selectColor, textures, importExcelData, selectedRow, drawer, drawerTitle, selectedRowKeys, lockTexture, selectAttrId } = this.state;
+        const { list, preview, submit, expressList, partList, selectParts, selectColor, textures, importExcelData, selectedRow, drawer, drawerTitle, selectedRowKeys, lockTexture, selectAttrId, checkColor } = this.state;
         const { form: { getFieldDecorator, getFieldValue } } = this.props;
         const defaultColors = [
             {
@@ -943,6 +944,12 @@ class Home extends Component {
                                     }}
                                 ></Radio.Group>
                             </div> : null }
+                            {
+                                imageOpt.color == 'tran' ? <div className="card-item">
+                                    <div className="card-item-title">上图小助手</div>
+                                    <Checkbox checked={checkColor} onChange={e => this.setState({ checkColor: e.target.checked })}>校准透明底</Checkbox>
+                                </div> : null
+                            }
                         </div>
                         <div>
                             <div className={style.layoutHomeHd}>
@@ -1008,7 +1015,10 @@ class Home extends Component {
                                             } : (selectColor ? {
                                                 backgroundColor: selectColor,
                                                 backgroundImage: 'none'
-                                            } : {})}
+                                            } : (checkColor ? {
+                                                backgroundColor: '#000',
+                                                backgroundImage: 'none'
+                                            } : {}))}
                                         >
                                             <div></div>
                                             <img
