@@ -466,7 +466,14 @@ export default class OrderList extends Component {
                     </table>
                 </Spin>
                 {
-                    pagination && pager.total > pager.pageSize ? <Pagination {...pager} onChange={page => this.getList(page)} /> : null
+                    pagination && pager.total > pager.pageSize ? <Pagination 
+                        {...pager} 
+                        onChange={page => {
+                            document.documentElement.scrollTop = 0;
+                            this.getList(page);
+                        }} 
+                        showQuickJumper
+                    /> : null
                 }
             </div>
         );
