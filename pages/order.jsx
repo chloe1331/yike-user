@@ -1,11 +1,13 @@
 import { Component, createRef } from 'react';
 import { Radio, Input, Button, Modal, message } from 'antd';
+import { connect } from 'dva';
+import PropType from 'prop-types';
 
 import { MServer } from 'public/utils';
 import { OrderList, DialogExportHistroy } from 'component';
 import locale from 'config/locale';
 
-export default class Order extends Component {
+class Order extends Component {
     constructor(props) {
         super(props);
         this.tableRef = createRef();
@@ -114,6 +116,7 @@ export default class Order extends Component {
             label: '已发货'
         }];
         const { paySubmit, logisLoading } = this.state;
+        const { user } = this.props;
 
         return (
             <div className="page-layout-center">
@@ -146,8 +149,15 @@ export default class Order extends Component {
                 <OrderList
                     action="/order/userlist"
                     ref={this.tableRef}
+                    user={user}
                 />
             </div>
         );
     }
 }
+
+Order.propTypes = {
+    user: PropType.object
+};
+
+export default connect(({ user }) => ({ user }))(Order);

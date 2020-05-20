@@ -9,6 +9,8 @@ import ColorPicker from './colorpicker';
 import OrderList from './order-list';
 import InputNumber from './input-number';
 import PopoverOrderDetail from './popover-order-detail';
+import DialogCreateSub from './dialog-create-sub';
+import DialogResetPassword from './dialog-reset-password';
 
 export {
     Select,
@@ -21,5 +23,7 @@ export {
     ColorPicker,
     OrderList,
     InputNumber,
-    PopoverOrderDetail
+    PopoverOrderDetail,
+    DialogCreateSub,
+    DialogResetPassword
 };

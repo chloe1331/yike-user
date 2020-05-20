@@ -9,11 +9,12 @@ import './style.less';
 
 class DialogOrderDetail extends Component {
     render() {
-        const { order_sn } = this.props;
+        const { order_sn, user } = this.props;
 
         return (
             <Modal {...this.props} title="订单详情" width={880} footer={false} centered className="dialog-order-detial">
                 <OrderList
+                    user={user}
                     action='/order/userlist'
                     condition={{
                         order_sn,
@@ -28,7 +29,8 @@ class DialogOrderDetail extends Component {
 }
 
 DialogOrderDetail.propTypes = {
-    order_sn: PropTypes.string
+    order_sn: PropTypes.string,
+    user: PropTypes.object
 };
 
 export default Dialog(DialogOrderDetail);

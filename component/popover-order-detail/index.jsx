@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import OrderList from '../order-list';
 
-export default function PopoverOrderDetail({ order_sn }) {
+export default function PopoverOrderDetail({ order_sn, user }) {
     const [visible, setVisible] = useState(false);
     return visible ? <Popover 
         overlayStyle={{ width: 880 }} 
@@ -18,6 +18,7 @@ export default function PopoverOrderDetail({ order_sn }) {
             condition={{
                 order_sn,
             }}
+            user={user}
             pageSize={1}
             pagination={false}
         ></OrderList> : null}>
@@ -26,5 +27,6 @@ export default function PopoverOrderDetail({ order_sn }) {
 }
 
 PopoverOrderDetail.propTypes = {
-    order_sn: PropTypes.string
+    order_sn: PropTypes.string,
+    user: PropTypes.object
 };

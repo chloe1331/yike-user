@@ -4,6 +4,7 @@ import cx from 'classnames';
 import XLSX from 'xlsx';
 import pinyin from 'pinyin';
 import AddressParse from 'address-parse';
+import { connect } from 'dva';
 import PropTypes from 'prop-types';
 
 import locale from 'config/locale';
@@ -821,7 +822,7 @@ class Home extends Component {
     render() {
         const { select, image, imageOpt, auto } = this;
         const { list, preview, submit, expressList, partList, selectParts, selectColor, textures, importExcelData, selectedRow, drawer, drawerTitle, selectedRowKeys, lockTexture, selectAttrId, checkColor } = this.state;
-        const { form: { getFieldDecorator, getFieldValue } } = this.props;
+        const { form: { getFieldDecorator, getFieldValue }, user } = this.props;
         const defaultColors = [
             {
                 label: '透明',
@@ -855,7 +856,7 @@ class Home extends Component {
 
         return (
             <div className="page-layout-center">
-                <DialogOrderDetail ref={this.dialogDetailRef} order_sn={getFieldValue('order_sn')} />
+                <DialogOrderDetail ref={this.dialogDetailRef} order_sn={getFieldValue('order_sn')} user={user} />
                 <div className={style.layoutHome}>
                     <div className={style.layoutHomeBd}>
                         <div className={style.layoutHomeLeft}>
@@ -1506,8 +1507,9 @@ class Home extends Component {
     }
 }
 
-export default Form.create()(Home);
+export default connect(({ user }) => ({ user }))(Form.create()(Home));
 
 Home.propTypes = {
-    form: PropTypes.object
+    form: PropTypes.object,
+    user: PropTypes.object
 };

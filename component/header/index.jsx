@@ -21,7 +21,8 @@ export default class Header extends Component {
     
     render() {
         const { router, user, onShowNotice } = this.props;
-        const menu = [
+        const isSub = !!user.sub;
+        let menu = [
             {
                 title: '下单',
                 href: '/'
@@ -30,11 +31,19 @@ export default class Header extends Component {
                 title: '订单列表',
                 href: '/order'
             },
-            {
-                title: '账单列表',
-                href: '/bill'
-            }
         ];
+        if (!isSub) {
+            menu = menu.concat([
+                {
+                    title: '账单列表',
+                    href: '/bill'
+                },
+                {
+                    title: '子账号列表',
+                    href: '/sub'
+                }
+            ]);
+        }
         const userMenu = (
             <Menu style={{ width: 180 }}>
                 <Menu.Item>
@@ -63,7 +72,7 @@ export default class Header extends Component {
                     <Dropdown overlay={userMenu}>
                         <a className={style.userInfo}>
                             <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }} icon="user" />
-                            <span className={style.userText}>{user.username}</span>
+                            <span className={style.userText}>{isSub ? `${user.username}:${user.sub.username}` : user.username}</span>
                             <Icon type="caret-down" className={style.dropdownIcon} />
                         </a>
                     </Dropdown>

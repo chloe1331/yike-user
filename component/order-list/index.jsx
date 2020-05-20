@@ -30,7 +30,7 @@ ImageHover.propTypes = {
     onClick: PropTypes.func
 };
 
-export default class OrderList extends Component {
+class OrderList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -218,8 +218,8 @@ export default class OrderList extends Component {
 
     render() {
         const { list, image, pager, loading, editRecord, expressList } = this.state;
-        const { pagination = true } = this.props;
-        const colSpan = 9;
+        const { pagination = true, user = {} } = this.props;
+        const colSpan = user.sub ? 7 : 9;
         const statusMap = {
             0: {
                 text: '待审核',
@@ -264,6 +264,7 @@ export default class OrderList extends Component {
                 className: 'text-error'
             }
         };
+        const isSub = !!user.sub;
 
         return (
             <div className={style.orderTable}>
@@ -275,10 +276,10 @@ export default class OrderList extends Component {
                             <tr className={style.tableThead}>
                                 <th>打印图</th>
                                 <th>商品</th>
-                                <th>单价</th>
+                                {!isSub ? <th>单价</th> : null}
                                 <th>订货量</th>
                                 <th>创建时间</th>
-                                <th>价格</th>
+                                {!isSub ? <th>价格</th> : null}
                                 <th>快递</th>
                                 <th>订单类型</th>
                                 <th>状态</th>
@@ -315,15 +316,15 @@ export default class OrderList extends Component {
                                                 ) : null
                                             }
                                         </td>
-                                        <td>{order.price}</td>
+                                        {!isSub ? <td>{order.price}</td> : null}
                                         <td>{order.quantity}</td>
                                         <td>{order.createdAt}</td>
                                         {
                                             i === 0 ? [
-                                                <td key="amount" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+                                                !isSub ? <td key="amount" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
                                                     <div>¥ {item.amount}</div>
                                                     {item.post_fee ? <div>含运费{item.post_fee}元</div> : null}
-                                                </td>,
+                                                </td> : null,
                                                 <td key="express" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
                                                     {
                                                         item.status == 30 ? (
@@ -368,7 +369,7 @@ export default class OrderList extends Component {
                                                 ) : null
                                             }
                                         </td>
-                                        <td>{part.price}</td>
+                                        {!isSub ? <td>{part.price}</td> : null}
                                         <td>{part.quantity}</td>
                                         <td>{part.createdAt}</td>
                                     </tr>
@@ -485,5 +486,8 @@ OrderList.propTypes = {
     action: PropTypes.string,
     list: PropTypes.array,
     pageSize: PropTypes.number,
-    pagination: PropTypes.bool
+    pagination: PropTypes.bool,
+    user: PropTypes.object
 };
+
+export default OrderList;
