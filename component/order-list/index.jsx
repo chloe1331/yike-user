@@ -378,7 +378,7 @@ class OrderList extends Component {
                                     <tr key="operator" className={style.tableBodyHead}>
                                         <td colSpan={colSpan}>
                                             <Popconfirm 
-                                                title={<div>确定要付款<span className="text-warning">{item.amount}</span>元吗？</div>} 
+                                                title={<div>确定要付款{!isSub ? <span><span className="text-warning">{item.amount}</span>元</span> : null}吗？</div>} 
                                                 onConfirm={() => this.handlePay(item.id)}
                                                 placement="rightBottom"
                                             >

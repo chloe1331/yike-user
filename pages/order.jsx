@@ -40,6 +40,8 @@ class Order extends Component {
     }
 
     handleBatchPay() {
+        const { user } = this.props;
+        const isSub = !!user.sub;
         this.setState({
             paySubmit: true
         });
@@ -52,7 +54,7 @@ class Order extends Component {
                     const amount = res.data.reduce((pre, cur) => pre + cur.amount, 0);
                     Modal.confirm({
                         title: '您确认要付款吗？',
-                        content: <div>找到{res.data.length}个待付款订单，支付金额 <span className="text-warning">{amount}</span> 元</div>,
+                        content: <div>找到{res.data.length}个待付款订单{!isSub ? <span>，支付金额 <span className="text-warning">{amount}</span> 元</span> : null}</div>,
                         onOk: () => {
                             this.setState({
                                 paySubmit: true
