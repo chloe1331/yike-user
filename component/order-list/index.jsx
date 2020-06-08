@@ -466,16 +466,26 @@ class OrderList extends Component {
                         </tbody>
                     </table>
                 </Spin>
-                {
+                {/* {
                     pagination && pager.total > pager.pageSize ? <Pagination 
                         {...pager} 
                         onChange={page => {
                             document.documentElement.scrollTop = 0;
                             this.getList(page);
                         }} 
+                        showTotal={(total) => `共${total}个订单`}
                         showQuickJumper
                     /> : null
-                }
+                } */}
+                <Pagination
+                    {...pager}
+                    onChange={page => {
+                        document.documentElement.scrollTop = 0;
+                        this.getList(page);
+                    }}
+                    showTotal={(total) => `共${total}个订单`}
+                    showQuickJumper
+                />
             </div>
         );
     }

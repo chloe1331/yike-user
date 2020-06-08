@@ -1,10 +1,11 @@
 import { Component, createRef } from 'react';
-import { Radio, Input, Button, Modal, message } from 'antd';
+import { Radio, Input, Button, Modal, message, DatePicker } from 'antd';
 import { connect } from 'dva';
+import moment from 'moment';
 import PropType from 'prop-types';
 
 import { MServer } from 'public/utils';
-import { OrderList, DialogExportHistroy } from 'component';
+import { OrderList, DialogExportHistroy, Select } from 'component';
 import locale from 'config/locale';
 
 class Order extends Component {
@@ -14,10 +15,30 @@ class Order extends Component {
         this.dialogExportRef = createRef();
         this.state = {
             paySubmit: false,
-            logisLoading: false
+            logisLoading: false,
+            subList: []
         };
-        const handles = ['handleSearch', 'handleBatchPay', 'handleExport'];
+        const handles = ['handleSearch', 'handleBatchPay', 'handleExport', 'handleChangeDate'];
         handles.forEach(item => this[item] = this[item].bind(this));
+    }
+
+    componentDidMount() {
+        const { user} = this.props;
+        if (!user.sub) {
+            this.getSubList();
+        }
+    }
+
+    getSubList() {
+        MServer.get('/user/sublist', {
+            is_all: 1
+        }).then(res => {
+            if (res.errcode == 0) {
+                this.setState({
+                    subList: res.data
+                });
+            }
+        });
     }
 
     handleChangeStatus(status) {
@@ -29,6 +50,15 @@ class Order extends Component {
                 }
             });
         }
+    }
+
+    handleChangeDate(date) {
+        this.tableRef.current.reload({
+            condition: {
+                start_date: date[0] ? date[0].format('YYYY-MM-DD') : undefined,
+                end_date: date[1] ? date[1].format('YYYY-MM-DD') : undefined,
+            }
+        });
     }
 
     handleSearch(type, value) {
@@ -117,7 +147,7 @@ class Order extends Component {
             value: 'send',
             label: '已发货'
         }];
-        const { paySubmit, logisLoading } = this.state;
+        const { paySubmit, logisLoading, subList } = this.state;
         const { user } = this.props;
 
         return (
@@ -139,6 +169,16 @@ class Order extends Component {
                 <div className="form-condition">
                     <Input.Search onSearch={value => this.handleSearch('order_sn', value)} placeholder="搜索订单号" />
                     <Input.Search style={{ marginLeft: '15px' }} onSearch={value => this.handleSearch('express_sn', value)} placeholder="搜索运单号" />
+                    <DatePicker.RangePicker 
+                        style={{ width: 240, marginLeft: 15 }}
+                        disabledDate={current => current && current && current > moment().endOf('day')}
+                        onChange={this.handleChangeDate}
+                        allowClear
+                    />
+                    {
+                        !user.sub ? 
+                            <Select options={subList} style={{ marginLeft: 15, width: 180 }} fieldName={{ label: 'username', value: 'id' }} onChange={value => this.handleSearch('sub_id', value)} placeholder="选择子账号" allowClear /> : null
+                    }
                     <Button loading={paySubmit} style={{ marginLeft: '15px' }} type="primary" onClick={this.handleBatchPay}>批量付款</Button>
                     <Button style={{ marginLeft: '15px' }} onClick={this.handleExport} loading={logisLoading}>导出物流信息</Button>
                     <a 

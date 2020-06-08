@@ -596,6 +596,13 @@ module.exports = require("antd/lib/button/style");
 
 /***/ }),
 
+/***/ "GRDg":
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "GqX/":
 /***/ (function(module, exports) {
 
@@ -1152,7 +1159,11 @@ function (_Component) {
       var menu = [{
         title: '下单',
         href: '/'
-      }, {
+      }, // {
+      //     title: '图片空间',
+      //     href: '/image'
+      // },
+      {
         title: '订单列表',
         href: '/order'
       }];
@@ -2396,14 +2407,17 @@ function (_Component) {
         colSpan: colSpan
       }, external_react_default.a.createElement(empty_default.a, {
         image: empty_default.a.PRESENTED_IMAGE_SIMPLE
-      })))))), pagination && pager.total > pager.pageSize ? external_react_default.a.createElement(pagination_default.a, Object(esm_extends["a" /* default */])({}, pager, {
+      })))))), external_react_default.a.createElement(pagination_default.a, Object(esm_extends["a" /* default */])({}, pager, {
         onChange: function onChange(page) {
           document.documentElement.scrollTop = 0;
 
           _this13.getList(page);
         },
+        showTotal: function showTotal(total) {
+          return "\u5171".concat(total, "\u4E2A\u8BA2\u5355");
+        },
         showQuickJumper: true
-      })) : null);
+      })));
     }
   }]);
 
@@ -3113,20 +3127,205 @@ function (_Component) {
 }(external_react_["Component"]);
 
 /* harmony default export */ var dialog_reset_password = (CreateModal(form_default.a.create()(dialog_reset_password_DialogResetPassword)));
+// EXTERNAL MODULE: external "antd/lib/upload/style"
+var upload_style_ = __webpack_require__("eMim");
+
+// EXTERNAL MODULE: external "antd/lib/upload"
+var upload_ = __webpack_require__("TfTO");
+var upload_default = /*#__PURE__*/__webpack_require__.n(upload_);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/regenerator/index.js
+var regenerator = __webpack_require__("ln6h");
+var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js
+var asyncToGenerator = __webpack_require__("O40h");
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/promise.js
+var promise = __webpack_require__("eVuF");
+var promise_default = /*#__PURE__*/__webpack_require__.n(promise);
+
+// EXTERNAL MODULE: ./component/dialog-upload-image/style.less
+var dialog_upload_image_style = __webpack_require__("GRDg");
+
+// CONCATENATED MODULE: ./component/dialog-upload-image/index.jsx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function getBase64(file) {
+  return new promise_default.a(function (resolve, reject) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = function () {
+      return resolve(reader.result);
+    };
+
+    reader.onerror = function (error) {
+      return reject(error);
+    };
+  });
+}
+
+var dialog_upload_image_DialogUploadImage =
+/*#__PURE__*/
+function (_Component) {
+  Object(inherits["a" /* default */])(DialogUploadImage, _Component);
+
+  function DialogUploadImage(props) {
+    var _this;
+
+    Object(classCallCheck["a" /* default */])(this, DialogUploadImage);
+
+    _this = Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(DialogUploadImage).call(this, props));
+
+    Object(defineProperty["a" /* default */])(Object(assertThisInitialized["a" /* default */])(_this), "state", {
+      previewVisible: false,
+      previewImage: '',
+      fileList: [// {
+        //     uid: '-1',
+        //     name: 'image.png',
+        //     status: 'done',
+        //     url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        // },
+      ]
+    });
+
+    Object(defineProperty["a" /* default */])(Object(assertThisInitialized["a" /* default */])(_this), "handleCancel", function () {
+      return _this.setState({
+        previewVisible: false
+      });
+    });
+
+    Object(defineProperty["a" /* default */])(Object(assertThisInitialized["a" /* default */])(_this), "handlePreview",
+    /*#__PURE__*/
+    function () {
+      var _ref = Object(asyncToGenerator["a" /* default */])(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee(file) {
+        return regenerator_default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!(!file.url && !file.preview)) {
+                  _context.next = 4;
+                  break;
+                }
+
+                _context.next = 3;
+                return getBase64(file.originFileObj);
+
+              case 3:
+                file.preview = _context.sent;
+
+              case 4:
+                _this.setState({
+                  previewImage: file.url || file.preview,
+                  previewVisible: true
+                });
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }());
+
+    Object(defineProperty["a" /* default */])(Object(assertThisInitialized["a" /* default */])(_this), "handleChange", function (_ref2) {
+      var fileList = _ref2.fileList;
+      return _this.setState({
+        fileList: fileList
+      });
+    });
+
+    return _this;
+  }
+
+  Object(createClass["a" /* default */])(DialogUploadImage, [{
+    key: "render",
+    value: function render() {
+      var _this$state = this.state,
+          previewVisible = _this$state.previewVisible,
+          previewImage = _this$state.previewImage,
+          fileList = _this$state.fileList;
+      var uploadButton = external_react_default.a.createElement("div", null, external_react_default.a.createElement(icon_default.a, {
+        type: "plus"
+      }), external_react_default.a.createElement("div", {
+        className: "ant-upload-text"
+      }, "\u4E0A\u4F20\u56FE\u7247"));
+      return external_react_default.a.createElement(modal_default.a, Object(esm_extends["a" /* default */])({}, this.props, {
+        title: "\u4E0A\u4F20\u56FE\u7247",
+        width: 840,
+        className: "dialog-upload-image"
+      }), external_react_default.a.createElement("div", {
+        className: "clearfix"
+      }, external_react_default.a.createElement(upload_default.a, {
+        multiple: true,
+        action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+        listType: "picture-card",
+        fileList: fileList,
+        onPreview: this.handlePreview,
+        onChange: this.handleChange,
+        accept: "image/png,image/jpg,image/jpeg"
+      }, fileList.length >= 8 ? null : uploadButton), external_react_default.a.createElement(modal_default.a, {
+        visible: previewVisible,
+        footer: null,
+        onCancel: this.handleCancel
+      }, external_react_default.a.createElement("img", {
+        alt: "example",
+        style: {
+          width: '100%'
+        },
+        src: previewImage
+      }))));
+    }
+  }]);
+
+  return DialogUploadImage;
+}(external_react_["Component"]);
+
+/* harmony default export */ var dialog_upload_image = (CreateModal(dialog_upload_image_DialogUploadImage));
 // CONCATENATED MODULE: ./component/index.js
-/* concated harmony reexport Select */__webpack_require__.d(__webpack_exports__, "i", function() { return select_Select; });
-/* concated harmony reexport Header */__webpack_require__.d(__webpack_exports__, "f", function() { return header_Header; });
-/* concated harmony reexport UploadBtn */__webpack_require__.d(__webpack_exports__, "k", function() { return upload_btn_UploadButton; });
+/* concated harmony reexport Select */__webpack_require__.d(__webpack_exports__, "j", function() { return select_Select; });
+/* concated harmony reexport Header */__webpack_require__.d(__webpack_exports__, "g", function() { return header_Header; });
+/* concated harmony reexport UploadBtn */__webpack_require__.d(__webpack_exports__, "l", function() { return upload_btn_UploadButton; });
 /* unused concated harmony import DialogImagePreview */
 /* concated harmony reexport DialogOrderDetail */__webpack_require__.d(__webpack_exports__, "d", function() { return dialog_order_detail; });
 /* concated harmony reexport DialogExportHistroy */__webpack_require__.d(__webpack_exports__, "c", function() { return dialog_export_history; });
-/* concated harmony reexport TableAction */__webpack_require__.d(__webpack_exports__, "j", function() { return table_action_TableAction; });
+/* concated harmony reexport TableAction */__webpack_require__.d(__webpack_exports__, "k", function() { return table_action_TableAction; });
 /* concated harmony reexport ColorPicker */__webpack_require__.d(__webpack_exports__, "a", function() { return MyColorPicker; });
-/* concated harmony reexport OrderList */__webpack_require__.d(__webpack_exports__, "h", function() { return order_list; });
-/* concated harmony reexport InputNumber */__webpack_require__.d(__webpack_exports__, "g", function() { return input_number_InputNumber; });
+/* concated harmony reexport OrderList */__webpack_require__.d(__webpack_exports__, "i", function() { return order_list; });
+/* concated harmony reexport InputNumber */__webpack_require__.d(__webpack_exports__, "h", function() { return input_number_InputNumber; });
 /* unused concated harmony import PopoverOrderDetail */
 /* concated harmony reexport DialogCreateSub */__webpack_require__.d(__webpack_exports__, "b", function() { return dialog_create_sub; });
 /* concated harmony reexport DialogResetPassword */__webpack_require__.d(__webpack_exports__, "e", function() { return dialog_reset_password; });
+/* concated harmony reexport DialogUploadImage */__webpack_require__.d(__webpack_exports__, "f", function() { return dialog_upload_image; });
+
 
 
 
@@ -3190,6 +3389,13 @@ module.exports = __webpack_require__("Wk4r");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/define-property");
+
+/***/ }),
+
+/***/ "TfTO":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/upload");
 
 /***/ }),
 
@@ -3701,7 +3907,7 @@ function getOrCreateStore(initialState) {
     }(external_react_default.a.Component)
   );
 });
-// EXTERNAL MODULE: ./component/index.js + 16 modules
+// EXTERNAL MODULE: ./component/index.js + 17 modules
 var component = __webpack_require__("OLV9");
 
 // EXTERNAL MODULE: ./public/theme/common.less
@@ -3835,7 +4041,7 @@ function (_App) {
         dangerouslySetInnerHTML: {
           __html: user.system.notice
         }
-      })), external_react_default.a.createElement(layout_default.a, null, external_react_default.a.createElement(layout_default.a.Header, null, external_react_default.a.createElement(component["f" /* Header */], {
+      })), external_react_default.a.createElement(layout_default.a, null, external_react_default.a.createElement(layout_default.a.Header, null, external_react_default.a.createElement(component["g" /* Header */], {
         router: router,
         user: user,
         onShowNotice: function onShowNotice() {
@@ -4301,6 +4507,13 @@ function _slicedToArray(arr, i) {
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/button");
+
+/***/ }),
+
+/***/ "eMim":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/upload/style");
 
 /***/ }),
 

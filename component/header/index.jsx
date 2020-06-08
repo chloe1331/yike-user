@@ -27,6 +27,10 @@ export default class Header extends Component {
                 title: '下单',
                 href: '/'
             },
+            // {
+            //     title: '图片空间',
+            //     href: '/image'
+            // },
             {
                 title: '订单列表',
                 href: '/order'

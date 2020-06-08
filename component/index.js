@@ -11,6 +11,7 @@ import InputNumber from './input-number';
 import PopoverOrderDetail from './popover-order-detail';
 import DialogCreateSub from './dialog-create-sub';
 import DialogResetPassword from './dialog-reset-password';
+import DialogUploadImage from './dialog-upload-image';
 
 export {
     Select,
@@ -25,5 +26,6 @@ export {
     InputNumber,
     PopoverOrderDetail,
     DialogCreateSub,
-    DialogResetPassword
+    DialogResetPassword,
+    DialogUploadImage
 };
