@@ -35,6 +35,10 @@ export default class Header extends Component {
                 title: '订单列表',
                 href: '/order'
             },
+            {
+                title: '售后订单',
+                href: '/refund'
+            }
         ];
         if (!isSub) {
             menu = menu.concat([

@@ -477,15 +477,17 @@ class OrderList extends Component {
                         showQuickJumper
                     /> : null
                 } */}
-                <Pagination
-                    {...pager}
-                    onChange={page => {
-                        document.documentElement.scrollTop = 0;
-                        this.getList(page);
-                    }}
-                    showTotal={(total) => `共${total}个订单`}
-                    showQuickJumper
-                />
+                {
+                    pager.total > 0 ? <Pagination
+                        {...pager}
+                        onChange={page => {
+                            document.documentElement.scrollTop = 0;
+                            this.getList(page);
+                        }}
+                        showTotal={(total) => `共${total}个订单`}
+                        showQuickJumper
+                    /> : null
+                }
             </div>
         );
     }
