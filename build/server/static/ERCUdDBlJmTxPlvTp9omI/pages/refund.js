@@ -255,6 +255,21 @@ module.exports = require("antd/lib/form/style");
 
 /***/ }),
 
+/***/ "374s":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return roleList; });
+var roleList = [{
+  label: '默认',
+  value: 'default'
+}, {
+  label: '管理员',
+  value: 'manager'
+}];
+
+/***/ }),
+
 /***/ "3PsY":
 /***/ (function(module, exports) {
 
@@ -929,6 +944,7 @@ function (_Component) {
           user = _this$props.user,
           onShowNotice = _this$props.onShowNotice;
       var isSub = !!user.sub;
+      var isManager = isSub && user.sub.role == 'manager';
       var menu = [{
         title: '下单',
         href: '/'
@@ -944,14 +960,14 @@ function (_Component) {
         href: '/refund'
       }];
 
-      if (!isSub) {
+      if (!isSub || isManager) {
         menu = menu.concat([{
           title: '账单列表',
           href: '/bill'
-        }, {
+        }], !isSub ? [{
           title: '子账号列表',
           href: '/sub'
-        }]);
+        }] : []);
       }
 
       var userMenu = external_react_default.a.createElement(menu_default.a, {
@@ -2591,7 +2607,12 @@ function PopoverOrderDetail(_ref) {
     }
   }, "\u67E5\u770B\u8BA2\u5355");
 }
+// EXTERNAL MODULE: ./config/constant.js
+var constant = __webpack_require__("374s");
+
 // CONCATENATED MODULE: ./component/dialog-create-sub/index.jsx
+
+
 
 
 
@@ -2743,6 +2764,15 @@ function (_Component) {
         }]
       })(external_react_default.a.createElement(input_default.a.Password, {
         placeholder: "\u4E8C\u6B21\u8F93\u5165\u5BC6\u7801"
+      }))), external_react_default.a.createElement(form_default.a.Item, {
+        label: "\u9009\u62E9\u89D2\u8272"
+      }, getFieldDecorator('role', {
+        rules: [{
+          required: true
+        }],
+        initialValue: 'default'
+      })(external_react_default.a.createElement(select_Select, {
+        options: constant["a" /* roleList */]
       }))), external_react_default.a.createElement(form_default.a.Item, {
         className: "hide"
       }, external_react_default.a.createElement(button_default.a, {
@@ -3800,7 +3830,7 @@ function (_Component) {
     value: function componentDidMount() {
       var user = this.props.user;
 
-      if (!user.sub) {
+      if (!user.sub || user.sub && user.sub.role === 'manager') {
         this.getSubList();
       }
     }
@@ -3913,7 +3943,7 @@ function (_Component) {
         },
         onChange: this.handleChangeDate,
         allowClear: true
-      }), !user.sub ? react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_17__[/* Select */ "j"], {
+      }), !user.sub || user.sub && user.sub.role === 'manager' ? react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_17__[/* Select */ "j"], {
         options: subList,
         style: {
           marginLeft: 15,

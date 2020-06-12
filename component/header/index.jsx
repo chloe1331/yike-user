@@ -22,6 +22,8 @@ export default class Header extends Component {
     render() {
         const { router, user, onShowNotice } = this.props;
         const isSub = !!user.sub;
+        const isManager = isSub && user.sub.role == 'manager';
+ 
         let menu = [
             {
                 title: '下单',
@@ -40,17 +42,18 @@ export default class Header extends Component {
                 href: '/refund'
             }
         ];
-        if (!isSub) {
+        if (!isSub || isManager) {
             menu = menu.concat([
                 {
                     title: '账单列表',
                     href: '/bill'
                 },
+            ], !isSub ? [
                 {
                     title: '子账号列表',
                     href: '/sub'
                 }
-            ]);
+            ]: []);
         }
         const userMenu = (
             <Menu style={{ width: 180 }}>

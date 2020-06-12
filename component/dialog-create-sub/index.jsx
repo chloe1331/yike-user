@@ -3,7 +3,9 @@ import { Modal, Form, Input, Button, message } from 'antd';
 import PropTypes from 'prop-types';
 
 import { MServer } from 'public/utils';
+import { roleList } from 'config/constant';
 import Dialog from '../dialog';
+import Select from '../select';
 
 class DialogCreateSub extends Component {
     constructor(props) {
@@ -98,6 +100,20 @@ class DialogCreateSub extends Component {
                                 }]
                             })(
                                 <Input.Password placeholder="二次输入密码" />
+                            )
+                        }
+                    </Form.Item>
+                    <Form.Item label="选择角色">
+                        {
+                            getFieldDecorator('role', {
+                                rules: [{
+                                    required: true,
+                                }],
+                                initialValue: 'default'
+                            })(
+                                <Select 
+                                    options={roleList}
+                                />
                             )
                         }
                     </Form.Item>

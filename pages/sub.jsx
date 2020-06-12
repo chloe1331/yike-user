@@ -4,6 +4,7 @@ import { Button, Divider, Popconfirm } from 'antd';
 import PropTypes from 'prop-types';
 
 import { MServer } from 'public/utils';
+import { roleList } from 'config/constant';
 import { TableAction, DialogCreateSub, DialogResetPassword } from 'component';
 
 class Sub extends Component {
@@ -60,7 +61,7 @@ class Sub extends Component {
                             key: 'role',
                             dataIndex: 'role',
                             title: '权限',
-                            render: text => '默认'
+                            render: text => roleList.find(item => item.value == text).label
                         },
                         {
                             key: 'createdAt',

@@ -237,7 +237,7 @@ module.exports = require("antd/lib/select/style");
 /***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("lkvV");
+module.exports = __webpack_require__("Q9Ih");
 
 
 /***/ }),
@@ -253,6 +253,21 @@ module.exports = require("antd/lib/popover");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/form/style");
+
+/***/ }),
+
+/***/ "374s":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return roleList; });
+var roleList = [{
+  label: '默认',
+  value: 'default'
+}, {
+  label: '管理员',
+  value: 'manager'
+}];
 
 /***/ }),
 
@@ -281,13 +296,6 @@ module.exports = require("next/router");
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("k1wZ");
-
-/***/ }),
-
-/***/ "5rRV":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/card");
 
 /***/ }),
 
@@ -915,6 +923,7 @@ function (_Component) {
           user = _this$props.user,
           onShowNotice = _this$props.onShowNotice;
       var isSub = !!user.sub;
+      var isManager = isSub && user.sub.role == 'manager';
       var menu = [{
         title: '下单',
         href: '/'
@@ -930,14 +939,14 @@ function (_Component) {
         href: '/refund'
       }];
 
-      if (!isSub) {
+      if (!isSub || isManager) {
         menu = menu.concat([{
           title: '账单列表',
           href: '/bill'
-        }, {
+        }], !isSub ? [{
           title: '子账号列表',
           href: '/sub'
-        }]);
+        }] : []);
       }
 
       var userMenu = external_react_default.a.createElement(menu_default.a, {
@@ -2577,7 +2586,12 @@ function PopoverOrderDetail(_ref) {
     }
   }, "\u67E5\u770B\u8BA2\u5355");
 }
+// EXTERNAL MODULE: ./config/constant.js
+var constant = __webpack_require__("374s");
+
 // CONCATENATED MODULE: ./component/dialog-create-sub/index.jsx
+
+
 
 
 
@@ -2729,6 +2743,15 @@ function (_Component) {
         }]
       })(external_react_default.a.createElement(input_default.a.Password, {
         placeholder: "\u4E8C\u6B21\u8F93\u5165\u5BC6\u7801"
+      }))), external_react_default.a.createElement(form_default.a.Item, {
+        label: "\u9009\u62E9\u89D2\u8272"
+      }, getFieldDecorator('role', {
+        rules: [{
+          required: true
+        }],
+        initialValue: 'default'
+      })(external_react_default.a.createElement(select_Select, {
+        options: constant["a" /* roleList */]
       }))), external_react_default.a.createElement(form_default.a.Item, {
         className: "hide"
       }, external_react_default.a.createElement(button_default.a, {
@@ -3112,6 +3135,81 @@ module.exports = require("antd/lib/table");
 
 /***/ }),
 
+/***/ "Q9Ih":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Bill; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("0iUn");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("sLSF");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("MI3g");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("a7VT");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("Tit0");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("OLV9");
+
+
+
+
+
+
+
+
+var Bill =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(Bill, _Component);
+
+  function Bill() {
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, Bill);
+
+    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(Bill).apply(this, arguments));
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(Bill, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "page-layout-center"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_6__[/* TableAction */ "k"], {
+        action: "/user/mybill",
+        columns: [{
+          key: 'type',
+          dataIndex: 'type',
+          title: '交易类型',
+          render: function render(text) {
+            return text == 0 ? '支出' : '收入';
+          }
+        }, {
+          key: 'amount',
+          dataIndex: 'amount',
+          title: '交易金额'
+        }, {
+          key: 'balance',
+          dataIndex: 'balance',
+          title: '账户余额'
+        }, {
+          key: 'remark',
+          dataIndex: 'remark',
+          title: '备注'
+        }, {
+          key: 'createdAt',
+          dataIndex: 'createdAt',
+          title: '交易时间'
+        }]
+      }));
+    }
+  }]);
+
+  return Bill;
+}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "QghY":
 /***/ (function(module, exports) {
 
@@ -3230,13 +3328,6 @@ module.exports = require("antd/lib/avatar/style");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/input");
-
-/***/ }),
-
-/***/ "VHKL":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/card/style");
 
 /***/ }),
 
@@ -3855,82 +3946,6 @@ function _extends() {
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/table/style");
-
-/***/ }),
-
-/***/ "lkvV":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Page; });
-/* harmony import */ var antd_lib_card_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("VHKL");
-/* harmony import */ var antd_lib_card_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_card_style__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var antd_lib_card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("5rRV");
-/* harmony import */ var antd_lib_card__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_card__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("DnGC");
-/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button_style__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("eGmO");
-/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("0iUn");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("sLSF");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("MI3g");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("a7VT");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("Tit0");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("OLV9");
-
-
-
-
-
-
-
-
-
-
-
-
-var Page =
-/*#__PURE__*/
-function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(Page, _Component);
-
-  function Page(props) {
-    var _this;
-
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(this, Page);
-
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(Page).call(this, props));
-    _this.uploadRef = Object(react__WEBPACK_IMPORTED_MODULE_9__["createRef"])();
-    return _this;
-  }
-
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(Page, [{
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "page-layout-center"
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_10__[/* DialogUploadImage */ "f"], {
-        ref: this.uploadRef
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "form-condition"
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_3___default.a, {
-        type: "primary",
-        onClick: function onClick() {
-          return _this2.uploadRef.current.open();
-        }
-      }, "\u4E0A\u4F20\u56FE\u7247")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(antd_lib_card__WEBPACK_IMPORTED_MODULE_1___default.a, null));
-    }
-  }]);
-
-  return Page;
-}(react__WEBPACK_IMPORTED_MODULE_9__["Component"]);
-
-
 
 /***/ }),
 
