@@ -593,7 +593,7 @@ class Home extends Component {
                     item['省'],
                     item['市'],
                     item['区'],
-                    item['街道']
+                    item['街道'] || item['详细地址']
                 ];
                 result.push({
                     order_sn: (item['订单编号'] || item['订单号'] || '').toString().trim(),
