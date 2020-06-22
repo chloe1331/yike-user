@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -298,14 +298,6 @@ module.exports = __webpack_require__("k1wZ");
 
 /***/ }),
 
-/***/ 7:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("eBHP");
-
-
-/***/ }),
-
 /***/ "7GvT":
 /***/ (function(module, exports) {
 
@@ -313,10 +305,11 @@ module.exports = require("antd/lib/empty");
 
 /***/ }),
 
-/***/ "83ri":
-/***/ (function(module, exports) {
+/***/ 8:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("antd/lib/date-picker");
+module.exports = __webpack_require__("fbvJ");
+
 
 /***/ }),
 
@@ -553,13 +546,6 @@ module.exports = require("core-js/library/fn/get-iterator");
 
 /***/ }),
 
-/***/ "JHZV":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/radio/style");
-
-/***/ }),
-
 /***/ "Jo+v":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -618,6 +604,13 @@ module.exports = {
 	"iconBtns": "icon-btns___1OP6S",
 	"loading": "loading___3LfpB"
 };
+
+/***/ }),
+
+/***/ "Kjtv":
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/is-iterable");
 
 /***/ }),
 
@@ -1473,6 +1466,46 @@ var popconfirm_style_ = __webpack_require__("sN99");
 var popconfirm_ = __webpack_require__("QghY");
 var popconfirm_default = /*#__PURE__*/__webpack_require__.n(popconfirm_);
 
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js
+var is_array = __webpack_require__("p0XB");
+var is_array_default = /*#__PURE__*/__webpack_require__.n(is_array);
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/arrayWithoutHoles.js
+
+function _arrayWithoutHoles(arr) {
+  if (is_array_default()(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+
+    return arr2;
+  }
+}
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/array/from.js
+var from = __webpack_require__("d04V");
+var from_default = /*#__PURE__*/__webpack_require__.n(from);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/is-iterable.js
+var is_iterable = __webpack_require__("yLu3");
+var is_iterable_default = /*#__PURE__*/__webpack_require__.n(is_iterable);
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/iterableToArray.js
+
+
+function _iterableToArray(iter) {
+  if (is_iterable_default()(Object(iter)) || Object.prototype.toString.call(iter) === "[object Arguments]") return from_default()(iter);
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/nonIterableSpread.js
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js
+
+
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+}
 // EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js
 var objectSpread = __webpack_require__("zrwo");
 
@@ -1650,6 +1683,7 @@ var order_list_style = __webpack_require__("g0VI");
 var order_list_style_default = /*#__PURE__*/__webpack_require__.n(order_list_style);
 
 // CONCATENATED MODULE: ./component/order-list/index.jsx
+
 
 
 
@@ -2043,11 +2077,19 @@ function (_Component) {
           className: order_list_style_default.a.tableBodyHead
         }, external_react_default.a.createElement("td", {
           colSpan: colSpan
-        }, external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u8BA2\u5355\u53F7\uFF1A"), item.order_sn), external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u521B\u5EFA\u65F6\u95F4\uFF1A"), item.createdAt), external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u6536\u4EF6\u4FE1\u606F\uFF1A"), item.consignee ? "".concat(item.consignee, "(").concat(item.mobile, ")") : '-', " ", item.address ? "".concat(item.province, " ").concat(item.city, " ").concat(item.district, " ").concat(item.address) : '-'))), item.orders.map(function (order, i) {
+        }, external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u8BA2\u5355\u53F7\uFF1A"), item.order_sn), external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u521B\u5EFA\u65F6\u95F4\uFF1A"), item.createdAt), external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u6536\u4EF6\u4FE1\u606F\uFF1A"), item.consignee ? "".concat(item.consignee, "(").concat(item.mobile, ")") : '-', " ", item.address ? "".concat(item.province, " ").concat(item.city, " ").concat(item.district, " ").concat(item.address) : '-'))), [].concat(_toConsumableArray(item.orders.map(function (o) {
+          return Object(objectSpread["a" /* default */])({}, o, {
+            current_type: 'order'
+          });
+        })), _toConsumableArray(item.parts.map(function (p) {
+          return Object(objectSpread["a" /* default */])({}, p, {
+            current_type: 'part'
+          });
+        }))).map(function (order, i) {
           return external_react_default.a.createElement("tr", {
-            key: "order_".concat(order.id),
+            key: "".concat(order.current_type == 'order' ? 'order' : 'part', "_").concat(order.id),
             className: order_list_style_default.a.tableBodyContent
-          }, external_react_default.a.createElement("td", null, external_react_default.a.createElement(ImageHover, {
+          }, order.current_type == 'order' ? external_react_default.a.createElement(external_react_["Fragment"], null, external_react_default.a.createElement("td", null, external_react_default.a.createElement(ImageHover, {
             src: order.image1,
             onClick: function onClick() {
               return _this13.handleOpenImagePreview(order.image1);
@@ -2059,7 +2101,12 @@ function (_Component) {
             onConfirm: function onConfirm() {
               return _this13.handleDeleteOrder(order.id);
             }
-          }, external_react_default.a.createElement("a", null, "\u5220\u9664\u5546\u54C1"))) : null), !isSub ? external_react_default.a.createElement("td", null, order.price) : null, external_react_default.a.createElement("td", null, order.quantity), external_react_default.a.createElement("td", null, order.createdAt), i === 0 ? [!isSub ? external_react_default.a.createElement("td", {
+          }, external_react_default.a.createElement("a", null, "\u5220\u9664\u5546\u54C1"))) : null), !isSub ? external_react_default.a.createElement("td", null, order.price) : null, external_react_default.a.createElement("td", null, order.quantity), external_react_default.a.createElement("td", null, order.createdAt)) : external_react_default.a.createElement(external_react_["Fragment"], null, external_react_default.a.createElement("td", null, "\u914D\u4EF6"), external_react_default.a.createElement("td", null, order.name, item.status == 30 ? external_react_default.a.createElement("div", null, external_react_default.a.createElement(popconfirm_default.a, {
+            title: "\u786E\u5B9A\u8981\u5220\u9664\u8FD9\u4E2A\u5546\u54C1\u5417\uFF1F",
+            onConfirm: function onConfirm() {
+              return _this13.handleDeletePart(order.id);
+            }
+          }, external_react_default.a.createElement("a", null, "\u5220\u9664\u5546\u54C1"))) : null), !isSub ? external_react_default.a.createElement("td", null, order.price) : null, external_react_default.a.createElement("td", null, order.quantity), external_react_default.a.createElement("td", null, order.createdAt)), i === 0 ? [!isSub ? external_react_default.a.createElement("td", {
             key: "amount",
             className: order_list_style_default.a.tableBodyRowSpan,
             rowSpan: item.orders.length + item.parts.length
@@ -2096,17 +2143,84 @@ function (_Component) {
             },
             className: refundStatusMap[item.refund_status].className
           }, "(", refundStatusMap[item.refund_status].text, item.refund_type == 10 ? '-退运费' : '', ")") : null)] : null);
-        }), item.parts.map(function (part) {
-          return external_react_default.a.createElement("tr", {
-            key: "part_".concat(part.id),
-            className: order_list_style_default.a.tableBodyContent
-          }, external_react_default.a.createElement("td", null, "\u914D\u4EF6"), external_react_default.a.createElement("td", null, part.name, item.status == 30 ? external_react_default.a.createElement("div", null, external_react_default.a.createElement(popconfirm_default.a, {
-            title: "\u786E\u5B9A\u8981\u5220\u9664\u8FD9\u4E2A\u5546\u54C1\u5417\uFF1F",
-            onConfirm: function onConfirm() {
-              return _this13.handleDeletePart(part.id);
-            }
-          }, external_react_default.a.createElement("a", null, "\u5220\u9664\u5546\u54C1"))) : null), !isSub ? external_react_default.a.createElement("td", null, part.price) : null, external_react_default.a.createElement("td", null, part.quantity), external_react_default.a.createElement("td", null, part.createdAt));
-        }), item.status == 30 ? external_react_default.a.createElement("tr", {
+        }), // item.orders.map((order, i) => (
+        //     <tr key={`order_${order.id}`} className={style.tableBodyContent}>
+        //         <td><ImageHover src={order.image1} onClick={() => this.handleOpenImagePreview(order.image1)} /></td>
+        //         <td>
+        //             {order.brand_name} {order.brand_type_name} {order.texture_name} {order.texture_attr_name || ''}
+        //             {order.print_type === 10 ? <span className="text-warning">(裸壳)</span> : null}
+        //             {
+        //                 item.status == 30 || item.status == 0 ? (
+        //                     <div>
+        //                         <Popconfirm
+        //                             title="确定要删除这个商品吗？"
+        //                             onConfirm={() => this.handleDeleteOrder(order.id)}
+        //                         >
+        //                             <a>删除商品</a>
+        //                         </Popconfirm>
+        //                     </div>
+        //                 ) : null
+        //             }
+        //         </td>
+        //         {!isSub ? <td>{order.price}</td> : null}
+        //         <td>{order.quantity}</td>
+        //         <td>{order.createdAt}</td>
+        //         {
+        //             i === 0 ? [
+        //                 !isSub ? <td key="amount" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+        //                     <div>¥ {item.amount}</div>
+        //                     {item.post_fee ? <div>含运费{item.post_fee}元</div> : null}
+        //                 </td> : null,
+        //                 <td key="express" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+        //                     {
+        //                         item.status == 30 ? (
+        //                             <Select 
+        //                                 style={{ width: 120 }}
+        //                                 options={expressList}
+        //                                 value={item.express_id}
+        //                                 fieldName={{ label: 'name', value: 'id' }}
+        //                                 onChange={value => this.handleChangeExpress(item.id, value)}
+        //                             />
+        //                         ) : (
+        //                             <div>{item.express_name || '--'}</div>
+        //                         )
+        //                     }
+        //                 </td>,
+        //                 <td key="type" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+        //                     {item.type == 10 ? '充值订单' : '普通订单'}
+        //                 </td>,
+        //                 <td key="status" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+        //                     <span className={statusMap[item.status].className}>{statusMap[item.status].text}</span>
+        //                     {item.refund_status != 0 ? <span style={{ display: 'block' }} className={refundStatusMap[item.refund_status].className}>({refundStatusMap[item.refund_status].text}{item.refund_type == 10 ? '-退运费' : ''})</span> : null}
+        //                 </td>,
+        //             ] : null
+        //         }
+        //     </tr>
+        // )),
+        // item.parts.map((part) => (
+        //     <tr key={`part_${part.id}`} className={style.tableBodyContent}>
+        //         <td>配件</td>
+        //         <td>
+        //             {part.name}
+        //             {
+        //                 item.status == 30 ? (
+        //                     <div>
+        //                         <Popconfirm
+        //                             title="确定要删除这个商品吗？"
+        //                             onConfirm={() => this.handleDeletePart(part.id)}
+        //                         >
+        //                             <a>删除商品</a>
+        //                         </Popconfirm>
+        //                     </div>
+        //                 ) : null
+        //             }
+        //         </td>
+        //         {!isSub ? <td>{part.price}</td> : null}
+        //         <td>{part.quantity}</td>
+        //         <td>{part.createdAt}</td>
+        //     </tr>
+        // )),
+        item.status == 30 ? external_react_default.a.createElement("tr", {
           key: "operator",
           className: order_list_style_default.a.tableBodyHead
         }, external_react_default.a.createElement("td", {
@@ -3170,13 +3284,6 @@ module.exports = require("core-js/library/fn/array/is-array");
 
 /***/ }),
 
-/***/ "RGP6":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/date-picker/style");
-
-/***/ }),
-
 /***/ "SqZg":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3321,13 +3428,6 @@ module.exports = _createClass;
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/set-prototype-of");
-
-/***/ }),
-
-/***/ "XQdj":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/radio");
 
 /***/ }),
 
@@ -3681,6 +3781,13 @@ module.exports = require("regenerator-runtime");
 
 /***/ }),
 
+/***/ "d04V":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("r7XW");
+
+/***/ }),
+
 /***/ "dGr4":
 /***/ (function(module, exports) {
 
@@ -3748,257 +3855,6 @@ function _slicedToArray(arr, i) {
 
 /***/ }),
 
-/***/ "eBHP":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var antd_lib_date_picker_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("RGP6");
-/* harmony import */ var antd_lib_date_picker_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_date_picker_style__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("83ri");
-/* harmony import */ var antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("oRSk");
-/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input_style__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("Uqqx");
-/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("JHZV");
-/* harmony import */ var antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var antd_lib_radio__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("XQdj");
-/* harmony import */ var antd_lib_radio__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_radio__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("vYYK");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("0iUn");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("sLSF");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("MI3g");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("a7VT");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("AT/M");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("Tit0");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var dva_no_router__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("0B1J");
-/* harmony import */ var dva_no_router__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(dva_no_router__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("wy2R");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var public_utils__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("HgRd");
-/* harmony import */ var component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("OLV9");
-/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("mVpe");
-/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(config_locale__WEBPACK_IMPORTED_MODULE_18__);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var Order =
-/*#__PURE__*/
-function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"])(Order, _Component);
-
-  function Order(props) {
-    var _this;
-
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(this, Order);
-
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"])(Order).call(this, props));
-    _this.tableRef = Object(react__WEBPACK_IMPORTED_MODULE_13__["createRef"])();
-    _this.state = {
-      subList: []
-    };
-    var handles = ['handleSearch', 'handleChangeDate'];
-    handles.forEach(function (item) {
-      return _this[item] = _this[item].bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"])(_this));
-    });
-    return _this;
-  }
-
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(Order, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var user = this.props.user;
-
-      if (!user.sub || user.sub && user.sub.role === 'manager') {
-        this.getSubList();
-      }
-    }
-  }, {
-    key: "getSubList",
-    value: function getSubList() {
-      var _this2 = this;
-
-      public_utils__WEBPACK_IMPORTED_MODULE_16__[/* MServer */ "a"].get('/user/sublist', {
-        is_all: 1
-      }).then(function (res) {
-        if (res.errcode == 0) {
-          _this2.setState({
-            subList: res.data
-          });
-        }
-      });
-    }
-  }, {
-    key: "handleChangeStatus",
-    value: function handleChangeStatus(status) {
-      if (this.tableRef.current) {
-        this.tableRef.current.reload({
-          page: 1,
-          condition: status == 'all' ? {
-            is_refund: 1,
-            refund_status: undefined
-          } : {
-            refund_status: status
-          }
-        });
-      }
-    }
-  }, {
-    key: "handleChangeDate",
-    value: function handleChangeDate(date) {
-      this.tableRef.current.reload({
-        condition: {
-          start_date: date[0] ? date[0].format('YYYY-MM-DD') : undefined,
-          end_date: date[1] ? date[1].format('YYYY-MM-DD') : undefined
-        }
-      });
-    }
-  }, {
-    key: "handleSearch",
-    value: function handleSearch(type, value) {
-      this.tableRef.current.reload({
-        condition: Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])({}, type, value)
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      var tabs = [{
-        value: 'all',
-        label: '全部'
-      }, {
-        value: '10',
-        label: '退款中'
-      }, {
-        value: '20',
-        label: '退款成功'
-      }, {
-        value: '40',
-        label: '退款失败'
-      }];
-      var subList = this.state.subList;
-      var user = this.props.user;
-      return react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement("div", {
-        className: "page-layout-center"
-      }, react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(antd_lib_radio__WEBPACK_IMPORTED_MODULE_5___default.a.Group, {
-        defaultValue: "all",
-        onChange: function onChange(e) {
-          var value = e.target.value;
-
-          _this3.handleChangeStatus(value);
-        },
-        style: {
-          marginBottom: '20px'
-        }
-      }, tabs.map(function (tab) {
-        return react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(antd_lib_radio__WEBPACK_IMPORTED_MODULE_5___default.a.Button, {
-          key: tab.value,
-          value: tab.value
-        }, tab.label);
-      })), react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement("div", {
-        className: "form-condition"
-      }, react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_3___default.a.Search, {
-        onSearch: function onSearch(value) {
-          return _this3.handleSearch('order_sn', value);
-        },
-        placeholder: "\u641C\u7D22\u8BA2\u5355\u53F7"
-      }), react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_3___default.a.Search, {
-        style: {
-          marginLeft: '15px'
-        },
-        onSearch: function onSearch(value) {
-          return _this3.handleSearch('express_sn', value);
-        },
-        placeholder: "\u641C\u7D22\u8FD0\u5355\u53F7"
-      }), react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_3___default.a.Search, {
-        style: {
-          width: 160,
-          marginLeft: '15px'
-        },
-        onSearch: function onSearch(value) {
-          return _this3.handleSearch('consignee', (value || '').trim());
-        },
-        placeholder: "\u641C\u7D22\u59D3\u540D"
-      }), react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_3___default.a.Search, {
-        style: {
-          width: 160,
-          marginLeft: '15px'
-        },
-        onSearch: function onSearch(value) {
-          return _this3.handleSearch('mobile', (value || '').trim());
-        },
-        placeholder: "\u641C\u7D22\u624B\u673A"
-      }), react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_1___default.a.RangePicker, {
-        style: {
-          width: 240,
-          marginLeft: 15
-        },
-        disabledDate: function disabledDate(current) {
-          return current && current && current > moment__WEBPACK_IMPORTED_MODULE_15___default()().endOf('day');
-        },
-        onChange: this.handleChangeDate,
-        allowClear: true
-      }), !user.sub || user.sub && user.sub.role === 'manager' ? react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_17__[/* Select */ "j"], {
-        options: subList,
-        style: {
-          marginLeft: 15,
-          width: 180
-        },
-        fieldName: {
-          label: 'username',
-          value: 'id'
-        },
-        onChange: function onChange(value) {
-          return _this3.handleSearch('sub_id', value);
-        },
-        placeholder: "\u9009\u62E9\u5B50\u8D26\u53F7",
-        allowClear: true
-      }) : null), react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_17__[/* OrderList */ "i"], {
-        action: "/order/userlist",
-        ref: this.tableRef,
-        user: user,
-        condition: {
-          is_refund: 1
-        }
-      }));
-    }
-  }]);
-
-  return Order;
-}(react__WEBPACK_IMPORTED_MODULE_13__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(dva_no_router__WEBPACK_IMPORTED_MODULE_14__["connect"])(function (_ref) {
-  var user = _ref.user;
-  return {
-    user: user
-  };
-})(Order));
-
-/***/ }),
-
 /***/ "eGmO":
 /***/ (function(module, exports) {
 
@@ -4031,6 +3887,185 @@ module.exports = require("qs");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/menu/style");
+
+/***/ }),
+
+/***/ "fbvJ":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var antd_lib_popconfirm_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("sN99");
+/* harmony import */ var antd_lib_popconfirm_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_popconfirm_style__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var antd_lib_popconfirm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("QghY");
+/* harmony import */ var antd_lib_popconfirm__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_popconfirm__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var antd_lib_divider_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("qRh3");
+/* harmony import */ var antd_lib_divider_style__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd_lib_divider_style__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var antd_lib_divider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("xZtu");
+/* harmony import */ var antd_lib_divider__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_divider__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("DnGC");
+/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button_style__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("eGmO");
+/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("0iUn");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("sLSF");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("MI3g");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("a7VT");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("AT/M");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("Tit0");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var dva_no_router__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("0B1J");
+/* harmony import */ var dva_no_router__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(dva_no_router__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var public_utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("HgRd");
+/* harmony import */ var config_constant__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("374s");
+/* harmony import */ var component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("OLV9");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var Sub =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"])(Sub, _Component);
+
+  function Sub(props) {
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(this, Sub);
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(Sub).call(this, props));
+    _this.state = {
+      resetId: null
+    };
+    _this.createRef = Object(react__WEBPACK_IMPORTED_MODULE_12__["createRef"])();
+    _this.resetRef = Object(react__WEBPACK_IMPORTED_MODULE_12__["createRef"])();
+    _this.tableRef = Object(react__WEBPACK_IMPORTED_MODULE_12__["createRef"])();
+    var handles = ['handleAdd'];
+    handles.forEach(function (item) {
+      return _this[item] = _this[item].bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"])(_this));
+    });
+    return _this;
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(Sub, [{
+    key: "handleAdd",
+    value: function handleAdd() {
+      this.createRef.current.open();
+    }
+  }, {
+    key: "handleDelete",
+    value: function handleDelete(id) {
+      var _this2 = this;
+
+      public_utils__WEBPACK_IMPORTED_MODULE_14__[/* MServer */ "a"].post('/user/deletesub', {
+        id: id
+      }).then(function (res) {
+        if (res.errcode == 0) {
+          _this2.tableRef.current.reload();
+        }
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var resetId = this.state.resetId;
+      var user = this.props.user;
+      return react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement("div", {
+        className: "page-layout-center"
+      }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_16__[/* DialogCreateSub */ "b"], {
+        ref: this.createRef,
+        user: user,
+        onSuccess: function onSuccess() {
+          _this3.tableRef.current.reload();
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_16__[/* DialogResetPassword */ "e"], {
+        ref: this.resetRef,
+        resetId: resetId
+      }), react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement("div", {
+        className: "form-condition"
+      }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        type: "primary",
+        onClick: this.handleAdd
+      }, "\u6DFB\u52A0\u5B50\u8D26\u53F7")), react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_16__[/* TableAction */ "k"], {
+        action: "/user/sublist",
+        ref: this.tableRef,
+        columns: [{
+          key: 'username',
+          dataIndex: 'username',
+          title: '用户名',
+          render: function render(text) {
+            return "".concat(user.username, ":").concat(text);
+          }
+        }, {
+          key: 'role',
+          dataIndex: 'role',
+          title: '权限',
+          render: function render(text) {
+            return config_constant__WEBPACK_IMPORTED_MODULE_15__[/* roleList */ "a"].find(function (item) {
+              return item.value == text;
+            }).label;
+          }
+        }, {
+          key: 'createdAt',
+          dataIndex: 'createdAt',
+          title: '创建时间'
+        }, {
+          key: 'updatedAt',
+          dataIndex: 'updatedAt',
+          title: '最近更新时间'
+        }, {
+          key: 'setting',
+          dataIndex: 'id',
+          title: '操作',
+          render: function render(id) {
+            return react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_12__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement("a", {
+              onClick: function onClick() {
+                return _this3.setState({
+                  resetId: id
+                }, function () {
+                  return _this3.resetRef.current.open();
+                });
+              }
+            }, "\u91CD\u7F6E\u5BC6\u7801"), react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(antd_lib_divider__WEBPACK_IMPORTED_MODULE_3___default.a, {
+              type: "vertical"
+            }), react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(antd_lib_popconfirm__WEBPACK_IMPORTED_MODULE_1___default.a, {
+              title: "\u786E\u8BA4\u8981\u5220\u9664\u8FD9\u4E2A\u5B50\u8D26\u53F7\u5417\uFF1F",
+              onConfirm: function onConfirm() {
+                return _this3.handleDelete(id);
+              }
+            }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement("a", null, "\u5220\u9664")));
+          }
+        }]
+      }));
+    }
+  }]);
+
+  return Sub;
+}(react__WEBPACK_IMPORTED_MODULE_12__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(dva_no_router__WEBPACK_IMPORTED_MODULE_13__["connect"])(function (_ref) {
+  var user = _ref.user;
+  return {
+    user: user
+  };
+})(Sub));
 
 /***/ }),
 
@@ -4263,6 +4298,20 @@ module.exports = require("core-js/library/fn/object/keys");
 
 /***/ }),
 
+/***/ "qRh3":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/divider/style");
+
+/***/ }),
+
+/***/ "r7XW":
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/array/from");
+
+/***/ }),
+
 /***/ "rf6O":
 /***/ (function(module, exports) {
 
@@ -4383,17 +4432,24 @@ module.exports = require("core-js/library/fn/symbol");
 
 /***/ }),
 
-/***/ "wy2R":
-/***/ (function(module, exports) {
-
-module.exports = require("moment");
-
-/***/ }),
-
 /***/ "xKsY":
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/modal");
+
+/***/ }),
+
+/***/ "xZtu":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/divider");
+
+/***/ }),
+
+/***/ "yLu3":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("Kjtv");
 
 /***/ }),
 

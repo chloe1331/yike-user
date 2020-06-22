@@ -1,4 +1,4 @@
-import { Component, createRef, useState } from 'react';
+import { Component, createRef, useState, Fragment } from 'react';
 import Link from 'next/link';
 import ClipboardJS from 'clipboard';
 import { Pagination, Spin, Empty, Button, Popconfirm, message, Modal } from 'antd';
@@ -297,28 +297,52 @@ class OrderList extends Component {
                                         <span><label>收件信息：</label>{item.consignee ? `${item.consignee}(${item.mobile})` : '-'} {item.address ? `${item.province} ${item.city} ${item.district} ${item.address}` : '-'}</span>
                                     </td>
                                 </tr>,
-                                item.orders.map((order, i) => (
-                                    <tr key={`order_${order.id}`} className={style.tableBodyContent}>
-                                        <td><ImageHover src={order.image1} onClick={() => this.handleOpenImagePreview(order.image1)} /></td>
-                                        <td>
-                                            {order.brand_name} {order.brand_type_name} {order.texture_name} {order.texture_attr_name || ''}
-                                            {order.print_type === 10 ? <span className="text-warning">(裸壳)</span> : null}
-                                            {
-                                                item.status == 30 || item.status == 0 ? (
-                                                    <div>
-                                                        <Popconfirm
-                                                            title="确定要删除这个商品吗？"
-                                                            onConfirm={() => this.handleDeleteOrder(order.id)}
-                                                        >
-                                                            <a>删除商品</a>
-                                                        </Popconfirm>
-                                                    </div>
-                                                ) : null
-                                            }
-                                        </td>
-                                        {!isSub ? <td>{order.price}</td> : null}
-                                        <td>{order.quantity}</td>
-                                        <td>{order.createdAt}</td>
+                                [...item.orders.map(o => ({...o, current_type: 'order' })), ...item.parts.map(p => ({ ...p, current_type: 'part' }))].map((order, i) => (
+                                    <tr key={`${order.current_type == 'order' ? 'order' : 'part'}_${order.id}`} className={style.tableBodyContent}>
+                                        {
+                                            order.current_type == 'order' ? <Fragment>
+                                                <td><ImageHover src={order.image1} onClick={() => this.handleOpenImagePreview(order.image1)} /></td>
+                                                <td>
+                                                    {order.brand_name} {order.brand_type_name} {order.texture_name} {order.texture_attr_name || ''}
+                                                    {order.print_type === 10 ? <span className="text-warning">(裸壳)</span> : null}
+                                                    {
+                                                        item.status == 30 || item.status == 0 ? (
+                                                            <div>
+                                                                <Popconfirm
+                                                                    title="确定要删除这个商品吗？"
+                                                                    onConfirm={() => this.handleDeleteOrder(order.id)}
+                                                                >
+                                                                    <a>删除商品</a>
+                                                                </Popconfirm>
+                                                            </div>
+                                                        ) : null
+                                                    }
+                                                </td>
+                                                {!isSub ? <td>{order.price}</td> : null}
+                                                <td>{order.quantity}</td>
+                                                <td>{order.createdAt}</td>
+                                            </Fragment> : <Fragment>
+                                                <td>配件</td>
+                                                <td>
+                                                    {order.name}
+                                                    {
+                                                        item.status == 30 ? (
+                                                            <div>
+                                                                <Popconfirm
+                                                                    title="确定要删除这个商品吗？"
+                                                                    onConfirm={() => this.handleDeletePart(order.id)}
+                                                                >
+                                                                    <a>删除商品</a>
+                                                                </Popconfirm>
+                                                            </div>
+                                                        ) : null
+                                                    }
+                                                </td>
+                                                {!isSub ? <td>{order.price}</td> : null}
+                                                <td>{order.quantity}</td>
+                                                <td>{order.createdAt}</td>
+                                            </Fragment>
+                                        }
                                         {
                                             i === 0 ? [
                                                 !isSub ? <td key="amount" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
@@ -328,7 +352,7 @@ class OrderList extends Component {
                                                 <td key="express" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
                                                     {
                                                         item.status == 30 ? (
-                                                            <Select 
+                                                            <Select
                                                                 style={{ width: 120 }}
                                                                 options={expressList}
                                                                 value={item.express_id}
@@ -351,29 +375,83 @@ class OrderList extends Component {
                                         }
                                     </tr>
                                 )),
-                                item.parts.map((part) => (
-                                    <tr key={`part_${part.id}`} className={style.tableBodyContent}>
-                                        <td>配件</td>
-                                        <td>
-                                            {part.name}
-                                            {
-                                                item.status == 30 ? (
-                                                    <div>
-                                                        <Popconfirm
-                                                            title="确定要删除这个商品吗？"
-                                                            onConfirm={() => this.handleDeletePart(part.id)}
-                                                        >
-                                                            <a>删除商品</a>
-                                                        </Popconfirm>
-                                                    </div>
-                                                ) : null
-                                            }
-                                        </td>
-                                        {!isSub ? <td>{part.price}</td> : null}
-                                        <td>{part.quantity}</td>
-                                        <td>{part.createdAt}</td>
-                                    </tr>
-                                )),
+                                // item.orders.map((order, i) => (
+                                //     <tr key={`order_${order.id}`} className={style.tableBodyContent}>
+                                //         <td><ImageHover src={order.image1} onClick={() => this.handleOpenImagePreview(order.image1)} /></td>
+                                //         <td>
+                                //             {order.brand_name} {order.brand_type_name} {order.texture_name} {order.texture_attr_name || ''}
+                                //             {order.print_type === 10 ? <span className="text-warning">(裸壳)</span> : null}
+                                //             {
+                                //                 item.status == 30 || item.status == 0 ? (
+                                //                     <div>
+                                //                         <Popconfirm
+                                //                             title="确定要删除这个商品吗？"
+                                //                             onConfirm={() => this.handleDeleteOrder(order.id)}
+                                //                         >
+                                //                             <a>删除商品</a>
+                                //                         </Popconfirm>
+                                //                     </div>
+                                //                 ) : null
+                                //             }
+                                //         </td>
+                                //         {!isSub ? <td>{order.price}</td> : null}
+                                //         <td>{order.quantity}</td>
+                                //         <td>{order.createdAt}</td>
+                                //         {
+                                //             i === 0 ? [
+                                //                 !isSub ? <td key="amount" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+                                //                     <div>¥ {item.amount}</div>
+                                //                     {item.post_fee ? <div>含运费{item.post_fee}元</div> : null}
+                                //                 </td> : null,
+                                //                 <td key="express" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+                                //                     {
+                                //                         item.status == 30 ? (
+                                //                             <Select 
+                                //                                 style={{ width: 120 }}
+                                //                                 options={expressList}
+                                //                                 value={item.express_id}
+                                //                                 fieldName={{ label: 'name', value: 'id' }}
+                                //                                 onChange={value => this.handleChangeExpress(item.id, value)}
+                                //                             />
+                                //                         ) : (
+                                //                             <div>{item.express_name || '--'}</div>
+                                //                         )
+                                //                     }
+                                //                 </td>,
+                                //                 <td key="type" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+                                //                     {item.type == 10 ? '充值订单' : '普通订单'}
+                                //                 </td>,
+                                //                 <td key="status" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+                                //                     <span className={statusMap[item.status].className}>{statusMap[item.status].text}</span>
+                                //                     {item.refund_status != 0 ? <span style={{ display: 'block' }} className={refundStatusMap[item.refund_status].className}>({refundStatusMap[item.refund_status].text}{item.refund_type == 10 ? '-退运费' : ''})</span> : null}
+                                //                 </td>,
+                                //             ] : null
+                                //         }
+                                //     </tr>
+                                // )),
+                                // item.parts.map((part) => (
+                                //     <tr key={`part_${part.id}`} className={style.tableBodyContent}>
+                                //         <td>配件</td>
+                                //         <td>
+                                //             {part.name}
+                                //             {
+                                //                 item.status == 30 ? (
+                                //                     <div>
+                                //                         <Popconfirm
+                                //                             title="确定要删除这个商品吗？"
+                                //                             onConfirm={() => this.handleDeletePart(part.id)}
+                                //                         >
+                                //                             <a>删除商品</a>
+                                //                         </Popconfirm>
+                                //                     </div>
+                                //                 ) : null
+                                //             }
+                                //         </td>
+                                //         {!isSub ? <td>{part.price}</td> : null}
+                                //         <td>{part.quantity}</td>
+                                //         <td>{part.createdAt}</td>
+                                //     </tr>
+                                // )),
                                 item.status == 30 ? (
                                     <tr key="operator" className={style.tableBodyHead}>
                                         <td colSpan={colSpan}>

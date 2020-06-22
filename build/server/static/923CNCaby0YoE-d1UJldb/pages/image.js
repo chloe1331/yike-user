@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -214,21 +214,6 @@ module.exports = Api;
 
 /***/ }),
 
-/***/ 0:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("YNMu");
-
-
-/***/ }),
-
-/***/ "0B1J":
-/***/ (function(module, exports) {
-
-module.exports = require("dva-no-router");
-
-/***/ }),
-
 /***/ "0iUn":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -246,6 +231,14 @@ function _classCallCheck(instance, Constructor) {
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/select/style");
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("lkvV");
+
 
 /***/ }),
 
@@ -292,13 +285,6 @@ module.exports = require("antd/lib/dropdown/style");
 
 /***/ }),
 
-/***/ "4DCN":
-/***/ (function(module, exports) {
-
-module.exports = require("redux-logger");
-
-/***/ }),
-
 /***/ "4Q3z":
 /***/ (function(module, exports) {
 
@@ -313,18 +299,17 @@ module.exports = __webpack_require__("k1wZ");
 
 /***/ }),
 
+/***/ "5rRV":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/card");
+
+/***/ }),
+
 /***/ "7GvT":
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/empty");
-
-/***/ }),
-
-/***/ "8Bbg":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("B5Ud")
-
 
 /***/ }),
 
@@ -349,13 +334,6 @@ module.exports = require("antd/lib/avatar");
 
 /***/ }),
 
-/***/ "9xl+":
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
 /***/ "A4pX":
 /***/ (function(module, exports) {
 
@@ -375,218 +353,6 @@ function _assertThisInitialized(self) {
 
   return self;
 }
-
-/***/ }),
-
-/***/ "B5Ud":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__("KI45");
-
-var _promise = _interopRequireDefault(__webpack_require__("eVuF"));
-
-var _assign = _interopRequireDefault(__webpack_require__("UXZV"));
-
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__("/HRN"));
-
-var _createClass2 = _interopRequireDefault(__webpack_require__("WaGi"));
-
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__("ZDA2"));
-
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__("/+P4"));
-
-var _inherits2 = _interopRequireDefault(__webpack_require__("N9n2"));
-
-var __importStar = void 0 && (void 0).__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-  }
-  result["default"] = mod;
-  return result;
-};
-
-var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var react_1 = __importStar(__webpack_require__("cDcd"));
-
-var prop_types_1 = __importDefault(__webpack_require__("rf6O"));
-
-var utils_1 = __webpack_require__("p8BD");
-
-var router_1 = __webpack_require__("4Q3z");
-
-var App =
-/*#__PURE__*/
-function (_react_1$Component) {
-  (0, _inherits2.default)(App, _react_1$Component);
-
-  function App() {
-    (0, _classCallCheck2.default)(this, App);
-    return (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(App).apply(this, arguments));
-  }
-
-  (0, _createClass2.default)(App, [{
-    key: "getChildContext",
-    value: function getChildContext() {
-      return {
-        router: router_1.makePublicRouterInstance(this.props.router)
-      };
-    } // Kept here for backwards compatibility.
-    // When someone ended App they could call `super.componentDidCatch`. This is now deprecated.
-
-  }, {
-    key: "componentDidCatch",
-    value: function componentDidCatch(err) {
-      throw err;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          router = _this$props.router,
-          Component = _this$props.Component,
-          pageProps = _this$props.pageProps;
-      var url = createUrl(router);
-      return react_1.default.createElement(Container, null, react_1.default.createElement(Component, (0, _assign.default)({}, pageProps, {
-        url: url
-      })));
-    }
-  }], [{
-    key: "getInitialProps",
-    value: function (_ref) {
-      var Component = _ref.Component,
-          router = _ref.router,
-          ctx = _ref.ctx;
-
-      try {
-        return _promise.default.resolve(utils_1.loadGetInitialProps(Component, ctx)).then(function (pageProps) {
-          return {
-            pageProps: pageProps
-          };
-        });
-      } catch (e) {
-        return _promise.default.reject(e);
-      }
-    }
-  }]);
-  return App;
-}(react_1.Component);
-
-App.childContextTypes = {
-  router: prop_types_1.default.object
-};
-exports.default = App;
-
-var Container =
-/*#__PURE__*/
-function (_react_1$Component2) {
-  (0, _inherits2.default)(Container, _react_1$Component2);
-
-  function Container() {
-    (0, _classCallCheck2.default)(this, Container);
-    return (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Container).apply(this, arguments));
-  }
-
-  (0, _createClass2.default)(Container, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.scrollToHash();
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      this.scrollToHash();
-    }
-  }, {
-    key: "scrollToHash",
-    value: function scrollToHash() {
-      var hash = window.location.hash;
-      hash = hash ? hash.substring(1) : false;
-      if (!hash) return;
-      var el = document.getElementById(hash);
-      if (!el) return; // If we call scrollIntoView() in here without a setTimeout
-      // it won't scroll properly.
-
-      setTimeout(function () {
-        return el.scrollIntoView();
-      }, 0);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return this.props.children;
-    }
-  }]);
-  return Container;
-}(react_1.Component);
-
-exports.Container = Container;
-var warnUrl = utils_1.execOnce(function () {
-  if (false) {}
-});
-
-function createUrl(router) {
-  // This is to make sure we don't references the router object at call time
-  var pathname = router.pathname,
-      asPath = router.asPath,
-      query = router.query;
-  return {
-    get query() {
-      warnUrl();
-      return query;
-    },
-
-    get pathname() {
-      warnUrl();
-      return pathname;
-    },
-
-    get asPath() {
-      warnUrl();
-      return asPath;
-    },
-
-    back: function back() {
-      warnUrl();
-      router.back();
-    },
-    push: function push(url, as) {
-      warnUrl();
-      return router.push(url, as);
-    },
-    pushTo: function pushTo(href, as) {
-      warnUrl();
-      var pushRoute = as ? href : null;
-      var pushUrl = as || href;
-      return router.push(pushRoute, pushUrl);
-    },
-    replace: function replace(url, as) {
-      warnUrl();
-      return router.replace(url, as);
-    },
-    replaceTo: function replaceTo(href, as) {
-      warnUrl();
-      var replaceRoute = as ? href : null;
-      var replaceUrl = as || href;
-      return router.replace(replaceRoute, replaceUrl);
-    }
-  };
-}
-
-exports.createUrl = createUrl;
 
 /***/ }),
 
@@ -841,10 +607,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "LNYd":
+/***/ "Kjtv":
 /***/ (function(module, exports) {
 
-module.exports = require("antd/lib/locale-provider/zh_CN");
+module.exports = require("core-js/library/fn/is-iterable");
 
 /***/ }),
 
@@ -1700,6 +1466,46 @@ var popconfirm_style_ = __webpack_require__("sN99");
 var popconfirm_ = __webpack_require__("QghY");
 var popconfirm_default = /*#__PURE__*/__webpack_require__.n(popconfirm_);
 
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js
+var is_array = __webpack_require__("p0XB");
+var is_array_default = /*#__PURE__*/__webpack_require__.n(is_array);
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/arrayWithoutHoles.js
+
+function _arrayWithoutHoles(arr) {
+  if (is_array_default()(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+
+    return arr2;
+  }
+}
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/array/from.js
+var from = __webpack_require__("d04V");
+var from_default = /*#__PURE__*/__webpack_require__.n(from);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/is-iterable.js
+var is_iterable = __webpack_require__("yLu3");
+var is_iterable_default = /*#__PURE__*/__webpack_require__.n(is_iterable);
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/iterableToArray.js
+
+
+function _iterableToArray(iter) {
+  if (is_iterable_default()(Object(iter)) || Object.prototype.toString.call(iter) === "[object Arguments]") return from_default()(iter);
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/nonIterableSpread.js
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js
+
+
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+}
 // EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js
 var objectSpread = __webpack_require__("zrwo");
 
@@ -1877,6 +1683,7 @@ var order_list_style = __webpack_require__("g0VI");
 var order_list_style_default = /*#__PURE__*/__webpack_require__.n(order_list_style);
 
 // CONCATENATED MODULE: ./component/order-list/index.jsx
+
 
 
 
@@ -2270,11 +2077,19 @@ function (_Component) {
           className: order_list_style_default.a.tableBodyHead
         }, external_react_default.a.createElement("td", {
           colSpan: colSpan
-        }, external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u8BA2\u5355\u53F7\uFF1A"), item.order_sn), external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u521B\u5EFA\u65F6\u95F4\uFF1A"), item.createdAt), external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u6536\u4EF6\u4FE1\u606F\uFF1A"), item.consignee ? "".concat(item.consignee, "(").concat(item.mobile, ")") : '-', " ", item.address ? "".concat(item.province, " ").concat(item.city, " ").concat(item.district, " ").concat(item.address) : '-'))), item.orders.map(function (order, i) {
+        }, external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u8BA2\u5355\u53F7\uFF1A"), item.order_sn), external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u521B\u5EFA\u65F6\u95F4\uFF1A"), item.createdAt), external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u6536\u4EF6\u4FE1\u606F\uFF1A"), item.consignee ? "".concat(item.consignee, "(").concat(item.mobile, ")") : '-', " ", item.address ? "".concat(item.province, " ").concat(item.city, " ").concat(item.district, " ").concat(item.address) : '-'))), [].concat(_toConsumableArray(item.orders.map(function (o) {
+          return Object(objectSpread["a" /* default */])({}, o, {
+            current_type: 'order'
+          });
+        })), _toConsumableArray(item.parts.map(function (p) {
+          return Object(objectSpread["a" /* default */])({}, p, {
+            current_type: 'part'
+          });
+        }))).map(function (order, i) {
           return external_react_default.a.createElement("tr", {
-            key: "order_".concat(order.id),
+            key: "".concat(order.current_type == 'order' ? 'order' : 'part', "_").concat(order.id),
             className: order_list_style_default.a.tableBodyContent
-          }, external_react_default.a.createElement("td", null, external_react_default.a.createElement(ImageHover, {
+          }, order.current_type == 'order' ? external_react_default.a.createElement(external_react_["Fragment"], null, external_react_default.a.createElement("td", null, external_react_default.a.createElement(ImageHover, {
             src: order.image1,
             onClick: function onClick() {
               return _this13.handleOpenImagePreview(order.image1);
@@ -2286,7 +2101,12 @@ function (_Component) {
             onConfirm: function onConfirm() {
               return _this13.handleDeleteOrder(order.id);
             }
-          }, external_react_default.a.createElement("a", null, "\u5220\u9664\u5546\u54C1"))) : null), !isSub ? external_react_default.a.createElement("td", null, order.price) : null, external_react_default.a.createElement("td", null, order.quantity), external_react_default.a.createElement("td", null, order.createdAt), i === 0 ? [!isSub ? external_react_default.a.createElement("td", {
+          }, external_react_default.a.createElement("a", null, "\u5220\u9664\u5546\u54C1"))) : null), !isSub ? external_react_default.a.createElement("td", null, order.price) : null, external_react_default.a.createElement("td", null, order.quantity), external_react_default.a.createElement("td", null, order.createdAt)) : external_react_default.a.createElement(external_react_["Fragment"], null, external_react_default.a.createElement("td", null, "\u914D\u4EF6"), external_react_default.a.createElement("td", null, order.name, item.status == 30 ? external_react_default.a.createElement("div", null, external_react_default.a.createElement(popconfirm_default.a, {
+            title: "\u786E\u5B9A\u8981\u5220\u9664\u8FD9\u4E2A\u5546\u54C1\u5417\uFF1F",
+            onConfirm: function onConfirm() {
+              return _this13.handleDeletePart(order.id);
+            }
+          }, external_react_default.a.createElement("a", null, "\u5220\u9664\u5546\u54C1"))) : null), !isSub ? external_react_default.a.createElement("td", null, order.price) : null, external_react_default.a.createElement("td", null, order.quantity), external_react_default.a.createElement("td", null, order.createdAt)), i === 0 ? [!isSub ? external_react_default.a.createElement("td", {
             key: "amount",
             className: order_list_style_default.a.tableBodyRowSpan,
             rowSpan: item.orders.length + item.parts.length
@@ -2323,17 +2143,84 @@ function (_Component) {
             },
             className: refundStatusMap[item.refund_status].className
           }, "(", refundStatusMap[item.refund_status].text, item.refund_type == 10 ? '-退运费' : '', ")") : null)] : null);
-        }), item.parts.map(function (part) {
-          return external_react_default.a.createElement("tr", {
-            key: "part_".concat(part.id),
-            className: order_list_style_default.a.tableBodyContent
-          }, external_react_default.a.createElement("td", null, "\u914D\u4EF6"), external_react_default.a.createElement("td", null, part.name, item.status == 30 ? external_react_default.a.createElement("div", null, external_react_default.a.createElement(popconfirm_default.a, {
-            title: "\u786E\u5B9A\u8981\u5220\u9664\u8FD9\u4E2A\u5546\u54C1\u5417\uFF1F",
-            onConfirm: function onConfirm() {
-              return _this13.handleDeletePart(part.id);
-            }
-          }, external_react_default.a.createElement("a", null, "\u5220\u9664\u5546\u54C1"))) : null), !isSub ? external_react_default.a.createElement("td", null, part.price) : null, external_react_default.a.createElement("td", null, part.quantity), external_react_default.a.createElement("td", null, part.createdAt));
-        }), item.status == 30 ? external_react_default.a.createElement("tr", {
+        }), // item.orders.map((order, i) => (
+        //     <tr key={`order_${order.id}`} className={style.tableBodyContent}>
+        //         <td><ImageHover src={order.image1} onClick={() => this.handleOpenImagePreview(order.image1)} /></td>
+        //         <td>
+        //             {order.brand_name} {order.brand_type_name} {order.texture_name} {order.texture_attr_name || ''}
+        //             {order.print_type === 10 ? <span className="text-warning">(裸壳)</span> : null}
+        //             {
+        //                 item.status == 30 || item.status == 0 ? (
+        //                     <div>
+        //                         <Popconfirm
+        //                             title="确定要删除这个商品吗？"
+        //                             onConfirm={() => this.handleDeleteOrder(order.id)}
+        //                         >
+        //                             <a>删除商品</a>
+        //                         </Popconfirm>
+        //                     </div>
+        //                 ) : null
+        //             }
+        //         </td>
+        //         {!isSub ? <td>{order.price}</td> : null}
+        //         <td>{order.quantity}</td>
+        //         <td>{order.createdAt}</td>
+        //         {
+        //             i === 0 ? [
+        //                 !isSub ? <td key="amount" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+        //                     <div>¥ {item.amount}</div>
+        //                     {item.post_fee ? <div>含运费{item.post_fee}元</div> : null}
+        //                 </td> : null,
+        //                 <td key="express" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+        //                     {
+        //                         item.status == 30 ? (
+        //                             <Select 
+        //                                 style={{ width: 120 }}
+        //                                 options={expressList}
+        //                                 value={item.express_id}
+        //                                 fieldName={{ label: 'name', value: 'id' }}
+        //                                 onChange={value => this.handleChangeExpress(item.id, value)}
+        //                             />
+        //                         ) : (
+        //                             <div>{item.express_name || '--'}</div>
+        //                         )
+        //                     }
+        //                 </td>,
+        //                 <td key="type" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+        //                     {item.type == 10 ? '充值订单' : '普通订单'}
+        //                 </td>,
+        //                 <td key="status" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+        //                     <span className={statusMap[item.status].className}>{statusMap[item.status].text}</span>
+        //                     {item.refund_status != 0 ? <span style={{ display: 'block' }} className={refundStatusMap[item.refund_status].className}>({refundStatusMap[item.refund_status].text}{item.refund_type == 10 ? '-退运费' : ''})</span> : null}
+        //                 </td>,
+        //             ] : null
+        //         }
+        //     </tr>
+        // )),
+        // item.parts.map((part) => (
+        //     <tr key={`part_${part.id}`} className={style.tableBodyContent}>
+        //         <td>配件</td>
+        //         <td>
+        //             {part.name}
+        //             {
+        //                 item.status == 30 ? (
+        //                     <div>
+        //                         <Popconfirm
+        //                             title="确定要删除这个商品吗？"
+        //                             onConfirm={() => this.handleDeletePart(part.id)}
+        //                         >
+        //                             <a>删除商品</a>
+        //                         </Popconfirm>
+        //                     </div>
+        //                 ) : null
+        //             }
+        //         </td>
+        //         {!isSub ? <td>{part.price}</td> : null}
+        //         <td>{part.quantity}</td>
+        //         <td>{part.createdAt}</td>
+        //     </tr>
+        // )),
+        item.status == 30 ? external_react_default.a.createElement("tr", {
           key: "operator",
           className: order_list_style_default.a.tableBodyHead
         }, external_react_default.a.createElement("td", {
@@ -3504,17 +3391,17 @@ module.exports = require("antd/lib/input");
 
 /***/ }),
 
+/***/ "VHKL":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/card/style");
+
+/***/ }),
+
 /***/ "VgUn":
 /***/ (function(module, exports) {
 
 
-
-/***/ }),
-
-/***/ "VzA1":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/layout");
 
 /***/ }),
 
@@ -3580,578 +3467,10 @@ module.exports = __webpack_require__("cTJO")
 
 /***/ }),
 
-/***/ "YNMu":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/regenerator/index.js
-var regenerator = __webpack_require__("ln6h");
-var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js
-var objectSpread = __webpack_require__("zrwo");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js
-var asyncToGenerator = __webpack_require__("O40h");
-
-// EXTERNAL MODULE: external "antd/lib/layout/style"
-var style_ = __webpack_require__("Z6WE");
-
-// EXTERNAL MODULE: external "antd/lib/layout"
-var layout_ = __webpack_require__("VzA1");
-var layout_default = /*#__PURE__*/__webpack_require__.n(layout_);
-
-// EXTERNAL MODULE: external "antd/lib/modal/style"
-var modal_style_ = __webpack_require__("bmdr");
-
-// EXTERNAL MODULE: external "antd/lib/modal"
-var modal_ = __webpack_require__("xKsY");
-var modal_default = /*#__PURE__*/__webpack_require__.n(modal_);
-
-// EXTERNAL MODULE: external "antd/lib/button/style"
-var button_style_ = __webpack_require__("DnGC");
-
-// EXTERNAL MODULE: external "antd/lib/button"
-var button_ = __webpack_require__("eGmO");
-var button_default = /*#__PURE__*/__webpack_require__.n(button_);
-
-// EXTERNAL MODULE: external "antd/lib/config-provider/style"
-var config_provider_style_ = __webpack_require__("uq6w");
-
-// EXTERNAL MODULE: external "antd/lib/config-provider"
-var config_provider_ = __webpack_require__("ztzw");
-var config_provider_default = /*#__PURE__*/__webpack_require__.n(config_provider_);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js
-var esm_extends = __webpack_require__("kOwS");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js
-var classCallCheck = __webpack_require__("0iUn");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js
-var createClass = __webpack_require__("sLSF");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js + 1 modules
-var possibleConstructorReturn = __webpack_require__("MI3g");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__("a7VT");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js + 1 modules
-var inherits = __webpack_require__("Tit0");
-
-// EXTERNAL MODULE: external "react"
-var external_react_ = __webpack_require__("cDcd");
-var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
-
-// EXTERNAL MODULE: ./node_modules/next/app.js
-var next_app = __webpack_require__("8Bbg");
-var app_default = /*#__PURE__*/__webpack_require__.n(next_app);
-
-// EXTERNAL MODULE: external "next/head"
-var head_ = __webpack_require__("xnum");
-var head_default = /*#__PURE__*/__webpack_require__.n(head_);
-
-// EXTERNAL MODULE: external "dva-no-router"
-var external_dva_no_router_ = __webpack_require__("0B1J");
-var external_dva_no_router_default = /*#__PURE__*/__webpack_require__.n(external_dva_no_router_);
-
-// EXTERNAL MODULE: external "antd/lib/locale-provider/zh_CN"
-var zh_CN_ = __webpack_require__("LNYd");
-var zh_CN_default = /*#__PURE__*/__webpack_require__.n(zh_CN_);
-
-// EXTERNAL MODULE: external "prop-types"
-var external_prop_types_ = __webpack_require__("rf6O");
-var external_prop_types_default = /*#__PURE__*/__webpack_require__.n(external_prop_types_);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js
-var is_array = __webpack_require__("p0XB");
-var is_array_default = /*#__PURE__*/__webpack_require__.n(is_array);
-
-// EXTERNAL MODULE: external "redux-logger"
-var external_redux_logger_ = __webpack_require__("4DCN");
-
-// EXTERNAL MODULE: external "react-redux"
-var external_react_redux_ = __webpack_require__("h74D");
-
-// EXTERNAL MODULE: ./public/utils/index.js + 1 modules
-var utils = __webpack_require__("HgRd");
-
-// CONCATENATED MODULE: ./model/user.js
-
-
-
-var model = {
-  namespace: 'user',
-  state: null,
-  reducers: {
-    save: function save(state, payload) {
-      return Object(objectSpread["a" /* default */])({}, state, payload.data);
-    }
-  },
-  effects: {
-    get:
-    /*#__PURE__*/
-    regenerator_default.a.mark(function get(action, _ref) {
-      var put, res, system, data;
-      return regenerator_default.a.wrap(function get$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              put = _ref.put;
-              _context.next = 3;
-              return utils["a" /* MServer */].get('/user/info', null, {
-                silent: true
-              });
-
-            case 3:
-              res = _context.sent;
-
-              if (!(res.errcode !== 0)) {
-                _context.next = 6;
-                break;
-              }
-
-              return _context.abrupt("return");
-
-            case 6:
-              _context.next = 8;
-              return utils["a" /* MServer */].get('/system/get').then(function (res) {
-                var systemInfo = {};
-
-                if (res.errcode == 0) {
-                  res.data.forEach(function (item) {
-                    systemInfo[item.key] = item[item.type];
-                  });
-                }
-
-                return systemInfo;
-              });
-
-            case 8:
-              system = _context.sent;
-              data = Object(objectSpread["a" /* default */])({}, res.data, {
-                system: system
-              });
-              _context.next = 12;
-              return put({
-                type: 'save',
-                data: data
-              });
-
-            case 12:
-              return _context.abrupt("return", data);
-
-            case 13:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, get);
-    }),
-    getSystemInfo:
-    /*#__PURE__*/
-    regenerator_default.a.mark(function getSystemInfo(action, _ref2) {
-      var put, system;
-      return regenerator_default.a.wrap(function getSystemInfo$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              put = _ref2.put;
-              _context2.next = 3;
-              return utils["a" /* MServer */].get('/system/get').then(function (res) {
-                var systemInfo = {};
-
-                if (res.errcode == 0) {
-                  res.data.forEach(function (item) {
-                    systemInfo[item.key] = item[item.type];
-                  });
-                }
-
-                return systemInfo;
-              });
-
-            case 3:
-              system = _context2.sent;
-              _context2.next = 6;
-              return put({
-                type: 'save',
-                data: {
-                  system: system
-                }
-              });
-
-            case 6:
-              return _context2.abrupt("return", system);
-
-            case 7:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, getSystemInfo);
-    })
-  }
-};
-/* harmony default export */ var model_user = (model);
-// CONCATENATED MODULE: ./model/index.js
-
-var model_model = [model_user];
-/* harmony default export */ var model_0 = (model_model);
-// CONCATENATED MODULE: ./public/utils/store.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var isServer = typeof window === 'undefined';
-var __NEXT_DVA_STORE__ = '__NEXT_DVA_STORE__'; // 初始化 Dva
-
-function initDva(initialState) {
-  var app;
-
-  if (initialState) {
-    app = external_dva_no_router_default()({
-      initialState: initialState,
-      onAction: Object(external_redux_logger_["createLogger"])()
-    });
-  } else {
-    app = external_dva_no_router_default()({});
-  }
-
-  var isArray = is_array_default()(model_0);
-
-  if (isArray) {
-    model_0.forEach(function (m) {
-      app.model(m);
-    });
-  } else {
-    app.model(model_0);
-  }
-
-  app.router(function () {});
-  app.start();
-  return app._store;
-} // 获取或创建 Store
-
-
-function getOrCreateStore(initialState) {
-  // Always make a new store if server, otherwise state is shared between requests
-  if (isServer) {
-    return initDva(initialState);
-  } // Create store if unavailable on the client and set it on the window object
-
-
-  if (!window[__NEXT_DVA_STORE__]) {
-    window[__NEXT_DVA_STORE__] = initDva(initialState);
-  }
-
-  return window[__NEXT_DVA_STORE__];
-}
-
-/* harmony default export */ var store = (function (App) {
-  return (
-    /*#__PURE__*/
-    function (_React$Component) {
-      Object(inherits["a" /* default */])(AppWithRedux, _React$Component);
-
-      Object(createClass["a" /* default */])(AppWithRedux, null, [{
-        key: "getInitialProps",
-        // getInitialProps 注入点
-        value: function () {
-          var _getInitialProps = Object(asyncToGenerator["a" /* default */])(
-          /*#__PURE__*/
-          regenerator_default.a.mark(function _callee(appContext) {
-            var dvaStore, appProps;
-            return regenerator_default.a.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    // Get or Create the store with `undefined` as initialState
-                    // This allows you to set a custom default initialState
-                    dvaStore = getOrCreateStore(); // Provide the store to getInitialProps of pages
-
-                    appContext.ctx.dvaStore = dvaStore;
-                    appProps = {};
-
-                    if (!(typeof App.getInitialProps === 'function')) {
-                      _context.next = 7;
-                      break;
-                    }
-
-                    _context.next = 6;
-                    return App.getInitialProps(appContext);
-
-                  case 6:
-                    appProps = _context.sent;
-
-                  case 7:
-                    return _context.abrupt("return", Object(objectSpread["a" /* default */])({}, appProps, {
-                      initialDvaState: dvaStore.getState()
-                    }));
-
-                  case 8:
-                  case "end":
-                    return _context.stop();
-                }
-              }
-            }, _callee);
-          }));
-
-          function getInitialProps(_x) {
-            return _getInitialProps.apply(this, arguments);
-          }
-
-          return getInitialProps;
-        }()
-      }]);
-
-      function AppWithRedux(props) {
-        var _this;
-
-        Object(classCallCheck["a" /* default */])(this, AppWithRedux);
-
-        _this = Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(AppWithRedux).call(this, props));
-        _this.dvaStore = getOrCreateStore(props.initialDvaState);
-        return _this;
-      }
-
-      Object(createClass["a" /* default */])(AppWithRedux, [{
-        key: "render",
-        value: function render() {
-          return external_react_default.a.createElement(external_react_redux_["Provider"], {
-            store: this.dvaStore
-          }, external_react_default.a.createElement(App, this.props));
-        }
-      }]);
-
-      return AppWithRedux;
-    }(external_react_default.a.Component)
-  );
-});
-// EXTERNAL MODULE: ./component/index.js + 17 modules
-var component = __webpack_require__("OLV9");
-
-// EXTERNAL MODULE: ./public/theme/common.less
-var common = __webpack_require__("9xl+");
-
-// CONCATENATED MODULE: ./pages/_app.jsx
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var _app_MyApp =
-/*#__PURE__*/
-function (_App) {
-  Object(inherits["a" /* default */])(MyApp, _App);
-
-  function MyApp(props) {
-    var _this;
-
-    Object(classCallCheck["a" /* default */])(this, MyApp);
-
-    _this = Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(MyApp).call(this, props));
-    _this.state = {
-      modalNotice: false
-    };
-    return _this;
-  }
-
-  Object(createClass["a" /* default */])(MyApp, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      var script = document.createElement('script');
-      script.src = '//s.weituibao.com/site/images/1568272475072/pace.min.js';
-      document.head.appendChild(script);
-      var _this$props = this.props,
-          dispatch = _this$props.dispatch,
-          router = _this$props.router;
-
-      if (router.asPath != '/login') {
-        dispatch({
-          type: 'user/get'
-        }).then(function (res) {
-          if (res.system.notice) {
-            _this2.setState({
-              modalNotice: true
-            });
-          }
-        });
-      }
-
-      router.events.on('routeChangeStart', function () {
-        window.Pace.start();
-      });
-      router.events.on('routeChangeComplete', function () {
-        window.Pace.stop();
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      var _this$props2 = this.props,
-          Component = _this$props2.Component,
-          pageProps = _this$props2.pageProps,
-          router = _this$props2.router,
-          user = _this$props2.user,
-          dispatch = _this$props2.dispatch;
-      var modalNotice = this.state.modalNotice;
-
-      if (router.asPath == '/login') {
-        return external_react_default.a.createElement(config_provider_default.a, {
-          locale: zh_CN_default.a
-        }, external_react_default.a.createElement(head_default.a, null, external_react_default.a.createElement("title", null, "\u767B\u5F55-\u58F9\u58F3")), external_react_default.a.createElement(Component, Object(esm_extends["a" /* default */])({}, pageProps, {
-          router: router,
-          onLogin: function onLogin() {
-            return _this3.setState({
-              modalNotice: true
-            });
-          }
-        })));
-      }
-
-      if (!user) return null;
-      return external_react_default.a.createElement(config_provider_default.a, {
-        locale: zh_CN_default.a
-      }, external_react_default.a.createElement(head_default.a, null, external_react_default.a.createElement("title", null, "\u9996\u9875-\u58F9\u58F3")), external_react_default.a.createElement(modal_default.a, {
-        className: "notice-modal",
-        title: "\u7CFB\u7EDF\u516C\u544A",
-        width: 640,
-        onCancel: function onCancel() {
-          return _this3.setState({
-            modalNotice: false
-          });
-        },
-        visible: modalNotice,
-        footer: [external_react_default.a.createElement(button_default.a, {
-          key: "confirm",
-          type: "primary",
-          onClick: function onClick() {
-            return _this3.setState({
-              modalNotice: false
-            });
-          }
-        }, "\u77E5\u9053\u4E86")]
-      }, external_react_default.a.createElement("div", {
-        dangerouslySetInnerHTML: {
-          __html: user.system.notice
-        }
-      })), external_react_default.a.createElement(layout_default.a, null, external_react_default.a.createElement(layout_default.a.Header, null, external_react_default.a.createElement(component["g" /* Header */], {
-        router: router,
-        user: user,
-        onShowNotice: function onShowNotice() {
-          dispatch({
-            type: 'user/getSystemInfo'
-          }).then(function () {
-            _this3.setState({
-              modalNotice: true
-            });
-          });
-        }
-      })), external_react_default.a.createElement(layout_default.a.Content, null, external_react_default.a.createElement(Component, Object(esm_extends["a" /* default */])({}, pageProps, {
-        router: router
-      })))));
-    }
-  }], [{
-    key: "getInitialProps",
-    value: function () {
-      var _getInitialProps = Object(asyncToGenerator["a" /* default */])(
-      /*#__PURE__*/
-      regenerator_default.a.mark(function _callee(appContext) {
-        var appProps;
-        return regenerator_default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return app_default.a.getInitialProps(appContext);
-
-              case 2:
-                appProps = _context.sent;
-                appProps.pageProps = Object(objectSpread["a" /* default */])({}, appProps.pageProps);
-                return _context.abrupt("return", Object(objectSpread["a" /* default */])({}, appProps));
-
-              case 5:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }));
-
-      function getInitialProps(_x) {
-        return _getInitialProps.apply(this, arguments);
-      }
-
-      return getInitialProps;
-    }()
-  }]);
-
-  return MyApp;
-}(app_default.a);
-
-_app_MyApp.propTypes = {
-  user: external_prop_types_default.a.object,
-  dispatch: external_prop_types_default.a.func
-};
-/* harmony default export */ var _app = __webpack_exports__["default"] = (store(Object(external_dva_no_router_["connect"])(function (_ref) {
-  var user = _ref.user;
-  return {
-    user: user
-  };
-})(_app_MyApp)));
-
-/***/ }),
-
 /***/ "Z6Kq":
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/get-own-property-descriptor");
-
-/***/ }),
-
-/***/ "Z6WE":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/layout/style");
 
 /***/ }),
 
@@ -4469,6 +3788,13 @@ module.exports = require("regenerator-runtime");
 
 /***/ }),
 
+/***/ "d04V":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("r7XW");
+
+/***/ }),
+
 /***/ "dGr4":
 /***/ (function(module, exports) {
 
@@ -4621,13 +3947,6 @@ module.exports = require("antd/lib/pagination");
 
 /***/ }),
 
-/***/ "h74D":
-/***/ (function(module, exports) {
-
-module.exports = require("react-redux");
-
-/***/ }),
-
 /***/ "hfKm":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4701,6 +4020,82 @@ function _extends() {
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/table/style");
+
+/***/ }),
+
+/***/ "lkvV":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Page; });
+/* harmony import */ var antd_lib_card_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("VHKL");
+/* harmony import */ var antd_lib_card_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_card_style__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var antd_lib_card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("5rRV");
+/* harmony import */ var antd_lib_card__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_card__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("DnGC");
+/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button_style__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("eGmO");
+/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("0iUn");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("sLSF");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("MI3g");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("a7VT");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("Tit0");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("OLV9");
+
+
+
+
+
+
+
+
+
+
+
+
+var Page =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(Page, _Component);
+
+  function Page(props) {
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(this, Page);
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(Page).call(this, props));
+    _this.uploadRef = Object(react__WEBPACK_IMPORTED_MODULE_9__["createRef"])();
+    return _this;
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(Page, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
+        className: "page-layout-center"
+      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_10__[/* DialogUploadImage */ "f"], {
+        ref: this.uploadRef
+      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
+        className: "form-condition"
+      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        type: "primary",
+        onClick: function onClick() {
+          return _this2.uploadRef.current.open();
+        }
+      }, "\u4E0A\u4F20\u56FE\u7247")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(antd_lib_card__WEBPACK_IMPORTED_MODULE_1___default.a, null));
+    }
+  }]);
+
+  return Page;
+}(react__WEBPACK_IMPORTED_MODULE_9__["Component"]);
+
+
 
 /***/ }),
 
@@ -4807,6 +4202,13 @@ module.exports = require("core-js/library/fn/object/keys");
 
 /***/ }),
 
+/***/ "r7XW":
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/array/from");
+
+/***/ }),
+
 /***/ "rf6O":
 /***/ (function(module, exports) {
 
@@ -4867,13 +4269,6 @@ module.exports = require("antd/lib/popover/style");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/icon/style");
-
-/***/ }),
-
-/***/ "uq6w":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/config-provider/style");
 
 /***/ }),
 
@@ -4941,10 +4336,10 @@ module.exports = require("antd/lib/modal");
 
 /***/ }),
 
-/***/ "xnum":
-/***/ (function(module, exports) {
+/***/ "yLu3":
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("next/head");
+module.exports = __webpack_require__("Kjtv");
 
 /***/ }),
 
@@ -4990,13 +4385,6 @@ function _objectSpread(target) {
 
   return target;
 }
-
-/***/ }),
-
-/***/ "ztzw":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/config-provider");
 
 /***/ })
 

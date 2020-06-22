@@ -995,6 +995,13 @@ module.exports = {
 
 /***/ }),
 
+/***/ "Kjtv":
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/is-iterable");
+
+/***/ }),
+
 /***/ "MI3g":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1847,6 +1854,46 @@ var popconfirm_style_ = __webpack_require__("sN99");
 var popconfirm_ = __webpack_require__("QghY");
 var popconfirm_default = /*#__PURE__*/__webpack_require__.n(popconfirm_);
 
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js
+var is_array = __webpack_require__("p0XB");
+var is_array_default = /*#__PURE__*/__webpack_require__.n(is_array);
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/arrayWithoutHoles.js
+
+function _arrayWithoutHoles(arr) {
+  if (is_array_default()(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+
+    return arr2;
+  }
+}
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/array/from.js
+var from = __webpack_require__("d04V");
+var from_default = /*#__PURE__*/__webpack_require__.n(from);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/is-iterable.js
+var is_iterable = __webpack_require__("yLu3");
+var is_iterable_default = /*#__PURE__*/__webpack_require__.n(is_iterable);
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/iterableToArray.js
+
+
+function _iterableToArray(iter) {
+  if (is_iterable_default()(Object(iter)) || Object.prototype.toString.call(iter) === "[object Arguments]") return from_default()(iter);
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/nonIterableSpread.js
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js
+
+
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+}
 // EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js
 var objectSpread = __webpack_require__("zrwo");
 
@@ -2024,6 +2071,7 @@ var order_list_style = __webpack_require__("g0VI");
 var order_list_style_default = /*#__PURE__*/__webpack_require__.n(order_list_style);
 
 // CONCATENATED MODULE: ./component/order-list/index.jsx
+
 
 
 
@@ -2417,11 +2465,19 @@ function (_Component) {
           className: order_list_style_default.a.tableBodyHead
         }, external_react_default.a.createElement("td", {
           colSpan: colSpan
-        }, external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u8BA2\u5355\u53F7\uFF1A"), item.order_sn), external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u521B\u5EFA\u65F6\u95F4\uFF1A"), item.createdAt), external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u6536\u4EF6\u4FE1\u606F\uFF1A"), item.consignee ? "".concat(item.consignee, "(").concat(item.mobile, ")") : '-', " ", item.address ? "".concat(item.province, " ").concat(item.city, " ").concat(item.district, " ").concat(item.address) : '-'))), item.orders.map(function (order, i) {
+        }, external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u8BA2\u5355\u53F7\uFF1A"), item.order_sn), external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u521B\u5EFA\u65F6\u95F4\uFF1A"), item.createdAt), external_react_default.a.createElement("span", null, external_react_default.a.createElement("label", null, "\u6536\u4EF6\u4FE1\u606F\uFF1A"), item.consignee ? "".concat(item.consignee, "(").concat(item.mobile, ")") : '-', " ", item.address ? "".concat(item.province, " ").concat(item.city, " ").concat(item.district, " ").concat(item.address) : '-'))), [].concat(_toConsumableArray(item.orders.map(function (o) {
+          return Object(objectSpread["a" /* default */])({}, o, {
+            current_type: 'order'
+          });
+        })), _toConsumableArray(item.parts.map(function (p) {
+          return Object(objectSpread["a" /* default */])({}, p, {
+            current_type: 'part'
+          });
+        }))).map(function (order, i) {
           return external_react_default.a.createElement("tr", {
-            key: "order_".concat(order.id),
+            key: "".concat(order.current_type == 'order' ? 'order' : 'part', "_").concat(order.id),
             className: order_list_style_default.a.tableBodyContent
-          }, external_react_default.a.createElement("td", null, external_react_default.a.createElement(ImageHover, {
+          }, order.current_type == 'order' ? external_react_default.a.createElement(external_react_["Fragment"], null, external_react_default.a.createElement("td", null, external_react_default.a.createElement(ImageHover, {
             src: order.image1,
             onClick: function onClick() {
               return _this13.handleOpenImagePreview(order.image1);
@@ -2433,7 +2489,12 @@ function (_Component) {
             onConfirm: function onConfirm() {
               return _this13.handleDeleteOrder(order.id);
             }
-          }, external_react_default.a.createElement("a", null, "\u5220\u9664\u5546\u54C1"))) : null), !isSub ? external_react_default.a.createElement("td", null, order.price) : null, external_react_default.a.createElement("td", null, order.quantity), external_react_default.a.createElement("td", null, order.createdAt), i === 0 ? [!isSub ? external_react_default.a.createElement("td", {
+          }, external_react_default.a.createElement("a", null, "\u5220\u9664\u5546\u54C1"))) : null), !isSub ? external_react_default.a.createElement("td", null, order.price) : null, external_react_default.a.createElement("td", null, order.quantity), external_react_default.a.createElement("td", null, order.createdAt)) : external_react_default.a.createElement(external_react_["Fragment"], null, external_react_default.a.createElement("td", null, "\u914D\u4EF6"), external_react_default.a.createElement("td", null, order.name, item.status == 30 ? external_react_default.a.createElement("div", null, external_react_default.a.createElement(popconfirm_default.a, {
+            title: "\u786E\u5B9A\u8981\u5220\u9664\u8FD9\u4E2A\u5546\u54C1\u5417\uFF1F",
+            onConfirm: function onConfirm() {
+              return _this13.handleDeletePart(order.id);
+            }
+          }, external_react_default.a.createElement("a", null, "\u5220\u9664\u5546\u54C1"))) : null), !isSub ? external_react_default.a.createElement("td", null, order.price) : null, external_react_default.a.createElement("td", null, order.quantity), external_react_default.a.createElement("td", null, order.createdAt)), i === 0 ? [!isSub ? external_react_default.a.createElement("td", {
             key: "amount",
             className: order_list_style_default.a.tableBodyRowSpan,
             rowSpan: item.orders.length + item.parts.length
@@ -2470,17 +2531,84 @@ function (_Component) {
             },
             className: refundStatusMap[item.refund_status].className
           }, "(", refundStatusMap[item.refund_status].text, item.refund_type == 10 ? '-退运费' : '', ")") : null)] : null);
-        }), item.parts.map(function (part) {
-          return external_react_default.a.createElement("tr", {
-            key: "part_".concat(part.id),
-            className: order_list_style_default.a.tableBodyContent
-          }, external_react_default.a.createElement("td", null, "\u914D\u4EF6"), external_react_default.a.createElement("td", null, part.name, item.status == 30 ? external_react_default.a.createElement("div", null, external_react_default.a.createElement(popconfirm_default.a, {
-            title: "\u786E\u5B9A\u8981\u5220\u9664\u8FD9\u4E2A\u5546\u54C1\u5417\uFF1F",
-            onConfirm: function onConfirm() {
-              return _this13.handleDeletePart(part.id);
-            }
-          }, external_react_default.a.createElement("a", null, "\u5220\u9664\u5546\u54C1"))) : null), !isSub ? external_react_default.a.createElement("td", null, part.price) : null, external_react_default.a.createElement("td", null, part.quantity), external_react_default.a.createElement("td", null, part.createdAt));
-        }), item.status == 30 ? external_react_default.a.createElement("tr", {
+        }), // item.orders.map((order, i) => (
+        //     <tr key={`order_${order.id}`} className={style.tableBodyContent}>
+        //         <td><ImageHover src={order.image1} onClick={() => this.handleOpenImagePreview(order.image1)} /></td>
+        //         <td>
+        //             {order.brand_name} {order.brand_type_name} {order.texture_name} {order.texture_attr_name || ''}
+        //             {order.print_type === 10 ? <span className="text-warning">(裸壳)</span> : null}
+        //             {
+        //                 item.status == 30 || item.status == 0 ? (
+        //                     <div>
+        //                         <Popconfirm
+        //                             title="确定要删除这个商品吗？"
+        //                             onConfirm={() => this.handleDeleteOrder(order.id)}
+        //                         >
+        //                             <a>删除商品</a>
+        //                         </Popconfirm>
+        //                     </div>
+        //                 ) : null
+        //             }
+        //         </td>
+        //         {!isSub ? <td>{order.price}</td> : null}
+        //         <td>{order.quantity}</td>
+        //         <td>{order.createdAt}</td>
+        //         {
+        //             i === 0 ? [
+        //                 !isSub ? <td key="amount" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+        //                     <div>¥ {item.amount}</div>
+        //                     {item.post_fee ? <div>含运费{item.post_fee}元</div> : null}
+        //                 </td> : null,
+        //                 <td key="express" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+        //                     {
+        //                         item.status == 30 ? (
+        //                             <Select 
+        //                                 style={{ width: 120 }}
+        //                                 options={expressList}
+        //                                 value={item.express_id}
+        //                                 fieldName={{ label: 'name', value: 'id' }}
+        //                                 onChange={value => this.handleChangeExpress(item.id, value)}
+        //                             />
+        //                         ) : (
+        //                             <div>{item.express_name || '--'}</div>
+        //                         )
+        //                     }
+        //                 </td>,
+        //                 <td key="type" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+        //                     {item.type == 10 ? '充值订单' : '普通订单'}
+        //                 </td>,
+        //                 <td key="status" className={style.tableBodyRowSpan} rowSpan={item.orders.length + item.parts.length}>
+        //                     <span className={statusMap[item.status].className}>{statusMap[item.status].text}</span>
+        //                     {item.refund_status != 0 ? <span style={{ display: 'block' }} className={refundStatusMap[item.refund_status].className}>({refundStatusMap[item.refund_status].text}{item.refund_type == 10 ? '-退运费' : ''})</span> : null}
+        //                 </td>,
+        //             ] : null
+        //         }
+        //     </tr>
+        // )),
+        // item.parts.map((part) => (
+        //     <tr key={`part_${part.id}`} className={style.tableBodyContent}>
+        //         <td>配件</td>
+        //         <td>
+        //             {part.name}
+        //             {
+        //                 item.status == 30 ? (
+        //                     <div>
+        //                         <Popconfirm
+        //                             title="确定要删除这个商品吗？"
+        //                             onConfirm={() => this.handleDeletePart(part.id)}
+        //                         >
+        //                             <a>删除商品</a>
+        //                         </Popconfirm>
+        //                     </div>
+        //                 ) : null
+        //             }
+        //         </td>
+        //         {!isSub ? <td>{part.price}</td> : null}
+        //         <td>{part.quantity}</td>
+        //         <td>{part.createdAt}</td>
+        //     </tr>
+        // )),
+        item.status == 30 ? external_react_default.a.createElement("tr", {
           key: "operator",
           className: order_list_style_default.a.tableBodyHead
         }, external_react_default.a.createElement("td", {
@@ -4055,6 +4183,13 @@ module.exports = require("regenerator-runtime");
 
 /***/ }),
 
+/***/ "d04V":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("r7XW");
+
+/***/ }),
+
 /***/ "dGr4":
 /***/ (function(module, exports) {
 
@@ -4386,6 +4521,13 @@ module.exports = require("core-js/library/fn/object/keys");
 
 /***/ }),
 
+/***/ "r7XW":
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/array/from");
+
+/***/ }),
+
 /***/ "rf6O":
 /***/ (function(module, exports) {
 
@@ -4517,6 +4659,13 @@ module.exports = require("moment");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/modal");
+
+/***/ }),
+
+/***/ "yLu3":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("Kjtv");
 
 /***/ }),
 
