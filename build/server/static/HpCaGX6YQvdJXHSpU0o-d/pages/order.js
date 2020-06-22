@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -298,7 +298,7 @@ module.exports = __webpack_require__("k1wZ");
 
 /***/ }),
 
-/***/ 7:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("DpsK");
@@ -662,8 +662,22 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_19___default.a.createElement("div", {
         className: "form-condition"
       }, react__WEBPACK_IMPORTED_MODULE_19___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_5___default.a.Search, {
+        onSearch: function onSearch(value) {
+          return _this5.handleSearch('order_sn', value);
+        },
+        placeholder: "\u641C\u7D22\u8BA2\u5355\u53F7"
+      }), react__WEBPACK_IMPORTED_MODULE_19___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_5___default.a.Search, {
         style: {
-          width: 160
+          marginLeft: '15px'
+        },
+        onSearch: function onSearch(value) {
+          return _this5.handleSearch('express_sn', value);
+        },
+        placeholder: "\u641C\u7D22\u8FD0\u5355\u53F7"
+      }), react__WEBPACK_IMPORTED_MODULE_19___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_5___default.a.Search, {
+        style: {
+          width: 160,
+          marginLeft: '15px'
         },
         onSearch: function onSearch(value) {
           return _this5.handleSearch('consignee', (value || '').trim());
@@ -678,22 +692,6 @@ function (_Component) {
           return _this5.handleSearch('mobile', (value || '').trim());
         },
         placeholder: "\u641C\u7D22\u624B\u673A"
-      }), react__WEBPACK_IMPORTED_MODULE_19___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_5___default.a.Search, {
-        style: {
-          marginLeft: '15px'
-        },
-        onSearch: function onSearch(value) {
-          return _this5.handleSearch('order_sn', value);
-        },
-        placeholder: "\u641C\u7D22\u8BA2\u5355\u53F7"
-      }), react__WEBPACK_IMPORTED_MODULE_19___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_5___default.a.Search, {
-        style: {
-          marginLeft: '15px'
-        },
-        onSearch: function onSearch(value) {
-          return _this5.handleSearch('express_sn', value);
-        },
-        placeholder: "\u641C\u7D22\u8FD0\u5355\u53F7"
       }), react__WEBPACK_IMPORTED_MODULE_19___default.a.createElement(antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_3___default.a.RangePicker, {
         style: {
           width: 240,
