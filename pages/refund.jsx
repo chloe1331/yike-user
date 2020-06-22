@@ -104,6 +104,8 @@ class Order extends Component {
                 <div className="form-condition">
                     <Input.Search onSearch={value => this.handleSearch('order_sn', value)} placeholder="搜索订单号" />
                     <Input.Search style={{ marginLeft: '15px' }} onSearch={value => this.handleSearch('express_sn', value)} placeholder="搜索运单号" />
+                    <Input.Search style={{ width: 160, marginLeft: '15px' }} onSearch={value => this.handleSearch('consignee', (value || '').trim())} placeholder="搜索姓名" />
+                    <Input.Search style={{ width: 160, marginLeft: '15px' }} onSearch={value => this.handleSearch('mobile', (value || '').trim())} placeholder="搜索手机" />
                     <DatePicker.RangePicker
                         style={{ width: 240, marginLeft: 15 }}
                         disabledDate={current => current && current && current > moment().endOf('day')}

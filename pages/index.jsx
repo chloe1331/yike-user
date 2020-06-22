@@ -633,12 +633,13 @@ class Home extends Component {
     handleSubmit(e) {
         e.preventDefault();
         e.stopPropagation();
+        const { selectParts } = this.state;
 
-        if (!this.select) {
-            message.error('请先选择机型');
+        if (!this.select && !selectParts.length) {
+            message.error('请先选择机型或者选择一个配件');
             return;
         }
-        if (!this.image && this.imageOpt.color == 'tran') {
+        if (this.select && !this.image && this.imageOpt.color == 'tran') {
             // message.error('请至少上传一张图片或者设置一个颜色');
             Modal.confirm({
                 title: '确定要下单一个裸壳吗？',
@@ -654,7 +655,7 @@ class Home extends Component {
 
     onSubmit(options = {}) {
         const { form: { validateFields } } = this.props;
-        const isPrintEmpty = options.print_type == 10;
+        const isPrintEmpty = options.print_type == 10 || !this.select;
 
         validateFields((err, values) => {
             if (!err) {
@@ -666,10 +667,10 @@ class Home extends Component {
                     submit: true
                 });
                 let params = {
-                    type: values.type == 20 ? 10 : values.type,
+                    type: values.type == 20 || !this.select ? 10 : values.type,
                     order_sn: values.order_sn,
                     quantity: values.quantity,
-                    cate_id: this.select.id,
+                    cate_id: this.select && this.select.id,
                     ...options
                 };
                 if (isPrintEmpty) {
@@ -732,7 +733,14 @@ class Home extends Component {
                 address: values.address,
             };
         }
-        if (values.type == 10 && selectedRow) {
+        if (values.type == 10) {
+            if (!selectedRow) {
+                this.setState({
+                    submit: false
+                });
+                message.error('未获取到收货地址');
+                return;
+            }
             params = {
                 ...params,
                 consignee: selectedRow.consignee,
@@ -743,6 +751,9 @@ class Home extends Component {
                 address: selectedRow.address,
             };
             if (!params.province) {
+                this.setState({
+                    submit: false
+                });
                 message.error('未获取到收货地址');
                 return;
             }
@@ -758,28 +769,31 @@ class Home extends Component {
                     quantity: 1,
                     // express_id: this.getDefaultExpress()
                 });
-                const catename = `${this.select.brand_name} ${this.select.brand_type_name} ${this.select.texture_name}`;
-                if (!this.submitOrderObj[values.order_sn]) {
-                    this.submitOrderObj[values.order_sn] = {
-                        count: 1,
-                        obj: {
-                            [this.select.id]: {
-                                name: catename,
-                                count: 1
+                if (this.select) {
+                    const catename = `${this.select.brand_name} ${this.select.brand_type_name} ${this.select.texture_name}`;
+                    if (!this.submitOrderObj[values.order_sn]) {
+                        this.submitOrderObj[values.order_sn] = {
+                            count: 1,
+                            obj: {
+                                [this.select.id]: {
+                                    name: catename,
+                                    count: 1
+                                }
                             }
-                        }
-                    };
-                } else {
-                    this.submitOrderObj[values.order_sn].count++;
-                    if (!this.submitOrderObj[values.order_sn].obj[this.select.id]) {
-                        this.submitOrderObj[values.order_sn].obj[this.select.id] = {
-                            name: catename,
-                            count: 1
                         };
                     } else {
-                        this.submitOrderObj[values.order_sn].obj[this.select.id].count++;
-                    }
+                        this.submitOrderObj[values.order_sn].count++;
+                        if (!this.submitOrderObj[values.order_sn].obj[this.select.id]) {
+                            this.submitOrderObj[values.order_sn].obj[this.select.id] = {
+                                name: catename,
+                                count: 1
+                            };
+                        } else {
+                            this.submitOrderObj[values.order_sn].obj[this.select.id].count++;
+                        }
+                    } 
                 }
+                
                 Modal.confirm({
                     title: '订单已提交成功',
                     okText: '继续下单',
