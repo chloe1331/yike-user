@@ -167,7 +167,9 @@ class Order extends Component {
                     }
                 </Radio.Group>
                 <div className="form-condition">
-                    <Input.Search onSearch={value => this.handleSearch('order_sn', value)} placeholder="搜索订单号" />
+                    <Input.Search style={{ width: 160 }} onSearch={value => this.handleSearch('consignee', (value || '').trim())} placeholder="搜索姓名" />
+                    <Input.Search style={{ width: 160, marginLeft: '15px' }} onSearch={value => this.handleSearch('mobile', (value || '').trim())} placeholder="搜索手机" />
+                    <Input.Search style={{ marginLeft: '15px' }} onSearch={value => this.handleSearch('order_sn', value)} placeholder="搜索订单号" />
                     <Input.Search style={{ marginLeft: '15px' }} onSearch={value => this.handleSearch('express_sn', value)} placeholder="搜索运单号" />
                     <DatePicker.RangePicker 
                         style={{ width: 240, marginLeft: 15 }}
@@ -179,14 +181,16 @@ class Order extends Component {
                         !user.sub || (user.sub && user.sub.role === 'manager') ? 
                             <Select options={subList} style={{ marginLeft: 15, width: 180 }} fieldName={{ label: 'username', value: 'id' }} onChange={value => this.handleSearch('sub_id', value)} placeholder="选择子账号" allowClear /> : null
                     }
-                    <Button loading={paySubmit} style={{ marginLeft: '15px' }} type="primary" onClick={this.handleBatchPay}>批量付款</Button>
-                    <Button style={{ marginLeft: '15px' }} onClick={this.handleExport} loading={logisLoading}>导出物流信息</Button>
-                    <a 
-                        style={{ marginLeft: '15px' }} 
-                        onClick={() => {
-                            if (this.dialogExportRef.current) this.dialogExportRef.current.open();
-                        }}
-                    >物流信息导出历史</a>
+                    <div style={{ marginTop: '15px' }}>
+                        <Button loading={paySubmit} type="primary" onClick={this.handleBatchPay}>批量付款</Button>
+                        <Button style={{ marginLeft: '15px' }} onClick={this.handleExport} loading={logisLoading}>导出物流信息</Button>
+                        <a
+                            style={{ marginLeft: '15px' }}
+                            onClick={() => {
+                                if (this.dialogExportRef.current) this.dialogExportRef.current.open();
+                            }}
+                        >物流信息导出历史</a>
+                    </div>
                 </div>
                 <OrderList
                     action="/order/userlist"
