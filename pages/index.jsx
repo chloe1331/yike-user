@@ -701,6 +701,9 @@ class Home extends Component {
                         this.postSubmit(params, values);
                     }).catch(err => {
                         message.error(err.message);
+                        this.setState({
+                            submit: false
+                        });
                     });
                 }
             }
@@ -711,7 +714,7 @@ class Home extends Component {
         const { form: { setFieldsValue } } = this.props;
         const { selectedRow, selectParts, importExcelData, selectAttrId } = this.state;
 
-        if (selectAttrId && this.select.texture_attr.length) {
+        if (this.select && selectAttrId && this.select.texture_attr.length) {
             // params.texture_attr_id = this.select.texture_attr.find(item => item.texture_attr_color === selectColor).texture_attr_id;
             params.texture_attr_id = selectAttrId;
         }
@@ -931,7 +934,9 @@ class Home extends Component {
                                         this.select = null;
                                         this.cascaderRef.current && this.cascaderRef.current.setState({ value: [] });
                                         this.setState({
-                                            lockTexture: e.target.value
+                                            lockTexture: e.target.value,
+                                            selectColor: null,
+                                            selectAttrId: null
                                         }, this.convertList);
                                     }}
                                 ></Radio.Group>
