@@ -606,7 +606,8 @@ class Home extends Component {
                     seller_remark: item['订单备注'] || item['商家备注'],
                     buyer_remark: item['买家留言'],
                     remark: item['自定义备注'],
-                    index
+                    index,
+                    source: type
                 });
             });
             that.setState({
@@ -752,6 +753,7 @@ class Home extends Component {
                 city: selectedRow.city,
                 district: selectedRow.district,
                 address: selectedRow.address,
+                source: selectedRow.source
             };
             if (!params.province) {
                 this.setState({

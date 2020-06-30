@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -284,14 +284,6 @@ module.exports = require("antd/lib/dropdown/style");
 
 /***/ }),
 
-/***/ 4:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("cMU6");
-
-
-/***/ }),
-
 /***/ "4Q3z":
 /***/ (function(module, exports) {
 
@@ -303,6 +295,14 @@ module.exports = require("next/router");
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("k1wZ");
+
+/***/ }),
+
+/***/ 5:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("cMU6");
+
 
 /***/ }),
 
@@ -4485,7 +4485,8 @@ function (_Component) {
             seller_remark: item['订单备注'] || item['商家备注'],
             buyer_remark: item['买家留言'],
             remark: item['自定义备注'],
-            index: index
+            index: index,
+            source: type
           });
         });
         that.setState({
@@ -4657,7 +4658,8 @@ function (_Component) {
           province: selectedRow.province,
           city: selectedRow.city,
           district: selectedRow.district,
-          address: selectedRow.address
+          address: selectedRow.address,
+          source: selectedRow.source
         });
 
         if (!params.province) {
