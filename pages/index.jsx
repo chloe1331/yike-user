@@ -635,80 +635,84 @@ class Home extends Component {
         e.preventDefault();
         e.stopPropagation();
         const { selectParts } = this.state;
-
-        if (!this.select && !selectParts.length) {
-            message.error('请先选择机型或者选择一个配件');
-            return;
-        }
-        if (this.select && !this.image && this.imageOpt.color == 'tran') {
-            // message.error('请至少上传一张图片或者设置一个颜色');
-            Modal.confirm({
-                title: '确定要下单一个裸壳吗？',
-                onOk: () => this.onSubmit({
-                    print_type: 10
-                })
-            });
-            return;
-        }
-
-        this.onSubmit();
-    }
-
-    onSubmit(options = {}) {
         const { form: { validateFields } } = this.props;
-        const isPrintEmpty = options.print_type == 10 || !this.select;
 
         validateFields((err, values) => {
             if (!err) {
-                if (!this.token && !isPrintEmpty) {
-                    message.error('网络出错了，刷新页面试试');
+                if (values.type == 0 && !this.select) {
+                    message.error('请先选择机型');
                     return;
                 }
-                this.setState({
-                    submit: true
-                });
-                let params = {
-                    type: values.type == 20 || !this.select ? 10 : values.type,
-                    order_sn: values.order_sn,
-                    quantity: values.quantity,
-                    cate_id: this.select && this.select.id,
-                    ...options
-                };
-                if (isPrintEmpty) {
-                    this.postSubmit(params, values);
-                } else {
-                    const formdata = new FormData();
-                    formdata.append('file', convertBase64UrlToBlob(this.getResultImage(this.select.is_camera ? true : false)), `${new Date().getTime()}.png`);
-                    formdata.append('token', this.token);
-
-                    MServer.post('//upload-z0.qiniup.com', formdata, {
-                        withCredentials: false,
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
-                        },
-                        silent: true
-                    }).then(res => {
-                        if (res.key) {
-                            return `${locale[process.env.NODE_ENV].url.cdnUser}${res.key}`;
-                        } else {
-                            throw new Error('图片上传失败');
-                        }
-                    }).then(res => {
-                        params = {
-                            ...params,
-                            image1: res
-                        };
-                        // if (values.texture_attr_id) params.texture_attr_id = values.texture_attr_id;
-                        this.postSubmit(params, values);
-                    }).catch(err => {
-                        message.error(err.message);
-                        this.setState({
-                            submit: false
-                        });
-                    });
+                if (values.type != 0 && !this.select && !selectParts.length) {
+                    message.error('请先选择机型或者选择一个配件');
+                    return;
                 }
+                if (this.select && !this.image && this.imageOpt.color == 'tran') {
+                    // message.error('请至少上传一张图片或者设置一个颜色');
+                    Modal.confirm({
+                        title: '确定要下单一个裸壳吗？',
+                        onOk: () => this.onSubmit(values, {
+                            print_type: 10
+                        })
+                    });
+                    return;
+                }
+
+                this.onSubmit(values);
             }
         });
+    }
+
+    onSubmit(values, options = {}) {
+        const isPrintEmpty = options.print_type == 10 || !this.select;
+
+        if (!this.token && !isPrintEmpty) {
+            message.error('网络出错了，刷新页面试试');
+            return;
+        }
+        this.setState({
+            submit: true
+        });
+        let params = {
+            type: values.type == 20 || !this.select ? 10 : values.type,
+            order_sn: values.order_sn,
+            quantity: values.quantity,
+            cate_id: this.select && this.select.id,
+            ...options
+        };
+        if (isPrintEmpty) {
+            this.postSubmit(params, values);
+        } else {
+            const formdata = new FormData();
+            formdata.append('file', convertBase64UrlToBlob(this.getResultImage(this.select.is_camera ? true : false)), `${new Date().getTime()}.png`);
+            formdata.append('token', this.token);
+
+            MServer.post('//upload-z0.qiniup.com', formdata, {
+                withCredentials: false,
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                },
+                silent: true
+            }).then(res => {
+                if (res.key) {
+                    return `${locale[process.env.NODE_ENV].url.cdnUser}${res.key}`;
+                } else {
+                    throw new Error('图片上传失败');
+                }
+            }).then(res => {
+                params = {
+                    ...params,
+                    image1: res
+                };
+                // if (values.texture_attr_id) params.texture_attr_id = values.texture_attr_id;
+                this.postSubmit(params, values);
+            }).catch(err => {
+                message.error(err.message);
+                this.setState({
+                    submit: false
+                });
+            });
+        }
     }
 
     postSubmit(params, values) {
@@ -720,7 +724,7 @@ class Home extends Component {
             params.texture_attr_id = selectAttrId;
         }
         if (values.express_id) params.express_id = values.express_id;
-        if (selectParts.length) {
+        if (values.type != 0 && selectParts.length) {
             params.parts = selectParts.map(item => ({
                 id: item,
                 count: values[`part_${item}`]
