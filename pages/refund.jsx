@@ -114,7 +114,17 @@ class Order extends Component {
                     />
                     {
                         !user.sub || (user.sub && user.sub.role === 'manager') ?
-                            <Select options={subList} style={{ marginLeft: 15, width: 180 }} fieldName={{ label: 'username', value: 'id' }} onChange={value => this.handleSearch('sub_id', value)} placeholder="选择子账号" allowClear /> : null
+                            <Select
+                                options={[{
+                                    username: '只看主账号',
+                                    id: 0
+                                }, ...subList]}
+                                style={{ marginLeft: 15, width: 180 }}
+                                fieldName={{ label: 'username', value: 'id' }}
+                                onChange={value => this.handleSearch('sub_id', value)}
+                                placeholder="选择子账号"
+                                allowClear
+                            /> : null
                     }
                 </div>
                 <OrderList
