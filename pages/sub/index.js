@@ -1,6 +1,7 @@
 import React, { Component, createRef, Fragment } from 'react';
 import { connect } from 'dva';
 import { Button, Divider, Popconfirm } from 'antd';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 
 import { MServer } from 'public/utils';
@@ -78,6 +79,8 @@ class Sub extends Component {
                             dataIndex: 'id',
                             title: '操作',
                             render: (id) => (<Fragment>
+                                <Link href={`/sub/stat?id=${id}`}><a>统计</a></Link>
+                                <Divider type='vertical' />
                                 <a onClick={() => this.setState({ resetId: id }, () => this.resetRef.current.open())}>重置密码</a>
                                 <Divider type='vertical' />
                                 <Popconfirm title="确认要删除这个子账号吗？" onConfirm={() => this.handleDelete(id)}><a>删除</a></Popconfirm>
