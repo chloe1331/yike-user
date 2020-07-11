@@ -48,6 +48,11 @@ class Page extends Component {
                         title: '订单数'
                     },
                     {
+                        key: 'trade_count',
+                        dataIndex: 'trade_count',
+                        title: '配件订单数'
+                    },
+                    {
                         key: 'order_count',
                         dataIndex: 'order_count',
                         title: '子订单数(不含配件)'
