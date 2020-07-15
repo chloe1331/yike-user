@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -203,7 +203,7 @@ module.exports = require("next/router");
 
 /***/ }),
 
-/***/ 8:
+/***/ 9:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("sWWV");
@@ -784,8 +784,8 @@ function (_Component) {
           dataIndex: 'trade_count',
           title: '订单数'
         }, {
-          key: 'trade_count',
-          dataIndex: 'trade_count',
+          key: 'trade_part_count',
+          dataIndex: 'trade_part_count',
           title: '配件订单数'
         }, {
           key: 'order_count',
