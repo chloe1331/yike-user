@@ -1,12 +1,13 @@
 import React, { Component, createRef, Fragment } from 'react';
 import { connect } from 'dva';
-import { Button, Divider, Popconfirm } from 'antd';
+import { Button, Divider, Popconfirm, Popover, Select, Icon } from 'antd';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 
 import { MServer } from 'public/utils';
 import { roleList } from 'config/constant';
 import { TableAction, DialogCreateSub, DialogResetPassword } from 'component';
+import Item from 'antd/lib/list/Item';
 
 class Sub extends Component {
     constructor(props) {
@@ -28,6 +29,17 @@ class Sub extends Component {
     handleDelete(id) {
         MServer.post('/user/deletesub', {
             id
+        }).then(res => {
+            if (res.errcode == 0) {
+                this.tableRef.current.reload();
+            }
+        });
+    }
+
+    handleEdit(id, opt) {
+        MServer.post('/user/editsub', {
+            sub_id: id,
+            ...opt
         }).then(res => {
             if (res.errcode == 0) {
                 this.tableRef.current.reload();
@@ -62,7 +74,23 @@ class Sub extends Component {
                             key: 'role',
                             dataIndex: 'role',
                             title: '权限',
-                            render: text => roleList.find(item => item.value == text).label
+                            render: (text, record) => <Popover
+                                title="修改权限"
+                                trigger={['click']}
+                                placement="bottom"
+                                content={<div>
+                                    <Select style={{ width: 160 }} value={text} onChange={val => this.handleEdit(record.id, { role: val })}>
+                                        {
+                                            roleList.map(item => <Select.Option key={item.value}>{item.label}</Select.Option>)
+                                        }
+                                    </Select>
+                                </div>}
+                            >
+                                <a>
+                                    {roleList.find(item => item.value == text).label}
+                                    <Icon type="edit" className="text-info" style={{ marginLeft: 10 }} />
+                                </a>
+                            </Popover>
                         },
                         {
                             key: 'createdAt',
