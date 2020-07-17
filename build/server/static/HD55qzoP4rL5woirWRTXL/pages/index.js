@@ -4225,26 +4225,38 @@ function (_Component) {
           return item.texture_id == lockTexture;
         });
         data.forEach(function (item) {
+          var lastOjb = item.stock < 1 ? {
+            disabled: true,
+            label: "".concat(item.brand_type_name, "(\u7F3A\u8D27)")
+          } : {
+            label: item.brand_type_name
+          };
+
           if (typeof cateIds[item.brand_id] == 'undefined') {
             cateIds[item.brand_id] = list.length;
             list.push({
               value: item.brand_id,
               label: item.brand_name,
               sort: _this8.defaultBrankSortMap[item.brand_id] || 0,
-              children: [{
-                value: item.id,
-                label: item.brand_type_name
-              }]
+              children: [Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({
+                value: item.id
+              }, lastOjb)]
             });
           } else {
-            list[cateIds[item.brand_id]].children.push({
-              value: item.id,
-              label: item.brand_type_name
-            });
+            list[cateIds[item.brand_id]].children.push(Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({
+              value: item.id
+            }, lastOjb));
           }
         });
       } else {
         data.forEach(function (item) {
+          var lastOjb = item.stock < 1 ? {
+            disabled: true,
+            label: "".concat(item.texture_name, "(\u7F3A\u8D27)")
+          } : {
+            label: item.texture_name
+          };
+
           if (typeof cateIds[item.brand_id] == 'undefined') {
             cateIds[item.brand_id] = list.length;
             list.push({
@@ -4254,10 +4266,9 @@ function (_Component) {
               children: [{
                 value: item.brand_type_id,
                 label: item.brand_type_name,
-                children: [{
-                  value: item.id,
-                  label: item.texture_name
-                }]
+                children: [Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({
+                  value: item.id
+                }, lastOjb)]
               }]
             });
             typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)] = 0;
@@ -4267,16 +4278,14 @@ function (_Component) {
               list[cateIds[item.brand_id]].children.push({
                 value: item.brand_type_id,
                 label: item.brand_type_name,
-                children: [{
-                  value: item.id,
-                  label: item.texture_name
-                }]
+                children: [Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({
+                  value: item.id
+                }, lastOjb)]
               });
             } else {
-              list[cateIds[item.brand_id]].children[typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)]].children.push({
-                value: item.id,
-                label: item.texture_name
-              });
+              list[cateIds[item.brand_id]].children[typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)]].children.push(Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({
+                value: item.id
+              }, lastOjb));
             }
           }
 

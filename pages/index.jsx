@@ -366,6 +366,12 @@ class Home extends Component {
         if (lockTexture) {
             data = data.filter(item => item.texture_id == lockTexture);
             data.forEach(item => {
+                const lastOjb = item.stock < 1 ? {
+                    disabled: true,
+                    label: `${item.brand_type_name}(缺货)`
+                } : {
+                    label: item.brand_type_name
+                };
                 if (typeof cateIds[item.brand_id] == 'undefined') {
                     cateIds[item.brand_id] = list.length;
                     list.push({
@@ -375,19 +381,25 @@ class Home extends Component {
                         children: [
                             {
                                 value: item.id,
-                                label: item.brand_type_name
+                                ...lastOjb
                             }
                         ]
                     });
                 } else {
                     list[cateIds[item.brand_id]].children.push({
                         value: item.id,
-                        label: item.brand_type_name
+                        ...lastOjb
                     });
                 }
             });
         } else {
             data.forEach(item => {
+                const lastOjb = item.stock < 1 ? {
+                    disabled: true,
+                    label: `${item.texture_name}(缺货)`
+                } : {
+                    label: item.texture_name
+                };
                 if (typeof cateIds[item.brand_id] == 'undefined') {
                     cateIds[item.brand_id] = list.length;
                     list.push({
@@ -401,7 +413,7 @@ class Home extends Component {
                                 children: [
                                     {
                                         value: item.id,
-                                        label: item.texture_name,
+                                        ...lastOjb
                                     }
                                 ]
                             }
@@ -417,14 +429,14 @@ class Home extends Component {
                             children: [
                                 {
                                     value: item.id,
-                                    label: item.texture_name,
+                                    ...lastOjb
                                 }
                             ]
                         });
                     } else {
                         list[cateIds[item.brand_id]].children[typeIds[`${item.brand_id}_${item.brand_type_id}`]].children.push({
                             value: item.id,
-                            label: item.texture_name,
+                            ...lastOjb
                         });
                     }
                 }
