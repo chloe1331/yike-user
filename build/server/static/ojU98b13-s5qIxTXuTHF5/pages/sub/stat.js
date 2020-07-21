@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -203,7 +203,14 @@ module.exports = require("next/router");
 
 /***/ }),
 
-/***/ 8:
+/***/ "83ri":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/date-picker");
+
+/***/ }),
+
+/***/ 9:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("sWWV");
@@ -440,6 +447,13 @@ function _possibleConstructorReturn(self, call) {
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/table");
+
+/***/ }),
+
+/***/ "RGP6":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/date-picker/style");
 
 /***/ }),
 
@@ -701,16 +715,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd_lib_alert_style__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd_lib_alert_style__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var antd_lib_alert__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("UpNC");
 /* harmony import */ var antd_lib_alert__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_alert__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("0iUn");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("sLSF");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("MI3g");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("a7VT");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("Tit0");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("4Q3z");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var public_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("HgRd");
+/* harmony import */ var antd_lib_date_picker_style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("RGP6");
+/* harmony import */ var antd_lib_date_picker_style__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd_lib_date_picker_style__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("83ri");
+/* harmony import */ var antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("0iUn");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("sLSF");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("MI3g");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("a7VT");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("Tit0");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("4Q3z");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("wy2R");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var public_utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("HgRd");
+
+
+
 
 
 
@@ -727,21 +750,22 @@ __webpack_require__.r(__webpack_exports__);
 var Page =
 /*#__PURE__*/
 function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(Page, _Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"])(Page, _Component);
 
   function Page(props) {
     var _this;
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(this, Page);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(this, Page);
 
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(Page).call(this, props));
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(Page).call(this, props));
     _this.state = {
-      list: []
+      list: [],
+      dateRange: [moment__WEBPACK_IMPORTED_MODULE_13___default()().subtract(61, 'days'), moment__WEBPACK_IMPORTED_MODULE_13___default()().subtract(1, 'days')]
     };
     return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(Page, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(Page, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.getList();
@@ -751,10 +775,13 @@ function (_Component) {
     value: function getList() {
       var _this2 = this;
 
+      var dateRange = this.state.dateRange;
       var router = this.props.router;
       var id = router.query.id;
-      public_utils__WEBPACK_IMPORTED_MODULE_11__[/* MServer */ "a"].get('/stat/usersub', {
-        sub_id: id
+      public_utils__WEBPACK_IMPORTED_MODULE_14__[/* MServer */ "a"].get('/stat/usersub', {
+        sub_id: id,
+        start_date: dateRange[0].format('YYYY-MM-DD'),
+        end_date: dateRange[1].format('YYYY-MM-DD')
       }).then(function (res) {
         _this2.setState({
           list: res.data
@@ -764,33 +791,80 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var list = this.state.list;
-      return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
+      var _this3 = this;
+
+      var _this$state = this.state,
+          list = _this$state.list,
+          dateRange = _this$state.dateRange;
+      return react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("div", {
         className: "page-layout-center"
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(antd_lib_alert__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("div", {
+        className: "form-condition"
+      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_5___default.a.RangePicker, {
+        value: dateRange,
+        onChange: function onChange(value) {
+          return _this3.setState({
+            dateRange: value
+          }, _this3.getList);
+        },
+        disabledDate: function disabledDate(current) {
+          return current && (current > moment__WEBPACK_IMPORTED_MODULE_13___default()().subtract(1, 'days').endOf('day') || current < moment__WEBPACK_IMPORTED_MODULE_13___default()().subtract(91, 'days').endOf('day'));
+        }
+      })), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(antd_lib_alert__WEBPACK_IMPORTED_MODULE_3___default.a, {
         message: "\u6BCF\u65E55:00-6:00\u81EA\u52A8\u6C47\u603B\u524D\u4E00\u5929\u6570\u636E",
         type: "warning",
         style: {
           marginBottom: 20
         }
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(antd_lib_table__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        dataSource: list,
+      }), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(antd_lib_table__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        dataSource: list.concat({
+          date: '累计',
+          trade_count: list.reduce(function (cur, next) {
+            return cur + Number(next.trade_count);
+          }, 0),
+          trade_part_count: list.reduce(function (cur, next) {
+            return cur + Number(next.trade_part_count);
+          }, 0),
+          order_count: list.reduce(function (cur, next) {
+            return cur + Number(next.order_count);
+          }, 0)
+        }),
         columns: [{
           key: 'date',
           dataIndex: 'date',
-          title: '日期'
+          title: '日期',
+          render: function render(text, record) {
+            return record.date == '累计' ? react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("span", {
+              className: "text-error"
+            }, text) : text;
+          }
         }, {
           key: 'trade_count',
           dataIndex: 'trade_count',
-          title: '订单数'
+          title: '订单数',
+          render: function render(text, record) {
+            return record.date == '累计' ? react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("span", {
+              className: "text-error"
+            }, text) : text;
+          }
         }, {
           key: 'trade_part_count',
           dataIndex: 'trade_part_count',
-          title: '配件订单数'
+          title: '配件订单数',
+          render: function render(text, record) {
+            return record.date == '累计' ? react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("span", {
+              className: "text-error"
+            }, text) : text;
+          }
         }, {
           key: 'order_count',
           dataIndex: 'order_count',
-          title: '子订单数(不含配件)'
+          title: '子订单数(不含配件)',
+          render: function render(text, record) {
+            return record.date == '累计' ? react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("span", {
+              className: "text-error"
+            }, text) : text;
+          }
         }],
         pagination: false
       }));
@@ -798,9 +872,9 @@ function (_Component) {
   }]);
 
   return Page;
-}(react__WEBPACK_IMPORTED_MODULE_9__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_11__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_10__["withRouter"])(Page));
+/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_12__["withRouter"])(Page));
 
 /***/ }),
 
@@ -808,6 +882,13 @@ function (_Component) {
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/symbol");
+
+/***/ }),
+
+/***/ "wy2R":
+/***/ (function(module, exports) {
+
+module.exports = require("moment");
 
 /***/ }),
 
