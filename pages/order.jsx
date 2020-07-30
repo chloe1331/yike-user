@@ -24,7 +24,7 @@ class Order extends Component {
 
     componentDidMount() {
         const { user} = this.props;
-        if (!user.sub || (user.sub && user.sub.role === 'manager')) {
+        if (!user.sub || (user.sub && ['manager', 'order'].includes(user.sub.role))) {
             this.getSubList();
         }
     }
@@ -178,7 +178,7 @@ class Order extends Component {
                         allowClear
                     />
                     {
-                        !user.sub || (user.sub && user.sub.role === 'manager') ? 
+                        !user.sub || (user.sub && ['manager', 'order'].includes(user.sub.role)) ? 
                             <Select 
                                 options={[{
                                     username: '只看主账号',
@@ -192,7 +192,7 @@ class Order extends Component {
                             /> : null
                     }
                     <div style={{ marginTop: '15px' }}>
-                        <Button loading={paySubmit} type="primary" onClick={this.handleBatchPay}>批量付款</Button>
+                        {!(user.sub && user.sub.role == 'order') ? <Button loading={paySubmit} type="primary" onClick={this.handleBatchPay}>批量付款</Button> : null}
                         <Button style={{ marginLeft: '15px' }} onClick={this.handleExport} loading={logisLoading}>导出物流信息</Button>
                         <a
                             style={{ marginLeft: '15px' }}

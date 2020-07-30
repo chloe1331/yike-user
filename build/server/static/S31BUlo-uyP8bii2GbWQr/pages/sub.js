@@ -266,6 +266,9 @@ var roleList = [{
 }, {
   label: '管理员',
   value: 'manager'
+}, {
+  label: '订单管理员',
+  value: 'order'
 }];
 
 /***/ }),
@@ -945,7 +948,8 @@ function (_Component) {
           onShowNotice = _this$props.onShowNotice;
       var isSub = !!user.sub;
       var isManager = isSub && user.sub.role == 'manager';
-      var menu = [{
+      var isOrder = isSub && user.sub.role == 'order';
+      var menuList = [{
         title: '下单',
         href: '/'
       }, // {
@@ -958,16 +962,31 @@ function (_Component) {
       }, {
         title: '售后订单',
         href: '/refund'
+      }, {
+        title: '账单列表',
+        href: '/bill'
+      }, {
+        title: '子账号列表',
+        href: '/sub'
       }];
+      var menu = [].concat(menuList);
 
-      if (!isSub || isManager) {
-        menu = menu.concat([{
-          title: '账单列表',
-          href: '/bill'
-        }], !isSub ? [{
-          title: '子账号列表',
-          href: '/sub'
-        }] : []);
+      if (isSub) {
+        if (isOrder) {
+          menu = menuList.filter(function (item) {
+            return ['/order', '/refund'].includes(item.href);
+          });
+        } else {
+          menu = menuList.filter(function (item) {
+            return ['/', '/order', '/refund'].includes(item.href);
+          });
+
+          if (isManager) {
+            menu.push(menuList.find(function (item) {
+              return item.href == '/bill';
+            }));
+          }
+        }
       }
 
       var userMenu = external_react_default.a.createElement(menu_default.a, {
@@ -2228,7 +2247,7 @@ function (_Component) {
             return _this13.handleDeleteTrade(item.id);
           },
           placement: "rightBottom"
-        }, external_react_default.a.createElement(button_default.a, null, "\u5220\u9664\u8BA2\u5355")))) : null, [10, 20, 50].includes(item.status) && item.type == 10 && item.refund_status == 0 ? external_react_default.a.createElement("tr", {
+        }, external_react_default.a.createElement(button_default.a, null, "\u5220\u9664\u8BA2\u5355")))) : null, [10, 20, 50].includes(item.status) && item.type == 10 && item.refund_status == 0 && !(user.sub && user.sub.role == 'order') ? external_react_default.a.createElement("tr", {
           key: "operator",
           className: order_list_style_default.a.tableBodyHead
         }, external_react_default.a.createElement("td", {
@@ -2244,7 +2263,7 @@ function (_Component) {
           className: order_list_style_default.a.tableBodyHead
         }, external_react_default.a.createElement("td", {
           colSpan: colSpan
-        }, item.type == 10 && item.refund_status == 0 ? external_react_default.a.createElement(popconfirm_default.a, {
+        }, item.type == 10 && item.refund_status == 0 && !(user.sub && user.sub.role == 'order') ? external_react_default.a.createElement(popconfirm_default.a, {
           title: external_react_default.a.createElement("div", null, "\u786E\u5B9A\u7533\u8BF7\u9000\u6B3E\u5417\uFF1F"),
           onConfirm: function onConfirm() {
             return _this13.handleApplyRefund(item.id);

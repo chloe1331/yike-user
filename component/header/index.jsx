@@ -23,8 +23,8 @@ export default class Header extends Component {
         const { router, user, onShowNotice } = this.props;
         const isSub = !!user.sub;
         const isManager = isSub && user.sub.role == 'manager';
- 
-        let menu = [
+        const isOrder = isSub && user.sub.role == 'order';
+        const menuList = [
             {
                 title: '下单',
                 href: '/'
@@ -40,20 +40,27 @@ export default class Header extends Component {
             {
                 title: '售后订单',
                 href: '/refund'
+            },
+            {
+                title: '账单列表',
+                href: '/bill'
+            },
+            {
+                title: '子账号列表',
+                href: '/sub'
             }
         ];
-        if (!isSub || isManager) {
-            menu = menu.concat([
-                {
-                    title: '账单列表',
-                    href: '/bill'
-                },
-            ], !isSub ? [
-                {
-                    title: '子账号列表',
-                    href: '/sub'
+ 
+        let menu = [...menuList];
+        if (isSub) {
+            if (isOrder) {
+                menu = menuList.filter(item => ['/order', '/refund'].includes(item.href));
+            } else {
+                menu = menuList.filter(item => ['/', '/order', '/refund'].includes(item.href));
+                if (isManager) {
+                    menu.push(menuList.find(item => item.href == '/bill'));
                 }
-            ]: []);
+            }
         }
         const userMenu = (
             <Menu style={{ width: 180 }}>

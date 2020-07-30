@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -266,6 +266,9 @@ var roleList = [{
 }, {
   label: '管理员',
   value: 'manager'
+}, {
+  label: '订单管理员',
+  value: 'order'
 }];
 
 /***/ }),
@@ -298,10 +301,10 @@ module.exports = __webpack_require__("k1wZ");
 
 /***/ }),
 
-/***/ 6:
+/***/ 7:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("DpsK");
+module.exports = __webpack_require__("eBHP");
 
 
 /***/ }),
@@ -381,385 +384,6 @@ module.exports = __webpack_require__("/+oN");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/button/style");
-
-/***/ }),
-
-/***/ "DpsK":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("DnGC");
-/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button_style__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("eGmO");
-/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("dfwq");
-/* harmony import */ var antd_lib_date_picker_style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("RGP6");
-/* harmony import */ var antd_lib_date_picker_style__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_date_picker_style__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("83ri");
-/* harmony import */ var antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("oRSk");
-/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input_style__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("Uqqx");
-/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("JHZV");
-/* harmony import */ var antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var antd_lib_radio__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("XQdj");
-/* harmony import */ var antd_lib_radio__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(antd_lib_radio__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var antd_lib_message_style__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("XZ83");
-/* harmony import */ var antd_lib_message_style__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message_style__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("3PsY");
-/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("bmdr");
-/* harmony import */ var antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var antd_lib_modal__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("xKsY");
-/* harmony import */ var antd_lib_modal__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(antd_lib_modal__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("vYYK");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("0iUn");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("sLSF");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("MI3g");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("a7VT");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("AT/M");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("Tit0");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var dva_no_router__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("0B1J");
-/* harmony import */ var dva_no_router__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(dva_no_router__WEBPACK_IMPORTED_MODULE_21__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("wy2R");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_22__);
-/* harmony import */ var public_utils__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__("HgRd");
-/* harmony import */ var component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__("OLV9");
-/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__("mVpe");
-/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(config_locale__WEBPACK_IMPORTED_MODULE_25__);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var Order =
-/*#__PURE__*/
-function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_19__[/* default */ "a"])(Order, _Component);
-
-  function Order(props) {
-    var _this;
-
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_14__[/* default */ "a"])(this, Order);
-
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_16__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_17__[/* default */ "a"])(Order).call(this, props));
-    _this.tableRef = Object(react__WEBPACK_IMPORTED_MODULE_20__["createRef"])();
-    _this.dialogExportRef = Object(react__WEBPACK_IMPORTED_MODULE_20__["createRef"])();
-    _this.state = {
-      paySubmit: false,
-      logisLoading: false,
-      subList: []
-    };
-    var handles = ['handleSearch', 'handleBatchPay', 'handleExport', 'handleChangeDate'];
-    handles.forEach(function (item) {
-      return _this[item] = _this[item].bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_18__[/* default */ "a"])(_this));
-    });
-    return _this;
-  }
-
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_15__[/* default */ "a"])(Order, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var user = this.props.user;
-
-      if (!user.sub || user.sub && user.sub.role === 'manager') {
-        this.getSubList();
-      }
-    }
-  }, {
-    key: "getSubList",
-    value: function getSubList() {
-      var _this2 = this;
-
-      public_utils__WEBPACK_IMPORTED_MODULE_23__[/* MServer */ "a"].get('/user/sublist', {
-        is_all: 1
-      }).then(function (res) {
-        if (res.errcode == 0) {
-          _this2.setState({
-            subList: res.data
-          });
-        }
-      });
-    }
-  }, {
-    key: "handleChangeStatus",
-    value: function handleChangeStatus(status) {
-      if (this.tableRef.current) {
-        this.tableRef.current.reload({
-          page: 1,
-          condition: {
-            status: status
-          }
-        });
-      }
-    }
-  }, {
-    key: "handleChangeDate",
-    value: function handleChangeDate(date) {
-      this.tableRef.current.reload({
-        condition: {
-          start_date: date[0] ? date[0].format('YYYY-MM-DD') : undefined,
-          end_date: date[1] ? date[1].format('YYYY-MM-DD') : undefined
-        }
-      });
-    }
-  }, {
-    key: "handleSearch",
-    value: function handleSearch(type, value) {
-      this.tableRef.current.reload({
-        condition: Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"])({}, type, value)
-      });
-    }
-  }, {
-    key: "handleBatchPay",
-    value: function handleBatchPay() {
-      var _this3 = this;
-
-      var user = this.props.user;
-      var isSub = !!user.sub;
-      this.setState({
-        paySubmit: true
-      });
-      public_utils__WEBPACK_IMPORTED_MODULE_23__[/* MServer */ "a"].get('/order/getpay').then(function (res) {
-        _this3.setState({
-          paySubmit: false
-        });
-
-        if (res.errcode == 0) {
-          if (res.data.length) {
-            var amount = res.data.reduce(function (pre, cur) {
-              return pre + cur.amount;
-            }, 0);
-
-            antd_lib_modal__WEBPACK_IMPORTED_MODULE_12___default.a.confirm({
-              title: '您确认要付款吗？',
-              content: react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement("div", null, "\u627E\u5230", res.data.length, "\u4E2A\u5F85\u4ED8\u6B3E\u8BA2\u5355", !isSub ? react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement("span", null, "\uFF0C\u652F\u4ED8\u91D1\u989D ", react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement("span", {
-                className: "text-warning"
-              }, amount), " \u5143") : null),
-              onOk: function onOk() {
-                _this3.setState({
-                  paySubmit: true
-                });
-
-                public_utils__WEBPACK_IMPORTED_MODULE_23__[/* MServer */ "a"].post('/order/pay', {
-                  id: res.data.map(function (item) {
-                    return item.id;
-                  })
-                }).then(function (res) {
-                  _this3.setState({
-                    paySubmit: false
-                  });
-
-                  if (res.errcode == 0) {
-                    antd_lib_message__WEBPACK_IMPORTED_MODULE_10___default.a.success('批量付款成功');
-
-                    _this3.tableRef.current.reload();
-                  }
-                });
-              }
-            });
-          } else {
-            antd_lib_message__WEBPACK_IMPORTED_MODULE_10___default.a.error('未找到待付款订单');
-          }
-        }
-      });
-    }
-  }, {
-    key: "handleExport",
-    value: function handleExport() {
-      var _this4 = this;
-
-      this.setState({
-        logisLoading: true
-      }, function () {
-        public_utils__WEBPACK_IMPORTED_MODULE_23__[/* MServer */ "a"].post('/order/exportUserLogis').then(function (res) {
-          if (res.errcode === 0) {
-            window.open("".concat(config_locale__WEBPACK_IMPORTED_MODULE_25___default.a["production"].url.api).concat(res.data.filepath));
-          }
-
-          _this4.setState({
-            logisLoading: false
-          });
-        });
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this5 = this;
-
-      var tabs = [{
-        value: 'all',
-        label: '全部订单'
-      }, {
-        value: 'audit',
-        label: '待审核'
-      }, {
-        value: 'waitpay',
-        label: '待付款'
-      }, {
-        value: 'pending',
-        label: '等待打印'
-      }, {
-        value: 'success',
-        label: '已打印'
-      }, {
-        value: 'waitsend',
-        label: '待发货'
-      }, {
-        value: 'send',
-        label: '已发货'
-      }];
-      var _this$state = this.state,
-          paySubmit = _this$state.paySubmit,
-          logisLoading = _this$state.logisLoading,
-          subList = _this$state.subList;
-      var user = this.props.user;
-      return react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement("div", {
-        className: "page-layout-center"
-      }, react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_24__[/* DialogExportHistroy */ "c"], {
-        ref: this.dialogExportRef
-      }), react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement(antd_lib_radio__WEBPACK_IMPORTED_MODULE_8___default.a.Group, {
-        defaultValue: "all",
-        onChange: function onChange(e) {
-          var value = e.target.value;
-
-          _this5.handleChangeStatus(value == 'all' ? null : value);
-        },
-        style: {
-          marginBottom: '20px'
-        }
-      }, tabs.map(function (tab) {
-        return react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement(antd_lib_radio__WEBPACK_IMPORTED_MODULE_8___default.a.Button, {
-          key: tab.value,
-          value: tab.value
-        }, tab.label);
-      })), react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement("div", {
-        className: "form-condition"
-      }, react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a.Search, {
-        onSearch: function onSearch(value) {
-          return _this5.handleSearch('order_sn', value);
-        },
-        placeholder: "\u641C\u7D22\u8BA2\u5355\u53F7"
-      }), react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a.Search, {
-        style: {
-          marginLeft: '15px'
-        },
-        onSearch: function onSearch(value) {
-          return _this5.handleSearch('express_sn', value);
-        },
-        placeholder: "\u641C\u7D22\u8FD0\u5355\u53F7"
-      }), react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a.Search, {
-        style: {
-          width: 160,
-          marginLeft: '15px'
-        },
-        onSearch: function onSearch(value) {
-          return _this5.handleSearch('consignee', (value || '').trim());
-        },
-        placeholder: "\u641C\u7D22\u59D3\u540D"
-      }), react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a.Search, {
-        style: {
-          width: 160,
-          marginLeft: '15px'
-        },
-        onSearch: function onSearch(value) {
-          return _this5.handleSearch('mobile', (value || '').trim());
-        },
-        placeholder: "\u641C\u7D22\u624B\u673A"
-      }), react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement(antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_4___default.a.RangePicker, {
-        style: {
-          width: 240,
-          marginLeft: 15
-        },
-        disabledDate: function disabledDate(current) {
-          return current && current && current > moment__WEBPACK_IMPORTED_MODULE_22___default()().endOf('day');
-        },
-        onChange: this.handleChangeDate,
-        allowClear: true
-      }), !user.sub || user.sub && user.sub.role === 'manager' ? react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_24__[/* Select */ "j"], {
-        options: [{
-          username: '只看主账号',
-          id: 0
-        }].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(subList)),
-        style: {
-          marginLeft: 15,
-          width: 180
-        },
-        fieldName: {
-          label: 'username',
-          value: 'id'
-        },
-        onChange: function onChange(value) {
-          return _this5.handleSearch('sub_id', value);
-        },
-        placeholder: "\u9009\u62E9\u5B50\u8D26\u53F7",
-        allowClear: true
-      }) : null, react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement("div", {
-        style: {
-          marginTop: '15px'
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        loading: paySubmit,
-        type: "primary",
-        onClick: this.handleBatchPay
-      }, "\u6279\u91CF\u4ED8\u6B3E"), react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        style: {
-          marginLeft: '15px'
-        },
-        onClick: this.handleExport,
-        loading: logisLoading
-      }, "\u5BFC\u51FA\u7269\u6D41\u4FE1\u606F"), react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement("a", {
-        style: {
-          marginLeft: '15px'
-        },
-        onClick: function onClick() {
-          if (_this5.dialogExportRef.current) _this5.dialogExportRef.current.open();
-        }
-      }, "\u7269\u6D41\u4FE1\u606F\u5BFC\u51FA\u5386\u53F2"))), react__WEBPACK_IMPORTED_MODULE_20___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_24__[/* OrderList */ "i"], {
-        action: "/order/userlist",
-        ref: this.tableRef,
-        user: user
-      }));
-    }
-  }]);
-
-  return Order;
-}(react__WEBPACK_IMPORTED_MODULE_20__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(dva_no_router__WEBPACK_IMPORTED_MODULE_21__["connect"])(function (_ref) {
-  var user = _ref.user;
-  return {
-    user: user
-  };
-})(Order));
 
 /***/ }),
 
@@ -1331,7 +955,8 @@ function (_Component) {
           onShowNotice = _this$props.onShowNotice;
       var isSub = !!user.sub;
       var isManager = isSub && user.sub.role == 'manager';
-      var menu = [{
+      var isOrder = isSub && user.sub.role == 'order';
+      var menuList = [{
         title: '下单',
         href: '/'
       }, // {
@@ -1344,16 +969,31 @@ function (_Component) {
       }, {
         title: '售后订单',
         href: '/refund'
+      }, {
+        title: '账单列表',
+        href: '/bill'
+      }, {
+        title: '子账号列表',
+        href: '/sub'
       }];
+      var menu = [].concat(menuList);
 
-      if (!isSub || isManager) {
-        menu = menu.concat([{
-          title: '账单列表',
-          href: '/bill'
-        }], !isSub ? [{
-          title: '子账号列表',
-          href: '/sub'
-        }] : []);
+      if (isSub) {
+        if (isOrder) {
+          menu = menuList.filter(function (item) {
+            return ['/order', '/refund'].includes(item.href);
+          });
+        } else {
+          menu = menuList.filter(function (item) {
+            return ['/', '/order', '/refund'].includes(item.href);
+          });
+
+          if (isManager) {
+            menu.push(menuList.find(function (item) {
+              return item.href == '/bill';
+            }));
+          }
+        }
       }
 
       var userMenu = external_react_default.a.createElement(menu_default.a, {
@@ -2614,7 +2254,7 @@ function (_Component) {
             return _this13.handleDeleteTrade(item.id);
           },
           placement: "rightBottom"
-        }, external_react_default.a.createElement(button_default.a, null, "\u5220\u9664\u8BA2\u5355")))) : null, [10, 20, 50].includes(item.status) && item.type == 10 && item.refund_status == 0 ? external_react_default.a.createElement("tr", {
+        }, external_react_default.a.createElement(button_default.a, null, "\u5220\u9664\u8BA2\u5355")))) : null, [10, 20, 50].includes(item.status) && item.type == 10 && item.refund_status == 0 && !(user.sub && user.sub.role == 'order') ? external_react_default.a.createElement("tr", {
           key: "operator",
           className: order_list_style_default.a.tableBodyHead
         }, external_react_default.a.createElement("td", {
@@ -2630,7 +2270,7 @@ function (_Component) {
           className: order_list_style_default.a.tableBodyHead
         }, external_react_default.a.createElement("td", {
           colSpan: colSpan
-        }, item.type == 10 && item.refund_status == 0 ? external_react_default.a.createElement(popconfirm_default.a, {
+        }, item.type == 10 && item.refund_status == 0 && !(user.sub && user.sub.role == 'order') ? external_react_default.a.createElement(popconfirm_default.a, {
           title: external_react_default.a.createElement("div", null, "\u786E\u5B9A\u7533\u8BF7\u9000\u6B3E\u5417\uFF1F"),
           onConfirm: function onConfirm() {
             return _this13.handleApplyRefund(item.id);
@@ -4271,6 +3911,262 @@ function _nonIterableRest() {
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
 }
+
+/***/ }),
+
+/***/ "eBHP":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("dfwq");
+/* harmony import */ var antd_lib_date_picker_style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("RGP6");
+/* harmony import */ var antd_lib_date_picker_style__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_date_picker_style__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("83ri");
+/* harmony import */ var antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("oRSk");
+/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input_style__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("Uqqx");
+/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("JHZV");
+/* harmony import */ var antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var antd_lib_radio__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("XQdj");
+/* harmony import */ var antd_lib_radio__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(antd_lib_radio__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("vYYK");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("0iUn");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("sLSF");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("MI3g");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("a7VT");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("AT/M");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("Tit0");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var dva_no_router__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("0B1J");
+/* harmony import */ var dva_no_router__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(dva_no_router__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("wy2R");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var public_utils__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("HgRd");
+/* harmony import */ var component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("OLV9");
+/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("mVpe");
+/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(config_locale__WEBPACK_IMPORTED_MODULE_19__);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var Order =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"])(Order, _Component);
+
+  function Order(props) {
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, Order);
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"])(Order).call(this, props));
+    _this.tableRef = Object(react__WEBPACK_IMPORTED_MODULE_14__["createRef"])();
+    _this.state = {
+      subList: []
+    };
+    var handles = ['handleSearch', 'handleChangeDate'];
+    handles.forEach(function (item) {
+      return _this[item] = _this[item].bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"])(_this));
+    });
+    return _this;
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(Order, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var user = this.props.user;
+
+      if (!user.sub || user.sub && ['manager', 'order'].includes(user.sub.role)) {
+        this.getSubList();
+      }
+    }
+  }, {
+    key: "getSubList",
+    value: function getSubList() {
+      var _this2 = this;
+
+      public_utils__WEBPACK_IMPORTED_MODULE_17__[/* MServer */ "a"].get('/user/sublist', {
+        is_all: 1
+      }).then(function (res) {
+        if (res.errcode == 0) {
+          _this2.setState({
+            subList: res.data
+          });
+        }
+      });
+    }
+  }, {
+    key: "handleChangeStatus",
+    value: function handleChangeStatus(status) {
+      if (this.tableRef.current) {
+        this.tableRef.current.reload({
+          page: 1,
+          condition: status == 'all' ? {
+            is_refund: 1,
+            refund_status: undefined
+          } : {
+            refund_status: status
+          }
+        });
+      }
+    }
+  }, {
+    key: "handleChangeDate",
+    value: function handleChangeDate(date) {
+      this.tableRef.current.reload({
+        condition: {
+          start_date: date[0] ? date[0].format('YYYY-MM-DD') : undefined,
+          end_date: date[1] ? date[1].format('YYYY-MM-DD') : undefined
+        }
+      });
+    }
+  }, {
+    key: "handleSearch",
+    value: function handleSearch(type, value) {
+      this.tableRef.current.reload({
+        condition: Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])({}, type, value)
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var tabs = [{
+        value: 'all',
+        label: '全部'
+      }, {
+        value: '10',
+        label: '退款中'
+      }, {
+        value: '20',
+        label: '退款成功'
+      }, {
+        value: '40',
+        label: '退款失败'
+      }];
+      var subList = this.state.subList;
+      var user = this.props.user;
+      return react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement("div", {
+        className: "page-layout-center"
+      }, react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement(antd_lib_radio__WEBPACK_IMPORTED_MODULE_6___default.a.Group, {
+        defaultValue: "all",
+        onChange: function onChange(e) {
+          var value = e.target.value;
+
+          _this3.handleChangeStatus(value);
+        },
+        style: {
+          marginBottom: '20px'
+        }
+      }, tabs.map(function (tab) {
+        return react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement(antd_lib_radio__WEBPACK_IMPORTED_MODULE_6___default.a.Button, {
+          key: tab.value,
+          value: tab.value
+        }, tab.label);
+      })), react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement("div", {
+        className: "form-condition"
+      }, react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_4___default.a.Search, {
+        onSearch: function onSearch(value) {
+          return _this3.handleSearch('order_sn', value);
+        },
+        placeholder: "\u641C\u7D22\u8BA2\u5355\u53F7"
+      }), react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_4___default.a.Search, {
+        style: {
+          marginLeft: '15px'
+        },
+        onSearch: function onSearch(value) {
+          return _this3.handleSearch('express_sn', value);
+        },
+        placeholder: "\u641C\u7D22\u8FD0\u5355\u53F7"
+      }), react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_4___default.a.Search, {
+        style: {
+          width: 160,
+          marginLeft: '15px'
+        },
+        onSearch: function onSearch(value) {
+          return _this3.handleSearch('consignee', (value || '').trim());
+        },
+        placeholder: "\u641C\u7D22\u59D3\u540D"
+      }), react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_4___default.a.Search, {
+        style: {
+          width: 160,
+          marginLeft: '15px'
+        },
+        onSearch: function onSearch(value) {
+          return _this3.handleSearch('mobile', (value || '').trim());
+        },
+        placeholder: "\u641C\u7D22\u624B\u673A"
+      }), react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement(antd_lib_date_picker__WEBPACK_IMPORTED_MODULE_2___default.a.RangePicker, {
+        style: {
+          width: 240,
+          marginLeft: 15
+        },
+        disabledDate: function disabledDate(current) {
+          return current && current && current > moment__WEBPACK_IMPORTED_MODULE_16___default()().endOf('day');
+        },
+        onChange: this.handleChangeDate,
+        allowClear: true
+      }), !user.sub || user.sub && ['manager', 'order'].includes(user.sub.role) ? react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_18__[/* Select */ "j"], {
+        options: [{
+          username: '只看主账号',
+          id: 0
+        }].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(subList)),
+        style: {
+          marginLeft: 15,
+          width: 180
+        },
+        fieldName: {
+          label: 'username',
+          value: 'id'
+        },
+        onChange: function onChange(value) {
+          return _this3.handleSearch('sub_id', value);
+        },
+        placeholder: "\u9009\u62E9\u5B50\u8D26\u53F7",
+        allowClear: true
+      }) : null), react__WEBPACK_IMPORTED_MODULE_14___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_18__[/* OrderList */ "i"], {
+        action: "/order/userlist",
+        ref: this.tableRef,
+        user: user,
+        condition: {
+          is_refund: 1
+        }
+      }));
+    }
+  }]);
+
+  return Order;
+}(react__WEBPACK_IMPORTED_MODULE_14__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(dva_no_router__WEBPACK_IMPORTED_MODULE_15__["connect"])(function (_ref) {
+  var user = _ref.user;
+  return {
+    user: user
+  };
+})(Order));
 
 /***/ }),
 

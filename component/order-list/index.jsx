@@ -487,7 +487,7 @@ class OrderList extends Component {
                                         </td>
                                     </tr>
                                 ) : null,
-                                [10, 20, 50].includes(item.status) && item.type == 10 && item.refund_status == 0 ? (
+                                [10, 20, 50].includes(item.status) && item.type == 10 && item.refund_status == 0 && !(user.sub && user.sub.role == 'order') ? (
                                     <tr key="operator" className={style.tableBodyHead}>
                                         <td colSpan={colSpan}>
                                             <Popconfirm
@@ -504,7 +504,7 @@ class OrderList extends Component {
                                     <tr key="operator" className={style.tableBodyHead}>
                                         <td colSpan={colSpan}>
                                             {
-                                                item.type == 10 && item.refund_status == 0 ? (
+                                                item.type == 10 && item.refund_status == 0 && !(user.sub && user.sub.role == 'order') ? (
                                                     <Popconfirm
                                                         title={<div>确定申请退款吗？</div>}
                                                         onConfirm={() => this.handleApplyRefund(item.id)}

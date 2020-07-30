@@ -21,7 +21,7 @@ class Order extends Component {
 
     componentDidMount() {
         const { user } = this.props;
-        if (!user.sub || (user.sub && user.sub.role === 'manager')) {
+        if (!user.sub || (user.sub && ['manager', 'order'].includes(user.sub.role))) {
             this.getSubList();
         }
     }
@@ -113,7 +113,7 @@ class Order extends Component {
                         allowClear
                     />
                     {
-                        !user.sub || (user.sub && user.sub.role === 'manager') ?
+                        !user.sub || (user.sub && ['manager', 'order'].includes(user.sub.role)) ?
                             <Select
                                 options={[{
                                     username: '只看主账号',
