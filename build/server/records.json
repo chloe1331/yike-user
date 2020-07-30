@@ -3,14 +3,14 @@
     "byIdentifier": {
       "multi private-next-pages/_app.jsx": 0,
       "multi private-next-pages/_document.jsx": 1,
-      "multi private-next-pages/bill.jsx": 2,
-      "multi private-next-pages/index.jsx": 3,
-      "multi private-next-pages/image.jsx": 4,
+      "multi private-next-pages/image.jsx": 2,
+      "multi private-next-pages/bill.jsx": 3,
+      "multi private-next-pages/index.jsx": 4,
       "multi private-next-pages/login.jsx": 5,
       "multi private-next-pages/order.jsx": 6,
       "multi private-next-pages/refund.jsx": 7,
-      "multi private-next-pages/sub/index.js": 8,
-      "multi private-next-pages/sub/stat.js": 9,
+      "multi private-next-pages/sub/stat.js": 8,
+      "multi private-next-pages/sub/index.js": 9,
       "multi next/dist/pages/_error": 10
     },
     "usedIds": {

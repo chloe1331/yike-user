@@ -39,6 +39,10 @@ class MyApp extends App {
             dispatch({
                 type: 'user/get'
             }).then(res => {
+                if (res.sub && res.sub.role == 'order') {
+                    router.push('/order');
+                    return;
+                }
                 if (res.system.notice) {
                     this.setState({
                         modalNotice: true
