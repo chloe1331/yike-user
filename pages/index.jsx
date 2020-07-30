@@ -22,6 +22,7 @@ class Home extends Component {
             expressList: [],
             partList: [],
             selectParts: [],
+            cancelAutoPart: localStorage.getItem('CANCELAUTOPART') ? (localStorage.getItem('CANCELAUTOPART') == 1) : false,
             selectedRowKeys: [],
             lockTexture: '',
             selectColor: null,
@@ -729,7 +730,7 @@ class Home extends Component {
 
     postSubmit(params, values) {
         const { form: { setFieldsValue } } = this.props;
-        const { selectedRow, selectParts, importExcelData, selectAttrId } = this.state;
+        const { selectedRow, selectParts, cancelAutoPart, importExcelData, selectAttrId } = this.state;
 
         if (this.select && selectAttrId && this.select.texture_attr.length) {
             // params.texture_attr_id = this.select.texture_attr.find(item => item.texture_attr_color === selectColor).texture_attr_id;
@@ -783,8 +784,11 @@ class Home extends Component {
             if (res.errcode == 0) {
                 this.setState({
                     submit: false,
-                    // selectParts: []
+                    selectParts: cancelAutoPart ? [] : selectParts
                 });
+                if (cancelAutoPart) {
+                    setFieldsValue(selectParts.reduce((cur, next) => ({ ...cur, [`part_${next}`]: 1 }), {}));
+                }
                 this.imageOpt.color = 'tran';
                 setFieldsValue({
                     quantity: 1,
@@ -856,7 +860,7 @@ class Home extends Component {
 
     render() {
         const { select, image, imageOpt, auto } = this;
-        const { list, preview, submit, expressList, partList, selectParts, selectColor, textures, importExcelData, selectedRow, drawer, drawerTitle, selectedRowKeys, lockTexture, selectAttrId, checkColor } = this.state;
+        const { list, preview, submit, expressList, partList, selectParts, cancelAutoPart, selectColor, textures, importExcelData, selectedRow, drawer, drawerTitle, selectedRowKeys, lockTexture, selectAttrId, checkColor } = this.state;
         const { form: { getFieldDecorator, getFieldValue }, user } = this.props;
         const defaultColors = [
             {
@@ -1331,48 +1335,59 @@ class Home extends Component {
                                 }
                                 {
                                     [10, 20].includes(getFieldValue('type')) && partList.length ? (
-                                        <Table
-                                            rowKey="id"
-                                            dataSource={partList}
-                                            pagination={false}
-                                            size="small"
-                                            // style={{ marginBottom: '15px' }}
-                                            rowSelection={{
-                                                selectedRowKeys: selectParts,
-                                                onChange: (selectedRowKeys) => {
-                                                    this.setState({
-                                                        selectParts: selectedRowKeys
-                                                    });
-                                                },
-                                            }}
-                                            columns={[
-                                                {
-                                                    key: 'name',
-                                                    dataIndex: 'name',
-                                                    title: '配件'
-                                                },
-                                                {
-                                                    key: 'number',
-                                                    dataIndex: 'id',
-                                                    title: '购买数量',
-                                                    render: (id) => <Form.Item className="no-margin">
-                                                        {
-                                                            getFieldDecorator(`part_${id}`, selectParts.includes(id) ? {
-                                                                rules: [{
-                                                                    required: true,
-                                                                    message: '请输入赠品数量'
-                                                                }],
-                                                                initialValue: 1
-                                                            } : {
-                                                                initialValue: 1
-                                                            })(
-                                                                <InputNumber min={1} max={1000} />
-                                                            )
-                                                        }
-                                                    </Form.Item>
-                                                }
-                                            ]}
-                                        ></Table>
+                                        <Fragment>
+                                            <div style={{ marginBottom: 10 }}>
+                                                <Checkbox 
+                                                    checked={cancelAutoPart} 
+                                                    onChange={e => {
+                                                        this.setState({ cancelAutoPart: e.target.checked });
+                                                        localStorage.setItem('CANCELAUTOPART', e.target.checked ? 1 : 0);
+                                                    }}
+                                                >取消配件自动勾选</Checkbox>
+                                            </div>
+                                            <Table
+                                                rowKey="id"
+                                                dataSource={partList}
+                                                pagination={false}
+                                                size="small"
+                                                // style={{ marginBottom: '15px' }}
+                                                rowSelection={{
+                                                    selectedRowKeys: selectParts,
+                                                    onChange: (selectedRowKeys) => {
+                                                        this.setState({
+                                                            selectParts: selectedRowKeys
+                                                        });
+                                                    },
+                                                }}
+                                                columns={[
+                                                    {
+                                                        key: 'name',
+                                                        dataIndex: 'name',
+                                                        title: '配件'
+                                                    },
+                                                    {
+                                                        key: 'number',
+                                                        dataIndex: 'id',
+                                                        title: '购买数量',
+                                                        render: (id) => <Form.Item className="no-margin">
+                                                            {
+                                                                getFieldDecorator(`part_${id}`, selectParts.includes(id) ? {
+                                                                    rules: [{
+                                                                        required: true,
+                                                                        message: '请输入赠品数量'
+                                                                    }],
+                                                                    initialValue: 1
+                                                                } : {
+                                                                    initialValue: 1
+                                                                })(
+                                                                    <InputNumber min={1} max={1000} />
+                                                                )
+                                                            }
+                                                        </Form.Item>
+                                                    }
+                                                ]}
+                                            ></Table>
+                                        </Fragment>
                                     ) : null
                                 }
                             </Form>
