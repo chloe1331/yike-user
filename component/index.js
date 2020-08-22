@@ -12,6 +12,8 @@ import PopoverOrderDetail from './popover-order-detail';
 import DialogCreateSub from './dialog-create-sub';
 import DialogResetPassword from './dialog-reset-password';
 import DialogUploadImage from './dialog-upload-image';
+import Avatar from './avatar';
+import ShopOrder from './shop-order';
 
 export {
     Select,
@@ -27,5 +29,7 @@ export {
     PopoverOrderDetail,
     DialogCreateSub,
     DialogResetPassword,
-    DialogUploadImage
+    DialogUploadImage,
+    Avatar,
+    ShopOrder
 };

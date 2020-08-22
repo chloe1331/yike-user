@@ -48,6 +48,10 @@ export default class Header extends Component {
             {
                 title: '子账号列表',
                 href: '/sub'
+            },
+            {
+                title: '店铺管理',
+                href: '/shop'
             }
         ];
  

@@ -1,0 +1,42 @@
+.card {
+    padding: 20px;
+    max-height: 520px;
+    overflow-y: auto;
+}
+
+.order {
+    border: 1px solid @border-color-base;
+    margin-bottom: 12px;
+    .head {
+        padding: 8px 16px;
+        border-bottom: 1px solid @border-color-base;
+    }
+    .body {
+        padding: 8px 16px;
+        .sub {
+            color: rgba(0, 0, 0, .45);
+            margin: 8px 0;
+        }
+        [class*='info___'] {
+            width: calc(~'100% - 32px');
+        }
+        :global {
+            .ant-row {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+            .ant-col {
+                flex: 1;
+            }
+            .ant-col + .ant-col {
+                text-align: right;
+            }
+        }
+    }
+    .footer {
+        padding: 8px 16px;
+        border-top: 1px solid @border-color-base;
+        background-color: @table-selected-row-bg;
+    }
+}

@@ -10,3 +10,12 @@ export const roleList = [
         value: 'order'
     }
 ];
+
+export const shopMap = {
+    pdd: {
+        name: '拼多多'
+    },
+    taotao: {
+        name: '淘宝'
+    }
+};

@@ -8,7 +8,7 @@ import { connect } from 'dva';
 import PropTypes from 'prop-types';
 
 import locale from 'config/locale';
-import { UploadBtn, Select, ColorPicker, DialogOrderDetail, InputNumber, PopoverOrderDetail } from 'component';
+import { UploadBtn, Select, ColorPicker, DialogOrderDetail, InputNumber, PopoverOrderDetail, ShopOrder } from 'component';
 import { MServer, convertBase64UrlToBlob } from 'public/utils';
 import style from 'public/theme/pages/index.less';
 
@@ -644,6 +644,51 @@ class Home extends Component {
         });
     }
 
+    handleShopOder(data, cb) {
+        const { selectParts } = this.state;
+        const { form: { validateFields } } = this.props;
+
+        validateFields((err, values) => {
+            values = {
+                ...values,
+                shop_id: data.shop_id,
+                type: 10,
+                order_sn: data.order_sn,
+                quantity: data.goods_count,
+                consignee: data.trade.consignee,
+                mobile: data.trade.mobile,
+                province: data.trade.province,
+                city: data.trade.city,
+                district: data.trade.district,
+                address: data.trade.address,
+            };
+            if (!this.select && !selectParts.length) {
+                message.error('请先选择机型或者选择一个配件');
+                cb && cb(false);
+                return;
+            }
+            if (this.select && !this.image && this.imageOpt.color == 'tran') {
+                // message.error('请至少上传一张图片或者设置一个颜色');
+                Modal.confirm({
+                    title: '确定要下单一个裸壳吗？',
+                    okText: '确定',
+                    cancelText: '取消',
+                    onCancel: () => {
+                        cb && cb(false)
+                    },
+                    onOk: () => this.onSubmit(values, {
+                        print_type: 10,
+                        shop_id: data.shop_id,
+                    }, cb)
+                });
+                return;
+            }
+            this.onSubmit(values, {
+                shop_id: data.shop_id,
+            }, cb);
+        });
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -676,10 +721,11 @@ class Home extends Component {
         });
     }
 
-    onSubmit(values, options = {}) {
+    onSubmit(values, options = {}, cb) {
         const isPrintEmpty = options.print_type == 10 || !this.select;
 
         if (!this.token && !isPrintEmpty) {
+            cb && cb(false);
             message.error('网络出错了，刷新页面试试');
             return;
         }
@@ -694,7 +740,7 @@ class Home extends Component {
             ...options
         };
         if (isPrintEmpty) {
-            this.postSubmit(params, values);
+            this.postSubmit(params, values, cb);
         } else {
             const formdata = new FormData();
             formdata.append('file', convertBase64UrlToBlob(this.getResultImage(this.select.is_camera ? true : false)), `${new Date().getTime()}.png`);
@@ -710,6 +756,7 @@ class Home extends Component {
                 if (res.key) {
                     return `${locale[process.env.NODE_ENV].url.cdnUser}${res.key}`;
                 } else {
+                    cb && cb(false);
                     throw new Error('图片上传失败');
                 }
             }).then(res => {
@@ -718,9 +765,10 @@ class Home extends Component {
                     image1: res
                 };
                 // if (values.texture_attr_id) params.texture_attr_id = values.texture_attr_id;
-                this.postSubmit(params, values);
+                this.postSubmit(params, values, cb);
             }).catch(err => {
                 message.error(err.message);
+                cb && cb(false);
                 this.setState({
                     submit: false
                 });
@@ -728,7 +776,7 @@ class Home extends Component {
         }
     }
 
-    postSubmit(params, values) {
+    postSubmit(params, values, cb) {
         const { form: { setFieldsValue } } = this.props;
         const { selectedRow, selectParts, cancelAutoPart, importExcelData, selectAttrId } = this.state;
 
@@ -743,7 +791,7 @@ class Home extends Component {
                 count: values[`part_${item}`]
             }));
         }
-        if (values.type == 20) {
+        if (values.type == 20 || values.shop_id) {
             params = {
                 ...params,
                 consignee: values.consignee,
@@ -755,33 +803,37 @@ class Home extends Component {
             };
         }
         if (values.type == 10) {
-            if (!selectedRow) {
-                this.setState({
-                    submit: false
-                });
-                message.error('未获取到收货地址');
-                return;
-            }
-            params = {
-                ...params,
-                consignee: selectedRow.consignee,
-                mobile: selectedRow.mobile,
-                province: selectedRow.province,
-                city: selectedRow.city,
-                district: selectedRow.district,
-                address: selectedRow.address,
-                source: selectedRow.source
-            };
-            if (!params.province) {
-                this.setState({
-                    submit: false
-                });
-                message.error('未获取到收货地址');
-                return;
+            if (!values.shop_id) {
+                if (!selectedRow) {
+                    this.setState({
+                        submit: false
+                    });
+                    cb && cb(false);
+                    message.error('未获取到收货地址');
+                    return;
+                }
+                params = {
+                    ...params,
+                    consignee: selectedRow.consignee,
+                    mobile: selectedRow.mobile,
+                    province: selectedRow.province,
+                    city: selectedRow.city,
+                    district: selectedRow.district,
+                    address: selectedRow.address,
+                };
+                if (!params.province) {
+                    this.setState({
+                        submit: false
+                    });
+                    cb && cb(false);
+                    message.error('未获取到收货地址');
+                    return;
+                }
             }
         }
         MServer.post('/order/save', params).then(res => {
             if (res.errcode == 0) {
+                cb && cb(true);
                 this.setState({
                     submit: false,
                     selectParts: cancelAutoPart ? [] : selectParts
@@ -837,6 +889,7 @@ class Home extends Component {
                     },
                 });
             } else {
+                cb && cb(false);
                 this.setState({
                     submit: false
                 });
@@ -859,6 +912,7 @@ class Home extends Component {
     }
 
     render() {
+        const { shop_id } = this.props.router.query;
         const { select, image, imageOpt, auto } = this;
         const { list, preview, submit, expressList, partList, selectParts, cancelAutoPart, selectColor, textures, importExcelData, selectedRow, drawer, drawerTitle, selectedRowKeys, lockTexture, selectAttrId, checkColor } = this.state;
         const { form: { getFieldDecorator, getFieldValue }, user } = this.props;
@@ -1137,96 +1191,11 @@ class Home extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className={style.orderConfig}>
-                            <Form onSubmit={this.handleSubmit}>
-                                <Form.Item label="订单类型">
-                                    {
-                                        getFieldDecorator('type', {
-                                            initialValue: 0
-                                        })(
-                                            <Radio.Group 
-                                                options={[{
-                                                    label: '普通订单',
-                                                    value: 0
-                                                }, {
-                                                    label: '充值订单',
-                                                    value: 10,
-                                                }, {
-                                                    label: '手工订单',
-                                                    value: 20
-                                                }]}
-                                            />
-                                        )
-                                    }
-                                </Form.Item>
-                                {
-                                    getFieldValue('type') == 10 ? (
-                                        <Form.Item>
-                                            <UploadBtn.Local
-                                                accept=".xls, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-                                                text="导入淘宝订单"
-                                                onUpload={file => this.handleUploadOrderExcel(file, 'taobao', '导入淘宝订单')}
-                                                style={{ marginRight: 10 }}
-                                            />
-                                            <UploadBtn.Local
-                                                accept=".xls, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-                                                text="导入拼多多订单"
-                                                onUpload={file => this.handleUploadOrderExcel(file, 'pdd', '导入拼多多订单')}
-                                            />
-                                            {
-                                                importExcelData ? (
-                                                    <div>
-                                                        <Button type="primary" onClick={() => this.setState({ drawer: true })}>打开导入的订单</Button>
-                                                    </div>
-                                                ) : null
-                                            }
-                                            {
-                                                selectedRow ? (
-                                                    <div className={style.remarkBox}>
-                                                        <p style={{ marginBottom: '10px', lineHeight: 1 }}>订单备注：{selectedRow.seller_remark}</p>
-                                                        <p style={{ marginBottom: '10px', lineHeight: 1 }}>买家留言：{selectedRow.buyer_remark}</p>
-                                                        <p style={{ marginBottom: '0', lineHeight: 1 }}>自定义备注：{selectedRow.remark}</p>
-                                                    </div>
-                                                ) : null
-                                            }
-                                        </Form.Item>
-                                    ) : null
-                                }
-                                <Form.Item label="配货标签" extra={getFieldValue('order_sn') ? (
-                                    <a 
-                                        className="text-info" 
-                                        onClick={() => {
-                                            this.dialogDetailRef.current && this.dialogDetailRef.current.open();
-                                        }}
-                                    >查看订单</a>
-                                    // <PopoverOrderDetail order_sn={getFieldValue('order_sn')} />
-                                ) : null}>
-                                    {
-                                        getFieldDecorator('order_sn', {
-                                            rules: [{
-                                                required: true,
-                                                message: '配货标签不能为空'
-                                            }]
-                                        })(
-                                            <Input placeholder="填写标签" />
-                                        )
-                                    }
-                                </Form.Item>
-                                <Form.Item label="订货数量">
-                                    {
-                                        getFieldDecorator('quantity', {
-                                            rules: [{
-                                                required: true,
-                                                message: '订货数量不能为空'
-                                            }],
-                                            initialValue: 1
-                                        })(
-                                            <InputNumber precision={0} min={1} max={1000} />
-                                        )
-                                    }
-                                </Form.Item>
-                                {
-                                    [10, 20].includes(getFieldValue('type')) ? (
+                        <div className={style.orderConfig} style={shop_id ? { padding: 0 } : {}}>
+                            {
+                                shop_id ? <Form>
+                                    <ShopOrder onOrder={(data, cb) => this.handleShopOder(data, cb)} />
+                                    <div style={{ padding: 20 }}>
                                         <Form.Item label="选择物流">
                                             {
                                                 getFieldDecorator('express_id', {
@@ -1240,105 +1209,10 @@ class Home extends Component {
                                                 )
                                             }
                                         </Form.Item>
-                                    ) : null
-                                }
-                                <Form.Item>
-                                    <Button type="primary" htmlType="submit" loading={submit}>提交订单</Button>
-                                    {getFieldValue('type') == 20 ? <Popover
-                                        trigger={['click']}
-                                        content={<div>
-                                            <Input.TextArea style={{ width: 300 }} onChange={(e) => this.handleAddressParse(e)} placeholder="粘贴地址智能解析完整地址" />
-                                            <p style={{ width: 300, wordBreak: 'break-all', marginTop: 10, marginBottom: 0 }}>例如：福州市福清市石竹街道义明综合楼3F 15000000000 user</p>
-                                        </div>}
-                                    >
-                                        <Button type="danger" style={{ marginLeft: 10 }}>智能解析地址</Button>
-                                    </Popover> : null}
-                                </Form.Item>
-                                {
-                                    getFieldValue('type') == 20 ? (
-                                        <div className="inline-form">
-                                            <div className="inline-form-item">
-                                                <Form.Item label="省">
-                                                    {
-                                                        getFieldDecorator('province', {
-                                                            rules: [{
-                                                                required: true,
-                                                                message: '省份不能为空'
-                                                            }],
-                                                        })(
-                                                            <Input />
-                                                        )
-                                                    }
-                                                </Form.Item>
-                                                <Form.Item label="市">
-                                                    {
-                                                        getFieldDecorator('city', {
-                                                            rules: [{
-                                                                required: true,
-                                                                message: '市不能为空'
-                                                            }],
-                                                        })(
-                                                            <Input />
-                                                        )
-                                                    }
-                                                </Form.Item>
-                                                <Form.Item label="区">
-                                                    {
-                                                        getFieldDecorator('district')(
-                                                            <Input />
-                                                        )
-                                                    }
-                                                </Form.Item>
-                                            </div>
-                                            <div className="inline-form-item">
-                                                <Form.Item label="详细地址">
-                                                    {
-                                                        getFieldDecorator('address', {
-                                                            rules: [{
-                                                                required: true,
-                                                                message: '地址不能为空'
-                                                            }],
-                                                        })(
-                                                            <Input />
-                                                        )
-                                                    }
-                                                </Form.Item>
-                                            </div>
-                                            <div className="inline-form-item">
-                                                <Form.Item label="收货人">
-                                                    {
-                                                        getFieldDecorator('consignee', {
-                                                            rules: [{
-                                                                required: true,
-                                                                message: '收货人不能为空'
-                                                            }],
-                                                        })(
-                                                            <Input />
-                                                        )
-                                                    }
-                                                </Form.Item>
-                                                <Form.Item label="联系方式">
-                                                    {
-                                                        getFieldDecorator('mobile', {
-                                                            rules: [{
-                                                                required: true,
-                                                                message: '收货人不能为空'
-                                                            }],
-                                                        })(
-                                                            <Input />
-                                                        )
-                                                    }
-                                                </Form.Item>
-                                            </div>
-                                        </div>
-                                    ) : null
-                                }
-                                {
-                                    [10, 20].includes(getFieldValue('type')) && partList.length ? (
                                         <Fragment>
                                             <div style={{ marginBottom: 10 }}>
-                                                <Checkbox 
-                                                    checked={cancelAutoPart} 
+                                                <Checkbox
+                                                    checked={cancelAutoPart}
                                                     onChange={e => {
                                                         this.setState({ cancelAutoPart: e.target.checked });
                                                         localStorage.setItem('CANCELAUTOPART', e.target.checked ? 1 : 0);
@@ -1378,19 +1252,271 @@ class Home extends Component {
                                                                     }],
                                                                     initialValue: 1
                                                                 } : {
-                                                                    initialValue: 1
-                                                                })(
-                                                                    <InputNumber min={1} max={1000} />
-                                                                )
+                                                                        initialValue: 1
+                                                                    })(
+                                                                        <InputNumber min={1} max={1000} />
+                                                                    )
                                                             }
                                                         </Form.Item>
                                                     }
                                                 ]}
                                             ></Table>
                                         </Fragment>
-                                    ) : null
-                                }
-                            </Form>
+                                    </div>
+                                </Form> : <Form onSubmit={this.handleSubmit}>
+                                    <Form.Item label="订单类型">
+                                        {
+                                            getFieldDecorator('type', {
+                                                initialValue: 0
+                                            })(
+                                                <Radio.Group
+                                                    options={[{
+                                                        label: '普通订单',
+                                                        value: 0
+                                                    }, {
+                                                        label: '充值订单',
+                                                        value: 10,
+                                                    }, {
+                                                        label: '手工订单',
+                                                        value: 20
+                                                    }]}
+                                                />
+                                            )
+                                        }
+                                    </Form.Item>
+                                    {
+                                        getFieldValue('type') == 10 ? (
+                                            <Form.Item>
+                                                <UploadBtn.Local
+                                                    accept=".xls, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                                    text="导入淘宝订单"
+                                                    onUpload={file => this.handleUploadOrderExcel(file, 'taobao', '导入淘宝订单')}
+                                                    style={{ marginRight: 10 }}
+                                                />
+                                                <UploadBtn.Local
+                                                    accept=".xls, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                                    text="导入拼多多订单"
+                                                    onUpload={file => this.handleUploadOrderExcel(file, 'pdd', '导入拼多多订单')}
+                                                />
+                                                {
+                                                    importExcelData ? (
+                                                        <div>
+                                                            <Button type="primary" onClick={() => this.setState({ drawer: true })}>打开导入的订单</Button>
+                                                        </div>
+                                                    ) : null
+                                                }
+                                                {
+                                                    selectedRow ? (
+                                                        <div className={style.remarkBox}>
+                                                            <p style={{ marginBottom: '10px', lineHeight: 1 }}>订单备注：{selectedRow.seller_remark}</p>
+                                                            <p style={{ marginBottom: '10px', lineHeight: 1 }}>买家留言：{selectedRow.buyer_remark}</p>
+                                                            <p style={{ marginBottom: '0', lineHeight: 1 }}>自定义备注：{selectedRow.remark}</p>
+                                                        </div>
+                                                    ) : null
+                                                }
+                                            </Form.Item>
+                                        ) : null
+                                    }
+                                    <Form.Item label="配货标签" extra={getFieldValue('order_sn') ? (
+                                        <a
+                                            className="text-info"
+                                            onClick={() => {
+                                                this.dialogDetailRef.current && this.dialogDetailRef.current.open();
+                                            }}
+                                        >查看订单</a>
+                                        // <PopoverOrderDetail order_sn={getFieldValue('order_sn')} />
+                                    ) : null}>
+                                        {
+                                            getFieldDecorator('order_sn', {
+                                                rules: [{
+                                                    required: true,
+                                                    message: '配货标签不能为空'
+                                                }]
+                                            })(
+                                                <Input placeholder="填写标签" />
+                                            )
+                                        }
+                                    </Form.Item>
+                                    <Form.Item label="订货数量">
+                                        {
+                                            getFieldDecorator('quantity', {
+                                                rules: [{
+                                                    required: true,
+                                                    message: '订货数量不能为空'
+                                                }],
+                                                initialValue: 1
+                                            })(
+                                                <InputNumber precision={0} min={1} max={1000} />
+                                            )
+                                        }
+                                    </Form.Item>
+                                    {
+                                        [10, 20].includes(getFieldValue('type')) ? (
+                                            <Form.Item label="选择物流">
+                                                {
+                                                    getFieldDecorator('express_id', {
+                                                        rules: [{
+                                                            required: true,
+                                                            message: '请先选择物流'
+                                                        }],
+                                                        initialValue: expressList.length ? this.getDefaultExpress() : undefined
+                                                    })(
+                                                        <Select options={expressList} fieldName={{ value: 'id', label: 'name' }} />
+                                                    )
+                                                }
+                                            </Form.Item>
+                                        ) : null
+                                    }
+                                    <Form.Item>
+                                        <Button type="primary" htmlType="submit" loading={submit}>提交订单</Button>
+                                        {getFieldValue('type') == 20 ? <Popover
+                                            trigger={['click']}
+                                            content={<div>
+                                                <Input.TextArea style={{ width: 300 }} onChange={(e) => this.handleAddressParse(e)} placeholder="粘贴地址智能解析完整地址" />
+                                                <p style={{ width: 300, wordBreak: 'break-all', marginTop: 10, marginBottom: 0 }}>例如：福州市福清市石竹街道义明综合楼3F 15000000000 user</p>
+                                            </div>}
+                                        >
+                                            <Button type="danger" style={{ marginLeft: 10 }}>智能解析地址</Button>
+                                        </Popover> : null}
+                                    </Form.Item>
+                                    {
+                                        getFieldValue('type') == 20 ? (
+                                            <div className="inline-form">
+                                                <div className="inline-form-item">
+                                                    <Form.Item label="省">
+                                                        {
+                                                            getFieldDecorator('province', {
+                                                                rules: [{
+                                                                    required: true,
+                                                                    message: '省份不能为空'
+                                                                }],
+                                                            })(
+                                                                <Input />
+                                                            )
+                                                        }
+                                                    </Form.Item>
+                                                    <Form.Item label="市">
+                                                        {
+                                                            getFieldDecorator('city', {
+                                                                rules: [{
+                                                                    required: true,
+                                                                    message: '市不能为空'
+                                                                }],
+                                                            })(
+                                                                <Input />
+                                                            )
+                                                        }
+                                                    </Form.Item>
+                                                    <Form.Item label="区">
+                                                        {
+                                                            getFieldDecorator('district')(
+                                                                <Input />
+                                                            )
+                                                        }
+                                                    </Form.Item>
+                                                </div>
+                                                <div className="inline-form-item">
+                                                    <Form.Item label="详细地址">
+                                                        {
+                                                            getFieldDecorator('address', {
+                                                                rules: [{
+                                                                    required: true,
+                                                                    message: '地址不能为空'
+                                                                }],
+                                                            })(
+                                                                <Input />
+                                                            )
+                                                        }
+                                                    </Form.Item>
+                                                </div>
+                                                <div className="inline-form-item">
+                                                    <Form.Item label="收货人">
+                                                        {
+                                                            getFieldDecorator('consignee', {
+                                                                rules: [{
+                                                                    required: true,
+                                                                    message: '收货人不能为空'
+                                                                }],
+                                                            })(
+                                                                <Input />
+                                                            )
+                                                        }
+                                                    </Form.Item>
+                                                    <Form.Item label="联系方式">
+                                                        {
+                                                            getFieldDecorator('mobile', {
+                                                                rules: [{
+                                                                    required: true,
+                                                                    message: '收货人不能为空'
+                                                                }],
+                                                            })(
+                                                                <Input />
+                                                            )
+                                                        }
+                                                    </Form.Item>
+                                                </div>
+                                            </div>
+                                        ) : null
+                                    }
+                                    {
+                                        [10, 20].includes(getFieldValue('type')) && partList.length ? (
+                                            <Fragment>
+                                                <div style={{ marginBottom: 10 }}>
+                                                    <Checkbox
+                                                        checked={cancelAutoPart}
+                                                        onChange={e => {
+                                                            this.setState({ cancelAutoPart: e.target.checked });
+                                                            localStorage.setItem('CANCELAUTOPART', e.target.checked ? 1 : 0);
+                                                        }}
+                                                    >取消配件自动勾选</Checkbox>
+                                                </div>
+                                                <Table
+                                                    rowKey="id"
+                                                    dataSource={partList}
+                                                    pagination={false}
+                                                    size="small"
+                                                    // style={{ marginBottom: '15px' }}
+                                                    rowSelection={{
+                                                        selectedRowKeys: selectParts,
+                                                        onChange: (selectedRowKeys) => {
+                                                            this.setState({
+                                                                selectParts: selectedRowKeys
+                                                            });
+                                                        },
+                                                    }}
+                                                    columns={[
+                                                        {
+                                                            key: 'name',
+                                                            dataIndex: 'name',
+                                                            title: '配件'
+                                                        },
+                                                        {
+                                                            key: 'number',
+                                                            dataIndex: 'id',
+                                                            title: '购买数量',
+                                                            render: (id) => <Form.Item className="no-margin">
+                                                                {
+                                                                    getFieldDecorator(`part_${id}`, selectParts.includes(id) ? {
+                                                                        rules: [{
+                                                                            required: true,
+                                                                            message: '请输入赠品数量'
+                                                                        }],
+                                                                        initialValue: 1
+                                                                    } : {
+                                                                            initialValue: 1
+                                                                        })(
+                                                                            <InputNumber min={1} max={1000} />
+                                                                        )
+                                                                }
+                                                            </Form.Item>
+                                                        }
+                                                    ]}
+                                                ></Table>
+                                            </Fragment>
+                                        ) : null
+                                    }
+                                </Form>
+                            }
                         </div>
                     </div>
                 </div>
@@ -1563,5 +1689,6 @@ export default connect(({ user }) => ({ user }))(Form.create()(Home));
 
 Home.propTypes = {
     form: PropTypes.object,
-    user: PropTypes.object
+    user: PropTypes.object,
+    router: PropTypes.object
 };
