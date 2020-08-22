@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -234,14 +234,6 @@ module.exports = require("antd/lib/select/style");
 
 /***/ }),
 
-/***/ 2:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("Q9Ih");
-
-
-/***/ }),
-
 /***/ "27qp":
 /***/ (function(module, exports) {
 
@@ -315,6 +307,14 @@ module.exports = __webpack_require__("k1wZ");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/empty");
+
+/***/ }),
+
+/***/ 8:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("HfND");
+
 
 /***/ }),
 
@@ -410,6 +410,124 @@ module.exports = require("antd/lib/button/style");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/input-number");
+
+/***/ }),
+
+/***/ "HfND":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Page; });
+/* harmony import */ var antd_lib_divider_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("qRh3");
+/* harmony import */ var antd_lib_divider_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_divider_style__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var antd_lib_divider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("xZtu");
+/* harmony import */ var antd_lib_divider__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_divider__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("DnGC");
+/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button_style__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("eGmO");
+/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var antd_lib_message_style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("XZ83");
+/* harmony import */ var antd_lib_message_style__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message_style__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("3PsY");
+/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("wy2R");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("YFqc");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var public_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("HgRd");
+/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("mVpe");
+/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(config_locale__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var config_constant__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("374s");
+/* harmony import */ var component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("OLV9");
+
+
+
+
+
+
+
+
+
+
+
+
+
+var envUrls = config_locale__WEBPACK_IMPORTED_MODULE_10___default.a["production"].url;
+function Page() {
+  var tableRef = Object(react__WEBPACK_IMPORTED_MODULE_6__["useRef"])();
+
+  var handleSync = function handleSync(id) {
+    antd_lib_message__WEBPACK_IMPORTED_MODULE_5___default.a.loading('同步中...', 0);
+
+    public_utils__WEBPACK_IMPORTED_MODULE_9__[/* MServer */ "a"].get('/shop/order/sync', {
+      shop_id: id
+    }).then(function () {
+      antd_lib_message__WEBPACK_IMPORTED_MODULE_5___default.a.destroy();
+
+      antd_lib_message__WEBPACK_IMPORTED_MODULE_5___default.a.success('同步成功');
+    });
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+    className: "page-layout-center"
+  }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+    className: "form-condition"
+  }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    type: "primary",
+    href: "".concat(envUrls.api, "/shop/auth?type=pdd&state=auth")
+  }, "\u6DFB\u52A0\u62FC\u591A\u591A\u5E97\u94FA")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_12__[/* TableAction */ "m"], {
+    action: "/shop/list",
+    ref: tableRef,
+    columns: [{
+      key: 'name',
+      dataIndex: 'name',
+      title: '店铺',
+      render: function render(text, record) {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_12__[/* Avatar */ "a"], {
+          src: record.logo,
+          title: text
+        });
+      }
+    }, {
+      key: 'type',
+      dataIndex: 'type',
+      title: '类型',
+      render: function render(text) {
+        return config_constant__WEBPACK_IMPORTED_MODULE_11__[/* shopMap */ "b"][text].name;
+      }
+    }, {
+      key: 'createdAt',
+      dataIndex: 'createdAt',
+      title: '接入时间',
+      width: 220
+    }, {
+      key: 'updatedAt',
+      dataIndex: 'updatedAt',
+      title: '最近更新时间',
+      width: 220
+    }, {
+      key: 'setting',
+      dataIndex: 'id',
+      title: '操作',
+      render: function render(id, record) {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, moment__WEBPACK_IMPORTED_MODULE_7___default()(record.updatedAt).endOf('day').valueOf() < moment__WEBPACK_IMPORTED_MODULE_7___default()().endOf('day') ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
+          href: "".concat(envUrls.api, "/shop/auth?type=pdd&state=reload")
+        }, "\u91CD\u65B0\u6388\u6743") : react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
+          onClick: function onClick() {
+            return handleSync(id);
+          }
+        }, "\u540C\u6B65\u8BA2\u5355"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(antd_lib_divider__WEBPACK_IMPORTED_MODULE_1___default.a, {
+          type: "vertical"
+        }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_8___default.a, {
+          href: "/?shop_id=".concat(id)
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", null, "\u53BB\u4E0B\u5355"))));
+      }
+    }]
+  }));
+}
 
 /***/ }),
 
@@ -3057,6 +3175,8 @@ var shop_order_style_default = /*#__PURE__*/__webpack_require__.n(shop_order_sty
 
 
 
+
+
 function ShopOrder(_ref) {
   var onOrder = _ref.onOrder;
   var router = Object(router_["useRouter"])();
@@ -3148,7 +3268,37 @@ function ShopOrder(_ref) {
       key: item.id
     }, external_react_default.a.createElement("div", {
       className: shop_order_style_default.a.head
-    }, "\u8BA2\u5355\u53F7\uFF1A", item.order_sn), external_react_default.a.createElement("div", {
+    }, external_react_default.a.createElement("p", {
+      style: {
+        marginBottom: 4
+      }
+    }, "\u8BA2\u5355\u53F7\uFF1A", item.order_sn), external_react_default.a.createElement("p", {
+      className: "text-secondary",
+      style: {
+        marginBottom: 0
+      }
+    }, "\u6210\u4EA4\u65F6\u95F4\uFF1A", item.trade.confirm_time, external_react_default.a.createElement(popover_default.a, {
+      placement: "leftTop",
+      content: external_react_default.a.createElement("div", null, external_react_default.a.createElement("p", {
+        style: {
+          marginBottom: 4
+        }
+      }, external_react_default.a.createElement("a", null, "\u6536\u4EF6\u4EBA\uFF1A"), item.trade.consignee), external_react_default.a.createElement("p", {
+        style: {
+          marginBottom: 4
+        }
+      }, external_react_default.a.createElement("a", null, "\u7535\u8BDD\uFF1A"), item.trade.mobile), external_react_default.a.createElement("p", {
+        style: {
+          marginBottom: 4
+        }
+      }, external_react_default.a.createElement("a", null, "\u5730\u5740\uFF1A"), item.trade.province, " ", item.trade.city, " ", item.trade.district, " ", item.trade.address))
+    }, external_react_default.a.createElement("a", {
+      style: {
+        float: 'right'
+      }
+    }, external_react_default.a.createElement(icon_default.a, {
+      type: "user"
+    }))))), external_react_default.a.createElement("div", {
       className: shop_order_style_default.a.body
     }, external_react_default.a.createElement(popover_default.a, {
       placement: "leftBottom",
@@ -3255,81 +3405,6 @@ module.exports = {
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/table");
-
-/***/ }),
-
-/***/ "Q9Ih":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Bill; });
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("0iUn");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("sLSF");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("MI3g");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("a7VT");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("Tit0");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("OLV9");
-
-
-
-
-
-
-
-
-var Bill =
-/*#__PURE__*/
-function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(Bill, _Component);
-
-  function Bill() {
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, Bill);
-
-    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(Bill).apply(this, arguments));
-  }
-
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(Bill, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "page-layout-center"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_6__[/* TableAction */ "m"], {
-        action: "/user/mybill",
-        columns: [{
-          key: 'type',
-          dataIndex: 'type',
-          title: '交易类型',
-          render: function render(text) {
-            return text == 0 ? '支出' : '收入';
-          }
-        }, {
-          key: 'amount',
-          dataIndex: 'amount',
-          title: '交易金额'
-        }, {
-          key: 'balance',
-          dataIndex: 'balance',
-          title: '账户余额'
-        }, {
-          key: 'remark',
-          dataIndex: 'remark',
-          title: '备注'
-        }, {
-          key: 'createdAt',
-          dataIndex: 'createdAt',
-          title: '交易时间'
-        }]
-      }));
-    }
-  }]);
-
-  return Bill;
-}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
-
-
 
 /***/ }),
 
@@ -4560,6 +4635,13 @@ module.exports = require("core-js/library/fn/object/keys");
 
 /***/ }),
 
+/***/ "qRh3":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/divider/style");
+
+/***/ }),
+
 /***/ "r7XW":
 /***/ (function(module, exports) {
 
@@ -4701,10 +4783,24 @@ module.exports = require("antd/lib/col");
 
 /***/ }),
 
+/***/ "wy2R":
+/***/ (function(module, exports) {
+
+module.exports = require("moment");
+
+/***/ }),
+
 /***/ "xKsY":
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/modal");
+
+/***/ }),
+
+/***/ "xZtu":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/divider");
 
 /***/ }),
 

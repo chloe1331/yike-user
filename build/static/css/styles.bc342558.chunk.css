@@ -181,6 +181,9 @@ li {
 .text-info {
   color: #1581FF;
 }
+.text-secondary {
+  color: rgba(0, 0, 0, 0.35);
+}
 .form-condition {
   margin-bottom: 15px;
 }

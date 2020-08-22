@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import { Form, Pagination, Select, Row, Col, Button, Popover, Empty } from 'antd';
+import { Form, Pagination, Select, Row, Col, Button, Popover, Empty, Icon } from 'antd';
 import { useRouter } from 'next/router';
 
 import { MServer } from 'public/utils';
@@ -65,7 +65,22 @@ export default function ShopOrder ({ onOrder }) {
         {order.length ? <Fragment>
             {
                 order.map(item => <div className={s.order} key={item.id}>
-                    <div className={s.head}>订单号：{item.order_sn}</div>
+                    <div className={s.head}>
+                        <p style={{ marginBottom: 4 }}>订单号：{item.order_sn}</p>
+                        <p className='text-secondary' style={{ marginBottom: 0 }}>
+                            成交时间：{item.trade.confirm_time}
+                            <Popover
+                                placement='leftTop'
+                                content={<div>
+                                    <p style={{ marginBottom: 4 }}><a>收件人：</a>{item.trade.consignee}</p>
+                                    <p style={{ marginBottom: 4 }}><a>电话：</a>{item.trade.mobile}</p>
+                                    <p style={{ marginBottom: 4 }}><a>地址：</a>{item.trade.province} {item.trade.city} {item.trade.district} {item.trade.address}</p>
+                                </div>}
+                            >
+                                <a style={{ float: 'right' }}><Icon type="user" /></a>
+                            </Popover>
+                        </p>
+                    </div>
                     <div className={s.body}>
                         <Popover placement='leftBottom' content={<img style={{ width: 400 }} src={item.goods_img} />}>
                             <a><Avatar src={item.goods_img} title={item.goods_name} /></a>

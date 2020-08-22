@@ -3078,6 +3078,8 @@ var shop_order_style_default = /*#__PURE__*/__webpack_require__.n(shop_order_sty
 
 
 
+
+
 function ShopOrder(_ref) {
   var onOrder = _ref.onOrder;
   var router = Object(router_["useRouter"])();
@@ -3169,7 +3171,37 @@ function ShopOrder(_ref) {
       key: item.id
     }, external_react_default.a.createElement("div", {
       className: shop_order_style_default.a.head
-    }, "\u8BA2\u5355\u53F7\uFF1A", item.order_sn), external_react_default.a.createElement("div", {
+    }, external_react_default.a.createElement("p", {
+      style: {
+        marginBottom: 4
+      }
+    }, "\u8BA2\u5355\u53F7\uFF1A", item.order_sn), external_react_default.a.createElement("p", {
+      className: "text-secondary",
+      style: {
+        marginBottom: 0
+      }
+    }, "\u6210\u4EA4\u65F6\u95F4\uFF1A", item.trade.confirm_time, external_react_default.a.createElement(popover_default.a, {
+      placement: "leftTop",
+      content: external_react_default.a.createElement("div", null, external_react_default.a.createElement("p", {
+        style: {
+          marginBottom: 4
+        }
+      }, external_react_default.a.createElement("a", null, "\u6536\u4EF6\u4EBA\uFF1A"), item.trade.consignee), external_react_default.a.createElement("p", {
+        style: {
+          marginBottom: 4
+        }
+      }, external_react_default.a.createElement("a", null, "\u7535\u8BDD\uFF1A"), item.trade.mobile), external_react_default.a.createElement("p", {
+        style: {
+          marginBottom: 4
+        }
+      }, external_react_default.a.createElement("a", null, "\u5730\u5740\uFF1A"), item.trade.province, " ", item.trade.city, " ", item.trade.district, " ", item.trade.address))
+    }, external_react_default.a.createElement("a", {
+      style: {
+        float: 'right'
+      }
+    }, external_react_default.a.createElement(icon_default.a, {
+      type: "user"
+    }))))), external_react_default.a.createElement("div", {
       className: shop_order_style_default.a.body
     }, external_react_default.a.createElement(popover_default.a, {
       placement: "leftBottom",
