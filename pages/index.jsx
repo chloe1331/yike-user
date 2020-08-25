@@ -821,14 +821,14 @@ class Home extends Component {
                     district: selectedRow.district,
                     address: selectedRow.address,
                 };
-                if (!params.province) {
-                    this.setState({
-                        submit: false
-                    });
-                    cb && cb(false);
-                    message.error('未获取到收货地址');
-                    return;
-                }
+                // if (!params.province) {
+                //     this.setState({
+                //         submit: false
+                //     });
+                //     cb && cb(false);
+                //     message.error('未获取到收货地址');
+                //     return;
+                // }
             }
         }
         MServer.post('/order/save', params).then(res => {

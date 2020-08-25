@@ -1484,6 +1484,13 @@ li {
   border-width: 0 0 0 1px;
 }
 
+.success___2KFLY {
+  text-align: center;
+}
+.success___2KFLY p {
+  margin-top: 12px;
+}
+
 /* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
 /* stylelint-disable no-duplicate-selectors */
 /* stylelint-disable */
@@ -4905,12 +4912,5 @@ textarea.ant-time-picker-input {
 .inline-form-item .ant-form-item {
   flex: 1;
   margin-right: 10px;
-}
-
-.success___2KFLY {
-  text-align: center;
-}
-.success___2KFLY p {
-  margin-top: 12px;
 }
 
