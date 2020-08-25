@@ -14,6 +14,7 @@ import DialogResetPassword from './dialog-reset-password';
 import DialogUploadImage from './dialog-upload-image';
 import Avatar from './avatar';
 import ShopOrder from './shop-order';
+import CustomIcon from './custom-icon';
 
 export {
     Select,
@@ -31,5 +32,6 @@ export {
     DialogResetPassword,
     DialogUploadImage,
     Avatar,
-    ShopOrder
+    ShopOrder,
+    CustomIcon
 };
