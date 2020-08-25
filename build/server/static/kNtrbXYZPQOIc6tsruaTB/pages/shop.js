@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -310,18 +310,18 @@ module.exports = require("antd/lib/empty");
 
 /***/ }),
 
-/***/ 8:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("HfND");
-
-
-/***/ }),
-
 /***/ "8IBW":
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/empty/style");
+
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("HfND");
+
 
 /***/ }),
 
@@ -490,10 +490,14 @@ function Page() {
     setShowModal(true);
     public_utils__WEBPACK_IMPORTED_MODULE_14__[/* MServer */ "a"].get('/shop/order/sync', {
       shop_id: id
-    }).then(function () {
-      setIsSuccess(true);
+    }).then(function (res) {
+      if (res.errcode == 0) {
+        setIsSuccess(true);
 
-      antd_lib_message__WEBPACK_IMPORTED_MODULE_9___default.a.success('同步成功');
+        antd_lib_message__WEBPACK_IMPORTED_MODULE_9___default.a.success('同步成功');
+      } else {
+        setShowModal(false);
+      }
     });
   };
 

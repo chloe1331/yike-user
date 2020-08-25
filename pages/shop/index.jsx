@@ -20,9 +20,13 @@ export default function Page() {
         setShowModal(true);
         MServer.get('/shop/order/sync', {
             shop_id: id
-        }).then(() => {
-            setIsSuccess(true);
-            message.success('同步成功');
+        }).then(res => {
+            if (res.errcode == 0) {
+                setIsSuccess(true);
+                message.success('同步成功');
+            } else {
+                setShowModal(false);
+            }
         });
     };
 
