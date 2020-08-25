@@ -9,10 +9,10 @@
       "multi private-next-pages/login.jsx": 5,
       "multi private-next-pages/order.jsx": 6,
       "multi private-next-pages/refund.jsx": 7,
-      "multi private-next-pages/shop/order.jsx": 8,
-      "multi private-next-pages/shop/index.jsx": 9,
-      "multi private-next-pages/sub/index.js": 10,
-      "multi private-next-pages/sub/stat.js": 11,
+      "multi private-next-pages/sub/index.js": 8,
+      "multi private-next-pages/sub/stat.js": 9,
+      "multi private-next-pages/shop/order.jsx": 10,
+      "multi private-next-pages/shop/index.jsx": 11,
       "multi next/dist/pages/_error": 12
     },
     "usedIds": {

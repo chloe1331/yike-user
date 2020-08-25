@@ -36,6 +36,9 @@ export default function Page() {
             onCancel={() => {
                 setShowModal(false);
             }}
+            onOk={() => {
+                setShowModal(false);
+            }}
             okText='知道了'
             width={360}
             footer={isSuccess ? void 0 : false}

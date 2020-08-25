@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -227,6 +227,14 @@ function _classCallCheck(instance, Constructor) {
 
 /***/ }),
 
+/***/ 11:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("HfND");
+
+
+/***/ }),
+
 /***/ "1Wvg":
 /***/ (function(module, exports) {
 
@@ -314,14 +322,6 @@ module.exports = require("antd/lib/empty");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/empty/style");
-
-/***/ }),
-
-/***/ 9:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("HfND");
-
 
 /***/ }),
 
@@ -506,6 +506,9 @@ function Page() {
   }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(antd_lib_modal__WEBPACK_IMPORTED_MODULE_5___default.a, {
     visible: showModal,
     onCancel: function onCancel() {
+      setShowModal(false);
+    },
+    onOk: function onOk() {
       setShowModal(false);
     },
     okText: "\u77E5\u9053\u4E86",
