@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { Form, Input, Icon, Button } from 'antd';
-import { connect } from 'dva';
+import { connect } from 'dva'; 
 import PropTypes from 'prop-types';
 
 import { MServer } from 'public/utils';
@@ -18,12 +18,15 @@ class Login extends Component {
         e.stopPropagation();
 
         const { form: { validateFields }, router, dispatch, onLogin } = this.props;
+        const { shop_id } = router.query;
 
         validateFields((err, values) => {
             if (!err) {
-                MServer.post('/user/login', values).then(res => {
+                MServer.post('/user/login', {
+                    ...values,
+                    shop_id
+                }).then(res => {
                     if (res.errcode == 0) {
-                        localStorage.setItem('token', res.token);
                         router.push('/');
                         dispatch({
                             type: 'user/get'
@@ -38,6 +41,7 @@ class Login extends Component {
 
     render() {
         const { form: { getFieldDecorator } } = this.props;
+        console.log(this.props)
 
         return (
             <div className={style.pageLogin}>
@@ -67,7 +71,7 @@ class Login extends Component {
                     </Form.Item>
                     <Form.Item>
                         <Button type="primary" htmlType="submit" block size="large">
-                            Log in
+                            登录
                         </Button>
                     </Form.Item>
                 </Form>

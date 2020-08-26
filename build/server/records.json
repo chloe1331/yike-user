@@ -9,11 +9,12 @@
       "multi private-next-pages/login.jsx": 5,
       "multi private-next-pages/order.jsx": 6,
       "multi private-next-pages/refund.jsx": 7,
-      "multi private-next-pages/shop/index.jsx": 8,
-      "multi private-next-pages/shop/order.jsx": 9,
-      "multi private-next-pages/sub/index.js": 10,
-      "multi private-next-pages/sub/stat.js": 11,
-      "multi next/dist/pages/_error": 12
+      "multi private-next-pages/bind/index.jsx": 8,
+      "multi private-next-pages/shop/index.jsx": 9,
+      "multi private-next-pages/shop/order.jsx": 10,
+      "multi private-next-pages/sub/index.js": 11,
+      "multi private-next-pages/sub/stat.js": 12,
+      "multi next/dist/pages/_error": 13
     },
     "usedIds": {
       "0": 0,
@@ -28,7 +29,8 @@
       "9": 9,
       "10": 10,
       "11": 11,
-      "12": 12
+      "12": 12,
+      "13": 13
     }
   },
   "chunks": {

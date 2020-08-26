@@ -35,7 +35,7 @@ class MyApp extends App {
         
         const { dispatch, router } = this.props;
 
-        if (router.asPath != '/login') {
+        if (router.pathname != '/login' && router.pathname != '/bind') {
             dispatch({
                 type: 'user/get'
             }).then(res => {
@@ -62,7 +62,7 @@ class MyApp extends App {
         const { Component, pageProps, router, user, dispatch } = this.props;
         const { modalNotice } = this.state;
 
-        if (router.asPath == '/login') {
+        if (router.pathname == '/login' || router.pathname == '/bind') {
             return (
                 <ConfigProvider locale={zh_CN}>
                     <Header>
