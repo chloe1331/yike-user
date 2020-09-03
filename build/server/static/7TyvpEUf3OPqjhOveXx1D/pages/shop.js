@@ -488,6 +488,7 @@ function Page() {
 
   var handleSync = function handleSync(id) {
     setShowModal(true);
+    setIsSuccess(false);
     public_utils__WEBPACK_IMPORTED_MODULE_14__[/* MServer */ "a"].get('/shop/order/sync', {
       shop_id: id
     }).then(function (res) {

@@ -18,6 +18,7 @@ export default function Page() {
     const [isSuccess, setIsSuccess] = useState(false);
     const handleSync = (id) => {
         setShowModal(true);
+        setIsSuccess(false);
         MServer.get('/shop/order/sync', {
             shop_id: id
         }).then(res => {
