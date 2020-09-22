@@ -1001,13 +1001,9 @@ function (_Component) {
         } else {
           menu = menuList.filter(function (item) {
             return ['/', '/order', '/refund'].includes(item.href);
-          });
-
-          if (isManager) {
-            menu.push(menuList.find(function (item) {
-              return item.href == '/bill';
-            }));
-          }
+          }); // if (isManager) {
+          //     menu.push(menuList.find(item => item.href == '/bill'));
+          // }
         }
       }
 

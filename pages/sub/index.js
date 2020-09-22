@@ -87,7 +87,7 @@ class Sub extends Component {
                                 </div>}
                             >
                                 <a>
-                                    {roleList.find(item => item.value == text).label}
+                                    {roleList.find(item => item.value == text) && roleList.find(item => item.value == text).label}
                                     <Icon type="edit" className="text-info" style={{ marginLeft: 10 }} />
                                 </a>
                             </Popover>

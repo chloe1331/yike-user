@@ -61,9 +61,9 @@ export default class Header extends Component {
                 menu = menuList.filter(item => ['/order', '/refund'].includes(item.href));
             } else {
                 menu = menuList.filter(item => ['/', '/order', '/refund'].includes(item.href));
-                if (isManager) {
-                    menu.push(menuList.find(item => item.href == '/bill'));
-                }
+                // if (isManager) {
+                //     menu.push(menuList.find(item => item.href == '/bill'));
+                // }
             }
         }
         const userMenu = (

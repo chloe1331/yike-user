@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -219,14 +219,6 @@ module.exports = require("antd/lib/message");
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("k1wZ");
-
-/***/ }),
-
-/***/ 5:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("5QeG");
-
 
 /***/ }),
 
@@ -384,6 +376,14 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_15__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(dva_no_router__WEBPACK_IMPORTED_MODULE_16__["connect"])()(antd_lib_form__WEBPACK_IMPORTED_MODULE_3___default.a.create()(Login)));
+
+/***/ }),
+
+/***/ 6:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("5QeG");
+
 
 /***/ }),
 
