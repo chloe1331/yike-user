@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -214,6 +214,13 @@ module.exports = Api;
 
 /***/ }),
 
+/***/ "0B1J":
+/***/ (function(module, exports) {
+
+module.exports = require("dva-no-router");
+
+/***/ }),
+
 /***/ "0iUn":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -245,6 +252,14 @@ module.exports = require("antd/lib/popover");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/form/style");
+
+/***/ }),
+
+/***/ 3:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("cMU6");
+
 
 /***/ }),
 
@@ -303,6 +318,59 @@ module.exports = __webpack_require__("k1wZ");
 
 /***/ }),
 
+/***/ "5PEn":
+/***/ (function(module, exports) {
+
+module.exports = {
+	"layout-home": "layout-home___1ZLBK",
+	"layoutHome": "layout-home___1ZLBK",
+	"layout-home-hd": "layout-home-hd___1FVUV",
+	"layoutHomeHd": "layout-home-hd___1FVUV",
+	"layout-home-bd": "layout-home-bd___1qHr7",
+	"layoutHomeBd": "layout-home-bd___1qHr7",
+	"layout-home-left": "layout-home-left___3mbMa",
+	"layoutHomeLeft": "layout-home-left___3mbMa",
+	"order-config": "order-config___wsgdX",
+	"orderConfig": "order-config___wsgdX",
+	"preview-image": "preview-image___2tUtM",
+	"previewImage": "preview-image___2tUtM",
+	"remark-box": "remark-box___CFbBA",
+	"remarkBox": "remark-box___CFbBA",
+	"popover-setting": "popover-setting___2NF5g",
+	"popoverSetting": "popover-setting___2NF5g",
+	"tooltip-content": "tooltip-content___30Bhr",
+	"tooltipContent": "tooltip-content___30Bhr",
+	"mobile-preview": "mobile-preview___3OGNv",
+	"mobilePreview": "mobile-preview___3OGNv",
+	"mobile-preview-canvas": "mobile-preview-canvas___2FKCE",
+	"mobilePreviewCanvas": "mobile-preview-canvas___2FKCE",
+	"size-form": "size-form___1Atp0",
+	"sizeForm": "size-form___1Atp0",
+	"box1": "box1___24n8V",
+	"box2": "box2___3YA3k",
+	"phone-preview": "phone-preview___3WZlp",
+	"phonePreview": "phone-preview___3WZlp",
+	"phone-box": "phone-box___2ct6e",
+	"phoneBox": "phone-box___2ct6e",
+	"phone-box-body": "phone-box-body___SaMj9",
+	"phoneBoxBody": "phone-box-body___SaMj9",
+	"phone-box-body-image": "phone-box-body-image___Sv077",
+	"phoneBoxBodyImage": "phone-box-body-image___Sv077",
+	"phone-box-bg": "phone-box-bg___5uRK4",
+	"phoneBoxBg": "phone-box-bg___5uRK4",
+	"upload-image": "upload-image___3UPPe",
+	"uploadImage": "upload-image___3UPPe",
+	"phone-preview-main": "phone-preview-main___3E4tm",
+	"phonePreviewMain": "phone-preview-main___3E4tm",
+	"phone-preview-camera": "phone-preview-camera___iQphg",
+	"phonePreviewCamera": "phone-preview-camera___iQphg",
+	"home-footer": "home-footer___1NLQ1",
+	"homeFooter": "home-footer___1NLQ1",
+	"remark": "remark___3VQcR"
+};
+
+/***/ }),
+
 /***/ "7GvT":
 /***/ (function(module, exports) {
 
@@ -314,14 +382,6 @@ module.exports = require("antd/lib/empty");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/empty/style");
-
-/***/ }),
-
-/***/ 9:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("HfND");
-
 
 /***/ }),
 
@@ -343,6 +403,13 @@ module.exports = require("antd/lib/avatar");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/select");
+
+/***/ }),
+
+/***/ "AF2q":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/tooltip/style");
 
 /***/ }),
 
@@ -382,6 +449,13 @@ module.exports = __webpack_require__("/+oN");
 
 /***/ }),
 
+/***/ "BucJ":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/tag/style");
+
+/***/ }),
+
 /***/ "COMb":
 /***/ (function(module, exports) {
 
@@ -392,10 +466,24 @@ module.exports = {
 
 /***/ }),
 
+/***/ "CUto":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/cascader");
+
+/***/ }),
+
 /***/ "DnGC":
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/button/style");
+
+/***/ }),
+
+/***/ "EJbO":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/checkbox/style");
 
 /***/ }),
 
@@ -410,194 +498,6 @@ module.exports = require("antd/lib/button/style");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/input-number");
-
-/***/ }),
-
-/***/ "HfND":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Page; });
-/* harmony import */ var antd_lib_divider_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("qRh3");
-/* harmony import */ var antd_lib_divider_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_divider_style__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var antd_lib_divider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("xZtu");
-/* harmony import */ var antd_lib_divider__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_divider__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("DnGC");
-/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button_style__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("eGmO");
-/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("bmdr");
-/* harmony import */ var antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var antd_lib_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("xKsY");
-/* harmony import */ var antd_lib_modal__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_modal__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var antd_lib_icon_style__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("umso");
-/* harmony import */ var antd_lib_icon_style__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(antd_lib_icon_style__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var antd_lib_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("BWRB");
-/* harmony import */ var antd_lib_icon__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(antd_lib_icon__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var antd_lib_message_style__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("XZ83");
-/* harmony import */ var antd_lib_message_style__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message_style__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("3PsY");
-/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("doui");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("wy2R");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("YFqc");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var public_utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("HgRd");
-/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("mVpe");
-/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(config_locale__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var config_constant__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("374s");
-/* harmony import */ var component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("OLV9");
-/* harmony import */ var _style_less__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("s/Gc");
-/* harmony import */ var _style_less__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_style_less__WEBPACK_IMPORTED_MODULE_18__);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var envUrls = config_locale__WEBPACK_IMPORTED_MODULE_15___default.a["production"].url;
-function Page() {
-  var tableRef = Object(react__WEBPACK_IMPORTED_MODULE_11__["useRef"])();
-
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_11__["useState"])(false),
-      _useState2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"])(_useState, 2),
-      showModal = _useState2[0],
-      setShowModal = _useState2[1];
-
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_11__["useState"])(false),
-      _useState4 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"])(_useState3, 2),
-      isSuccess = _useState4[0],
-      setIsSuccess = _useState4[1];
-
-  var handleSync = function handleSync(id) {
-    setShowModal(true);
-    setIsSuccess(false);
-    public_utils__WEBPACK_IMPORTED_MODULE_14__[/* MServer */ "a"].get('/shop/order/sync', {
-      shop_id: id
-    }).then(function (res) {
-      if (res.errcode == 0) {
-        setIsSuccess(true);
-
-        antd_lib_message__WEBPACK_IMPORTED_MODULE_9___default.a.success('同步成功');
-      } else {
-        setShowModal(false);
-      }
-    });
-  };
-
-  return react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("div", {
-    className: "page-layout-center"
-  }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(antd_lib_modal__WEBPACK_IMPORTED_MODULE_5___default.a, {
-    visible: showModal,
-    onCancel: function onCancel() {
-      setShowModal(false);
-    },
-    onOk: function onOk() {
-      setShowModal(false);
-    },
-    okText: "\u77E5\u9053\u4E86",
-    width: 360,
-    footer: isSuccess ? void 0 : false,
-    closable: false,
-    maskClosable: false
-  }, isSuccess ? react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("div", {
-    className: _style_less__WEBPACK_IMPORTED_MODULE_18___default.a.success
-  }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_17__[/* CustomIcon */ "c"], {
-    type: "icon-success",
-    style: {
-      fontSize: 42
-    }
-  })), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("p", null, "\u540C\u6B65\u6210\u529F")) : react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(antd_lib_icon__WEBPACK_IMPORTED_MODULE_7___default.a, {
-    type: "loading"
-  }), " \u540C\u6B65\u4E2D\uFF0C\u8BF7\u8010\u5FC3\u7B49\u5F85...")), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("div", {
-    className: "form-condition"
-  }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    type: "primary",
-    href: "".concat(envUrls.api, "/shop/auth?type=pdd&state=auth")
-  }, "\u6DFB\u52A0\u62FC\u591A\u591A\u5E97\u94FA")), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_17__[/* TableAction */ "n"], {
-    action: "/shop/list",
-    ref: tableRef,
-    columns: [{
-      key: 'name',
-      dataIndex: 'name',
-      title: '店铺',
-      render: function render(text, record) {
-        return react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_17__[/* Avatar */ "a"], {
-          src: record.logo,
-          title: text
-        });
-      }
-    }, {
-      key: 'type',
-      dataIndex: 'type',
-      title: '类型',
-      render: function render(text) {
-        return config_constant__WEBPACK_IMPORTED_MODULE_16__[/* shopMap */ "b"][text].name;
-      }
-    }, {
-      key: 'status',
-      dataIndex: 'refresh_token_expires_at',
-      title: '店铺状态',
-      width: 220,
-      render: function render(text) {
-        return Number(text) * 1000 < moment__WEBPACK_IMPORTED_MODULE_12___default()().valueOf() ? react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("span", {
-          className: "text-error"
-        }, "\u6388\u6743\u5230\u671F") : react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("span", {
-          className: "text-success"
-        }, "\u5DF2\u6388\u6743");
-      }
-    }, {
-      key: 'createdAt',
-      dataIndex: 'createdAt',
-      title: '接入时间',
-      width: 220
-    }, {
-      key: 'refresh_token_expires_at',
-      dataIndex: 'refresh_token_expires_at',
-      title: '授权到期时间',
-      width: 220,
-      render: function render(text) {
-        return moment__WEBPACK_IMPORTED_MODULE_12___default()(Number(text) * 1000).format('YYYY-MM-DD HH:mm:ss');
-      }
-    }, {
-      key: 'setting',
-      dataIndex: 'id',
-      title: '操作',
-      render: function render(id, record) {
-        return react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_11__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("a", {
-          onClick: function onClick() {
-            return handleSync(id);
-          }
-        }, "\u540C\u6B65\u8BA2\u5355"), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(antd_lib_divider__WEBPACK_IMPORTED_MODULE_1___default.a, {
-          type: "vertical"
-        }), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("a", {
-          href: "".concat(envUrls.api, "/shop/auth?type=pdd&state=reload")
-        }, "\u91CD\u65B0\u6388\u6743"), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(antd_lib_divider__WEBPACK_IMPORTED_MODULE_1___default.a, {
-          type: "vertical"
-        }), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_13___default.a, {
-          href: "/?shop_id=".concat(id)
-        }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("a", null, "\u53BB\u4E0B\u5355")));
-      }
-    }]
-  }));
-}
 
 /***/ }),
 
@@ -753,6 +653,20 @@ var convertBase64UrlToBlob = function convertBase64UrlToBlob(urlData) {
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/get-iterator");
+
+/***/ }),
+
+/***/ "JCEF":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/checkbox");
+
+/***/ }),
+
+/***/ "JHZV":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/radio/style");
 
 /***/ }),
 
@@ -914,6 +828,13 @@ function _inherits(subClass, superClass) {
 }
 
 module.exports = _inherits;
+
+/***/ }),
+
+/***/ "Ndzv":
+/***/ (function(module, exports) {
+
+module.exports = require("address-parse");
 
 /***/ }),
 
@@ -3461,6 +3382,13 @@ function ShopOrder(_ref) {
 
 /***/ }),
 
+/***/ "P7Vo":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/tag");
+
+/***/ }),
+
 /***/ "Pkm2":
 /***/ (function(module, exports) {
 
@@ -3489,6 +3417,13 @@ module.exports = require("antd/lib/popconfirm");
 
 /***/ }),
 
+/***/ "Qp17":
+/***/ (function(module, exports) {
+
+module.exports = require("pinyin");
+
+/***/ }),
+
 /***/ "R2Q7":
 /***/ (function(module, exports) {
 
@@ -3507,6 +3442,13 @@ module.exports = __webpack_require__("o5io");
 /***/ (function(module, exports) {
 
 
+
+/***/ }),
+
+/***/ "T22j":
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/parse-float");
 
 /***/ }),
 
@@ -3610,6 +3552,20 @@ module.exports = require("antd/lib/input");
 
 /***/ }),
 
+/***/ "WYi6":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/drawer/style");
+
+/***/ }),
+
+/***/ "Wa2I":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("T22j");
+
+/***/ }),
+
 /***/ "WaGi":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3640,6 +3596,20 @@ module.exports = _createClass;
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/set-prototype-of");
+
+/***/ }),
+
+/***/ "X1wy":
+/***/ (function(module, exports) {
+
+module.exports = require("xlsx");
+
+/***/ }),
+
+/***/ "XQdj":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/radio");
 
 /***/ }),
 
@@ -3757,6 +3727,2045 @@ module.exports = require("url");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "cMU6":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var antd_lib_drawer_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("WYi6");
+/* harmony import */ var antd_lib_drawer_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_drawer_style__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("wvHv");
+/* harmony import */ var antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("pLtp");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var antd_lib_popover_style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("tCZL");
+/* harmony import */ var antd_lib_popover_style__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_popover_style__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var antd_lib_popover__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("27qp");
+/* harmony import */ var antd_lib_popover__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd_lib_popover__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("oRSk");
+/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input_style__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("Uqqx");
+/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var antd_lib_table_style__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("lRur");
+/* harmony import */ var antd_lib_table_style__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(antd_lib_table_style__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var antd_lib_table__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("Puj+");
+/* harmony import */ var antd_lib_table__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(antd_lib_table__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var antd_lib_form_style__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("2w/n");
+/* harmony import */ var antd_lib_form_style__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(antd_lib_form_style__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var antd_lib_form__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("foLw");
+/* harmony import */ var antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(antd_lib_form__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var antd_lib_tag_style__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("BucJ");
+/* harmony import */ var antd_lib_tag_style__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tag_style__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var antd_lib_tag__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("P7Vo");
+/* harmony import */ var antd_lib_tag__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tag__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var antd_lib_tooltip_style__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("AF2q");
+/* harmony import */ var antd_lib_tooltip_style__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tooltip_style__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("z6+L");
+/* harmony import */ var antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("DnGC");
+/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button_style__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("eGmO");
+/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var antd_lib_checkbox_style__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("EJbO");
+/* harmony import */ var antd_lib_checkbox_style__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(antd_lib_checkbox_style__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var antd_lib_checkbox__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("JCEF");
+/* harmony import */ var antd_lib_checkbox__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(antd_lib_checkbox__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("JHZV");
+/* harmony import */ var antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(antd_lib_radio_style__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var antd_lib_radio__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("XQdj");
+/* harmony import */ var antd_lib_radio__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(antd_lib_radio__WEBPACK_IMPORTED_MODULE_20__);
+/* harmony import */ var antd_lib_cascader_style__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("qYgU");
+/* harmony import */ var antd_lib_cascader_style__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(antd_lib_cascader_style__WEBPACK_IMPORTED_MODULE_21__);
+/* harmony import */ var antd_lib_cascader__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("CUto");
+/* harmony import */ var antd_lib_cascader__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(antd_lib_cascader__WEBPACK_IMPORTED_MODULE_22__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__("doui");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__("vYYK");
+/* harmony import */ var antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__("bmdr");
+/* harmony import */ var antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(antd_lib_modal_style__WEBPACK_IMPORTED_MODULE_25__);
+/* harmony import */ var antd_lib_modal__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__("xKsY");
+/* harmony import */ var antd_lib_modal__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(antd_lib_modal__WEBPACK_IMPORTED_MODULE_26__);
+/* harmony import */ var antd_lib_message_style__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__("XZ83");
+/* harmony import */ var antd_lib_message_style__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message_style__WEBPACK_IMPORTED_MODULE_27__);
+/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__("3PsY");
+/* harmony import */ var antd_lib_message__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(antd_lib_message__WEBPACK_IMPORTED_MODULE_28__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__("zrwo");
+/* harmony import */ var _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__("Wa2I");
+/* harmony import */ var _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_30__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__("0iUn");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__("sLSF");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__("MI3g");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__("a7VT");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__("AT/M");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__("Tit0");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_37___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_37__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__("K2gz");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_38___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_38__);
+/* harmony import */ var xlsx__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__("X1wy");
+/* harmony import */ var xlsx__WEBPACK_IMPORTED_MODULE_39___default = /*#__PURE__*/__webpack_require__.n(xlsx__WEBPACK_IMPORTED_MODULE_39__);
+/* harmony import */ var pinyin__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__("Qp17");
+/* harmony import */ var pinyin__WEBPACK_IMPORTED_MODULE_40___default = /*#__PURE__*/__webpack_require__.n(pinyin__WEBPACK_IMPORTED_MODULE_40__);
+/* harmony import */ var address_parse__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__("Ndzv");
+/* harmony import */ var address_parse__WEBPACK_IMPORTED_MODULE_41___default = /*#__PURE__*/__webpack_require__.n(address_parse__WEBPACK_IMPORTED_MODULE_41__);
+/* harmony import */ var dva_no_router__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__("0B1J");
+/* harmony import */ var dva_no_router__WEBPACK_IMPORTED_MODULE_42___default = /*#__PURE__*/__webpack_require__.n(dva_no_router__WEBPACK_IMPORTED_MODULE_42__);
+/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__("mVpe");
+/* harmony import */ var config_locale__WEBPACK_IMPORTED_MODULE_43___default = /*#__PURE__*/__webpack_require__.n(config_locale__WEBPACK_IMPORTED_MODULE_43__);
+/* harmony import */ var component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__("OLV9");
+/* harmony import */ var public_utils__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__("HgRd");
+/* harmony import */ var public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__("5PEn");
+/* harmony import */ var public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default = /*#__PURE__*/__webpack_require__.n(public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46__);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var defaultHeight = 560;
+
+var Home =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_36__[/* default */ "a"])(Home, _Component);
+
+  function Home(props) {
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_31__[/* default */ "a"])(this, Home);
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_33__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_34__[/* default */ "a"])(Home).call(this, props));
+    _this.state = {
+      list: [],
+      expressList: [],
+      partList: [],
+      selectParts: [],
+      cancelAutoPart: localStorage.getItem('CANCELAUTOPART') ? localStorage.getItem('CANCELAUTOPART') == 1 : false,
+      selectedRowKeys: [],
+      lockTexture: '',
+      selectColor: null,
+      selectAttrId: null,
+      textures: [],
+      importExcelData: null,
+      selectedRow: null,
+      preview: true,
+      submit: false,
+      drawer: false,
+      drawerTitle: '',
+      checkColor: false
+    };
+    _this.cateObj = {};
+    _this.select = null;
+    _this.image = null;
+    _this.imageOpt = {
+      x: 0,
+      y: 0,
+      color: 'tran',
+      size: 100,
+      rotate: 0
+    };
+    _this.token = null;
+    _this.auto = false;
+    _this.cateList = [];
+    _this.submitOrderObj = {};
+    _this.defaultBrankSortMap = {};
+    var handles = ['uploadImage', 'handleChangeSize', 'handleUploadOrderExcel', 'handleSubmit'];
+    handles.forEach(function (item) {
+      _this[item] = _this[item].bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_35__[/* default */ "a"])(_this));
+    }); // ref
+
+    _this.moveRef = Object(react__WEBPACK_IMPORTED_MODULE_37__["createRef"])();
+    _this.uploadRef = Object(react__WEBPACK_IMPORTED_MODULE_37__["createRef"])();
+    _this.dragBox1 = Object(react__WEBPACK_IMPORTED_MODULE_37__["createRef"])();
+    _this.dragBox2 = Object(react__WEBPACK_IMPORTED_MODULE_37__["createRef"])();
+    _this.sizeInputRef = Object(react__WEBPACK_IMPORTED_MODULE_37__["createRef"])();
+    _this.rotateInputRef = Object(react__WEBPACK_IMPORTED_MODULE_37__["createRef"])();
+    _this.dialogDetailRef = Object(react__WEBPACK_IMPORTED_MODULE_37__["createRef"])();
+    _this.sizeImageRef = Object(react__WEBPACK_IMPORTED_MODULE_37__["createRef"])();
+    _this.cameraImageRef = Object(react__WEBPACK_IMPORTED_MODULE_37__["createRef"])();
+    _this.cascaderRef = Object(react__WEBPACK_IMPORTED_MODULE_37__["createRef"])();
+    return _this;
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_32__[/* default */ "a"])(Home, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.getList();
+      this.listener();
+      this.getExpress();
+      this.getPart();
+      this.getTextureList();
+      public_utils__WEBPACK_IMPORTED_MODULE_45__[/* MServer */ "a"].get('/upload/getToken').then(function (res) {
+        if (res.errcode == 0) {
+          _this2.token = res.data.token;
+        }
+      });
+    }
+  }, {
+    key: "getImagePreview",
+    value: function getImagePreview() {
+      var domUpload = this.uploadRef.current;
+      var imageOpt = this.imageOpt;
+      domUpload.style.left = "".concat(imageOpt.x, "px");
+      domUpload.style.top = "".concat(imageOpt.y, "px");
+      domUpload.style.transform = "rotate(".concat(imageOpt.rotate, "deg)");
+    }
+  }, {
+    key: "getResultImage",
+    value: function getResultImage() {
+      var isCamera = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      var _this$imageOpt = this.imageOpt,
+          x = _this$imageOpt.x,
+          y = _this$imageOpt.y,
+          color = _this$imageOpt.color,
+          rotate = _this$imageOpt.rotate;
+      var size = this.imageOpt.size;
+      var imageSize = this.sizeImageRef.current;
+      var imageCamera = this.cameraImageRef.current;
+      var domMove = this.moveRef.current;
+      var left = x - (domMove.offsetWidth - imageSize.width) / 2;
+      var domUpload = this.uploadRef.current;
+      var power = imageSize.naturalHeight / defaultHeight;
+      size = size * power / 100;
+      var canvas = document.createElement('canvas');
+      var context = canvas.getContext('2d');
+      canvas.setAttribute('width', imageSize.naturalWidth);
+      canvas.setAttribute('height', imageSize.naturalHeight);
+
+      if (color != 'tran') {
+        context.rect(0, 0, imageSize.naturalWidth, imageSize.naturalHeight);
+        context.fillStyle = color;
+        context.fill();
+      }
+
+      var _x = left * power;
+
+      var _y = y * power;
+
+      if (rotate) {
+        var transX = _x + domUpload.naturalWidth * size / 2;
+        var transY = _y + domUpload.naturalHeight * size / 2;
+        context.translate(transX, transY);
+        context.rotate(rotate * Math.PI / 180);
+        context.translate(-transX, -transY);
+      }
+
+      if (domUpload) {
+        context.drawImage(domUpload, _x, _y, domUpload.naturalWidth * size, domUpload.naturalHeight * size);
+      }
+
+      var imageData = context.getImageData(0, 0, imageSize.naturalWidth, imageSize.naturalHeight);
+      var imageCanvas = document.createElement('canvas');
+      var ctx = imageCanvas.getContext('2d');
+      imageCanvas.setAttribute('width', imageSize.naturalWidth);
+      imageCanvas.setAttribute('height', imageSize.naturalHeight);
+      ctx.drawImage(imageSize, 0, 0, imageSize.naturalWidth, imageSize.naturalHeight);
+      var sizeData = ctx.getImageData(0, 0, imageSize.naturalWidth, imageSize.naturalHeight);
+
+      for (var i = 0; i < sizeData.data.length; i += 4) {
+        if (sizeData.data[i + 3] !== 0) {
+          imageData.data[i + 3] = 0;
+        }
+      }
+
+      if (isCamera) {
+        var camreaCanvas = document.createElement('canvas');
+        var c = camreaCanvas.getContext('2d');
+        camreaCanvas.setAttribute('width', imageCamera.naturalWidth);
+        camreaCanvas.setAttribute('height', imageCamera.naturalHeight);
+        c.drawImage(imageCamera, 0, 0, imageCamera.naturalWidth, imageCamera.naturalHeight);
+        var cameraData = c.getImageData(0, 0, imageCamera.naturalWidth, imageCamera.naturalHeight);
+
+        for (var _i = 0; _i < cameraData.data.length; _i += 4) {
+          if (cameraData.data[_i + 3] !== 0) {
+            imageData.data[_i + 3] = 0;
+          }
+        }
+      }
+
+      context.putImageData(imageData, 0, 0);
+      return canvas.toDataURL('image/png');
+    }
+  }, {
+    key: "getExpress",
+    value: function getExpress() {
+      var _this3 = this;
+
+      public_utils__WEBPACK_IMPORTED_MODULE_45__[/* MServer */ "a"].get('/logis/list', {
+        is_all: 1
+      }).then(function (res) {
+        if (res.errcode == 0) {
+          _this3.setState({
+            expressList: res.data
+          });
+        }
+      });
+    }
+  }, {
+    key: "getPart",
+    value: function getPart() {
+      var _this4 = this;
+
+      public_utils__WEBPACK_IMPORTED_MODULE_45__[/* MServer */ "a"].get('/part/userlist', {
+        is_all: 1
+      }).then(function (res) {
+        if (res.errcode == 0) {
+          _this4.setState({
+            partList: res.data
+          });
+        }
+      });
+    }
+  }, {
+    key: "getTextureList",
+    value: function getTextureList() {
+      var _this5 = this;
+
+      public_utils__WEBPACK_IMPORTED_MODULE_45__[/* MServer */ "a"].get('/cate/texture', {
+        is_all: 1,
+        sort: 'asc'
+      }).then(function (res) {
+        if (res.errcode == 0) {
+          _this5.setState({
+            textures: res.data
+          });
+        }
+      });
+    }
+  }, {
+    key: "listener",
+    value: function listener() {
+      var _this6 = this;
+
+      var domMove = this.moveRef.current;
+      var startPageX = null;
+      var startPageY = null;
+      domMove.addEventListener('dragenter', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      });
+      domMove.addEventListener('dragover', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      });
+      domMove.addEventListener('dragleave', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      });
+      domMove.addEventListener('drop', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        _this6.uploadImage(e.dataTransfer.files[0]);
+      });
+
+      this.documentLister1 = function (e) {
+        if (!_this6.auto && e.target.tagName != 'INPUT' && [87, 83, 82, 65, 68, 69].includes(e.keyCode)) {
+          if (e.keyCode == 87) {
+            _this6.imageOpt.y = _this6.imageOpt.y - 1;
+
+            _this6.getImagePreview();
+          }
+
+          if (e.keyCode == 83) {
+            _this6.imageOpt.y = _this6.imageOpt.y + 1;
+
+            _this6.getImagePreview();
+          }
+
+          if (e.keyCode == 65) {
+            _this6.imageOpt.x = _this6.imageOpt.x - 1;
+
+            _this6.getImagePreview();
+          }
+
+          if (e.keyCode == 68) {
+            _this6.imageOpt.x = _this6.imageOpt.x + 1;
+
+            _this6.getImagePreview();
+          }
+
+          if (e.keyCode == 69) {
+            _this6.handleChangeSize(_this6.imageOpt.size + 0.2);
+          }
+
+          if (e.keyCode == 82) {
+            _this6.handleChangeSize(_this6.imageOpt.size - 0.2);
+          }
+        }
+      };
+
+      document.addEventListener('keydown', this.documentLister1);
+
+      var moveListener = function moveListener(e) {
+        var domUpload = _this6.uploadRef.current;
+        if (!domUpload || _this6.auto) return;
+        _this6.imageOpt.x = e.pageX - startPageX;
+        _this6.imageOpt.y = e.pageY - startPageY;
+
+        _this6.getImagePreview();
+      };
+
+      this.hasKeyListener = true;
+      domMove.addEventListener('mousedown', function (e) {
+        startPageX = e.pageX - _this6.imageOpt.x;
+        startPageY = e.pageY - _this6.imageOpt.y;
+        document.addEventListener('mousemove', moveListener);
+      });
+
+      this.documentLister2 = function () {
+        document.removeEventListener('mousemove', moveListener);
+      };
+
+      document.addEventListener('mouseup', this.documentLister2);
+
+      if (this.dragBox1.current) {
+        var box = this.dragBox1.current;
+        var sx = null;
+        var size = null;
+
+        var listener = function listener(e) {
+          var current = e.clientX - sx;
+          box.style.left = "".concat(current, "px");
+          var diff = (current - 558) / 10;
+          var value = size + diff;
+
+          if (value >= 1 && _this6.image && !_this6.auto) {
+            _this6.handleChangeSize(value);
+          }
+        };
+
+        box.addEventListener('mousedown', function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+          sx = e.clientX - box.offsetLeft;
+          size = _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_30___default()(_this6.imageOpt.size);
+          document.addEventListener('mousemove', listener);
+        });
+
+        this.documentLister3 = function (e) {
+          // e.stopPropagation();
+          // e.preventDefault();
+          box.style.left = '558px';
+          document.removeEventListener('mousemove', listener);
+        };
+
+        document.addEventListener('mouseup', this.documentLister3);
+      }
+
+      if (this.dragBox2.current) {
+        var _box = this.dragBox2.current;
+        var _sx = null;
+        var rotate = this.imageOpt.rotate;
+
+        var _listener = function _listener(e) {
+          if (!_this6.image) return;
+          var current = e.clientX - _sx;
+          _box.style.left = "".concat(current, "px");
+          var diff = current - 558;
+          var value = Math.abs(rotate + diff);
+          if (value > 360) value = 0;
+
+          if (_this6.image && !_this6.auto) {
+            _this6.imageOpt.rotate = value;
+
+            _this6.getImagePreview();
+
+            _this6.rotateInputRef.current && _this6.rotateInputRef.current.setState({
+              value: value
+            });
+          }
+        };
+
+        _box.addEventListener('mousedown', function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+          _sx = e.clientX - _box.offsetLeft;
+          document.addEventListener('mousemove', _listener);
+        });
+
+        this.documentLister4 = function (e) {
+          // e.stopPropagation();
+          // e.preventDefault();
+          _box.style.left = '558px';
+          document.removeEventListener('mousemove', _listener);
+        };
+
+        document.addEventListener('mouseup', this.documentLister4);
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      if (!this.documentLister1) document.removeEventListener('keydown', this.documentLister1);
+      if (!this.documentLister2) document.removeEventListener('mouseup', this.documentLister2);
+      if (!this.documentLister3) document.removeEventListener('mouseup', this.documentLister3);
+      if (!this.documentLister4) document.removeEventListener('mouseup', this.documentLister4);
+    }
+  }, {
+    key: "getList",
+    value: function getList() {
+      var _this7 = this;
+
+      public_utils__WEBPACK_IMPORTED_MODULE_45__[/* MServer */ "a"].get('/cate/list', {
+        is_all: 1
+      }).then(function (res) {
+        if (res.errcode == 0) {
+          _this7.cateList = res.data;
+          return public_utils__WEBPACK_IMPORTED_MODULE_45__[/* MServer */ "a"].get('/cate/brand', {
+            is_all: 1,
+            order: 'sort'
+          }).then(function (res) {
+            if (res.errcode == 0) {
+              res.data.forEach(function (item) {
+                _this7.defaultBrankSortMap[item.id] = item.sort;
+              });
+            }
+
+            return true;
+          });
+        }
+
+        return false;
+      }).then(function (res) {
+        if (res) {
+          _this7.convertList();
+        }
+      });
+    }
+  }, {
+    key: "convertList",
+    value: function convertList() {
+      var _this8 = this;
+
+      var lockTexture = this.state.lockTexture;
+      var cateIds = {};
+      var typeIds = {};
+      var list = [];
+      var data = [].concat(this.cateList);
+
+      if (lockTexture) {
+        data = data.filter(function (item) {
+          return item.texture_id == lockTexture;
+        });
+        data.forEach(function (item) {
+          var lastOjb = item.stock < 1 ? {
+            disabled: true,
+            label: "".concat(item.brand_type_name, "(\u7F3A\u8D27)")
+          } : {
+            label: item.brand_type_name
+          };
+
+          if (typeof cateIds[item.brand_id] == 'undefined') {
+            cateIds[item.brand_id] = list.length;
+            list.push({
+              value: item.brand_id,
+              label: item.brand_name,
+              sort: _this8.defaultBrankSortMap[item.brand_id] || 0,
+              children: [Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({
+                value: item.id
+              }, lastOjb)]
+            });
+          } else {
+            list[cateIds[item.brand_id]].children.push(Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({
+              value: item.id
+            }, lastOjb));
+          }
+        });
+      } else {
+        data.forEach(function (item) {
+          var lastOjb = item.stock < 1 ? {
+            disabled: true,
+            label: "".concat(item.texture_name, "(\u7F3A\u8D27)")
+          } : {
+            label: item.texture_name
+          };
+
+          if (typeof cateIds[item.brand_id] == 'undefined') {
+            cateIds[item.brand_id] = list.length;
+            list.push({
+              value: item.brand_id,
+              label: item.brand_name,
+              sort: _this8.defaultBrankSortMap[item.brand_id] || 0,
+              children: [{
+                value: item.brand_type_id,
+                label: item.brand_type_name,
+                children: [Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({
+                  value: item.id
+                }, lastOjb)]
+              }]
+            });
+            typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)] = 0;
+          } else {
+            if (typeof typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)] == 'undefined') {
+              typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)] = list[cateIds[item.brand_id]].children.length;
+              list[cateIds[item.brand_id]].children.push({
+                value: item.brand_type_id,
+                label: item.brand_type_name,
+                children: [Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({
+                  value: item.id
+                }, lastOjb)]
+              });
+            } else {
+              list[cateIds[item.brand_id]].children[typeIds["".concat(item.brand_id, "_").concat(item.brand_type_id)]].children.push(Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({
+                value: item.id
+              }, lastOjb));
+            }
+          }
+
+          _this8.cateObj[item.id] = item;
+        });
+      }
+
+      var sortByName = function sortByName(list) {
+        return list.sort(function (a, b) {
+          if (a.sort != b.sort) {
+            return b.sort - a.sort;
+          }
+
+          return pinyin__WEBPACK_IMPORTED_MODULE_40___default()(a.label.trim(), {
+            style: pinyin__WEBPACK_IMPORTED_MODULE_40___default.a.STYLE_FIRST_LETTER
+          })[0][0].charCodeAt() - pinyin__WEBPACK_IMPORTED_MODULE_40___default()(b.label.trim(), {
+            style: pinyin__WEBPACK_IMPORTED_MODULE_40___default.a.STYLE_FIRST_LETTER
+          })[0][0].charCodeAt();
+        });
+      };
+
+      this.setState({
+        list: sortByName(list.map(function (item) {
+          return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({}, item, {
+            children: item.children ? item.children.sort(function (a, b) {
+              var text1 = a.label.trim();
+              var text2 = b.label.trim();
+              var noResult = true;
+              var result = 0;
+              var i = 0;
+
+              while (noResult) {
+                if (typeof text1[i] == 'undefined') return -1;
+                if (typeof text2[i] == 'undefined') return 1;
+
+                if (text1[i] == text2[i]) {
+                  i++;
+                } else {
+                  result = text1[i].charCodeAt() - text2[i].charCodeAt();
+                  noResult = false;
+                }
+              }
+
+              return result;
+            }).map(function (it) {
+              return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({}, it, {
+                children: it.children ? sortByName(it.children) : undefined
+              });
+            }) : undefined
+          });
+        }))
+      });
+    }
+  }, {
+    key: "uploadImage",
+    value: function uploadImage(file) {
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+      var that = this;
+
+      reader.onload = function () {
+        var img = new Image();
+        img.src = that.image = this.result;
+
+        img.onload = function () {
+          that.autoImage(img);
+        };
+      };
+    }
+  }, {
+    key: "autoImage",
+    value: function autoImage(img) {
+      var domMove = this.moveRef.current;
+      var domUpload = this.uploadRef.current;
+      var imageSize = this.sizeImageRef.current;
+
+      if (!domUpload) {
+        antd_lib_message__WEBPACK_IMPORTED_MODULE_28___default.a.error('请先上传图片');
+
+        return;
+      }
+
+      var getSpaceValue = function getSpaceValue() {
+        if (!imageSize) return {
+          x: 0,
+          y: 0
+        };
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        canvas.setAttribute('height', imageSize.width);
+        canvas.setAttribute('width', imageSize.height);
+        context.drawImage(imageSize, 0, 0, imageSize.width, imageSize.height);
+        var imageData = context.getImageData(0, 0, imageSize.width, imageSize.height);
+        var lineWidth = 0;
+        var countHeight = 0;
+
+        for (var i = 0; i < imageData.data.length; i += 4) {
+          if (imageData.data[i + 3] != 0) {
+            lineWidth++;
+
+            if (lineWidth == imageSize.width) {
+              lineWidth = 0;
+              countHeight++;
+            }
+          } else {
+            break;
+          }
+        }
+
+        var countWidth = 0;
+
+        for (var _i2 = imageSize.width * 80 * 4; _i2 < imageData.data.length; _i2 += 4) {
+          if (imageData.data[_i2 + 3] != 0) {
+            countWidth++;
+          } else {
+            break;
+          }
+        }
+
+        return {
+          x: countWidth - 2,
+          y: countHeight - 2
+        };
+      };
+
+      var spaceValue = getSpaceValue();
+      var initHeight = defaultHeight - spaceValue.y * 2;
+      var ratio = initHeight / img.naturalHeight;
+      var initWidth = img.naturalWidth * ratio;
+
+      if (imageSize) {
+        if (initWidth < imageSize.offsetWidth - spaceValue.x * 2) {
+          initWidth = imageSize.offsetWidth - spaceValue.x * 2;
+          ratio = initWidth / img.naturalWidth;
+          initHeight = img.naturalHeight * ratio;
+        }
+      }
+
+      domUpload.style.height = "".concat(initHeight, "px");
+      this.imageOpt.size = (ratio * 100).toFixed(2);
+      this.imageOpt.x = (domMove.offsetWidth - initWidth) / 2;
+      this.imageOpt.y = ((imageSize ? imageSize.offsetHeight : initHeight) - initHeight) / 2;
+      this.sizeInputRef.current && this.sizeInputRef.current.setState({
+        value: this.imageOpt.size
+      });
+      this.getImagePreview();
+      this.forceUpdate();
+    }
+  }, {
+    key: "getDefaultExpress",
+    value: function getDefaultExpress() {
+      var expressList = this.state.expressList;
+      var defaultList = expressList.filter(function (item) {
+        return item.default;
+      });
+
+      if (defaultList.length) {
+        return defaultList[0].id;
+      }
+
+      return undefined;
+    }
+  }, {
+    key: "handleChangeSize",
+    value: function handleChangeSize(value) {
+      var domUpload = this.uploadRef.current;
+      if (!domUpload || !this) return;
+      value = _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_30___default()(value);
+      domUpload.style.height = "".concat(domUpload.naturalHeight * value / 100, "px");
+      this.imageOpt.x = this.imageOpt.x + domUpload.naturalWidth * (this.imageOpt.size - value) / 200;
+      this.imageOpt.y = this.imageOpt.y + domUpload.naturalHeight * (this.imageOpt.size - value) / 200;
+      this.imageOpt.size = value;
+      this.getImagePreview();
+      this.sizeInputRef.current && this.sizeInputRef.current.setState({
+        value: this.imageOpt.size
+      });
+    }
+  }, {
+    key: "handleUploadOrderExcel",
+    value: function handleUploadOrderExcel(file) {
+      var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'taobao';
+      var title = arguments.length > 2 ? arguments[2] : undefined;
+      if (!file) return;
+      var reader = new FileReader();
+      reader.readAsBinaryString(file);
+      var that = this;
+
+      reader.onload = function () {
+        var workbook = xlsx__WEBPACK_IMPORTED_MODULE_39___default.a.read(this.result, {
+          type: 'binary'
+        });
+        var workbookJson = xlsx__WEBPACK_IMPORTED_MODULE_39___default.a.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
+        var result = [];
+        workbookJson.forEach(function (item, index) {
+          var mobile = item['联系手机'] || item['手机'] || item['联系方式'];
+          if (mobile) mobile = mobile.toString().match(/[1-9]\d*/)[0];
+          var adsplit = type === 'taobao' ? (item['收货地址'] || item['收货地址 '] || '').trim().split(/\s+/) : [item['省'], item['市'], item['区'], item['街道'] || item['详细地址'] || item['收件地址']];
+          result.push({
+            order_sn: (item['订单编号'] || item['订单号'] || '').toString().trim(),
+            consignee: (item['收货人姓名'] || item['收货人'] || item['收件人'] || '').toString().trim(),
+            mobile: mobile,
+            province: adsplit[0] && adsplit[0].trim(),
+            city: adsplit[1] && adsplit[1].trim(),
+            district: adsplit[2] && adsplit[2].trim(),
+            address: adsplit.slice(3).join(' '),
+            seller_remark: item['订单备注'] || item['商家备注'],
+            buyer_remark: item['买家留言'],
+            remark: item['自定义备注'] || item['备注'],
+            index: index,
+            source: type
+          });
+        });
+        that.setState({
+          drawer: true,
+          drawerTitle: title,
+          importExcelData: result
+        });
+      };
+    }
+  }, {
+    key: "handleSelectRow",
+    value: function handleSelectRow(selectedRow) {
+      var setFieldsValue = this.props.form.setFieldsValue;
+      setFieldsValue({
+        order_sn: selectedRow.order_sn
+      });
+      this.setState({
+        selectedRowKeys: selectedRow.order_sn,
+        selectedRow: selectedRow,
+        drawer: false
+      });
+    }
+  }, {
+    key: "handleShopOder",
+    value: function handleShopOder(data, cb) {
+      var _this9 = this;
+
+      var selectParts = this.state.selectParts;
+      var validateFields = this.props.form.validateFields;
+      validateFields(function (err, values) {
+        values = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({}, values, {
+          shop_id: data.shop_id,
+          type: 10,
+          order_sn: data.order_sn,
+          quantity: data.goods_count,
+          consignee: data.trade.consignee,
+          mobile: data.trade.mobile,
+          province: data.trade.province,
+          city: data.trade.city,
+          district: data.trade.district,
+          address: data.trade.address
+        });
+
+        if (!_this9.select && !selectParts.length) {
+          antd_lib_message__WEBPACK_IMPORTED_MODULE_28___default.a.error('请先选择机型或者选择一个配件');
+
+          cb && cb(false);
+          return;
+        }
+
+        if (_this9.select && !_this9.image && _this9.imageOpt.color == 'tran') {
+          // message.error('请至少上传一张图片或者设置一个颜色');
+          antd_lib_modal__WEBPACK_IMPORTED_MODULE_26___default.a.confirm({
+            title: '确定要下单一个裸壳吗？',
+            okText: '确定',
+            cancelText: '取消',
+            onCancel: function onCancel() {
+              cb && cb(false);
+            },
+            onOk: function onOk() {
+              return _this9.onSubmit(values, {
+                print_type: 10,
+                shop_id: data.shop_id
+              }, cb);
+            }
+          });
+
+          return;
+        }
+
+        _this9.onSubmit(values, {
+          shop_id: data.shop_id
+        }, cb);
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this10 = this;
+
+      e.preventDefault();
+      e.stopPropagation();
+      var selectParts = this.state.selectParts;
+      var validateFields = this.props.form.validateFields;
+      validateFields(function (err, values) {
+        if (!err) {
+          if (values.type == 0 && !_this10.select) {
+            antd_lib_message__WEBPACK_IMPORTED_MODULE_28___default.a.error('请先选择机型');
+
+            return;
+          }
+
+          if (values.type != 0 && !_this10.select && !selectParts.length) {
+            antd_lib_message__WEBPACK_IMPORTED_MODULE_28___default.a.error('请先选择机型或者选择一个配件');
+
+            return;
+          }
+
+          if (_this10.select && !_this10.image && _this10.imageOpt.color == 'tran') {
+            // message.error('请至少上传一张图片或者设置一个颜色');
+            antd_lib_modal__WEBPACK_IMPORTED_MODULE_26___default.a.confirm({
+              title: '确定要下单一个裸壳吗？',
+              onOk: function onOk() {
+                return _this10.onSubmit(values, {
+                  print_type: 10
+                });
+              }
+            });
+
+            return;
+          }
+
+          _this10.onSubmit(values);
+        }
+      });
+    }
+  }, {
+    key: "onSubmit",
+    value: function onSubmit(values) {
+      var _this11 = this;
+
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var cb = arguments.length > 2 ? arguments[2] : undefined;
+      var isPrintEmpty = options.print_type == 10 || !this.select;
+
+      if (!this.token && !isPrintEmpty) {
+        cb && cb(false);
+
+        antd_lib_message__WEBPACK_IMPORTED_MODULE_28___default.a.error('网络出错了，刷新页面试试');
+
+        return;
+      }
+
+      this.setState({
+        submit: true
+      });
+
+      var params = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({
+        type: values.type == 20 || !this.select ? 10 : values.type,
+        order_sn: values.order_sn,
+        quantity: values.quantity,
+        cate_id: this.select && this.select.id
+      }, options);
+
+      if (isPrintEmpty) {
+        this.postSubmit(params, values, cb);
+      } else {
+        var formdata = new FormData();
+        formdata.append('file', Object(public_utils__WEBPACK_IMPORTED_MODULE_45__[/* convertBase64UrlToBlob */ "b"])(this.getResultImage(this.select.is_camera ? true : false)), "".concat(new Date().getTime(), ".png"));
+        formdata.append('token', this.token);
+        public_utils__WEBPACK_IMPORTED_MODULE_45__[/* MServer */ "a"].post('//upload-z0.qiniup.com', formdata, {
+          withCredentials: false,
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          },
+          silent: true
+        }).then(function (res) {
+          if (res.key) {
+            return "".concat(config_locale__WEBPACK_IMPORTED_MODULE_43___default.a["production"].url.cdnUser).concat(res.key);
+          } else {
+            cb && cb(false);
+            throw new Error('图片上传失败');
+          }
+        }).then(function (res) {
+          params = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({}, params, {
+            image1: res
+          }); // if (values.texture_attr_id) params.texture_attr_id = values.texture_attr_id;
+
+          _this11.postSubmit(params, values, cb);
+        }).catch(function (err) {
+          antd_lib_message__WEBPACK_IMPORTED_MODULE_28___default.a.error(err.message);
+
+          cb && cb(false);
+
+          _this11.setState({
+            submit: false
+          });
+        });
+      }
+    }
+  }, {
+    key: "postSubmit",
+    value: function postSubmit(params, values, cb) {
+      var _this12 = this;
+
+      var setFieldsValue = this.props.form.setFieldsValue;
+      var _this$state = this.state,
+          selectedRow = _this$state.selectedRow,
+          selectParts = _this$state.selectParts,
+          cancelAutoPart = _this$state.cancelAutoPart,
+          importExcelData = _this$state.importExcelData,
+          selectAttrId = _this$state.selectAttrId;
+
+      if (this.select && selectAttrId && this.select.texture_attr.length) {
+        // params.texture_attr_id = this.select.texture_attr.find(item => item.texture_attr_color === selectColor).texture_attr_id;
+        params.texture_attr_id = selectAttrId;
+      }
+
+      if (values.express_id) params.express_id = values.express_id;
+
+      if (values.type != 0 && selectParts.length) {
+        params.parts = selectParts.map(function (item) {
+          return {
+            id: item,
+            count: values["part_".concat(item)]
+          };
+        });
+      }
+
+      if (values.type == 20 || values.shop_id) {
+        params = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({}, params, {
+          consignee: values.consignee,
+          mobile: values.mobile,
+          province: values.province,
+          city: values.city,
+          district: values.district,
+          address: values.address
+        });
+      }
+
+      if (values.type == 10) {
+        if (!values.shop_id) {
+          if (!selectedRow) {
+            this.setState({
+              submit: false
+            });
+            cb && cb(false);
+
+            antd_lib_message__WEBPACK_IMPORTED_MODULE_28___default.a.error('未获取到收货地址');
+
+            return;
+          }
+
+          params = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({}, params, {
+            consignee: selectedRow.consignee,
+            mobile: selectedRow.mobile,
+            province: selectedRow.province,
+            city: selectedRow.city,
+            district: selectedRow.district,
+            address: selectedRow.address
+          }); // if (!params.province) {
+          //     this.setState({
+          //         submit: false
+          //     });
+          //     cb && cb(false);
+          //     message.error('未获取到收货地址');
+          //     return;
+          // }
+        }
+      }
+
+      public_utils__WEBPACK_IMPORTED_MODULE_45__[/* MServer */ "a"].post('/order/save', params).then(function (res) {
+        if (res.errcode == 0) {
+          cb && cb(true);
+
+          _this12.setState({
+            submit: false,
+            selectParts: cancelAutoPart ? [] : selectParts
+          });
+
+          if (cancelAutoPart) {
+            setFieldsValue(selectParts.reduce(function (cur, next) {
+              return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_29__[/* default */ "a"])({}, cur, Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_24__[/* default */ "a"])({}, "part_".concat(next), 1));
+            }, {}));
+          }
+
+          _this12.imageOpt.color = 'tran';
+          setFieldsValue({
+            quantity: 1,
+            express_id: _this12.getDefaultExpress()
+          });
+
+          if (_this12.select) {
+            var catename = "".concat(_this12.select.brand_name, " ").concat(_this12.select.brand_type_name, " ").concat(_this12.select.texture_name);
+
+            if (!_this12.submitOrderObj[values.order_sn]) {
+              _this12.submitOrderObj[values.order_sn] = {
+                count: 1,
+                obj: Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_24__[/* default */ "a"])({}, _this12.select.id, {
+                  name: catename,
+                  count: 1
+                })
+              };
+            } else {
+              _this12.submitOrderObj[values.order_sn].count++;
+
+              if (!_this12.submitOrderObj[values.order_sn].obj[_this12.select.id]) {
+                _this12.submitOrderObj[values.order_sn].obj[_this12.select.id] = {
+                  name: catename,
+                  count: 1
+                };
+              } else {
+                _this12.submitOrderObj[values.order_sn].obj[_this12.select.id].count++;
+              }
+            }
+          }
+
+          antd_lib_modal__WEBPACK_IMPORTED_MODULE_26___default.a.confirm({
+            title: '订单已提交成功',
+            okText: '继续下单',
+            cancelText: '查看订单',
+            onOk: function onOk() {
+              values.type == 10 && importExcelData && _this12.setState({
+                drawer: true
+              });
+            },
+            onCancel: function onCancel() {
+              _this12.setState({
+                order_sn: values.order_sn
+              }, function () {
+                if (_this12.dialogDetailRef.current) _this12.dialogDetailRef.current.open();
+              });
+            }
+          });
+        } else {
+          cb && cb(false);
+
+          _this12.setState({
+            submit: false
+          });
+        }
+      });
+    }
+  }, {
+    key: "handleAddressParse",
+    value: function handleAddressParse(e) {
+      var text = e.target.value;
+
+      var _AddressParse$parse = address_parse__WEBPACK_IMPORTED_MODULE_41___default.a.parse(text),
+          _AddressParse$parse2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_23__[/* default */ "a"])(_AddressParse$parse, 1),
+          result = _AddressParse$parse2[0];
+
+      var setFieldsValue = this.props.form.setFieldsValue;
+      setFieldsValue({
+        province: result.province,
+        city: result.city,
+        district: result.area,
+        address: result.details,
+        consignee: result.name,
+        mobile: result.mobile
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this13 = this,
+          _cx;
+
+      var shop_id = this.props.router.query.shop_id;
+      var select = this.select,
+          image = this.image,
+          imageOpt = this.imageOpt,
+          auto = this.auto;
+      var _this$state2 = this.state,
+          list = _this$state2.list,
+          preview = _this$state2.preview,
+          submit = _this$state2.submit,
+          expressList = _this$state2.expressList,
+          partList = _this$state2.partList,
+          selectParts = _this$state2.selectParts,
+          cancelAutoPart = _this$state2.cancelAutoPart,
+          selectColor = _this$state2.selectColor,
+          textures = _this$state2.textures,
+          importExcelData = _this$state2.importExcelData,
+          selectedRow = _this$state2.selectedRow,
+          drawer = _this$state2.drawer,
+          drawerTitle = _this$state2.drawerTitle,
+          selectedRowKeys = _this$state2.selectedRowKeys,
+          lockTexture = _this$state2.lockTexture,
+          selectAttrId = _this$state2.selectAttrId,
+          checkColor = _this$state2.checkColor;
+      var _this$props = this.props,
+          _this$props$form = _this$props.form,
+          getFieldDecorator = _this$props$form.getFieldDecorator,
+          getFieldValue = _this$props$form.getFieldValue,
+          user = _this$props.user;
+      var defaultColors = [{
+        label: '透明',
+        value: 'tran'
+      }, {
+        label: '黑色',
+        value: '#000'
+      }, {
+        label: '白色',
+        value: '#fff'
+      }, {
+        label: '红色',
+        value: '#ff1300'
+      }, {
+        label: '自定义',
+        value: -1
+      }];
+      var rowSelection = {
+        type: 'radio',
+        selectedRowKeys: selectedRowKeys,
+        onChange: function onChange(selectedRowKeys, selectedRows) {
+          _this13.handleSelectRow(selectedRows[0]);
+        }
+      };
+      var colorSelectValue = defaultColors.map(function (item) {
+        return item.value;
+      }).includes(imageOpt.color) ? imageOpt.color : -1;
+      return react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: "page-layout-center"
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_44__[/* DialogOrderDetail */ "f"], {
+        ref: this.dialogDetailRef,
+        order_sn: getFieldValue('order_sn'),
+        user: user
+      }), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.layoutHome
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.layoutHomeBd
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.layoutHomeLeft
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_cascader__WEBPACK_IMPORTED_MODULE_22___default.a, {
+        showSearch: {
+          filter: function filter(input, path) {
+            if (!input) return true;
+            input = input.toLowerCase();
+            var labels = path.map(function (item) {
+              return item.label.replace(/\s*/g, '').toLowerCase();
+            }).join('');
+            var inputKeys = input.split(' ');
+            var has = true;
+
+            for (var i = 0; i < inputKeys.length; i++) {
+              var item = inputKeys[i];
+
+              if (labels.indexOf(item) == -1) {
+                has = false;
+                break;
+              }
+            }
+
+            return has;
+          }
+        },
+        ref: this.cascaderRef,
+        allowClear: false,
+        options: list,
+        style: {
+          width: 240
+        },
+        placeholder: "\u9009\u62E9\u624B\u673A\u578B\u53F7\uFF0C\u652F\u6301\u641C\u7D22",
+        onChange: function onChange(value) {
+          _this13.select = _this13.cateObj[value[value.length - 1]];
+          public_utils__WEBPACK_IMPORTED_MODULE_45__[/* MServer */ "a"].get("/cate/catetextureattr/".concat(_this13.select.id)).then(function (res) {
+            _this13.select.texture_attr = [];
+
+            if (res.errcode == 0 && res.data && res.data.length) {
+              _this13.select.texture_attr = res.data;
+
+              _this13.setState({
+                selectColor: res.data[0].texture_attr_color || null,
+                selectAttrId: res.data[0].texture_attr_id
+              });
+            } else {
+              _this13.setState({
+                selectAttrId: null,
+                selectColor: null
+              });
+            }
+          });
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: "card-item"
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: "card-item-title"
+      }, "\u9501\u5B9A\u6750\u8D28"), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_radio__WEBPACK_IMPORTED_MODULE_20___default.a.Group, {
+        value: lockTexture,
+        options: [{
+          label: '全部材质',
+          value: ''
+        }].concat(textures.map(function (item) {
+          return {
+            label: item.name,
+            value: item.id
+          };
+        })),
+        onChange: function onChange(e) {
+          _this13.select = null;
+          _this13.cascaderRef.current && _this13.cascaderRef.current.setState({
+            value: []
+          });
+
+          _this13.setState({
+            lockTexture: e.target.value,
+            selectColor: null,
+            selectAttrId: null
+          }, _this13.convertList);
+        }
+      })), select && select.texture_attr.length ? react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: "card-item"
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: "card-item-title"
+      }, "\u9009\u62E9\u5C5E\u6027(\u989C\u8272)"), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_radio__WEBPACK_IMPORTED_MODULE_20___default.a.Group, {
+        value: selectAttrId,
+        options: select.texture_attr.map(function (item) {
+          return {
+            label: item.texture_attr_name,
+            value: item.texture_attr_id
+          };
+        }),
+        onChange: function onChange(e) {
+          // this.select = null;
+          // this.cascaderRef.current && this.cascaderRef.current.setState({ value: [] });
+          // this.setState({
+          //     lockTexture: e.target.value
+          // }, this.convertList);
+          var value = e.target.value;
+          var color = select.texture_attr.find(function (item) {
+            return item.texture_attr_id == value;
+          }).texture_attr_color;
+
+          _this13.setState({
+            selectColor: color || null,
+            selectAttrId: value
+          });
+        }
+      })) : null, imageOpt.color == 'tran' ? react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: "card-item"
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: "card-item-title"
+      }, "\u4E0A\u56FE\u5C0F\u52A9\u624B"), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_checkbox__WEBPACK_IMPORTED_MODULE_18___default.a, {
+        checked: checkColor,
+        onChange: function onChange(e) {
+          return _this13.setState({
+            checkColor: e.target.checked
+          });
+        }
+      }, "\u6821\u51C6\u900F\u660E\u5E95")) : null), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.layoutHomeHd
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_44__[/* UploadBtn */ "o"].Local, {
+        buttonProps: {
+          type: 'primary',
+          icon: 'cloud-upload'
+        },
+        text: "\u4E0A\u4F20\u56FE\u7247",
+        onUpload: this.uploadImage
+      }), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_16___default.a, {
+        style: {
+          marginLeft: '15px'
+        },
+        onClick: function onClick() {
+          return _this13.setState({
+            preview: !preview
+          });
+        }
+      }, preview ? '编辑' : '预览'), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_16___default.a, {
+        style: {
+          marginLeft: '15px'
+        },
+        onClick: function onClick() {
+          return _this13.autoImage(_this13.uploadRef.current);
+        }
+      }, "\u521D\u59CB\u5316\u56FE\u7247"), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_16___default.a, {
+        style: {
+          marginLeft: '15px'
+        },
+        onClick: function onClick() {
+          _this13.image = null;
+
+          _this13.forceUpdate();
+        }
+      }, "\u53BB\u9664\u56FE\u7247")), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        ref: this.moveRef,
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.phonePreview
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default.a, {
+        title: "\u4E0A\u4F20\u56FE\u7247\u540E\uFF0C\u62D6\u52A8\u8FDB\u884C\u653E\u5927\u7F29\u5C0F"
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.box1,
+        ref: this.dragBox1
+      })), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default.a, {
+        title: "\u4E0A\u4F20\u56FE\u7247\u540E\uFF0C\u62D6\u52A8\u8FDB\u884C\u65CB\u8F6C"
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.box2,
+        ref: this.dragBox2
+      })), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("img", {
+        ref: this.uploadRef,
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.uploadImage,
+        crossOrigin: "",
+        src: image
+      }), select ? [react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        key: "main",
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.phoneBox
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: classnames__WEBPACK_IMPORTED_MODULE_38___default()((_cx = {}, Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_24__[/* default */ "a"])(_cx, public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.phoneBoxBody, true), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_24__[/* default */ "a"])(_cx, "preview", preview || auto), _cx))
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: "bg"
+      }), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.phoneBoxBodyImage
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("img", {
+        ref: this.sizeImageRef,
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.phonePreviewMain,
+        crossOrigin: "",
+        src: "".concat(config_locale__WEBPACK_IMPORTED_MODULE_43___default.a["production"].url.cdn).concat(select.size_img)
+      }), select.camera_img ? react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("img", {
+        ref: this.cameraImageRef,
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.phonePreviewCamera,
+        crossOrigin: "",
+        src: "".concat(config_locale__WEBPACK_IMPORTED_MODULE_43___default.a["production"].url.cdn).concat(select.camera_img)
+      }) : null), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: "bg"
+      }))), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        key: "bg",
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.phoneBoxBg,
+        style: imageOpt.color != 'tran' ? {
+          backgroundColor: imageOpt.color == -1 ? '#000' : imageOpt.color,
+          backgroundImage: 'none'
+        } : selectColor ? {
+          backgroundColor: selectColor,
+          backgroundImage: 'none'
+        } : checkColor ? {
+          backgroundColor: '#000',
+          backgroundImage: 'none'
+        } : {}
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("img", {
+        style: {
+          opacity: 0
+        },
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.phonePreviewMain,
+        crossOrigin: "",
+        src: "".concat(config_locale__WEBPACK_IMPORTED_MODULE_43___default.a["production"].url.cdn).concat(select.size_img)
+      }), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", null))] : null), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.homeFooter
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: "input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("span", null, "\u7F29\u653E\uFF1A"), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_44__[/* InputNumber */ "j"], {
+        ref: this.sizeInputRef,
+        placeholder: "\u6BD4\u4F8B",
+        precision: 2,
+        onChange: this.handleChangeSize,
+        disabled: auto
+      }), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("span", {
+        style: {
+          marginLeft: '10px'
+        }
+      }, "%")), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: "input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("span", null, "\u65CB\u8F6C\uFF1A"), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_44__[/* InputNumber */ "j"], {
+        disabled: auto,
+        ref: this.rotateInputRef,
+        precision: 2,
+        defaultValue: 0,
+        onChange: function onChange(value) {
+          _this13.imageOpt.rotate = value;
+
+          _this13.getImagePreview();
+        },
+        placeholder: "\u89D2\u5EA6"
+      })), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: "input-group",
+        style: {
+          marginRight: '20px'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("span", null, "\u80CC\u666F\u8272\u8BBE\u7F6E\uFF1A"), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_44__[/* Select */ "l"], {
+        style: {
+          width: 120
+        },
+        value: colorSelectValue,
+        onChange: function onChange(value) {
+          _this13.imageOpt.color = value;
+
+          _this13.forceUpdate();
+        },
+        options: defaultColors
+      }), colorSelectValue == -1 ? react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        style: {
+          display: 'inline-block',
+          position: 'relative',
+          top: '5px',
+          left: '10px'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_44__[/* ColorPicker */ "b"], {
+        color: imageOpt.color == -1 ? '#000' : imageOpt.color,
+        onChange: function onChange(c) {
+          _this13.imageOpt.color = c.color;
+
+          _this13.forceUpdate();
+        }
+      })) : null), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.remark
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_12___default.a, null, "W"), "\u4E0A\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_12___default.a, null, "S"), "\u4E0B\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_12___default.a, null, "A"), "\u5DE6\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_12___default.a, null, "D"), "\u53F3\u79FB"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_12___default.a, null, "E"), "\u653E\u5927"), "\uFF0C", react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_tag__WEBPACK_IMPORTED_MODULE_12___default.a, null, "R"), "\u7F29\u5C0F")))), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.orderConfig,
+        style: shop_id ? {
+          padding: 0
+        } : {}
+      }, shop_id ? react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a, null, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_44__[/* ShopOrder */ "m"], {
+        onOrder: function onOrder(data, cb) {
+          return _this13.handleShopOder(data, cb);
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        style: {
+          padding: 20
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+        label: "\u9009\u62E9\u7269\u6D41"
+      }, getFieldDecorator('express_id', {
+        rules: [{
+          required: true,
+          message: '请先选择物流'
+        }],
+        initialValue: expressList.length ? this.getDefaultExpress() : undefined
+      })(react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_44__[/* Select */ "l"], {
+        options: expressList,
+        fieldName: {
+          value: 'id',
+          label: 'name'
+        }
+      }))), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_37__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        style: {
+          marginBottom: 10
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_checkbox__WEBPACK_IMPORTED_MODULE_18___default.a, {
+        checked: cancelAutoPart,
+        onChange: function onChange(e) {
+          _this13.setState({
+            cancelAutoPart: e.target.checked
+          });
+
+          localStorage.setItem('CANCELAUTOPART', e.target.checked ? 1 : 0);
+        }
+      }, "\u53D6\u6D88\u914D\u4EF6\u81EA\u52A8\u52FE\u9009")), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_table__WEBPACK_IMPORTED_MODULE_8___default.a, {
+        rowKey: "id",
+        dataSource: partList,
+        pagination: false,
+        size: "small" // style={{ marginBottom: '15px' }}
+        ,
+        rowSelection: {
+          selectedRowKeys: selectParts,
+          onChange: function onChange(selectedRowKeys) {
+            _this13.setState({
+              selectParts: selectedRowKeys
+            });
+          }
+        },
+        columns: [{
+          key: 'name',
+          dataIndex: 'name',
+          title: '配件'
+        }, {
+          key: 'number',
+          dataIndex: 'id',
+          title: '购买数量',
+          render: function render(id) {
+            return react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+              className: "no-margin"
+            }, getFieldDecorator("part_".concat(id), selectParts.includes(id) ? {
+              rules: [{
+                required: true,
+                message: '请输入赠品数量'
+              }],
+              initialValue: 1
+            } : {
+              initialValue: 1
+            })(react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_44__[/* InputNumber */ "j"], {
+              min: 1,
+              max: 1000
+            })));
+          }
+        }]
+      })))) : react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a, {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+        label: "\u8BA2\u5355\u7C7B\u578B"
+      }, getFieldDecorator('type', {
+        initialValue: 0
+      })(react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_radio__WEBPACK_IMPORTED_MODULE_20___default.a.Group, {
+        options: [{
+          label: '普通订单',
+          value: 0
+        }, {
+          label: '充值订单',
+          value: 10
+        }, {
+          label: '手工订单',
+          value: 20
+        }]
+      }))), getFieldValue('type') == 10 ? react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, null, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_44__[/* UploadBtn */ "o"].Local, {
+        accept: ".xls, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel",
+        text: "\u5BFC\u5165\u6DD8\u5B9D\u8BA2\u5355",
+        onUpload: function onUpload(file) {
+          return _this13.handleUploadOrderExcel(file, 'taobao', '导入淘宝订单');
+        },
+        style: {
+          marginRight: 10
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_44__[/* UploadBtn */ "o"].Local, {
+        accept: ".xls, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel",
+        text: "\u5BFC\u5165\u62FC\u591A\u591A\u8BA2\u5355",
+        onUpload: function onUpload(file) {
+          return _this13.handleUploadOrderExcel(file, 'pdd', '导入拼多多订单');
+        }
+      }), importExcelData ? react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_16___default.a, {
+        type: "primary",
+        onClick: function onClick() {
+          return _this13.setState({
+            drawer: true
+          });
+        }
+      }, "\u6253\u5F00\u5BFC\u5165\u7684\u8BA2\u5355")) : null, selectedRow ? react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.remarkBox
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("p", {
+        style: {
+          marginBottom: '10px',
+          lineHeight: 1
+        }
+      }, "\u8BA2\u5355\u5907\u6CE8\uFF1A", selectedRow.seller_remark), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("p", {
+        style: {
+          marginBottom: '10px',
+          lineHeight: 1
+        }
+      }, "\u4E70\u5BB6\u7559\u8A00\uFF1A", selectedRow.buyer_remark), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("p", {
+        style: {
+          marginBottom: '0',
+          lineHeight: 1
+        }
+      }, "\u81EA\u5B9A\u4E49\u5907\u6CE8\uFF1A", selectedRow.remark)) : null) : null, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+        label: "\u914D\u8D27\u6807\u7B7E",
+        extra: getFieldValue('order_sn') ? react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("a", {
+          className: "text-info",
+          onClick: function onClick() {
+            _this13.dialogDetailRef.current && _this13.dialogDetailRef.current.open();
+          }
+        }, "\u67E5\u770B\u8BA2\u5355") // <PopoverOrderDetail order_sn={getFieldValue('order_sn')} />
+        : null
+      }, getFieldDecorator('order_sn', {
+        rules: [{
+          required: true,
+          message: '配货标签不能为空'
+        }]
+      })(react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, {
+        placeholder: "\u586B\u5199\u6807\u7B7E"
+      }))), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+        label: "\u8BA2\u8D27\u6570\u91CF"
+      }, getFieldDecorator('quantity', {
+        rules: [{
+          required: true,
+          message: '订货数量不能为空'
+        }],
+        initialValue: 1
+      })(react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_44__[/* InputNumber */ "j"], {
+        precision: 0,
+        min: 1,
+        max: 1000
+      }))), [10, 20].includes(getFieldValue('type')) ? react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+        label: "\u9009\u62E9\u7269\u6D41"
+      }, getFieldDecorator('express_id', {
+        rules: [{
+          required: true,
+          message: '请先选择物流'
+        }],
+        initialValue: expressList.length ? this.getDefaultExpress() : undefined
+      })(react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_44__[/* Select */ "l"], {
+        options: expressList,
+        fieldName: {
+          value: 'id',
+          label: 'name'
+        }
+      }))) : null, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, null, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_16___default.a, {
+        type: "primary",
+        htmlType: "submit",
+        loading: submit
+      }, "\u63D0\u4EA4\u8BA2\u5355"), getFieldValue('type') == 20 ? react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_popover__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        trigger: ['click'],
+        content: react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a.TextArea, {
+          style: {
+            width: 300
+          },
+          onChange: function onChange(e) {
+            return _this13.handleAddressParse(e);
+          },
+          placeholder: "\u7C98\u8D34\u5730\u5740\u667A\u80FD\u89E3\u6790\u5B8C\u6574\u5730\u5740"
+        }), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("p", {
+          style: {
+            width: 300,
+            wordBreak: 'break-all',
+            marginTop: 10,
+            marginBottom: 0
+          }
+        }, "\u4F8B\u5982\uFF1A\u798F\u5DDE\u5E02\u798F\u6E05\u5E02\u77F3\u7AF9\u8857\u9053\u4E49\u660E\u7EFC\u5408\u697C3F 15000000000 user"))
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_16___default.a, {
+        type: "danger",
+        style: {
+          marginLeft: 10
+        }
+      }, "\u667A\u80FD\u89E3\u6790\u5730\u5740")) : null), getFieldValue('type') == 20 ? react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: "inline-form"
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: "inline-form-item"
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+        label: "\u7701"
+      }, getFieldDecorator('province', {
+        rules: [{
+          required: true,
+          message: '省份不能为空'
+        }]
+      })(react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, null))), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+        label: "\u5E02"
+      }, getFieldDecorator('city', {
+        rules: [{
+          required: true,
+          message: '市不能为空'
+        }]
+      })(react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, null))), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+        label: "\u533A"
+      }, getFieldDecorator('district')(react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, null)))), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: "inline-form-item"
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+        label: "\u8BE6\u7EC6\u5730\u5740"
+      }, getFieldDecorator('address', {
+        rules: [{
+          required: true,
+          message: '地址不能为空'
+        }]
+      })(react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, null)))), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        className: "inline-form-item"
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+        label: "\u6536\u8D27\u4EBA"
+      }, getFieldDecorator('consignee', {
+        rules: [{
+          required: true,
+          message: '收货人不能为空'
+        }]
+      })(react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, null))), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+        label: "\u8054\u7CFB\u65B9\u5F0F"
+      }, getFieldDecorator('mobile', {
+        rules: [{
+          required: true,
+          message: '收货人不能为空'
+        }]
+      })(react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, null))))) : null, [10, 20].includes(getFieldValue('type')) && partList.length ? react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_37__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+        style: {
+          marginBottom: 10
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_checkbox__WEBPACK_IMPORTED_MODULE_18___default.a, {
+        checked: cancelAutoPart,
+        onChange: function onChange(e) {
+          _this13.setState({
+            cancelAutoPart: e.target.checked
+          });
+
+          localStorage.setItem('CANCELAUTOPART', e.target.checked ? 1 : 0);
+        }
+      }, "\u53D6\u6D88\u914D\u4EF6\u81EA\u52A8\u52FE\u9009")), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_table__WEBPACK_IMPORTED_MODULE_8___default.a, {
+        rowKey: "id",
+        dataSource: partList,
+        pagination: false,
+        size: "small" // style={{ marginBottom: '15px' }}
+        ,
+        rowSelection: {
+          selectedRowKeys: selectParts,
+          onChange: function onChange(selectedRowKeys) {
+            _this13.setState({
+              selectParts: selectedRowKeys
+            });
+          }
+        },
+        columns: [{
+          key: 'name',
+          dataIndex: 'name',
+          title: '配件'
+        }, {
+          key: 'number',
+          dataIndex: 'id',
+          title: '购买数量',
+          render: function render(id) {
+            return react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.Item, {
+              className: "no-margin"
+            }, getFieldDecorator("part_".concat(id), selectParts.includes(id) ? {
+              rules: [{
+                required: true,
+                message: '请输入赠品数量'
+              }],
+              initialValue: 1
+            } : {
+              initialValue: 1
+            })(react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(component__WEBPACK_IMPORTED_MODULE_44__[/* InputNumber */ "j"], {
+              min: 1,
+              max: 1000
+            })));
+          }
+        }]
+      })) : null)))), react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_drawer__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        title: drawerTitle,
+        placement: "bottom",
+        height: 720,
+        bodyStyle: {
+          padding: 0
+        } // closable={false}
+        ,
+        onClose: function onClose() {
+          return _this13.setState({
+            drawer: false
+          });
+        },
+        visible: drawer
+      }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_table__WEBPACK_IMPORTED_MODULE_8___default.a, {
+        rowKey: "order_sn",
+        rowSelection: rowSelection,
+        dataSource: importExcelData,
+        onRow: function onRow(row) {
+          return {
+            onClick: function onClick() {
+              _this13.handleSelectRow(row);
+            }
+          };
+        },
+        columns: [{
+          key: 'order_sn',
+          dataIndex: 'order_sn',
+          title: '订单编号',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("span", null, text, _this13.submitOrderObj[record.order_sn] ? react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default.a, {
+              title: react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("div", {
+                className: public_theme_pages_index_less__WEBPACK_IMPORTED_MODULE_46___default.a.tooltipContent
+              }, _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2___default()(_this13.submitOrderObj[record.order_sn].obj).map(function (item) {
+                return react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("p", {
+                  key: item
+                }, _this13.submitOrderObj[record.order_sn].obj[item].name, " ", _this13.submitOrderObj[record.order_sn].obj[item].count, "\u6B21");
+              }))
+            }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("span", {
+              className: "text-success"
+            }, "(\u5DF2\u63D0\u4EA4", _this13.submitOrderObj[record.order_sn].count, "\u6B21)")) : null);
+          }
+        }, {
+          key: 'consignee',
+          dataIndex: 'consignee',
+          title: '收件人姓名',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, {
+              defaultValue: text,
+              style: {
+                width: 80
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].consignee = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'mobile',
+          dataIndex: 'mobile',
+          title: '联系手机',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, {
+              defaultValue: text,
+              style: {
+                width: 122
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].mobile = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'province',
+          dataIndex: 'province',
+          title: '省',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, {
+              defaultValue: text,
+              style: {
+                width: 80
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].province = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'city',
+          dataIndex: 'city',
+          title: '市',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, {
+              defaultValue: text,
+              style: {
+                width: 80
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].city = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'district',
+          dataIndex: 'district',
+          title: '区',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, {
+              defaultValue: text,
+              style: {
+                width: 80
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].district = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'address',
+          dataIndex: 'address',
+          title: '详细地址',
+          render: function render(text, record) {
+            return react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_6___default.a, {
+              defaultValue: text,
+              style: {
+                width: 150
+              },
+              onChange: function onChange(e) {
+                importExcelData[record.index].address = e.target.value;
+              },
+              onClick: function onClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            });
+          }
+        }, {
+          key: 'seller_remark',
+          dataIndex: 'seller_remark',
+          title: '订单备注',
+          render: function render(text) {
+            return react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default.a, {
+              title: text
+            }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("p", {
+              style: {
+                width: 80,
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis'
+              }
+            }, text));
+          }
+        }, {
+          key: 'buyer_remark',
+          dataIndex: 'buyer_remark',
+          title: '买家留言',
+          render: function render(text) {
+            return react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default.a, {
+              title: text
+            }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("p", {
+              style: {
+                width: 80,
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis'
+              }
+            }, text));
+          }
+        }, {
+          key: 'remark',
+          dataIndex: 'remark',
+          title: '自定义备注',
+          render: function render(text) {
+            return react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement(antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_14___default.a, {
+              title: text
+            }, react__WEBPACK_IMPORTED_MODULE_37___default.a.createElement("p", {
+              style: {
+                width: 80,
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis'
+              }
+            }, text));
+          }
+        }]
+      })));
+    }
+  }]);
+
+  return Home;
+}(react__WEBPACK_IMPORTED_MODULE_37__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(dva_no_router__WEBPACK_IMPORTED_MODULE_42__["connect"])(function (_ref) {
+  var user = _ref.user;
+  return {
+    user: user
+  };
+})(antd_lib_form__WEBPACK_IMPORTED_MODULE_10___default.a.create()(Home)));
 
 /***/ }),
 
@@ -4709,10 +6718,10 @@ module.exports = require("core-js/library/fn/object/keys");
 
 /***/ }),
 
-/***/ "qRh3":
+/***/ "qYgU":
 /***/ (function(module, exports) {
 
-module.exports = require("antd/lib/divider/style");
+module.exports = require("antd/lib/cascader/style");
 
 /***/ }),
 
@@ -4727,15 +6736,6 @@ module.exports = require("core-js/library/fn/array/from");
 /***/ (function(module, exports) {
 
 module.exports = require("prop-types");
-
-/***/ }),
-
-/***/ "s/Gc":
-/***/ (function(module, exports) {
-
-module.exports = {
-	"success": "success___2KFLY"
-};
 
 /***/ }),
 
@@ -4866,10 +6866,10 @@ module.exports = require("antd/lib/col");
 
 /***/ }),
 
-/***/ "wy2R":
+/***/ "wvHv":
 /***/ (function(module, exports) {
 
-module.exports = require("moment");
+module.exports = require("antd/lib/drawer");
 
 /***/ }),
 
@@ -4880,17 +6880,17 @@ module.exports = require("antd/lib/modal");
 
 /***/ }),
 
-/***/ "xZtu":
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/divider");
-
-/***/ }),
-
 /***/ "yLu3":
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("Kjtv");
+
+/***/ }),
+
+/***/ "z6+L":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/tooltip");
 
 /***/ }),
 

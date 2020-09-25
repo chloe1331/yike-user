@@ -1,7 +1,7 @@
 module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
-/******/ 	var installedModules = require('../../../../ssr-module-cache.js');
+/******/ 	var installedModules = require('../../../ssr-module-cache.js');
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -97,13 +97,6 @@ module.exports =
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/get-prototype-of");
-
-/***/ }),
-
-/***/ "/nHt":
-/***/ (function(module, exports) {
-
-module.exports = require("rc-upload");
 
 /***/ }),
 
@@ -176,78 +169,10 @@ module.exports = Api;
 
 /***/ }),
 
-/***/ "0Jvc":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "0B1J":
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-
-// EXTERNAL MODULE: external "react"
-var external_react_ = __webpack_require__("cDcd");
-var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
-
-// EXTERNAL MODULE: external "antd/lib/button/style"
-var style_ = __webpack_require__("DnGC");
-
-// EXTERNAL MODULE: external "antd/lib/button"
-var button_ = __webpack_require__("eGmO");
-var button_default = /*#__PURE__*/__webpack_require__.n(button_);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js + 3 modules
-var slicedToArray = __webpack_require__("doui");
-
-// EXTERNAL MODULE: ./component/upload-btn/index.jsx + 1 modules
-var upload_btn = __webpack_require__("pzQ+");
-
-// CONCATENATED MODULE: ./component/place-order/index.jsx
-
-
-
-
-
-
-function PlaceOrder() {
-  var _useState = Object(external_react_["useState"])(false),
-      _useState2 = Object(slicedToArray["a" /* default */])(_useState, 2),
-      preview = _useState2[0],
-      setPreview = _useState2[1];
-
-  var onLoadImage = function onLoadImage() {};
-
-  var handleUpload = function handleUpload(file) {
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-
-    reader.onload = function () {
-      var img = new Image();
-      img.src = this.result;
-
-      img.onload = function () {
-        onLoadImage(img);
-      };
-    };
-  };
-
-  return external_react_default.a.createElement("div", null, external_react_default.a.createElement("div", null, external_react_default.a.createElement("div", null, external_react_default.a.createElement(upload_btn["a" /* default */].Local, {
-    buttonProps: {
-      type: 'primary',
-      icon: 'cloud-upload'
-    },
-    text: "\u4E0A\u4F20\u56FE\u7247",
-    onUpload: handleUpload
-  }), external_react_default.a.createElement(button_default.a, {
-    onClick: function onClick() {
-      return setPreview(!preview);
-    }
-  }, preview ? '编辑' : '预览'), external_react_default.a.createElement(button_default.a, null, "\u521D\u59CB\u5316\u56FE\u7247"), external_react_default.a.createElement(button_default.a, null, "\u53BB\u9664\u56FE\u7247")), external_react_default.a.createElement("div", null)));
-}
-// CONCATENATED MODULE: ./pages/shop/order.jsx
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Page; });
-
-
-function Page() {
-  return external_react_default.a.createElement("div", null, external_react_default.a.createElement(PlaceOrder, null));
-}
+module.exports = require("dva-no-router");
 
 /***/ }),
 
@@ -264,11 +189,22 @@ function _classCallCheck(instance, Constructor) {
 
 /***/ }),
 
-/***/ 10:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "2w/n":
+/***/ (function(module, exports) {
 
-module.exports = __webpack_require__("0Jvc");
+module.exports = require("antd/lib/form/style");
 
+/***/ }),
+
+/***/ "37qC":
+/***/ (function(module, exports) {
+
+module.exports = {
+	"page-login": "page-login___3bAul",
+	"pageLogin": "page-login___3bAul",
+	"login-form": "login-form___2_8As",
+	"loginForm": "login-form___2_8As"
+};
 
 /***/ }),
 
@@ -276,6 +212,178 @@ module.exports = __webpack_require__("0Jvc");
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/message");
+
+/***/ }),
+
+/***/ "4mXO":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("k1wZ");
+
+/***/ }),
+
+/***/ 5:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("5QeG");
+
+
+/***/ }),
+
+/***/ "5QeG":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("DnGC");
+/* harmony import */ var antd_lib_button_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button_style__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("eGmO");
+/* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var antd_lib_form_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("2w/n");
+/* harmony import */ var antd_lib_form_style__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd_lib_form_style__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var antd_lib_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("foLw");
+/* harmony import */ var antd_lib_form__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_form__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("oRSk");
+/* harmony import */ var antd_lib_input_style__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input_style__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("Uqqx");
+/* harmony import */ var antd_lib_input__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var antd_lib_icon_style__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("umso");
+/* harmony import */ var antd_lib_icon_style__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(antd_lib_icon_style__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var antd_lib_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("BWRB");
+/* harmony import */ var antd_lib_icon__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(antd_lib_icon__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("zrwo");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("0iUn");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("sLSF");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("MI3g");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("a7VT");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("AT/M");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("Tit0");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var dva_no_router__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("0B1J");
+/* harmony import */ var dva_no_router__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(dva_no_router__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var public_utils__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("HgRd");
+/* harmony import */ var public_theme_pages_login_less__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("37qC");
+/* harmony import */ var public_theme_pages_login_less__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(public_theme_pages_login_less__WEBPACK_IMPORTED_MODULE_18__);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var Login =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_14__[/* default */ "a"])(Login, _Component);
+
+  function Login(props) {
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(this, Login);
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"])(Login).call(this, props));
+    var handles = ['handleSubmit'];
+    handles.forEach(function (item) {
+      return _this[item] = _this[item].bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"])(_this));
+    });
+    return _this;
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"])(Login, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var _this$props = this.props,
+          validateFields = _this$props.form.validateFields,
+          router = _this$props.router,
+          dispatch = _this$props.dispatch,
+          onLogin = _this$props.onLogin;
+      var shop_id = router.query.shop_id;
+      validateFields(function (err, values) {
+        if (!err) {
+          public_utils__WEBPACK_IMPORTED_MODULE_17__[/* MServer */ "a"].post('/user/login', Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])({}, values, {
+            shop_id: shop_id
+          })).then(function (res) {
+            if (res.errcode == 0) {
+              router.push('/');
+              dispatch({
+                type: 'user/get'
+              }).then(function () {
+                onLogin && onLogin();
+              });
+            }
+          });
+        }
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var getFieldDecorator = this.props.form.getFieldDecorator;
+      console.log(this.props);
+      return react__WEBPACK_IMPORTED_MODULE_15___default.a.createElement("div", {
+        className: public_theme_pages_login_less__WEBPACK_IMPORTED_MODULE_18___default.a.pageLogin
+      }, react__WEBPACK_IMPORTED_MODULE_15___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        className: public_theme_pages_login_less__WEBPACK_IMPORTED_MODULE_18___default.a.loginForm,
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_15___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_3___default.a.Item, null, getFieldDecorator('username', {
+        rules: [{
+          required: true,
+          message: '请输入用户名'
+        }]
+      })(react__WEBPACK_IMPORTED_MODULE_15___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        prefix: react__WEBPACK_IMPORTED_MODULE_15___default.a.createElement(antd_lib_icon__WEBPACK_IMPORTED_MODULE_7___default.a, {
+          type: "user",
+          style: {
+            color: 'rgba(0,0,0,.25)'
+          }
+        }),
+        placeholder: "\u7528\u6237\u540D",
+        size: "large"
+      }))), react__WEBPACK_IMPORTED_MODULE_15___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_3___default.a.Item, null, getFieldDecorator('password', {
+        rules: [{
+          required: true,
+          message: '请输入密码'
+        }]
+      })(react__WEBPACK_IMPORTED_MODULE_15___default.a.createElement(antd_lib_input__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        prefix: react__WEBPACK_IMPORTED_MODULE_15___default.a.createElement(antd_lib_icon__WEBPACK_IMPORTED_MODULE_7___default.a, {
+          type: "lock",
+          style: {
+            color: 'rgba(0,0,0,.25)'
+          }
+        }),
+        type: "password",
+        placeholder: "\u5BC6\u7801",
+        size: "large"
+      }))), react__WEBPACK_IMPORTED_MODULE_15___default.a.createElement(antd_lib_form__WEBPACK_IMPORTED_MODULE_3___default.a.Item, null, react__WEBPACK_IMPORTED_MODULE_15___default.a.createElement(antd_lib_button__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        type: "primary",
+        htmlType: "submit",
+        block: true,
+        size: "large"
+      }, "\u767B\u5F55"))));
+    }
+  }]);
+
+  return Login;
+}(react__WEBPACK_IMPORTED_MODULE_15__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(dva_no_router__WEBPACK_IMPORTED_MODULE_16__["connect"])()(antd_lib_form__WEBPACK_IMPORTED_MODULE_3___default.a.create()(Login)));
 
 /***/ }),
 
@@ -456,17 +564,10 @@ var convertBase64UrlToBlob = function convertBase64UrlToBlob(urlData) {
 
 /***/ }),
 
-/***/ "J3/a":
-/***/ (function(module, exports) {
+/***/ "Jo+v":
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("core-js/library/fn/get-iterator");
-
-/***/ }),
-
-/***/ "K2gz":
-/***/ (function(module, exports) {
-
-module.exports = require("classnames");
+module.exports = __webpack_require__("Z6Kq");
 
 /***/ }),
 
@@ -480,25 +581,6 @@ function _interopRequireDefault(obj) {
 }
 
 module.exports = _interopRequireDefault;
-
-/***/ }),
-
-/***/ "KUS5":
-/***/ (function(module, exports) {
-
-module.exports = {
-	"local-btn": "local-btn___2xFz5",
-	"localBtn": "local-btn___2xFz5",
-	"upload-btn": "upload-btn___2ibQ0",
-	"uploadBtn": "upload-btn___2ibQ0",
-	"upload-btn-image": "upload-btn-image___31ISu",
-	"uploadBtnImage": "upload-btn-image___31ISu",
-	"icon-mask": "icon-mask___1pOre",
-	"iconMask": "icon-mask___1pOre",
-	"icon-btns": "icon-btns___1OP6S",
-	"iconBtns": "icon-btns___1OP6S",
-	"loading": "loading___3LfpB"
-};
 
 /***/ }),
 
@@ -548,13 +630,6 @@ function _possibleConstructorReturn(self, call) {
 
   return Object(assertThisInitialized["a" /* default */])(self);
 }
-
-/***/ }),
-
-/***/ "R2Q7":
-/***/ (function(module, exports) {
-
-module.exports = require("core-js/library/fn/array/is-array");
 
 /***/ }),
 
@@ -651,17 +726,17 @@ module.exports = __webpack_require__("gHn/");
 
 /***/ }),
 
-/***/ "XXOK":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("J3/a");
-
-/***/ }),
-
 /***/ "XZ83":
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/message/style");
+
+/***/ }),
+
+/***/ "Z6Kq":
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/object/get-own-property-descriptor");
 
 /***/ }),
 
@@ -706,66 +781,6 @@ module.exports = require("core-js/library/fn/object/assign");
 
 /***/ }),
 
-/***/ "doui":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js
-var is_array = __webpack_require__("p0XB");
-var is_array_default = /*#__PURE__*/__webpack_require__.n(is_array);
-
-// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/arrayWithHoles.js
-
-function _arrayWithHoles(arr) {
-  if (is_array_default()(arr)) return arr;
-}
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/get-iterator.js
-var get_iterator = __webpack_require__("XXOK");
-var get_iterator_default = /*#__PURE__*/__webpack_require__.n(get_iterator);
-
-// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/iterableToArrayLimit.js
-
-function _iterableToArrayLimit(arr, i) {
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = get_iterator_default()(arr), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/nonIterableRest.js
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance");
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _slicedToArray; });
-
-
-
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
-}
-
-/***/ }),
-
 /***/ "eGmO":
 /***/ (function(module, exports) {
 
@@ -777,6 +792,13 @@ module.exports = require("antd/lib/button");
 /***/ (function(module, exports) {
 
 module.exports = require("qs");
+
+/***/ }),
+
+/***/ "foLw":
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/form");
 
 /***/ }),
 
@@ -794,31 +816,10 @@ module.exports = __webpack_require__("TUA0");
 
 /***/ }),
 
-/***/ "kOwS":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "k1wZ":
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _extends; });
-/* harmony import */ var _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("UXZV");
-/* harmony import */ var _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_assign__WEBPACK_IMPORTED_MODULE_0__);
-
-function _extends() {
-  _extends = _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0___default.a || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
+module.exports = require("core-js/library/fn/object/get-own-property-symbols");
 
 /***/ }),
 
@@ -864,338 +865,10 @@ module.exports = require("antd/lib/input/style");
 
 /***/ }),
 
-/***/ "p0XB":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("R2Q7");
-
-/***/ }),
-
 /***/ "pLtp":
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("qJj/");
-
-/***/ }),
-
-/***/ "pzQ+":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXTERNAL MODULE: external "antd/lib/button/style"
-var style_ = __webpack_require__("DnGC");
-
-// EXTERNAL MODULE: external "antd/lib/button"
-var button_ = __webpack_require__("eGmO");
-var button_default = /*#__PURE__*/__webpack_require__.n(button_);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js
-var esm_extends = __webpack_require__("kOwS");
-
-// EXTERNAL MODULE: external "antd/lib/icon/style"
-var icon_style_ = __webpack_require__("umso");
-
-// EXTERNAL MODULE: external "antd/lib/icon"
-var icon_ = __webpack_require__("BWRB");
-var icon_default = /*#__PURE__*/__webpack_require__.n(icon_);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js
-var defineProperty = __webpack_require__("vYYK");
-
-// EXTERNAL MODULE: external "antd/lib/message/style"
-var message_style_ = __webpack_require__("XZ83");
-
-// EXTERNAL MODULE: external "antd/lib/message"
-var message_ = __webpack_require__("3PsY");
-var message_default = /*#__PURE__*/__webpack_require__.n(message_);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js
-var classCallCheck = __webpack_require__("0iUn");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js
-var createClass = __webpack_require__("sLSF");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js + 1 modules
-var possibleConstructorReturn = __webpack_require__("MI3g");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__("a7VT");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js
-var assertThisInitialized = __webpack_require__("AT/M");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js + 1 modules
-var inherits = __webpack_require__("Tit0");
-
-// EXTERNAL MODULE: external "react"
-var external_react_ = __webpack_require__("cDcd");
-var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
-
-// EXTERNAL MODULE: external "rc-upload"
-var external_rc_upload_ = __webpack_require__("/nHt");
-var external_rc_upload_default = /*#__PURE__*/__webpack_require__.n(external_rc_upload_);
-
-// EXTERNAL MODULE: external "classnames"
-var external_classnames_ = __webpack_require__("K2gz");
-var external_classnames_default = /*#__PURE__*/__webpack_require__.n(external_classnames_);
-
-// EXTERNAL MODULE: ./public/utils/index.js + 1 modules
-var utils = __webpack_require__("HgRd");
-
-// EXTERNAL MODULE: ./config/locale.js
-var locale = __webpack_require__("mVpe");
-var locale_default = /*#__PURE__*/__webpack_require__.n(locale);
-
-// EXTERNAL MODULE: ./component/upload-btn/style.less
-var upload_btn_style = __webpack_require__("KUS5");
-var upload_btn_style_default = /*#__PURE__*/__webpack_require__.n(upload_btn_style);
-
-// EXTERNAL MODULE: external "antd/lib/input/style"
-var input_style_ = __webpack_require__("oRSk");
-
-// EXTERNAL MODULE: external "antd/lib/input"
-var input_ = __webpack_require__("Uqqx");
-var input_default = /*#__PURE__*/__webpack_require__.n(input_);
-
-// CONCATENATED MODULE: ./component/upload-btn/local.jsx
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var local_LocalBtn =
-/*#__PURE__*/
-function (_Component) {
-  Object(inherits["a" /* default */])(LocalBtn, _Component);
-
-  function LocalBtn(props) {
-    var _this;
-
-    Object(classCallCheck["a" /* default */])(this, LocalBtn);
-
-    _this = Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(LocalBtn).call(this, props));
-    _this.uploadInputRef = null;
-    var handles = ['handleUpload'];
-    handles.forEach(function (item) {
-      return _this[item] = _this[item].bind(Object(assertThisInitialized["a" /* default */])(_this));
-    });
-    return _this;
-  }
-
-  Object(createClass["a" /* default */])(LocalBtn, [{
-    key: "handleUpload",
-    value: function handleUpload() {
-      this.uploadInputRef.click();
-    }
-  }, {
-    key: "onUpload",
-    value: function onUpload(file) {
-      var onUpload = this.props.onUpload;
-      onUpload && onUpload(file);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var _this$props = this.props,
-          text = _this$props.text,
-          accept = _this$props.accept,
-          style = _this$props.style,
-          buttonProps = _this$props.buttonProps;
-      return external_react_default.a.createElement("div", {
-        className: upload_btn_style_default.a.localBtn,
-        style: style
-      }, external_react_default.a.createElement(input_default.a, {
-        className: "hide",
-        type: "file",
-        ref: function ref(e) {
-          return _this2.uploadInputRef = e && e.input;
-        },
-        accept: accept || 'image/png,image/jpg,image/jpeg',
-        onChange: function onChange(e) {
-          return _this2.onUpload(e.target.files[0]);
-        }
-      }), external_react_default.a.createElement(button_default.a, Object(esm_extends["a" /* default */])({}, buttonProps, {
-        onClick: this.handleUpload
-      }), text || '上传文件'));
-    }
-  }]);
-
-  return LocalBtn;
-}(external_react_["Component"]);
-
-
-// CONCATENATED MODULE: ./component/upload-btn/index.jsx
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return upload_btn_UploadButton; });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var upload_btn_UploadButton =
-/*#__PURE__*/
-function (_Component) {
-  Object(inherits["a" /* default */])(UploadButton, _Component);
-
-  function UploadButton(props) {
-    var _this;
-
-    Object(classCallCheck["a" /* default */])(this, UploadButton);
-
-    _this = Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(UploadButton).call(this, props));
-    _this.state = {
-      upload: false,
-      image: null
-    };
-    var handles = ['handleStart', 'handleError', 'handleSuccess', 'beforeUpload'];
-    handles.forEach(function (item) {
-      return _this[item] = _this[item].bind(Object(assertThisInitialized["a" /* default */])(_this));
-    });
-    return _this;
-  }
-
-  Object(createClass["a" /* default */])(UploadButton, [{
-    key: "getSnapshotBeforeUpdate",
-    value: function getSnapshotBeforeUpdate(prevProps) {
-      if (this.props.value != prevProps.value && this.props.value != this.state.image) {
-        return true;
-      }
-
-      return false;
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps, prevState, snapshot) {
-      if (snapshot) this.setState({
-        image: this.props.value
-      });
-    }
-  }, {
-    key: "beforeUpload",
-    value: function beforeUpload(file) {
-      var limitSize = this.props.limitSize;
-
-      if (limitSize && file.size > limitSize * 1024 * 1024) {
-        message_default.a.error("\u56FE\u7247\u5927\u5C0F\u4E0D\u80FD\u8D85\u8FC7".concat(limitSize, "M\uFF01"));
-
-        return false;
-      }
-
-      return true;
-    }
-  }, {
-    key: "handleStart",
-    value: function handleStart() {
-      this.setState({
-        upload: true
-      });
-    }
-  }, {
-    key: "handleError",
-    value: function handleError() {
-      this.setState({
-        upload: false
-      });
-    }
-  }, {
-    key: "handleSuccess",
-    value: function handleSuccess(res) {
-      var onChange = this.props.onChange;
-
-      if (res.errcode != 0) {
-        message_default.a.error(res.message);
-
-        this.setState({
-          upload: false
-        });
-      } else {
-        this.setState({
-          image: res.filename,
-          upload: false
-        });
-        typeof onChange == 'function' && onChange(res.filename);
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _cx;
-
-      var _this$state = this.state,
-          upload = _this$state.upload,
-          image = _this$state.image;
-      var _this$props = this.props,
-          buttonText = _this$props.buttonText,
-          icon = _this$props.icon,
-          action = _this$props.action,
-          accept = _this$props.accept,
-          buttonProps = _this$props.buttonProps,
-          _this$props$show = _this$props.show,
-          show = _this$props$show === void 0 ? true : _this$props$show;
-      return external_react_default.a.createElement(external_rc_upload_default.a, {
-        name: "files",
-        withCredentials: true,
-        action: utils["a" /* MServer */].getUrl(action || '/upload/userimage').fullUrl,
-        accept: accept || 'image/png,image/jpg,image/jpeg',
-        onStart: this.handleStart,
-        onError: this.handleError,
-        onSuccess: this.handleSuccess,
-        beforeUpload: this.beforeUpload,
-        className: upload_btn_style_default.a.uploadBtn,
-        headers: utils["a" /* MServer */].getDefaultHeaders()
-      }, image && show ? external_react_default.a.createElement("div", {
-        className: external_classnames_default()((_cx = {}, Object(defineProperty["a" /* default */])(_cx, upload_btn_style_default.a.uploadBtnImage, true), Object(defineProperty["a" /* default */])(_cx, upload_btn_style_default.a.loading, upload), _cx)) // style={{ backgroundImage: `url(${locale[process.env.NODE_ENV].url.cdn}${image}` }}
-
-      }, external_react_default.a.createElement("img", {
-        alt: "",
-        src: "".concat(locale_default.a["production"].url.cdn).concat(image)
-      }), external_react_default.a.createElement("div", {
-        className: upload_btn_style_default.a.iconMask
-      }), external_react_default.a.createElement("div", {
-        className: upload_btn_style_default.a.iconBtns
-      }, external_react_default.a.createElement(icon_default.a, {
-        type: upload ? 'loading' : 'edit'
-      }))) : external_react_default.a.createElement(button_default.a, Object(esm_extends["a" /* default */])({
-        icon: icon || 'plus',
-        loading: upload
-      }, buttonProps), upload ? '上传中...' : buttonText || '上传'));
-    }
-  }]);
-
-  return UploadButton;
-}(external_react_["Component"]);
-
-
-upload_btn_UploadButton.Local = local_LocalBtn;
 
 /***/ }),
 
@@ -1277,6 +950,44 @@ module.exports = require("core-js/library/fn/symbol");
 /***/ (function(module, exports) {
 
 module.exports = require("axios");
+
+/***/ }),
+
+/***/ "zrwo":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _objectSpread; });
+/* harmony import */ var _core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("Jo+v");
+/* harmony import */ var _core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("4mXO");
+/* harmony import */ var _core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _core_js_object_keys__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("pLtp");
+/* harmony import */ var _core_js_object_keys__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _defineProperty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("vYYK");
+
+
+
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    var ownKeys = _core_js_object_keys__WEBPACK_IMPORTED_MODULE_2___default()(source);
+
+    if (typeof _core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_1___default.a === 'function') {
+      ownKeys = ownKeys.concat(_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_1___default()(source).filter(function (sym) {
+        return _core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      Object(_defineProperty__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
 
 /***/ })
 

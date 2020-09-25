@@ -600,17 +600,17 @@ class Home extends Component {
             const workbookJson = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
             const result = [];
             workbookJson.forEach((item, index) => {
-                let mobile = item['联系手机'] || item['手机'];
+                let mobile = item['联系手机'] || item['手机'] || item['联系方式'];
                 if (mobile) mobile = mobile.toString().match(/[1-9]\d*/)[0];
                 const adsplit = type === 'taobao' ? (item['收货地址'] || item['收货地址 '] || '').trim().split(/\s+/) : [
                     item['省'],
                     item['市'],
                     item['区'],
-                    item['街道'] || item['详细地址']
+                    item['街道'] || item['详细地址'] || item['收件地址']
                 ];
                 result.push({
                     order_sn: (item['订单编号'] || item['订单号'] || '').toString().trim(),
-                    consignee: (item['收货人姓名'] || item['收货人'] || '').toString().trim(),
+                    consignee: (item['收货人姓名'] || item['收货人'] || item['收件人'] || '').toString().trim(),
                     mobile,
                     province: adsplit[0] && adsplit[0].trim(),
                     city: adsplit[1] && adsplit[1].trim(),
@@ -618,7 +618,7 @@ class Home extends Component {
                     address: adsplit.slice(3).join(' '),
                     seller_remark: item['订单备注'] || item['商家备注'],
                     buyer_remark: item['买家留言'],
-                    remark: item['自定义备注'],
+                    remark: item['自定义备注'] || item['备注'],
                     index,
                     source: type
                 });
