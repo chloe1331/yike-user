@@ -3143,7 +3143,7 @@ function ShopOrder(_ref) {
   })))), order.length ? external_react_default.a.createElement(external_react_["Fragment"], null, order.map(function (item) {
     return external_react_default.a.createElement("div", {
       className: shop_order_style_default.a.order,
-      key: item.id
+      key: item.order_sn
     }, external_react_default.a.createElement("div", {
       className: shop_order_style_default.a.head
     }, external_react_default.a.createElement("p", {

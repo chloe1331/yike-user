@@ -64,7 +64,7 @@ export default function ShopOrder ({ onOrder }) {
         </Form>
         {order.length ? <Fragment>
             {
-                order.map(item => <div className={s.order} key={item.id}>
+                order.map(item => <div className={s.order} key={item.order_sn}>
                     <div className={s.head}>
                         <p style={{ marginBottom: 4 }}>订单号：{item.order_sn}</p>
                         <p className='text-secondary' style={{ marginBottom: 0 }}>
