@@ -331,31 +331,58 @@ class Home extends Component {
         if (!this.documentLister4) document.removeEventListener('mouseup', this.documentLister4);
     }
 
-    getList() {
-        MServer.get('/cate/list', {
-            is_all: 1
-        }).then(res => {
-            if (res.errcode == 0) {
-                this.cateList = res.data;
-                return MServer.get('/cate/brand', {
-                    is_all: 1,
-                    order: 'sort',
-                }).then(res => {
-                    if (res.errcode == 0) {
-                        res.data.forEach(item => {
-                            this.defaultBrankSortMap[item.id] = item.sort;
-                        });
-
-                    }
-                    return true;
-                });
-            }
-            return false;
-        }).then(res => {
-            if (res) {
-                this.convertList();
-            }
+    async getList() {
+        let count = 0;
+        let total;
+        let page = 1;
+        let list = [];
+        const pagesize = 50;
+        while (count !== total) {
+            await MServer.get('/cate/list', {
+                page,
+                pagesize
+            }).then(res => {
+                page++;
+                count += res.data.length;
+                total = res.total;
+                list = list.concat(res.data);
+            }).catch(() => {
+                total = count;
+            });
+        }
+        this.cateList = list;
+        const brandList = await MServer.get('/cate/brand', {
+            is_all: 1,
+            order: 'sort',
+        }).then(res => res.data);
+        brandList.forEach(item => {
+            this.defaultBrankSortMap[item.id] = item.sort;
         });
+        this.convertList();
+        // MServer.get('/cate/list', {
+        //     is_all: 1
+        // }).then(res => {
+        //     if (res.errcode == 0) {
+        //         this.cateList = res.data;
+        //         return MServer.get('/cate/brand', {
+        //             is_all: 1,
+        //             order: 'sort',
+        //         }).then(res => {
+        //             if (res.errcode == 0) {
+        //                 res.data.forEach(item => {
+        //                     this.defaultBrankSortMap[item.id] = item.sort;
+        //                 });
+
+        //             }
+        //             return true;
+        //         });
+        //     }
+        //     return false;
+        // }).then(res => {
+        //     if (res) {
+        //         this.convertList();
+        //     }
+        // });
     }
 
     convertList() {
