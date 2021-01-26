@@ -921,6 +921,11 @@ class Home extends Component {
                     submit: false
                 });
             }
+        }).catch(err => {
+            message.error(err.message);
+            this.setState({
+                submit: false
+            });
         });
     }
     
